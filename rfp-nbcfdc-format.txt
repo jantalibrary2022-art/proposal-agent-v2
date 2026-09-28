@@ -1,0 +1,26 @@
+NBCFDC — Format of Project Proposal for Grant under CSR
+
+The applicant must submit the project proposal in the following prescribed format.
+
+PART I: PROJECT PROPOSAL SUBMISSION FORMAT (13 sections, in this order)
+1. Title of the project
+2. Current Socio-economic status (assessment of beneficiary selection across trades; skill levels Skilled/Semi-Skilled/Unskilled; income; gender composition)
+3. Objectives of Project
+4. Executive summary of proposal
+5. Targeted group of the project proposal
+6. Geographical area of execution (including rationale for area selection)
+7. Project Cost, in three subsections:
+   (A) Budget details, with an "Activities Budget Time Line" table showing start date, end date, number of days, and totals
+   (B) Means of Finance breakdown
+   (C) Funding requirements at project start, middle and end phases
+8. Execution/Implementation schedule (with specific time-frame)
+9. Human Resources (district-level committee composition with names, designations, contact details and email addresses)
+10. Expected outcome/benefits (outcomes regarding skill and income improvements upon completion)
+11. Monitoring plan (timeline for monitoring during and after execution)
+12. Sustainability committee composition (target-group representatives to assume project responsibility post-handover)
+13. Project Coordinator details (name, designation, office address, phone, email of authorised representative)
+
+PART II: REQUIRED ANNEXURES
+Undertaking, registration certificates, audited accounts (three years), PAN/TAN numbers, board member list, shareholder information, and a Monthly Progress Report template.
+
+[Compiled for internal testing from the public NBCFDC CSR project format.]
