@@ -31,6 +31,7 @@ const { generateBudgetXlsx } = require("./lib/budget-xlsx");
     results_narrative: c.results_narrative,
     sustainability: c.sustainability,
     matrix: s.matrix,
+    sources: s.sources,
     budget_table: s.budget_table,
     rates_to_confirm: s.rates_to_confirm,
     timeline: s.timeline
