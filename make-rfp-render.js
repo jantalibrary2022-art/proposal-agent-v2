@@ -1,25 +1,16 @@
 const fs = require("fs");
 const { chromium } = require("playwright");
-const { composeProposal } = require("./lib/compose");
 const { renderProposalHTML } = require("./lib/proposal-template");
 const { generateDocx } = require("./lib/proposal-docx");
 const { generateBudgetXlsx } = require("./lib/budget-xlsx");
 
 (async () => {
-  if(!fs.existsSync("substance-built.json")){ console.log("Run test-build.js first (need substance-built.json)."); return; }
-  const s = JSON.parse(fs.readFileSync("substance-built.json","utf8"));
-  // Compose from a copy without internal-only fields, so prose does not narrate trimming.
-  const composeInput = JSON.parse(JSON.stringify(s));
-  delete composeInput.flags;
-  delete composeInput.budget_adjustments;
-  delete composeInput.rates_to_confirm;
-  console.log("Composing proposal from built substance on Opus (~1-2 min)...");
-  const c = await composeProposal(composeInput, { lang: s.lang });
-  if(c._missing && c._missing.length){
-    console.log("WARNING: missing sections: " + c._missing.join(", ") + " (stop=" + c._stop + ")");
-    fs.writeFileSync("rfp-composed-raw.txt", c._raw);
+  if(!fs.existsSync("substance-built.json") || !fs.existsSync("rfp-composed-content.json")){
+    console.log("Need substance-built.json and rfp-composed-content.json (run make-rfp-proposal.js once first).");
     return;
   }
+  const s = JSON.parse(fs.readFileSync("substance-built.json","utf8"));
+  const c = JSON.parse(fs.readFileSync("rfp-composed-content.json","utf8"));
   const g = s.geography;
   const docData = {
     lang: s.lang,
@@ -41,6 +32,7 @@ const { generateBudgetXlsx } = require("./lib/budget-xlsx");
     sustainability: c.sustainability,
     matrix: s.matrix,
     budget_table: s.budget_table,
+    rates_to_confirm: s.rates_to_confirm,
     timeline: s.timeline
   };
   const html = renderProposalHTML(docData, { template:"institutional", font:"serif-classic", includeToc:true, includeBack:true });
@@ -51,6 +43,5 @@ const { generateBudgetXlsx } = require("./lib/budget-xlsx");
   await browser.close();
   fs.writeFileSync("RFP-proposal.docx", await generateDocx(docData));
   fs.writeFileSync("RFP-budget.xlsx", await generateBudgetXlsx(docData));
-  fs.writeFileSync("rfp-composed-content.json", JSON.stringify(c, null, 2));
-  console.log("Wrote RFP-proposal.pdf, RFP-proposal.docx and RFP-budget.xlsx");
+  console.log("Re-rendered RFP-proposal.pdf, .docx and .xlsx (no API call)");
 })();
