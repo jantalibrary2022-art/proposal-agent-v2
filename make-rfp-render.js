@@ -34,6 +34,7 @@ const { generateBudgetXlsx } = require("./lib/budget-xlsx");
     sources: s.sources,
     budget_table: s.budget_table,
     rates_to_confirm: s.rates_to_confirm,
+    risks: s.risks,
     timeline: s.timeline
   };
   const html = renderProposalHTML(docData, { template:"institutional", font:"serif-classic", includeToc:true, includeBack:true });
