@@ -3,28 +3,54 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { createClient } from "../../../lib/supabase/client";
 
-const steps = ["Your idea", "Where & who", "Timeline & budget", "Funder", "Review"];
+const steps = ["Organisation", "Your idea", "Where & who", "Timeline & budget", "Funder", "Review"];
 
 export default function IdeaPage() {
   const router = useRouter();
   const [step, setStep] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
+
+  const [profiles, setProfiles] = useState<any[]>([]);
+  const [profilesLoaded, setProfilesLoaded] = useState(false);
+  const [orgProfileId, setOrgProfileId] = useState<string>("");
+  const [noProfile, setNoProfile] = useState(false);
+  const [quickName, setQuickName] = useState("");
+  const [quickAbout, setQuickAbout] = useState("");
+
   const [starting, setStarting] = useState(false);
+  const [answers, setAnswers] = useState({
+    idea: "", location: "", beneficiaries: "", duration: "", budget: "", funder: "",
+  });
+  const set = (k: string, v: string) => setAnswers((a) => ({ ...a, [k]: v }));
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => {
+      if (!data.user) return;
+      supabase.from("org_profiles").select("id,name,type,is_default").eq("user_id", data.user.id).order("is_default", { ascending: false }).order("created_at", { ascending: true }).then(({ data: rows }) => {
+        const list = rows || [];
+        setProfiles(list);
+        const def = list.find((p: any) => p.is_default) || list[0];
+        if (def) setOrgProfileId(def.id); else setNoProfile(true);
+        setProfilesLoaded(true);
+      });
+    });
+  }, []);
+
   const generate = async () => {
     setStarting(true);
+    const payload: any = noProfile
+      ? { ...answers, quick_profile: { name: quickName.trim(), about: quickAbout.trim() } }
+      : { ...answers, org_profile_id: orgProfileId };
     try {
-      const res = await fetch("/api/proposals/generate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers }) });
+      const res = await fetch("/api/proposals/generate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers: payload }) });
       const data = await res.json();
       if (data.ok && data.id) { router.push("/proposals/" + data.id); return; }
       alert("Could not start: " + (data.error || "unknown error"));
     } catch (e) { alert("Could not start the proposal."); }
     setStarting(false);
   };
-  const [answers, setAnswers] = useState({
-    idea: "", location: "", beneficiaries: "", duration: "", budget: "", funder: "",
-  });
-  const set = (k: string, v: string) => setAnswers((a) => ({ ...a, [k]: v }));
 
   const [listening, setListening] = useState(false);
   const [supported, setSupported] = useState(true);
@@ -71,10 +97,11 @@ export default function IdeaPage() {
   const toggleMic = () => { listening ? stopListening() : startListening(); };
 
   const canContinue = () => {
-    if (step === 0) return answers.idea.trim().length > 0;
-    if (step === 1) return Boolean(answers.location.trim() && answers.beneficiaries.trim());
-    if (step === 2) return answers.duration.trim().length > 0;
-    if (step === 3) return answers.funder.trim().length > 0;
+    if (step === 0) return noProfile ? quickName.trim().length > 0 : !!orgProfileId;
+    if (step === 1) return answers.idea.trim().length > 0;
+    if (step === 2) return Boolean(answers.location.trim() && answers.beneficiaries.trim());
+    if (step === 3) return answers.duration.trim().length > 0;
+    if (step === 4) return answers.funder.trim().length > 0;
     return true;
   };
   const goNext = () => { if (listening) stopListening(); if (step < steps.length - 1) setStep(step + 1); };
@@ -82,6 +109,11 @@ export default function IdeaPage() {
 
   const input = "w-full box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] px-4 h-[52px] text-[16px] bg-card outline-none focus:border-ink";
   const label = "block text-[14px] font-semibold text-[#3A3A32] mb-2";
+  const selectedProfile = profiles.find((p) => p.id === orgProfileId);
+  const orgReview = noProfile ? (quickName.trim() || "Without a saved profile") : (selectedProfile ? selectedProfile.name : "—");
+
+  const pickProfile = (id: string) => { setNoProfile(false); setOrgProfileId(id); };
+  const pickNone = () => { setNoProfile(true); setOrgProfileId(""); };
 
   return (
     <div className="min-h-screen bg-canvas text-ink flex flex-col">
@@ -97,7 +129,7 @@ export default function IdeaPage() {
 
       <main className="flex-grow px-6 sm:px-11 py-12 flex justify-center gap-11">
         <aside className="hidden lg:block w-[220px] shrink-0">
-          <div className="text-[12px] tracking-wide text-muted mb-5 font-semibold">NEW PROPOSAL · YOUR IDEA</div>
+          <div className="text-[12px] tracking-wide text-muted mb-5 font-semibold">NEW PROPOSAL</div>
           <div className="flex flex-col gap-1">
             {steps.map((s, i) => (
               <div key={s} className="flex items-center gap-3 py-2.5">
@@ -112,6 +144,52 @@ export default function IdeaPage() {
           <div className="text-[12px] tracking-wide text-muted mb-3 font-semibold">STEP {step + 1} OF {steps.length}</div>
 
           {step === 0 && (
+            <>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Which organisation is this proposal for?</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">Pick the profile this proposal should be written as. Its experience and track record ground the whole proposal.</p>
+              {!profilesLoaded ? (
+                <div className="text-[15px] text-muted">Loading your profiles…</div>
+              ) : (
+                <div className="flex flex-col gap-3">
+                  {profiles.map((p) => (
+                    <button key={p.id} type="button" onClick={() => pickProfile(p.id)} className={`text-left rounded-lg border p-4 ${!noProfile && orgProfileId === p.id ? "border-ink bg-card" : "border-line bg-card"}`}>
+                      <div className="flex items-center gap-3">
+                        <span className={`w-[18px] h-[18px] rounded-full border-[2px] flex items-center justify-center shrink-0 ${!noProfile && orgProfileId === p.id ? "border-ink" : "border-[#C9C7BF]"}`}>{!noProfile && orgProfileId === p.id && <span className="w-[9px] h-[9px] rounded-full bg-ink" />}</span>
+                        <span className="text-[15.5px] font-semibold">{p.name}</span>
+                        {p.is_default && <span className="text-[10px] tracking-wide font-semibold bg-[#E3E2DC] text-[#45453D] px-1.5 py-0.5 rounded">DEFAULT</span>}
+                        <span className="text-[13px] text-muted capitalize ml-auto">{p.type}</span>
+                      </div>
+                    </button>
+                  ))}
+
+                  <button type="button" onClick={pickNone} className={`text-left rounded-lg border p-4 ${noProfile ? "border-ink bg-card" : "border-line bg-card"}`}>
+                    <div className="flex items-center gap-3">
+                      <span className={`w-[18px] h-[18px] rounded-full border-[2px] flex items-center justify-center shrink-0 ${noProfile ? "border-ink" : "border-[#C9C7BF]"}`}>{noProfile && <span className="w-[9px] h-[9px] rounded-full bg-ink" />}</span>
+                      <span className="text-[15.5px] font-semibold">Continue without a saved profile</span>
+                    </div>
+                  </button>
+
+                  {noProfile && (
+                    <div className="rounded-lg border border-line bg-card p-5 flex flex-col gap-4">
+                      <div>
+                        <label className={label}>Name</label>
+                        <input className={input} value={quickName} onChange={(e) => setQuickName(e.target.value)} placeholder="Your name or organisation's name" />
+                      </div>
+                      <div>
+                        <label className={label}>A line about you or your organisation</label>
+                        <input className={input} value={quickAbout} onChange={(e) => setQuickAbout(e.target.value)} placeholder="e.g. a Jharkhand NGO working on SHG livelihoods and nutrition" />
+                      </div>
+                      <div className="text-[13.5px] text-muted leading-relaxed">The proposal will still be built, but the organisational capacity and track-record sections will be lighter without a full profile. You can <Link href="/profiles" className="font-semibold text-ink underline">create a full profile</Link> any time to make future proposals stronger.</div>
+                    </div>
+                  )}
+
+                  {profiles.length > 0 && <Link href="/profiles" className="text-[13.5px] font-semibold text-ink underline mt-1">Manage profiles</Link>}
+                </div>
+              )}
+            </>
+          )}
+
+          {step === 1 && (
             <>
               <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">What is your project about?</h1>
               <p className="text-[16px] text-muted leading-relaxed mb-6">In a sentence or two, tell us the change you want to see and how. Plain language is fine. You can type, or speak your answer.</p>
@@ -139,7 +217,7 @@ export default function IdeaPage() {
             </>
           )}
 
-          {step === 1 && (
+          {step === 2 && (
             <>
               <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Where will this work happen, and who will it help?</h1>
               <p className="text-[16px] text-muted leading-relaxed mb-6">The place and the people it serves. This grounds the evidence search.</p>
@@ -154,7 +232,7 @@ export default function IdeaPage() {
             </>
           )}
 
-          {step === 2 && (
+          {step === 3 && (
             <>
               <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Timeline and budget</h1>
               <p className="text-[16px] text-muted leading-relaxed mb-6">Rough figures are fine. Leave the budget blank if you are not sure, we can estimate it.</p>
@@ -169,7 +247,7 @@ export default function IdeaPage() {
             </>
           )}
 
-          {step === 3 && (
+          {step === 4 && (
             <>
               <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Who is this proposal for?</h1>
               <p className="text-[16px] text-muted leading-relaxed mb-6">The funder you have in mind. If you are not sure yet, say so and we will keep it general.</p>
@@ -180,19 +258,18 @@ export default function IdeaPage() {
             </>
           )}
 
-          {step === 4 && (
+          {step === 5 && (
             <>
               <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Review before we build</h1>
               <p className="text-[16px] text-muted leading-relaxed mb-6">Check your answers. You can go back to change anything.</p>
               <div className="bg-card border border-line rounded-lg divide-y divide-[#EFEEE7]">
-                {[["Your idea", answers.idea], ["Location", answers.location], ["Who it will help", answers.beneficiaries], ["Duration", answers.duration], ["Budget", answers.budget || "Not specified"], ["Funder", answers.funder]].map(([k, v]) => (
+                {[["Organisation", orgReview], ["Your idea", answers.idea], ["Location", answers.location], ["Who it will help", answers.beneficiaries], ["Duration", answers.duration], ["Budget", answers.budget || "Not specified"], ["Funder", answers.funder]].map(([k, v]) => (
                   <div key={k} className="px-5 py-4">
                     <div className="text-[12px] tracking-wide text-muted font-semibold mb-1">{k}</div>
                     <div className="text-[15px] leading-relaxed">{v}</div>
                   </div>
                 ))}
               </div>
-              {submitted && <div className="mt-5 bg-card border-l-[3px] border-ink rounded-[6px] px-5 py-4 text-[14.5px]">Got it. The next step we build will connect this to your engine and produce the proposal.</div>}
             </>
           )}
 

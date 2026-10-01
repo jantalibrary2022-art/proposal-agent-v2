@@ -30,7 +30,7 @@ export default async function Dashboard() {
           </div>
           <nav className="hidden sm:flex gap-6">
             <span className="text-[12px] tracking-wide font-semibold">PROPOSALS</span>
-            <span className="text-[12px] tracking-wide text-muted">ORG PROFILE</span>
+            <Link href="/profiles" className="text-[12px] tracking-wide text-muted">ORG PROFILE</Link>
             <span className="text-[12px] tracking-wide text-muted">HELP</span>
           </nav>
         </div>
