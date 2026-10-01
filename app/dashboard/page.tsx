@@ -86,7 +86,34 @@ export default async function Dashboard() {
 
       <div className="flex-1 px-6 sm:px-11 py-10 max-w-6xl w-full mx-auto">
         <h1 className="font-extrabold text-[34px] tracking-[-0.04em] mb-1.5">Welcome back, {firstName}</h1>
-        <p className="text-[16px] text-muted mb-8">Start a new proposal, or pick up where you left off.</p>
+        <p className="text-[16px] text-muted mb-9">Your Prastav workspace. Proposals is live, more services for the development sector are on the way.</p>
+
+        <div className="text-[12px] tracking-wide text-muted font-semibold mb-3">SERVICES</div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          <a href="#proposals" className="bg-panel text-paper rounded-lg p-5 flex flex-col">
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="text-[16px] font-bold">Proposals</div>
+              <span className="text-[10px] tracking-wide font-semibold bg-white/15 text-paper px-2 py-0.5 rounded">ACTIVE</span>
+            </div>
+            <div className="text-[13.5px] text-white/60 leading-snug">Donor-contextual proposals from your idea, an RFP, or an existing draft.</div>
+          </a>
+          {[
+            ["Case study writing", "Turn your project results into a compelling case study."],
+            ["Data analysis", "Make sense of your baseline and monitoring data."],
+            ["Proposal scorecards", "Assess a proposal against what donors look for."],
+          ].map(([t, d]) => (
+            <div key={t} className="bg-card border border-line rounded-lg p-5 flex flex-col opacity-70">
+              <div className="flex items-center justify-between mb-1.5">
+                <div className="text-[16px] font-bold">{t}</div>
+                <span className="text-[10px] tracking-wide font-semibold text-muted border border-[#C4C2BB] px-2 py-0.5 rounded">SOON</span>
+              </div>
+              <div className="text-[13.5px] text-muted leading-snug">{d}</div>
+            </div>
+          ))}
+        </div>
+
+        <div id="proposals" className="text-[21px] font-bold tracking-[-0.02em] mb-1.5 scroll-mt-20">Proposals</div>
+        <p className="text-[15px] text-muted mb-5">Start a new proposal, or pick up where you left off.</p>
 
         <div className="flex flex-col lg:flex-row gap-5 mb-10">
           <Link href="/new/idea" className="flex-1 bg-panel text-paper rounded-lg p-6">
@@ -106,7 +133,7 @@ export default async function Dashboard() {
           </Link>
         </div>
 
-        <div className="text-[21px] font-bold tracking-[-0.02em] mb-4">Recent proposals</div>
+        <div className="text-[18px] font-bold tracking-[-0.02em] mb-4">Recent proposals</div>
         {proposals.length === 0 ? (
           <div className="bg-card border border-line rounded-lg p-10 text-center">
             <p className="text-[15px] text-muted">You have no proposals yet. Start one above, and it will appear here.</p>
