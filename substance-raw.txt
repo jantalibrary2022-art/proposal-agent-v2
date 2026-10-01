@@ -1,0 +1,413 @@
+```json
+{
+  "lang": "English",
+  "org": {
+    "name": "EcoKheti Foundation",
+    "experience": "Section 8 non-profit registered in India in 2016, with presence in Jharkhand and Chhattisgarh. It has 8 years in community-based livelihoods, 6 years in maternal and child nutrition and 5 years in climate-smart and climate-resilient livelihoods. Relevant track record: (1) Climate-resilient agriculture with 800 small farmers in Chhattisgarh, funded by a CSR foundation, where 70% adopted climate-adaptive practices. (2) SHG-led livelihoods and nutrition with 1,200 women in Khunti and Gumla, tribal Jharkhand, funded by the State Rural Livelihoods Mission, with at least 45% income increase and improved dietary diversity in 60% of households. (3) FPO strengthening and market linkage in Jharkhand, funded by a public programme, covering 3 FPOs and 900 members, where aggregated sales roughly doubled. Annual revenue is Rs. 2.4 Crore, with 5 board members and 9 permanent staff.",
+    "values": "Community ownership, women's agency, convergence with public systems"
+  },
+  "theme": "Climate Smart Livelihoods: natural farming on Forest Rights Act (FRA) land with PVTG and other Scheduled Tribe households, converging with the National Mission on Natural Farming (NMNF), FRA and PM-JANMAN",
+  "geography": {
+    "state": "Chhattisgarh",
+    "district": "Kanker (Uttar Bastar Kanker)",
+    "block": "Durgakondal (Durgkondal)",
+    "coverage": "Villages and habitations in Durgakondal block, grouped into 8 natural farming clusters. Villages will be selected after PM-JANMAN habitation data review and field listing. The block had 64,293 people in 12,888 households in 2011 (secondary aggregator of Census 2011). The project's 1,000 households are about 7.8% of the 2011 household count."
+  },
+  "target": "About 1,000 households, with Particularly Vulnerable Tribal Group (PVTG) households prioritised. Exact PVTG household numbers in Durgakondal block require PM-JANMAN habitation data and field verification. Research records the Kamar PVTG in Kanker district but found no block-level PVTG count. If fewer PVTG households are verified in the block, the target will be 'PVTG and other Scheduled Tribe households', totalling about 1,000.",
+  "duration": "3 years (12 quarters), starting in the current financial year, inferred as FY 2025-26 and to be confirmed with SBIF",
+  "budget": "INR 99,00,000 (Rs. 99 Lakh) requested. This is within the Rs. 50 Lakh to Rs. 1.00 Crore ceiling set by EcoKheti's revenue tier. Only Rs. 4,00,000 is currently costed from a cited norm; the remaining lines await local rate confirmation.",
+  "donor": "SBI Foundation (SBIF), Climate Smart Livelihoods call",
+  "problem_facts": [
+    "DEMOGRAPHIC: Durgakondal tehsil had 64,293 people (32,211 male, 32,082 female) in 12,888 households across about 900 sq km in 2011. Density was 71 per sq km, a sparse and remote population. Children aged 0–6 were 15.11% of the population. [censusindia2011.com, Census 2011, secondary aggregator; verify against District Census Handbook]",
+    "TRIBAL CONTEXT: Scheduled Tribes numbered 49,250 in Durgakondal tehsil, about 76.6% of the population. SC were 3,453 (about 5.37%). [VillageInfo.in, Census 2011, secondary aggregator]",
+    "TRIBAL CONTEXT: The ST share of Uttar Bastar Kanker district is 55%, below the block's roughly 76.6%, so Durgakondal is more tribal than the district average. The district ST child sex ratio is 993. [NHSRC, Demographic Status of ST Population, Census 2011]",
+    "EDUCATION AND CAPABILITY: Durgakondal literacy was 53.15% (male 62.15%, female 44.12%). This is about 17 percentage points below the Kanker district figure of 70.29% (male 80.03%, female 60.64%). [censusindia2011.com; census2011.co.in]",
+    "EDUCATION AND CAPABILITY: NHSRC reports ST literacy of 55% in Kanker district against 62% overall. This overall figure differs from the Census aggregator's 70.29%, probably because of a different denominator, and must be reconciled. Low female literacy means training must be oral, demonstration-based and delivered in the local language. [NHSRC]",
+    "PVTG CONTEXT: Chhattisgarh has five centrally notified PVTGs (Abujhmadia, Baiga, Birhor, Kamar, Pahadi Korwa) with a combined population of 1,86,918 across 18 districts. The Election Commission deployed extra vehicles in Kanker for PVTG voter outreach, which indicates PVTG habitations that are hard to reach. [PIB, 2024]",
+    "PVTG CONTEXT: The Kamar PVTG live mainly in Gariaband, Dhamtari, Mahasamund and Kanker districts. Their 2011 population was 26,630 (state ST/SC Development Department). The state has also given PVTG status to Pando and Bhunjia. Which PVTG(s) live in Durgakondal block, and in what numbers, is not established. The baseline and PM-JANMAN data will confirm this. [ThePrint/PTI, 2023]",
+    "FOREST AND FRA: The FRA 2006 recognises individual rights of self-cultivation and habitation, community rights, and habitat rights specifically for PVTGs. This is the legal basis for farming on FRA land. [Ministry of Tribal Affairs, FRA]",
+    "FOREST AND FRA: As of 30.09.2021, Chhattisgarh had received 9,17,690 FRA claims (8,66,955 individual; 50,735 community) and distributed 4,90,587 titles (4,45,377 individual; 45,210 community). That is about 53% of claims titled. Titled area was about 8,97,549 acres individual and about 47,78,749 acres community. District and block titling status for Kanker and Durgakondal is unknown and will be established by baseline and administrative records. [MoTA FRA Monthly Progress Report, Sep 2021; partly read from a poorly scanned PDF]",
+    "FOREST AND FRA: Kamar PVTG in 22 settlements of Magarlod block, Dhamtari, received habitat rights in 2023, reported as a first for a PVTG in the state. The state plans a single habitat-rights title for the whole Kamar PVTG that includes sub-habitats in Kanker. This creates a live window for PVTG habitat-rights facilitation. [ThePrint/PTI, 2023; UNDP India, 2023]",
+    "AGRICULTURE: Durgakondal's cropping pattern, irrigation share, landholding size, yields of paddy, millets and pulses, and current chemical input use and costs are not documented in available sources. The baseline survey will establish these, using the district agriculture plan and KVK Kanker.",
+    "ECONOMIC AND LIVELIHOODS: Poverty indicators (SECC 2011, NITI Aayog MPI) for Kanker and Durgakondal were not retrieved. Household dependence on forest produce (collection, income share, prices) is also unknown. The baseline survey will establish household income sources, farm net income and forest produce dependence.",
+    "NUTRITION AND HEALTH: The NFHS-5 district factsheet for Kanker (stunting, wasting, anaemia, women's BMI) was not retrieved. The baseline will measure household dietary diversity, and NFHS-5 data will be collected for context.",
+    "CLIMATE: Rainfall trends, dry spells and extreme events for Kanker (IMD, state climate action plan) were not retrieved. The baseline will record households' reported climate shocks and crop losses. The Government of India states that natural farming builds resilience to waterlogging, flood and drought and lowers reliance on purchased inputs. [PMIndia, NMNF launch]",
+    "EXTERNAL EVIDENCE (Andhra Pradesh, not local fact): The APCNF True Cost Accounting study surveyed 562 households in 12 villages across 3 agro-ecological zones, including tribal farming systems, in 2020–22. Natural farming showed average yields 11% higher and net incomes 49% higher, driven by lower input costs. [GIST Impact / Global Alliance for the Future of Food]",
+    "EXTERNAL EVIDENCE (Andhra Pradesh): Under APCNF, crop diversity rose 88% (from 2.1 to 4 crops per farm). Labour use rose 20%, and costs of pesticide, fertiliser and machinery fell. Farmers reported 33% fewer sick days and 26% lower health costs, and social capital strengthened, with women playing a key role. [APCNF TCA report 2023; GAFF publication page]",
+    "EVIDENCE GAP: No field evidence on natural farming yields, costs or adoption specific to Chhattisgarh or Bastar was found. The project will generate local evidence through baseline, midline and endline measurement."
+  ],
+  "objective": "By the end of 3 years, about 1,000 PVTG and other Scheduled Tribe households in Durgakondal block, Kanker, will practise natural farming on their own and FRA-recognised land, lowering input costs, diversifying crops and diets, and strengthening their resilience to climate shocks. The work will be anchored in secured forest rights and converged with NMNF and PM-JANMAN.",
+  "results": {
+    "impact": "Improved climate resilience, net farm income and food security of PVTG and other Scheduled Tribe households in Durgakondal block, Kanker.",
+    "outcomes": [
+      "Outcome 1: Participating households adopt natural farming practices (own-made bio-inputs, diversified and indigenous crops) on their cultivated and FRA land, lowering purchased input costs and increasing crop diversity.",
+      "Outcome 2: Participating households have more secure land and forest rights and draw on public entitlements. This covers FRA individual claims, support to PVTG habitat-rights processes, and NMNF and PM-JANMAN benefits.",
+      "Outcome 3: A community-owned support system sustains natural farming beyond the project. It comprises Krishi Sakhis/CRPs, Bio-input Resource Centres, seed banks and a producer collective linkage, and improves household dietary diversity."
+    ],
+    "outputs": [
+      "Output 1.1: Baseline completed, including a verified household listing that distinguishes PVTG from other ST households against PM-JANMAN habitation data.",
+      "Output 1.2: 16 Krishi Sakhis/CRPs selected and trained, 2 per cluster across 8 clusters following the NMNF norm, with women prioritised.",
+      "Output 1.3: About 1,000 households trained through cluster-level farmer field schools and supplied with household bio-input starter kits.",
+      "Output 1.4: 8 model demonstration farms established, one per cluster, following the NMNF model-farm design.",
+      "Output 2.1: FRA claim facilitation camps held. Eligible households without titles are supported to file individual claims, and PVTG habitat-rights processes are supported with the state and district administration.",
+      "Output 2.2: Eligible households enrolled in NMNF (farmer incentive) and linked to PM-JANMAN entitlements through convergence.",
+      "Output 3.1: 4 Bio-input Resource Centres set up and operational under community or SHG management.",
+      "Output 3.2: 8 community seed banks of indigenous and climate-resilient seed, and household nutrition gardens, established.",
+      "Output 3.3: Participating households linked to a producer collective or FPO for aggregation and sale of natural farming produce."
+    ]
+  },
+  "strategy_facts": [
+    "Core logic: natural farming cuts reliance on purchased inputs through farm-made bio-inputs such as Jeevamrit and Beejamrit. It restores soil health and builds resilience to waterlogging, flood and drought, which suits cash-poor, remote tribal households. [PMIndia, NMNF launch]",
+    "Demonstrated potential from external evidence (Andhra Pradesh, not local): APCNF showed 11% higher yields, 49% higher net incomes and 88% higher crop diversity, including in tribal farming systems. The project tests whether similar gains are achievable in Durgakondal and measures them locally. [GIST Impact; APCNF TCA 2023]",
+    "Land-rights anchoring: natural farming is promoted on land households cultivate, including land recognised under FRA individual rights of self-cultivation. FRA facilitation secures tenure so that soil-health investment is worthwhile. PVTG habitat rights are supported where the Kamar habitat-rights process extends to Kanker. [MoTA FRA; UNDP India; ThePrint/PTI]",
+    "NMNF convergence: 8 project clusters follow NMNF cluster design, with 2 Krishi Sakhis/CRPs per cluster, model demonstration farms, and preference for areas with SRLM groups or FPOs. This positions them for inclusion in the state's NMNF allocation. [PIB NMNF press note; Vikaspedia]",
+    "Scheme benefits are leverage, not project cost: eligible households are supported to access the NMNF farmer incentive of ₹4,000 per acre per year for 2 years. This is not budgeted in the project. [PIB NMNF press note]",
+    "BRC approach: 4 community-managed Bio-input Resource Centres supply bio-inputs to households that lack livestock or labour. The NMNF set-up norm of ₹1,00,000 per BRC excludes sheds and premises and has been called inadequate by experts, so premises are sought through convergence or community contribution. Where NMNF sanctions a BRC in a project cluster, the NMNF support will be used and project funds will not duplicate it. [Down To Earth, BRC guidelines 23 April 2025]",
+    "PM-JANMAN convergence: PM-JANMAN (₹24,104 crore; 11 interventions through 9 ministries) is the main vehicle for housing, roads, water and livelihoods for PVTG households. Its habitation-level PVTG data (PM Gati Shakti app) is used to verify and target PVTG households, and the project links households to its livelihood and infrastructure interventions. [Deccan Herald/PTI; PIB]",
+    "Labour-aware design: APCNF recorded a 20% rise in labour use. Transition is therefore phased, starting on a portion of each household's land, and BRCs and group-based bio-input preparation reduce the labour burden on PVTG families, especially women. [APCNF TCA 2023]",
+    "Women's agency: Krishi Sakhis are prioritised from among women. SHGs are used as the delivery platform, building on EcoKheti's SRLM-funded SHG work and on APCNF evidence of women's key role in social capital. [GAFF; org profile]",
+    "Nutrition link: crop diversification and nutrition gardens are tied to household dietary diversity, drawing on EcoKheti's 6 years in maternal and child nutrition. EcoKheti's Jharkhand project improved dietary diversity in 60% of households. [org profile]",
+    "Communication suited to low literacy: with block literacy at 53.15% and female literacy at 44.12%, training is demonstration-led, farm-based and in the local language. [censusindia2011.com]",
+    "Sustainability: community cadres (Krishi Sakhis), BRCs, seed banks and a producer collective linkage are designed to continue after the project. NMNF continuation beyond 2025-26 is unconfirmed, so the model does not depend on scheme funding past that point. [PIB NMNF press note; research gap]"
+  ],
+  "activities_facts": [
+    "Cluster A (Inception and baseline, Q1–Q2): consult Gram Sabhas; obtain PM-JANMAN habitation data from the Kanker district administration or the state Tribal Department; list households in the field to verify PVTG and other ST households; run a baseline survey. The survey covers landholding, FRA status, cropping pattern, input costs, yields, farm net income, forest produce dependence, climate shocks and household dietary diversity. Clusters and villages are then formed.",
+    "Cluster B (Community cadre, Q2–Q12): select 16 Krishi Sakhis/CRPs (2 per cluster, women prioritised); deliver training of trainers on natural farming practices and bio-input preparation; hold quarterly refreshers; link the cadre with KVK Kanker and the NMNF Krishi Sakhi network.",
+    "Cluster C (Farmer field schools and adoption, Q3–Q12): run regular cluster-level farmer field schools led by Krishi Sakhis; distribute household bio-input starter kits (drums, collection tools); phase the conversion of household plots; give on-farm handholding across kharif and rabi seasons.",
+    "Cluster D (Model demonstration farms, Q3–Q12): set up 8 farmer-field model farms, one per cluster, to show natural farming on local crops. These farms also serve as training venues and yield-comparison plots.",
+    "Cluster E (Bio-input Resource Centres, Q4–Q12): set up 4 community or SHG-managed BRCs, each serving 2 clusters, following NMNF BRC guidelines; train BRC operators; build a simple business model for sustainability.",
+    "Cluster F (Seeds and nutrition, Q3–Q12): establish 8 community seed banks of indigenous and climate-resilient seed; support household nutrition gardens; hold dietary diversity sessions through SHGs.",
+    "Cluster G (FRA and habitat rights, Q2–Q10): hold FRA awareness and claim facilitation camps; help eligible households assemble documents and file individual claims; support PVTG habitat-rights processes with the district administration where the Kamar process extends to Kanker; track claim status.",
+    "Cluster H (Scheme convergence, Q2–Q12): enrol eligible households in NMNF (farmer incentive, cluster inclusion) subject to the state's allocation to Kanker; link households to PM-JANMAN livelihood and infrastructure interventions; coordinate with the agriculture department, KVK and SRLM (Bihan).",
+    "Cluster I (Market linkage, Q7–Q12): aggregate natural farming produce; link households to an existing producer collective or FPO, drawing on EcoKheti's FPO experience; run exposure visits to NMNF model farms and BRCs.",
+    "Cluster J (Monitoring, learning and evaluation, Q1–Q12): run a household-level monitoring system; hold seasonal crop-cut or yield records on sample plots; conduct a midline in Q6 and an endline evaluation in Q12; document local natural farming evidence for Chhattisgarh."
+  ],
+  "matrix": {
+    "rows": [
+      {
+        "level": "Impact",
+        "statement": "Improved climate resilience, net farm income and food security of PVTG and other ST households in Durgakondal block",
+        "indicator": "Percentage of participating households reporting higher net farm income (income minus input cost) than baseline",
+        "baseline": "To be established by baseline survey",
+        "target": "At least 50% of participating households report net farm income above their baseline by endline",
+        "mov": "Baseline and endline household surveys; sample farm income records"
+      },
+      {
+        "level": "Outcome 1",
+        "statement": "Households adopt natural farming practices, lowering purchased input costs and increasing crop diversity",
+        "indicator": "(a) Number of households practising natural farming on at least part of their cultivated or FRA land. (b) Average number of crops per farm. (c) Average purchased input cost per acre.",
+        "baseline": "(a) To be established by baseline survey; (b) To be established by baseline survey; (c) To be established by baseline survey",
+        "target": "(a) 600 of about 1,000 households (60%) by Year 3. (b) Increase over baseline. (c) Reduction from baseline among adopting households.",
+        "mov": "Household adoption register maintained by Krishi Sakhis; midline and endline surveys; field verification visits"
+      },
+      {
+        "level": "Outcome 2",
+        "statement": "Households have more secure land and forest rights and access public entitlements",
+        "indicator": "(a) Number of eligible households without titles whose FRA individual claims are filed with project support. (b) Number of households enrolled in NMNF or linked to PM-JANMAN interventions.",
+        "baseline": "To be established by baseline survey and FRA/administrative records",
+        "target": "(a) Claims filed for 100% of eligible households identified at baseline as lacking titles. Title decisions rest with statutory committees and are tracked, not targeted. (b) 500 households linked to at least one NMNF or PM-JANMAN benefit, subject to scheme allocation and continuation.",
+        "mov": "Claim acknowledgement receipts; Forest Rights Committee and SDLC records; NMNF and PM-JANMAN enrolment lists"
+      },
+      {
+        "level": "Outcome 3",
+        "statement": "A community-owned support system sustains natural farming and improves dietary diversity",
+        "indicator": "(a) Number of BRCs and seed banks functioning under community management at endline. (b) Percentage of households with improved household dietary diversity score.",
+        "baseline": "(a) 0 project-supported BRCs and seed banks. (b) To be established by baseline survey.",
+        "target": "(a) 4 BRCs and 8 seed banks functioning. (b) At least 50% of participating households show improved dietary diversity versus baseline.",
+        "mov": "BRC sales and stock registers; seed bank registers; household dietary diversity module in baseline and endline"
+      },
+      {
+        "level": "Output 1.1",
+        "statement": "Baseline and verified household listing completed",
+        "indicator": "Baseline report and verified listing distinguishing PVTG and other ST households",
+        "baseline": "0",
+        "target": "1 baseline report and verified listing by Q2",
+        "mov": "Baseline report; household listing cross-checked with PM-JANMAN habitation data"
+      },
+      {
+        "level": "Output 1.2",
+        "statement": "Krishi Sakhis/CRPs selected and trained",
+        "indicator": "Number of Krishi Sakhis/CRPs trained (disaggregated by sex and PVTG status)",
+        "baseline": "0",
+        "target": "16 (2 per cluster × 8 clusters), majority women",
+        "mov": "Training attendance records; post-training assessment"
+      },
+      {
+        "level": "Output 1.3",
+        "statement": "Households trained and supplied with bio-input starter kits",
+        "indicator": "Number of households completing farmer field school training; number receiving starter kits",
+        "baseline": "0",
+        "target": "About 1,000 households trained; about 1,000 kits distributed",
+        "mov": "FFS attendance registers; kit distribution lists with acknowledgements"
+      },
+      {
+        "level": "Output 1.4",
+        "statement": "Model demonstration farms established",
+        "indicator": "Number of functional model farms",
+        "baseline": "0",
+        "target": "8 (one per cluster)",
+        "mov": "Model farm records; field visit reports; photographs"
+      },
+      {
+        "level": "Output 2.1",
+        "statement": "FRA claim facilitation and PVTG habitat-rights support delivered",
+        "indicator": "Number of FRA facilitation camps held; number of households assisted with claim documentation",
+        "baseline": "0",
+        "target": "24 camps (3 per cluster); all eligible households identified at baseline assisted",
+        "mov": "Camp reports; claim assistance register"
+      },
+      {
+        "level": "Output 2.2",
+        "statement": "Households supported to enrol in NMNF and PM-JANMAN",
+        "indicator": "Number of households supported with applications or enrolment",
+        "baseline": "0",
+        "target": "600 households supported, with final enrolment subject to scheme allocation",
+        "mov": "Application and enrolment tracking register"
+      },
+      {
+        "level": "Output 3.1",
+        "statement": "Bio-input Resource Centres set up",
+        "indicator": "Number of BRCs operational",
+        "baseline": "0",
+        "target": "4",
+        "mov": "BRC records; operator training records"
+      },
+      {
+        "level": "Output 3.2",
+        "statement": "Community seed banks and nutrition gardens established",
+        "indicator": "Number of seed banks; number of households with a nutrition garden",
+        "baseline": "0 seed banks; nutrition gardens: To be established by baseline survey",
+        "target": "8 seed banks; 800 households with nutrition gardens",
+        "mov": "Seed bank registers; household monitoring records"
+      },
+      {
+        "level": "Output 3.3",
+        "statement": "Households linked to producer collective or FPO",
+        "indicator": "Number of households selling natural farming produce through a collective or FPO",
+        "baseline": "To be established by baseline survey",
+        "target": "300 households",
+        "mov": "Collective or FPO membership and sales records"
+      }
+    ]
+  },
+  "budget_table": {
+    "categories": [
+      {
+        "name": "Personnel & Salaries",
+        "lines": [
+          {
+            "item": "Project Coordinator (natural farming and livelihoods)",
+            "unit": "person-month",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "36 (1 × 36 months)",
+            "total": "[to confirm]",
+            "contributes": "All outcomes (overall management, convergence)",
+            "source": "GAP: no authoritative NGO salary benchmark for Chhattisgarh found"
+          },
+          {
+            "item": "Cluster Facilitators (one per 2 clusters; natural farming and FRA facilitation)",
+            "unit": "person-month",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "144 (4 × 36 months)",
+            "total": "[to confirm]",
+            "contributes": "Outcomes 1, 2 and 3",
+            "source": "GAP: no salary benchmark found; consider state minimum wage notification or SRLM norms"
+          },
+          {
+            "item": "Krishi Sakhis / Community Resource Persons honorarium (2 per cluster, NMNF norm)",
+            "unit": "person-month",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "576 (16 × 36 months)",
+            "total": "[to confirm]",
+            "contributes": "Outcomes 1 and 3 (Outputs 1.2, 1.3)",
+            "source": "Staffing norm: PIB NMNF press note (2 per cluster). GAP: honorarium amount not found; check NMNF or Bihan CRP honoraria. Avoid double payment if NMNF funds the same cadre."
+          },
+          {
+            "item": "MEL and Accounts Officer",
+            "unit": "person-month",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "36 (1 × 36 months)",
+            "total": "[to confirm]",
+            "contributes": "Output 1.1 and all monitoring",
+            "source": "GAP: no salary benchmark found"
+          }
+        ]
+      },
+      {
+        "name": "Programme / Activity Costs",
+        "lines": [
+          {
+            "item": "Baseline survey and PVTG household verification against PM-JANMAN data",
+            "unit": "lump sum",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "1",
+            "total": "[to confirm]",
+            "contributes": "Output 1.1; all baselines in the matrix",
+            "source": "GAP: no cost norm retrieved"
+          },
+          {
+            "item": "Midline and endline evaluation",
+            "unit": "study",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "2",
+            "total": "[to confirm]",
+            "contributes": "Impact and outcome measurement",
+            "source": "GAP: no cost norm retrieved"
+          },
+          {
+            "item": "Krishi Sakhi / CRP training of trainers and refreshers",
+            "unit": "participant-day",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "320 (16 × 20 days over 3 years)",
+            "total": "[to confirm]",
+            "contributes": "Output 1.2",
+            "source": "GAP: ATMA, NMNF or MANAGE training cost norms not retrieved"
+          },
+          {
+            "item": "Cluster farmer field school sessions",
+            "unit": "cluster-session",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "240 (8 clusters × 30 sessions, Q3–Q12)",
+            "total": "[to confirm]",
+            "contributes": "Output 1.3; Outcome 1",
+            "source": "GAP: training cost norms not retrieved"
+          },
+          {
+            "item": "Household bio-input starter kit (drum, collection and preparation tools)",
+            "unit": "kit",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "1,000",
+            "total": "[to confirm]",
+            "contributes": "Output 1.3; Outcome 1",
+            "source": "GAP: bio-input kit cost norm not retrieved; obtain official schedule or local quotes"
+          },
+          {
+            "item": "Model demonstration farm inputs and signage",
+            "unit": "farm",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "8",
+            "total": "[to confirm]",
+            "contributes": "Output 1.4",
+            "source": "GAP: no cost norm retrieved. Design follows NMNF model-farm concept (Vikaspedia)."
+          },
+          {
+            "item": "Bio-input Resource Centre set-up support (where not sanctioned under NMNF)",
+            "unit": "per BRC",
+            "unit_cost": "₹1,00,000",
+            "quantity": "4",
+            "total": "₹4,00,000",
+            "contributes": "Output 3.1; Outcome 3",
+            "source": "Down To Earth: NMNF BRC guidelines, 23 April 2025 (₹1,00,000 per BRC in two tranches of ₹50,000; excludes sheds, land and rent)"
+          },
+          {
+            "item": "BRC shed or premises (excluded from NMNF norm)",
+            "unit": "per BRC",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "4",
+            "total": "[to confirm]",
+            "contributes": "Output 3.1",
+            "source": "GAP: not covered by NMNF norm; seek convergence or community contribution first"
+          },
+          {
+            "item": "Community seed banks (indigenous and climate-resilient seed stock, storage)",
+            "unit": "seed bank",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "8",
+            "total": "[to confirm]",
+            "contributes": "Output 3.2",
+            "source": "GAP: seed-kit cost norms not retrieved"
+          },
+          {
+            "item": "Household nutrition garden seed and sapling kits",
+            "unit": "household kit",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "800",
+            "total": "[to confirm]",
+            "contributes": "Output 3.2; Outcome 3",
+            "source": "GAP: nursery and sapling rates (state horticulture or MIDH) not retrieved"
+          },
+          {
+            "item": "FRA awareness and claim facilitation camps (documentation, Gram Sabha support)",
+            "unit": "camp",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "24",
+            "total": "[to confirm]",
+            "contributes": "Output 2.1; Outcome 2",
+            "source": "GAP: no cost norm retrieved"
+          },
+          {
+            "item": "Scheme convergence meetings and enrolment support (NMNF, PM-JANMAN)",
+            "unit": "lump sum per year",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "3",
+            "total": "[to confirm]",
+            "contributes": "Output 2.2. The NMNF farmer incentive (₹4,000 per acre per year) is leveraged and not budgeted.",
+            "source": "GAP: no cost norm retrieved"
+          },
+          {
+            "item": "Exposure visits to NMNF model farms, BRCs and KVK",
+            "unit": "batch",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "8",
+            "total": "[to confirm]",
+            "contributes": "Outcomes 1 and 3",
+            "source": "GAP: no cost norm retrieved"
+          },
+          {
+            "item": "Producer collective or FPO linkage and aggregation support",
+            "unit": "lump sum",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "1",
+            "total": "[to confirm]",
+            "contributes": "Output 3.3",
+            "source": "GAP: FPO support norms (10,000 FPO scheme) not retrieved"
+          },
+          {
+            "item": "Field staff local travel and mobility in remote habitations",
+            "unit": "person-month",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "180 (5 staff × 36 months)",
+            "total": "[to confirm]",
+            "contributes": "All outcomes",
+            "source": "GAP: no cost norm retrieved"
+          },
+          {
+            "item": "Local-language training and communication materials",
+            "unit": "lump sum",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "1",
+            "total": "[to confirm]",
+            "contributes": "Outputs 1.2, 1.3 and 2.1",
+            "source": "GAP: no cost norm retrieved"
+          }
+        ]
+      },
+      {
+        "name": "Administrative / Overheads",
+        "lines": [
+          {
+            "item": "Field office rent and utilities (Durgakondal)",
+            "unit": "month",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "36",
+            "total": "[to confirm]",
+            "contributes": "All outcomes",
+            "source": "GAP: no cost norm retrieved"
+          },
+          {
+            "item": "Statutory audit and financial compliance",
+            "unit": "year",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "3",
+            "total": "[to confirm]",
+            "contributes": "Governance and compliance",
+            "source": "GAP: no cost norm retrieved"
+          },
+          {
+            "item": "Organisational overhead",
+            "unit": "percentage of direct costs",
+            "unit_cost": "[rate — confirm locally]",
+            "quantity": "1",
+            "total": "[to confirm]",
+            "contributes": "Governance and management support",
+            

@@ -1,0 +1,317 @@
+{
+  "context_facts": [
+    {
+      "fact": "Khunti district total population, by sex (Census 2011)",
+      "value": "As per Census 2011, Khunti district has a total population of 531,885, comprising 266,335 males and 265,550 females, with a nearly balanced sex ratio of 997 females per 1000 males. Note: other compilations give the sex ratio as 994, so check it against the District Census Handbook.",
+      "geography_level": "District",
+      "source_title": "About District | District Khunti, Government of Jharkhand",
+      "source_url": "https://khunti.nic.in/about-district/",
+      "year": "2011"
+    },
+    {
+      "fact": "Rural share of Khunti district population",
+      "value": "91.55% of the population residing in villages and only 8.45% in urban areas",
+      "geography_level": "District",
+      "source_title": "About District | District Khunti, Government of Jharkhand",
+      "source_url": "https://khunti.nic.in/about-district/",
+      "year": "2011"
+    },
+    {
+      "fact": "Scheduled Tribe and Scheduled Caste share, Khunti district",
+      "value": "Khunti has a Scheduled Tribe (ST) population of 73.25%, reflecting its strong tribal identity. The Scheduled Caste (SC) population stands at 4.52%.",
+      "geography_level": "District",
+      "source_title": "About District | District Khunti, Government of Jharkhand",
+      "source_url": "https://khunti.nic.in/about-district/",
+      "year": "2011"
+    },
+    {
+      "fact": "Literacy and female literacy, Khunti district",
+      "value": "literacy rate of 63.86%, with male literacy at 74.08% and female literacy at 53.69%",
+      "geography_level": "District",
+      "source_title": "About District | District Khunti, Government of Jharkhand",
+      "source_url": "https://khunti.nic.in/about-district/",
+      "year": "2011"
+    },
+    {
+      "fact": "Main tribal communities in Khunti district (share of ST population)",
+      "value": "Munda, Patars (83.66%), Oraon, Dhangars (8.52%), Lohras (3.85%), Chik Baraik (0.65%) and Mahli (0.46). SECONDARY SOURCE: Wikipedia compiling Census 2011 ST tables. Verify against the District Census Handbook Khunti.",
+      "geography_level": "District",
+      "source_title": "Rania block (Wikipedia, citing Census 2011)",
+      "source_url": "https://en.wikipedia.org/wiki/Rania_block",
+      "year": "2011"
+    },
+    {
+      "fact": "Khunti district administrative context and forest cover",
+      "value": "Khunti is a district with six blocks, situated around 40 kms, south of the state capital, Ranchi. A Large part of the district, 40% of a total area is covered with forest.",
+      "geography_level": "District",
+      "source_title": "District Profile | Vikaspedia - Aspirational districts (Khunti)",
+      "source_url": "https://aspirational.vikaspedia.in/viewcontent/aspirational-districts/jharkhand/khunti/know-your-district/district-profile?lgn=en",
+      "year": null
+    },
+    {
+      "fact": "Murhu block total population and sex composition",
+      "value": "Murhu CD block had a total population of 85,486, all of which were rural. There were 42,936 (50%) males and 42,550 (50%) females. Area is 402.65 sq km. SECONDARY SOURCE: Wikipedia compiling the Census 2011 CD block-wise Primary Census Abstract. Verify against the PCA / DCHB.",
+      "geography_level": "Block",
+      "source_title": "Murhu block (Wikipedia, citing Census 2011 PCA)",
+      "source_url": "https://en.wikipedia.org/wiki/Murhu_block",
+      "year": "2011"
+    },
+    {
+      "fact": "Murhu block child population (0–6) and SC/ST share",
+      "value": "Population in the age range 0–6 years was 13,907. Scheduled Castes numbered 3,865 (4.52%) and Scheduled Tribes numbered 67,695 (79.19%). SECONDARY SOURCE (Wikipedia citing Census 2011 PCA). Verify.",
+      "geography_level": "Block",
+      "source_title": "Murhu block (Wikipedia, citing Census 2011 PCA)",
+      "source_url": "https://en.wikipedia.org/wiki/Murhu_block",
+      "year": "2011"
+    },
+    {
+      "fact": "Murhu block literacy and female literacy",
+      "value": "Literate persons: 45,396 (63.42% of the population over 6 years) out of which males numbered 26,218 (73.15% of the male population over 6 years) and females numbered 19,178 (53.66% of the female population over 6 years). SECONDARY SOURCE (Wikipedia citing Census 2011 PCA). Verify.",
+      "geography_level": "Block",
+      "source_title": "Murhu block (Wikipedia, citing Census 2011 PCA)",
+      "source_url": "https://en.wikipedia.org/wiki/Murhu_block",
+      "year": "2011"
+    },
+    {
+      "fact": "BPL share, Khunti district",
+      "value": "In 2011-12, the proportion of BPL population in Khunti district came down to 35.45%. SECONDARY SOURCE (Wikipedia). The original government source still needs to be found.",
+      "geography_level": "District",
+      "source_title": "Karra block (Wikipedia)",
+      "source_url": "https://en.wikipedia.org/wiki/Karra_block",
+      "year": "2011-12"
+    },
+    {
+      "fact": "Child undernutrition, Jharkhand state average (NFHS-5)",
+      "value": "Forty percent of children under age five years are stunted. Twenty-two percent are wasted, 9% are severely wasted, and Thirty-nine percent are underweight.",
+      "geography_level": "State",
+      "source_title": "National Family Health Survey (NFHS-5) India 2019-21: Jharkhand",
+      "source_url": "https://dhsprogram.com/pubs/pdf/FR374/FR374_Jharkhand.pdf",
+      "year": "2019-21"
+    },
+    {
+      "fact": "Anaemia among children, Jharkhand (NFHS-5)",
+      "value": "Outcomes: Stunting (40%), underweight (39%), wasting (22%), and anemia among children (67%)",
+      "geography_level": "State",
+      "source_title": "State Nutrition Profile: Jharkhand (NITI Aayog / IFPRI, March 2022)",
+      "source_url": "https://www.niti.gov.in/sites/default/files/2022-07/SNP_Jharkhand_Final_compressed.pdf",
+      "year": "2019-21"
+    },
+    {
+      "fact": "Public health concern status across Jharkhand districts",
+      "value": "Using WHO thresholds (≥20% for stunting, ≥40% for anemia, ≥10% for wasting, and ≥2% for severe wasting), all 24 of 24 districts, Khunti included, are of public health concern.",
+      "geography_level": "State (all districts)",
+      "source_title": "State Nutrition Profile: Jharkhand (IFPRI/POSHAN, Dec 2022)",
+      "source_url": "https://cgspace.cgiar.org/bitstreams/a6a37c2e-88c5-4a02-9d54-16fd7463971c/download",
+      "year": "2019-21"
+    },
+    {
+      "fact": "Trend in women's anaemia and iron-rich feeding of young children, Jharkhand",
+      "value": "Anaemia among women has remained at the same level since NFHS-4. Twenty-two percent of children aged 6-23 months ate iron-rich foods during the day or night before the survey.",
+      "geography_level": "State",
+      "source_title": "National Family Health Survey (NFHS-5) India 2019-21: Jharkhand",
+      "source_url": "https://dhsprogram.com/pubs/pdf/FR374/FR374_Jharkhand.pdf",
+      "year": "2019-21"
+    },
+    {
+      "fact": "Women's schooling, Jharkhand",
+      "value": "Thirty-two percent of women and 14 percent of men aged 15-49 have never been to school. This supports picture-based, low-literacy counselling.",
+      "geography_level": "State",
+      "source_title": "National Family Health Survey (NFHS-5) India 2019-21: Jharkhand",
+      "source_url": "https://dhsprogram.com/pubs/pdf/FR374/FR374_Jharkhand.pdf",
+      "year": "2019-21"
+    },
+    {
+      "fact": "Khunti's relative ranking on child undernutrition, NFHS-4",
+      "value": "Under NFHS-4, Khunti was among the districts with the highest share of underweight children and of severely wasted children under five. SECONDARY SOURCE (CSO forum analysis of NFHS-4). Replace with NFHS-4 district fact sheet values.",
+      "geography_level": "District",
+      "source_title": "Nutrition in Jharkhand (Jharkhand CSO Forum)",
+      "source_url": "https://jharkhandcsoforum.org/Nutration.php",
+      "year": "2015-16"
+    },
+    {
+      "fact": "National comparator, child undernutrition (NFHS-5 vs NFHS-4)",
+      "value": "Stunting has reduced from 38.4% to 35.5%, Wasting has reduced from 21.0% to 19.3% and Underweight prevalence has reduced from 35.8% to 32.1%.",
+      "geography_level": "National",
+      "source_title": "Press Information Bureau release (MoWCD)",
+      "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1806601",
+      "year": "2019-21"
+    },
+    {
+      "fact": "Poshan Tracker administrative growth monitoring data (national)",
+      "value": "As per the data of Poshan Tracker for the month of November 2023, around 7.44 crore children under 6 years were measured, out of whom 37.51% were found to be stunted, 17.43% were found to be underweight and 6% children under 5 years were found to be wasted.",
+      "geography_level": "National",
+      "source_title": "Steady improvement in indicators for malnutrition (PIB)",
+      "source_url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=1988614&reg=48&lang=2",
+      "year": "2023"
+    },
+    {
+      "fact": "MTC network in Jharkhand and SAM detection pathway",
+      "value": "Jharkhand's State government has established 88 malnutrition treatment centres (MTCs) through the National Health Mission (NHM). Detection of children with SAM in the community is done by the Anganwadi workers (AWWs).",
+      "geography_level": "State",
+      "source_title": "Progress of children with severe acute malnutrition in the MTC rehabilitation program: evidence from Jharkhand (Nutrition Journal, 2018)",
+      "source_url": "https://nutritionj.biomedcentral.com/articles/10.1186/s12937-018-0378-2",
+      "year": "2018"
+    }
+  ],
+  "sector_evidence": [
+    {
+      "point": "Women's group participatory learning and action (PLA) cut neonatal mortality in tribal Jharkhand/Odisha",
+      "detail": "The Ekjut trial demonstrated a 45% reduction in neonatal mortality in the last two years of the intervention, largely driven by improvements in safe practices for home deliveries. A participatory learning and action cycle with 244 women's groups was implemented in 18 intervention clusters.",
+      "source_title": "Explaining the impact of a women's group led community mobilisation intervention: the Ekjut trial process evaluation",
+      "source_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2987759/"
+    },
+    {
+      "point": "PLA works through local women facilitators and participatory problem-solving",
+      "detail": "Local female facilitators guide women's groups through a cycle of activities involving participatory learning and action, during which women identify, prioritize and analyse local maternal and neonatal health problems. This is the model for SHG-based community nutrition resource persons.",
+      "source_title": "Improved neonatal survival after participatory learning and action with women's groups: a prospective study in rural eastern India",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3777144/"
+    },
+    {
+      "point": "The PLA model has been delivered through government frontline workers (ASHAs)",
+      "detail": "This is the first cluster randomised controlled trial of a community intervention to improve maternal and newborn health involving ASHAs, India's largest group of financially incentivised community health workers. It supports convergence and embedding in government platforms.",
+      "source_title": "Effect of participatory women's groups facilitated by ASHAs on birth outcomes in rural eastern India (Lancet Global Health)",
+      "source_url": "https://www.thelancet.com/journals/langlo/article/PIIS2214-109X(15)00287-9/fulltext"
+    },
+    {
+      "point": "SHG-based nutrition-sensitive agriculture improved dietary diversity in a tribal eastern Indian district (UPAVAN trial)",
+      "detail": "The impact evaluation showed a higher proportion of children achieving minimum dietary diversity in AGRI-NUT and AGRI-NUT+PLA compared to the control group, and a higher proportion of mothers achieving minimum dietary diversity in AGRI and AGRI-NUT+PLA compared to the control group.",
+      "source_title": "Feasibility, acceptability and equity of m-UPAVAN in rural Odisha (PLOS Global Public Health)",
+      "source_url": "https://journals.plos.org/globalpublichealth/article?id=10.1371%2Fjournal.pgph.0003206"
+    },
+    {
+      "point": "UPAVAN delivery platform was women's SHGs, and participation mattered",
+      "detail": "The UPAVAN interventions worked with women's self-help groups, providing behavior change communication through facilitated viewings and discussions of participatory videos on NSA and nutrition-specific topics. per-protocol analyses suggested that intervention participation was important.",
+      "source_title": "Can nutrition-sensitive agriculture interventions address intersectional inequalities in women's diets? (PMC)",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12405785/"
+    },
+    {
+      "point": "Agriculture alone has limited effect on nutritional status; pairing it with nutrition-specific content is the rationale",
+      "detail": "PLA interventions have also shown large effects on women's nutritional knowledge and dietary diversity [39, 40], but limited impacts on maternal and child nutritional status. This argues for setting realistic outcome targets, with dietary diversity and practices as primary outcomes.",
+      "source_title": "UPAVAN trial study protocol (Trials, 2018)",
+      "source_url": "https://link.springer.com/article/10.1186/s13063-018-2521-y"
+    },
+    {
+      "point": "Nutri-gardens in Jharkhand: benefits and constraints",
+      "detail": "Despite challenges such as limited land and water, nutri-gardens have improved food security, nutritional diversity, and household income. Small qualitative study, so evidence is limited.",
+      "source_title": "Nutrition garden model (Poshan Vatika): pathway for nutrition security (IJCMPH, 2025)",
+      "source_url": "https://www.ijcmph.com/index.php/ijcmph/article/download/13055/8225/65959"
+    },
+    {
+      "point": "MTC referral alone is not enough; community follow-up after discharge is needed",
+      "detail": "In Jharkhand, Recovery was poor, and the majority of children demonstrated poor weight gain, with severe wasting and underweight reported in 52 and 83% of the children respectively at the completion of the community-based phase of the MTC program.",
+      "source_title": "Progress of children with SAM in the MTC rehabilitation program, Jharkhand (Nutrition Journal)",
+      "source_url": "https://nutritionj.biomedcentral.com/articles/10.1186/s12937-018-0378-2"
+    },
+    {
+      "point": "Linking MTCs with Anganwadi and the community is good practice",
+      "detail": "There is a need to strengthen linkages between facility based management (MTCs), Anganwadi Centres or Day Care Centres under Integrated Child Development Scheme (ICDS) and Community Based Management.",
+      "source_title": "Notes From A Malnutrition Treatment Centre At Dungarpur In Rajasthan (Outlook Poshan)",
+      "source_url": "https://poshan.outlookindia.com/story/poshan-news-notes-from-a-malnutrition-treatment-centre-at-dungarpur-in-rajasthan/339452"
+    },
+    {
+      "point": "Home-visit counselling and crèches evaluated for child undernutrition in rural Jharkhand",
+      "detail": "We evaluated the effects of two community strategies to reduce undernutrition among children under 3 years in rural Jharkhand. See the full text for effect sizes.",
+      "source_title": "Effects of PLA with women's groups, counselling through home visits and crèches on undernutrition among children under three in eastern India (BMC Public Health, 2019)",
+      "source_url": "https://link.springer.com/article/10.1186/s12889-019-7274-3"
+    }
+  ],
+  "policy_context": [
+    {
+      "item": "Mission Saksham Anganwadi and Poshan 2.0",
+      "relevance": "Six key services are offered, including Supplementary Nutrition, Pre-school Education, Nutrition & Health Education, Immunization, Health Check-up, and Referral Services. These are the entitlements the project will help families take up. MoWCD also has guidelines for AWC construction under MGNREGS in convergence with ICDS, and for Take-Home Ration procurement.",
+      "source_title": "Mission Saksham Anganwadi and Poshan 2.0 | Ministry of Women and Child Development",
+      "source_url": "https://wcd.gov.in/offerings/nutrition-mission-saksham-anganwadi-and-poshan-2-0-mission-saksham-anganwadi-poshan-2-0"
+    },
+    {
+      "item": "Poshan Vatika (nutri-gardens) at Anganwadi centres",
+      "relevance": "the Government of India is encouraging setting up of a Poshan Vatikas (Nutri-Gardens) at or near Anganwadi centers (AWC), state-owned schools wherever possible, and at Gram Panchayat lands. Village demonstration plots can be placed at AWCs to reinforce convergence.",
+      "source_title": "Poshan Vatika (Nutri-Gardens) at Anganwadi centers (J Drug Research in Ayurvedic Sciences)",
+      "source_url": "https://www.ovid.com/jnls/jdra/fulltext/10.4103/jdras.jdras_137_22~poshan-vatika-nutri-gardens-at-anganwadi-centersholistic"
+    },
+    {
+      "item": "Pradhan Mantri Matru Vandana Yojana (PMMVY 2.0, Mission Shakti)",
+      "relevance": "The PMMVY benefit of Rs 5000/- is given for first child in two instalments (first instalment of ₹ 3000/- after Ante-Natal Check-up (ANC) and second instalment of ₹ 2000/- after the childbirth and 14 weeks of universal immunization). Rs 6,000 is paid for a second child if she is a girl. the beneficiary is also eligible to get the benefit of Janani Suraksha Yojana (Ministry of Health and Family Welfare Scheme) after institutional delivery.",
+      "source_title": "PMMVY FAQs | Savitribai Phule National Institute of Women and Child Development",
+      "source_url": "https://www.spniwcd.wcd.gov.in/pradhan-mantri-matru-vandana-yojna/faqs"
+    },
+    {
+      "item": "PMMVY registration via AWW/ASHA",
+      "relevance": "Field functionaries like Anganwadi Workers / ASHA workers can fill the application online for the beneficiary in their jurisdiction. Counsellors can support document readiness (Aadhaar, bank seeding, MCP card) ahead of AWW registration.",
+      "source_title": "PMMVY FAQs | SPNIWCD",
+      "source_url": "https://www.spniwcd.wcd.gov.in/pradhan-mantri-matru-vandana-yojna/faqs"
+    },
+    {
+      "item": "Didi Badi Yojana (JSLPS Poshan Vatika programme), Jharkhand",
+      "relevance": "The kitchen-garden component must align with this and not duplicate it. It is described as the Jharkhand government-run initiative, 'Didi Badi Yojana'(Poshan Vatika) under JSLPS. The state also planned approximately 5 lakh kitchen/home garden/anganwadi garden in the rural areas with an estimated budget of Rs 250 Cr.",
+      "source_title": "Didi Badi Yojna: One scheme, twin objectives (The Daily Pioneer)",
+      "source_url": "https://www.dailypioneer.com/2021/state-editions/didi-badi-yojna--one-scheme--twin-objectives.html"
+    },
+    {
+      "item": "SAMAR (1,000-day anaemia and malnutrition campaign), Jharkhand",
+      "relevance": "The state budget announced other initiatives like the 1000 Day long SAMAR project which targets eradication of anaemia and malnourishment from the state. Its current status needs checking.",
+      "source_title": "Didi Badi Yojna: One scheme, twin objectives (The Daily Pioneer)",
+      "source_url": "https://www.dailypioneer.com/2021/state-editions/didi-badi-yojna--one-scheme--twin-objectives.html"
+    },
+    {
+      "item": "Existing Jharkhand government nutrition interventions (POSHAN PEHL, Didi Badi Yojana)",
+      "relevance": "An evaluation attributed nutrition findings partly to the interventions by the Jharkhand government, such as POSHAN PEHL and Didi Badi Yojana. Coverage in Murhu should be mapped to avoid duplication.",
+      "source_title": "Impact Evaluation Report: PRIDE (PHRS India)",
+      "source_url": "https://phrsindia.org/wp-content/uploads/2022/12/Impact-Evaluation-Report_PRIDE.pdf"
+    },
+    {
+      "item": "MGNREGA entitlement for ST households (convergence for garden fencing, water structures, labour)",
+      "relevance": "Every willing rural household is entitled to 100 days of work, with an extra 50 days for Scheduled Tribe households in forest areas (as per the Forest Rights Act. This is a route for convergence funding of kitchen-garden land and water works.",
+      "source_title": "MGNREGS Wage Hike for 2025-26: Detailed Analysis (Adda247)",
+      "source_url": "https://currentaffairs.adda247.com/mgnregs-wage-hike-for-2025-26-detailed-analysis/"
+    }
+  ],
+  "cost_norms": [
+    {
+      "item": "MGNREGA unskilled wage, Jharkhand (benchmark for daily labour and volunteer compensation)",
+      "rate": "The revised rate of wages in Jharkhand is 255 rupees only per Manday for the financial year 2025-26. It's effective from April 1, 2025. It was 245 rupees per Manday in the financial year 2024-25. A state top-up of Rs 27 (total Rs 282) was reported by NREGA Watch. The FY 2026-27 notified rate needs checking.",
+      "unit": "Rs per person-day",
+      "source_title": "Revised rate of wages of MGNREGA no solace for campaigners in Jharkhand (The Daily Pioneer)",
+      "source_url": "http://www.dailypioneer.com/2025/state-editions/revised-rate-of-wages-of-mgnrega-no-solace-for-campaigners-in-jharkhand.html"
+    },
+    {
+      "item": "Kitchen-garden unit cost reference, Jharkhand (implied from the state's planned programme)",
+      "rate": "Rs 250 crore for about 5 lakh gardens works out to about Rs 5,000 per garden. This is simple arithmetic on the announced figures, not an official unit rate; confirm the actual JSLPS Didi Badi unit cost.",
+      "unit": "Rs per household/Anganwadi garden",
+      "source_title": "Didi Badi Yojna: One scheme, twin objectives (The Daily Pioneer)",
+      "source_url": "https://www.dailypioneer.com/2021/state-editions/didi-badi-yojna--one-scheme--twin-objectives.html"
+    },
+    {
+      "item": "Government incentive to ASHA/AWW for PMMVY field verification (reference for frontline incentive norms)",
+      "rate": "In case of self-registration by the beneficiaries, ₹150/- would be given to ASHA/AWW for field level verification within a period of 30 days of self-registration.",
+      "unit": "Rs per verified registration",
+      "source_title": "PMMVY Frequently Asked Questions (SPNIWCD)",
+      "source_url": "https://www.spniwcd.wcd.gov.in/uploads/pdf/1710098119_HDEXdpWMb1.pdf"
+    },
+    {
+      "item": "Reference programme cost for SHG-based NSA + PLA (Odisha, 32 months)",
+      "rate": "Total program costs of each intervention ranged from US$272,121 to US$386,907. In 2019 US$, across 148 trial clusters split into four arms. Use for benchmarking only.",
+      "unit": "US$ total programme cost per intervention arm",
+      "source_title": "Economic Evaluation of Nutrition-Sensitive Agricultural Interventions in Rural Odisha (PubMed)",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/35687367/"
+    }
+  ],
+  "gaps": [
+    "Khunti district NFHS-5 fact sheet values (stunting, wasting, severe wasting, underweight, child anaemia, anaemia in pregnant and non-pregnant women, minimum dietary diversity and adequate diet for children 6-23 months, exclusive breastfeeding, institutional delivery, 4+ ANC visits), with NFHS-4 district values for trend. The district fact sheet was not in the search results; take it directly from the IIPS/MoHFW NFHS-5 district fact sheet for Khunti.",
+    "Jharkhand state NFHS-5 values for women's anaemia (pregnant and non-pregnant), MDD/adequate diet, exclusive breastfeeding, institutional delivery and ANC, to compare with Khunti. Only child stunting, wasting, underweight, anaemia and iron-rich food intake were found.",
+    "Murhu block Census 2011 figures (population, ST share, literacy, 0-6 population) were found only in Wikipedia compiling the Census PCA. Verify against the official District Census Handbook Khunti / CD block PCA. Also needed: number of villages and households in Murhu, block sex ratio, block ST-specific female literacy, and the tribal composition of Murhu.",
+    "Conflicting district sex ratio: 997 (district website) vs 994 (other compilations). Resolve from the DCHB.",
+    "More recent official population estimates for Khunti/Murhu (post-2011 projections).",
+    "Murhu socioeconomic profile: worker categories (cultivators, agricultural labourers), landholding size distribution (Agriculture Census), irrigated area, seasonal/distress migration, SECC 2011 deprivation indicators, NFSA/PDS ration card coverage (AAY/PHH) for Murhu. No authoritative block-level data were found. The Khunti BPL figure of 35.45% (2011-12) comes from a secondary source and needs the original government source.",
+    "ICDS in Murhu: ICDS project name/code, number of sanctioned and functional Anganwadi centres, AWW/AWH vacancies, THR supply regularity, Poshan Tracker growth monitoring coverage and block-level stunting/wasting/underweight. Get from the District Social Welfare Officer / CDPO Murhu or the Poshan Tracker dashboard.",
+    "Health system in Murhu: CHC Murhu status (only a non-authoritative directory listing was found), number of PHCs, sub-centres/Ayushman Arogya Mandirs, ASHA and ANM positions filled, VHSND frequency and functioning, and the nearest functional MTC for Murhu (whether it is at Khunti Sadar Hospital or another site, and bed capacity). Get from the District Health Society Khunti / NHM Jharkhand / HMIS.",
+    "JSLPS presence in Murhu: number of SHGs, Village Organisations and CLFs; SHG member households in the 20 target villages; existing Didi Badi / Poshan Vatika coverage; FNHW interventions; community cadres already in place (e.g., FNHW/health CRPs, Krishi Sakhi, Pashu Sakhi). Get from JSLPS Block Project Management Unit Murhu and the NRLM MIS.",
+    "Jharkhand convergence guidance between ICDS, NHM and JSLPS/SRLM (any government order or MoU on FNHW convergence, SHG participation in VHSND). No official document was found.",
+    "Jharkhand millet initiatives (e.g., a state millet mission) and their Khunti coverage. Not found.",
+    "Current status and scope of the SAMAR campaign and POSHAN PEHL in Khunti.",
+    "Agro-climatic data for Khunti/Murhu: average annual rainfall and monsoon distribution, dry-spell frequency, soil types (lateritic/red upland), groundwater and seasonal water availability, and district contingency plans. Get from IMD district rainfall, the ICAR-CRIDA District Agriculture Contingency Plan for Khunti, and KVK Khunti.",
+    "Suitable local and indigenous crops, greens, millets and forest foods for Khunti kitchen gardens (e.g., locally used leafy greens, ragi/gondli, tubers). Get from KVK Khunti, ICAR-RCER Ranchi or Birsa Agricultural University, then confirm through community food-mapping in the field.",
+    "Village connectivity, remoteness and security/access conditions in Murhu (PMGSY road connectivity, distance of villages to the block HQ, CHC and AWC). Get from PMGSY OMMS, the district administration and a field assessment.",
+    "Number of pregnant women, lactating mothers and children under five in the target SHG households. Establish at baseline; can be triangulated with AWC registers.",
+    "Budget cost norms still missing for Jharkhand: seed/sapling kit costs (JSLPS/Horticulture Department rates), fruit sapling nursery rates, community resource person honorarium norms under JSLPS, AWW/ASHA training per-diem norms (NHM/ICDS state rates), local travel and venue rates, baseline/endline survey per-household costs, and the FY 2026-27 MGNREGA wage for Jharkhand."
+  ]
+}

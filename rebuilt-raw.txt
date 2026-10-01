@@ -1,0 +1,585 @@
+```json
+{
+  "lang": "English",
+  "org": {
+    "name": "Agadhbodh Foundation",
+    "experience": "Section 8 non-profit company registered in 2020 (CIN U80902JH2020NPL014407; NGO Darpan JH/2020/0270149), based in Ranchi. It works in education, health, skill development and livelihoods. It currently runs a Skill Training Centre for persons with disabilities at Angara, funded by Usha Martin Foundation, and through that centre it connected with the Angara PwD Sangathan. The proposal must still state CSR-1, 12A/80G, audited financials and the skill centre's measured results.",
+    "values": "Dignity and consent-based engagement with persons with disabilities. Community ownership: the Sangathan leads and the NGO facilitates. Non-adversarial convergence with government systems. Measurable results."
+  },
+  "theme": "Disability inclusion: independent homestead livelihoods, receipt of social-security entitlements, and institutional strengthening of a PwD collective (Sangathan).",
+  "geography": {
+    "state": "Jharkhand",
+    "district": "Ranchi (NITI Aayog Aspirational District)",
+    "block": "Angara",
+    "coverage": "Two tiers. (1) Block-wide: the survey and entitlement facilitation reach verified Sangathan members wherever they live in Angara block. (2) Ten cluster villages: livelihood units, village coordinators and the Pashu Sakhi service sit in the 10 villages with the highest concentration of members. The 10 villages are to be named, with member counts per village, in Month 1."
+  },
+  "target": "Primary target: members of the Angara PwD Sangathan, reported at about 1,000 and to be verified as persons with disabilities in Months 1–2.\n- Survey and baseline: all verified members (up to 1,000).\n- Entitlement facilitation: at least 500 members found to have gaps in UDID, pension, devices or scheme access.\n- Livelihood assets and training: 150 PwD-owned homestead enterprises in the 10 cluster villages (70 poultry, 20 goat, 30 oyster mushroom, 30 raised-bed kitchen garden). At least 40% will be women with disabilities, at least 30% will have non-locomotor disabilities, and priority goes to the poorest.\n- Leadership: 15 second-tier Sangathan leaders (at least 8 women) and 10 village coordinators.",
+  "duration": "12 months (Month 1 to Month 12). Livestock distribution must fall outside the June–September monsoon, so the calendar is fixed once the start month is known. Goat income matures after Month 12. A 6-month light-touch follow-up or extension is recommended to capture it.",
+  "budget": "INR 29,86,830 for 12 months: direct costs INR 28,44,600 plus 5% overhead of INR 1,42,230. The draft's total was INR 29,82,000.",
+  "donor": "Usha Martin Foundation (CSR wing of Usha Martin Limited). Its CSR priorities explicitly include 'Empowering Differently Abled Individuals' and Livelihood & Financial Inclusion [S22], and it already works in Angara.",
+  "problem_facts": [
+    "Census 2011 counted about 2.68 crore persons with disabilities in India [S1]. Around 70% live in rural areas. Age-standardised prevalence is higher among women, rural residents, Scheduled Tribes and Scheduled Castes [S2].",
+    "NSS 76th Round (2018): disability prevalence is 2.2% nationally and 2.3% in rural areas [S3][S4].",
+    "Applying 2.3% to Angara's Census 2011 population of 1,12,759 [S11] gives an indicative figure of about 2,600 PwDs block-wide. This is an estimate, not a count. The real number will be established through the baseline and official records.",
+    "Only 28.8% of PwDs in India hold a disability certificate, so about 7 in 10 have none [S3].",
+    "The certificate gap is wider for women: 24.1% of females hold one, against 32.4% of males [S5].",
+    "62.1% of PwDs report having a caregiver [S5], which reflects dependence on family members.",
+    "Secondary analysis (a preprint, used for context only) finds that the poorest and least-educated PwDs are less likely to hold certificates [S8].",
+    "Disability impoverishes households. Using NSS 76th Round data, 57.1% of households with a disabled member faced catastrophic health expenditure at the 10% threshold [S6].",
+    "In the same analysis, 19.1% of households that were above the poverty line were pushed below it by disability-related treatment costs [S6].",
+    "Out-of-pocket disability spending took about 20.32% of monthly household consumption expenditure [S6].",
+    "In Jharkhand, the incidence of catastrophic health expenditure rose by 51.3% between 2004 and 2014 [S7].",
+    "Jharkhand accounts for 2.87% of India's disabled population under Census 2011 [S9]. This is a share of the national total, not prevalence within the state. State prevalence is to be taken from Census Table C-20.",
+    "Ranchi is one of NITI Aayog's 112 Aspirational Districts [S12]. This replaces the draft's reference to the discontinued Backward Regions Grant Fund.",
+    "District MPI analysis ranks Ranchi as relatively better-off within Jharkhand, but deprivation stays concentrated in rural and tribal areas such as Angara [S24] (a secondary source). Ranchi's own MPI figure is to be taken from the NITI MPI 2023 annex [S13].",
+    "Angara is an entirely rural block. Census 2011 records a population of 1,12,759, Scheduled Tribes at 55.05%, and only 11.03% of cultivable land irrigated [S11]. These figures are to be verified against the DCHB tables. Farming is mainly rain-fed and single-season.",
+    "Jharkhand state context (NFHS-5, 2019-21): 40% of children under 5 are stunted and 22% are wasted [S14].",
+    "Also from NFHS-5: 32% of women aged 15–49 have never been to school [S14].",
+    "Tap water coverage has changed a great deal since 2011. About 55% of rural households in Jharkhand had functional tap connections in January 2025 [S15], against 79.74% nationally [S16]. Status in the project villages is to be pulled from the JJM dashboard [S21].",
+    "Jharkhand's disability pension is the Swami Vivekananda Nishakt Swavalamban Protsahan Yojana (SVNSPY). It is reported at INR 1,000 per month on a certificate of 40% or more disability [S17]. The current rate and criteria are to be verified.",
+    "The December 2025 announcement abolishing percentage-based categorisation [S18] is a ministerial statement reported in the press. No government resolution has been found, so its scope, including whether it applies to SVNSPY and central schemes, is unverified.",
+    "Member-level gaps are to be established by the baseline: UDID status, pension receipt, device needs and livelihood profile. No Sangathan data exists yet."
+  ],
+  "objective": "By Month 12, persons with disabilities in the Angara Sangathan are more economically self-reliant and socially secure. Three changes deliver this:\n(1) 150 PwDs run a homestead enterprise they own and control.\n(2) Members with entitlement gaps actually receive UDID cards, SVNSPY pensions and assistive devices.\n(3) The Sangathan is a formal, member-led institution able to continue facilitation after the project ends.",
+  "results": {
+    "impact": "PwDs in Angara block have greater economic security, less dependence on able-bodied family members, and lasting collective access to their rights and entitlements.",
+    "outcomes": [
+      "OC1: PwD owners of the 150 homestead enterprises earn their own income and control how it is used. Poultry, mushroom and kitchen-garden income is realised within the project year. Goat herds are maintained and growing, with income expected after Month 12.",
+      "OC2: Sangathan members with entitlement gaps actually receive benefits: UDID cards issued, SVNSPY pensions credited by DBT, and assistive devices received under ADIP.",
+      "OC3: The Sangathan operates as a formal, member-led institution. It has an elected, gender-balanced governing body, has applied for or obtained registration, and its trained leaders independently track members' entitlements."
+    ],
+    "outputs": [
+      "OP1.1: 150 PwD-owned homestead units established with training. PwD is the named asset owner in each case. Inclusion quotas are met.",
+      "OP1.2: Livestock health services are in place. Two trained Pashu Sakhis serve the livestock units, all poultry and goats are vaccinated, and goat pass-on agreements are signed.",
+      "OP1.3: A market linkage is created through a livelihood mela and buyer meet, plus Sangathan-coordinated group sales.",
+      "OP2.1: A consented baseline of all verified members is completed, and a secure, Sangathan-owned PwD database is created.",
+      "OP2.2: Entitlement applications are filed, with 4 UDID/medical-board camps, 2 ADIP camps and 2 convergence meets held. The applications are 300 UDID, 200 SVNSPY pension, and other scheme applications as eligible.",
+      "OP2.3: A per-member scheme tracker is maintained. It covers renewals and life certificates.",
+      "OP3.1: 15 second-tier leaders are trained (at least 8 women), and 10 village coordinators are active.",
+      "OP3.2: Governance structure and bye-laws are adopted, elections are held, and the registration application is filed.",
+      "OP3.3: A data-protection and consent protocol is adopted by the Sangathan."
+    ]
+  },
+  "strategy_facts": [
+    "THEORY OF CHANGE, step 1 (problem): PwDs are dependent on family members for field farming, most likely lack certification and entitlements, and the Sangathan is informal and relies on one leader.",
+    "Step 2 (what must change): PwDs need an income source they can run themselves, documented entitlements that are actually received, and a durable institution.",
+    "Step 3 (objective): economic self-reliance and social security.",
+    "Step 4 (outcomes): OC1 own income, OC2 entitlements received, OC3 formal Sangathan.",
+    "Step 5 (outputs): units and training, applications and camps, database, leaders and governance.",
+    "Step 6 (activities): see activities_facts.",
+    "CAUSAL LOGIC, livelihoods: homestead enterprises matched to disability type need little field labour, so the PwD can earn without an able-bodied family member.",
+    "CAUSAL LOGIC, entitlements: a UDID card or certificate is the gateway to SVNSPY, ADIP and other schemes, and a pension gives predictable cash.",
+    "CAUSAL LOGIC, institution: a registered Sangathan with trained leaders and a tracker keeps facilitation going after the project ends.",
+    "Pillar 1 (homestead livelihoods): the draft's core insight is kept. The project adds enterprises that PwDs manage independently at home, rather than changing field agriculture.",
+    "Unit sizes are raised to viable levels. Goat units follow the Jharkhand Animal Husbandry scheme norm of 4 female + 1 male Black Bengal goats [S23], so that beneficiaries can use MPVY convergence.",
+    "The mix is shifted toward poultry (70 households) and away from goats (20) because poultry shows income within the 12 months.",
+    "Goat units carry a pass-on condition: 2 female kids per unit go to a new member household. This extends reach after the project.",
+    "Convergence, MPVY: the project applies through the District Animal Husbandry Officer, Ranchi, for MPVY co-funding of poultry and goat units. Any sanctioned subsidy frees project funds, which are reallocated to more PwD households with UMF approval.",
+    "Convergence, kitchen gardens: the project seeks VB-G RAM G (formerly MGNREGA) and JSLPS nutri-garden support.",
+    "Pillar 2 (entitlements): the approach is facilitative and non-adversarial. It works through DDRC/CMO medical boards, the UDID portal [S20], the BDO for SVNSPY [S17], and ALIMCO/DDRC under ADIP [S19].",
+    "ADIP pays devices and beneficiary transport at INR 250 per PwD plus escort [C5], so these costs sit outside the project budget.",
+    "Village coordinators support individual UDID portal applications between camps. Camps alone cannot carry 300 applications.",
+    "The tracker records sanction and DBT credit, not just filing. It also covers pension life certificates and renewal of temporary UDIDs, because entitlements are not one-time.",
+    "Pillar 3 (Sangathan): formalisation happens only with a written endorsement from the Sangathan's current leadership and a general-body resolution.",
+    "Election and registration timelines depend on the registrar. The target is an application filed by Month 9.",
+    "A post-project sustainability plan will cover: a nominal membership fee, service linkage with DDRC/NHFDC and state channels, a grant-writing role for leaders, and Pashu Sakhis charging fee-for-service after Month 12.",
+    "INCLUSION CRITERIA (livelihood selection, scored and published in the Sangathan meeting):\n- Poverty: low or no own income; Antyodaya/PHH ration card holders get priority.\n- Women with disabilities: at least 40% of units.\n- Disability range: at least 30% non-locomotor (visual, hearing, intellectual, psychosocial, multiple).\n- Activity fit, interest and homestead space.\n- No duplicate government unit already received.\n- The PwD is the named owner of the asset.",
+    "Adaptations by disability type:\n- Pictorial and hands-on training modules.\n- A sign-language interpreter for hearing-impaired trainees.\n- Tactile marking of feed and spawn stocks.\n- For intellectual or psychosocial disability: a family co-worker agreement, with the PwD remaining owner and income recipient.",
+    "Grievances about selection are resolved through the Sangathan governing body.",
+    "DATA PROTECTION (DPDP Act 2023), consent: members give informed, specific consent in accessible formats (local language, verbal or pictorial, sign interpretation). Guardian consent is taken where legally required.",
+    "Data protection, ownership and purpose: the Sangathan owns the data and Agadhbodh processes it. Data is collected only for entitlement facilitation and project monitoring.",
+    "Data protection, sharing: government receives aggregated or anonymised data by default. Individual records are shared only with consent, for a specific application.",
+    "Data protection, security and retention: storage is encrypted and access-controlled, with role-based access and a stated retention period. Members can view or correct their record, or withdraw.",
+    "VISIBILITY PROTOCOL: consent for photos, video and testimonials is taken separately and is opt-in and revocable. There are no pity or 'before-and-after' framings, and persons appear as enterprise owners and leaders. UMF gets consent-cleared case studies and aggregate outcome data.",
+    "RISK, livestock mortality or disease. Mitigation: vaccination and deworming before distribution, no distribution in the monsoon, Pashu Sakhi visits, goat insurance within the unit cost.",
+    "RISK, delays at medical boards, UDID or SVNSPY sanction. Mitigation: early engagement with DDRC/CMO and BDO, individual follow-up through the tracker. Outcome targets are set below application targets.",
+    "RISK, officials not attending camps. Mitigation: dates fixed jointly with the district, and camps co-branded with government camp drives.",
+    "RISK, the percentage-abolition announcement not being notified, or not covering SVNSPY. Mitigation: plan on the 40% benchmark, and track any notification.",
+    "RISK, weak markets for eggs and mushrooms. Mitigation: household and village consumption first, a haat linkage, and Sangathan group sales.",
+    "RISK, elite capture or leadership conflict, or leaders not agreeing to formalise. Mitigation: a public selection score, an endorsement letter, elections with women's representation.",
+    "RISK, family members taking control of new income. Mitigation: the PwD is named owner, and income control is monitored as an indicator.",
+    "RISK, residual LWE-related access constraints. Mitigation: a local-staff-led presence and coordination with the block administration.",
+    "RISK, data misuse. Mitigation: the DPDP protocol above.",
+    "ASSUMPTIONS (to be confirmed):\n- The roughly 1,000 members are PwDs and mostly live in Angara block.\n- DDRC/CMO, BDO and ALIMCO will cooperate on camps and processing.\n- MPVY and SVNSPY remain operational.\n- Input prices hold near the estimates.\n- The Sangathan consents to formalisation and data governance.",
+    "Donor fit: the project deepens UMF's existing disability-inclusion investment at Angara in UMF's own operational geography [S22]. Its logframe gives receipt- and income-based measures that UMF's outcome-focused social audits (as referenced in the draft) can verify."
+  ],
+  "activities_facts": [
+    "Month 1 setup: obtain the Sangathan endorsement letter and general-body resolution; recruit staff; adopt the consent and data protocol; hold an inception meeting with the Sangathan, UMF, and block and district officials.",
+    "Months 1–3, baseline: verify members and survey all verified members (up to 1,000) on a digital tool. Record disability type, UDID/certificate status, pension, devices, scheme access and livelihood profile. Check the draft's '3–5 acre' landholding claim.",
+    "Months 2–3, selection and convergence: select the 150 livelihood participants using the published inclusion score; file MPVY convergence applications with the District Animal Husbandry Officer.",
+    "Months 3–5, training: skills training of 2 days per trainee across 8 batches (poultry, goat, mushroom, kitchen garden), with accessibility support.",
+    "Months 3–4, Pashu Sakhis: train and engage 2 Pashu Sakhis.",
+    "Months 4–5, poultry distribution: 70 units of 20 Vanaraja/Kuroiler chicks, with night shelter, starter feed and vaccination.",
+    "Months 4–5, goat distribution: 20 units of 4 female + 1 male Black Bengal, with deworming, vaccination, insurance and pass-on agreements. This is shifted if the window falls in the monsoon.",
+    "Months 4–5, mushroom and kitchen garden inputs: 30 oyster mushroom kits for 3 cycles, and 30 accessible raised-bed gardens.",
+    "Months 5–12, handholding: Pashu Sakhi and field facilitator visits, and 2 refresher trainings per participant led by community resource persons.",
+    "Month 6, exposure visit: 40 participants visit a KVK or successful local units.",
+    "Month 9, market linkage: livelihood mela and buyer meet.",
+    "Months 3–10, UDID: 4 UDID/medical-board camps with DDRC/CMO, individual portal applications through village coordinators, and travel support for referrals to the district medical board.",
+    "Months 4–11, pensions and schemes: SVNSPY applications through the BDO, plus PMAY, VB-G RAM G job cards, PM-Kisan and similar schemes as eligible.",
+    "Months 5 and 8, ADIP: one assessment camp and one distribution camp with ALIMCO/DDRC.",
+    "Months 6 and 10, convergence meets: two multi-department meets (Social Welfare, Animal Husbandry, Agriculture, Rural Development, Health).",
+    "Months 4–12, scheme tracker: maintained per member, logging filing, sanction, DBT credit and renewals.",
+    "Months 1–12, Sangathan meetings: monthly meetings of the Sangathan's representatives.",
+    "Months 3–12, village coordinators: 10 PwD members act as village coordinators.",
+    "Months 4 and 8, leadership: 2 two-day leadership modules for 15 leaders (at least 8 women), covering mobilisation, record-keeping, scheme navigation, the tracker and data protection.",
+    "Months 5–11, formalisation: agree governance structure and bye-laws, hold elections, file the registration application, and prepare the sustainability and fundraising plan.",
+    "Month 6, mid-term review: internal review, with course correction shared with UMF.",
+    "Months 11–12, end-line: end-line survey of income and entitlement receipt.",
+    "Month 12, close: Sangathan convention, handover of the database and tracker to the Sangathan, and the completion report.",
+    "Throughout, reporting to UMF: monthly progress reports, quarterly reviews, and consent-cleared documentation."
+  ],
+  "matrix": {
+    "rows": [
+      {
+        "level": "Impact",
+        "statement": "PwDs in Angara have greater economic security and self-reliance, with lasting collective access to entitlements",
+        "indicator": "% of participating PwDs with both (a) their own income source and (b) at least one social-security entitlement received",
+        "baseline": "To be established by the Month 1–3 baseline",
+        "target": "Increase against baseline by Month 12. Longer-term tracking by the Sangathan.",
+        "mov": "Baseline and end-line surveys; scheme tracker"
+      },
+      {
+        "level": "Outcome 1",
+        "statement": "PwD owners earn income from homestead enterprises",
+        "indicator": "% of 150 units functioning at Month 12",
+        "baseline": "0 (new enterprises)",
+        "target": "≥80%",
+        "mov": "Field facilitator and Pashu Sakhi visit records; end-line survey"
+      },
+      {
+        "level": "Outcome 1",
+        "statement": "PwD owners earn income from homestead enterprises",
+        "indicator": "% of poultry, mushroom and kitchen-garden participants (130) recording net income or household-consumption value from the activity",
+        "baseline": "0 from the new activity. Baseline records other household income.",
+        "target": "≥60%. The monthly income threshold is to be fixed after baseline.",
+        "mov": "Participant income logbooks (pictorial for non-literate users); end-line survey"
+      },
+      {
+        "level": "Outcome 1",
+        "statement": "Goat enterprises are growing (income comes after Month 12)",
+        "indicator": "% of 20 goat units with herd maintained or increased, and kids born",
+        "baseline": "5 goats per unit at distribution",
+        "target": "≥75% of units",
+        "mov": "Pashu Sakhi herd register; insurance claim records"
+      },
+      {
+        "level": "Outcome 1",
+        "statement": "Reduced dependence and control of income",
+        "indicator": "% of livelihood participants who report deciding how the enterprise income is used",
+        "baseline": "To be established by baseline",
+        "target": "≥60%, disaggregated by sex and disability type",
+        "mov": "End-line survey; focus group discussions"
+      },
+      {
+        "level": "Outcome 2",
+        "statement": "Members actually receive entitlements",
+        "indicator": "Number of members newly issued a UDID card or certificate",
+        "baseline": "To be established by baseline",
+        "target": "≥200. Indicative; finalised after baseline.",
+        "mov": "UDID portal status and card copies (with consent); tracker"
+      },
+      {
+        "level": "Outcome 2",
+        "statement": "Members actually receive entitlements",
+        "indicator": "Number of members newly receiving SVNSPY pension credited by DBT",
+        "baseline": "To be established by baseline",
+        "target": "≥120. Indicative; subject to eligibility rules.",
+        "mov": "Sanction orders; bank or DBT credit confirmation; tracker"
+      },
+      {
+        "level": "Outcome 2",
+        "statement": "Members actually receive entitlements",
+        "indicator": "Number of members receiving assistive devices under ADIP",
+        "baseline": "To be established by baseline (device-needs list)",
+        "target": "≥75% of assessed eligible members",
+        "mov": "ALIMCO/DDRC distribution lists; tracker"
+      },
+      {
+        "level": "Outcome 3",
+        "statement": "The Sangathan is a formal, member-led institution",
+        "indicator": "Registration status, and election of a governing body with women's representation",
+        "baseline": "Unregistered; no elected body",
+        "target": "Registration application filed by Month 9. Elected body with ≥40% women and representation from all 10 villages.",
+        "mov": "Bye-laws; election minutes; filing receipt or certificate"
+      },
+      {
+        "level": "Outcome 3",
+        "statement": "Leaders sustain entitlement facilitation",
+        "indicator": "Number of trained leaders independently filing or tracking members' applications in Months 10–12",
+        "baseline": "0",
+        "target": "≥10 of 15",
+        "mov": "Tracker entries by leader; Sangathan meeting minutes"
+      },
+      {
+        "level": "Output 1.1",
+        "statement": "PwD-owned homestead units established with training",
+        "indicator": "Number of units by type; % owned by women; % owned by persons with non-locomotor disability",
+        "baseline": "0",
+        "target": "150 units (70 poultry, 20 goat, 30 mushroom, 30 kitchen garden). ≥40% women; ≥30% non-locomotor.",
+        "mov": "Distribution registers; selection score sheets; training attendance"
+      },
+      {
+        "level": "Output 1.2",
+        "statement": "Livestock health and pass-on system in place",
+        "indicator": "Pashu Sakhis active; % of livestock units vaccinated; pass-on agreements signed",
+        "baseline": "0",
+        "target": "2 Pashu Sakhis active; 100% of units vaccinated; 20 pass-on agreements",
+        "mov": "Vaccination records; signed agreements"
+      },
+      {
+        "level": "Output 2.1",
+        "statement": "Consented baseline and secure database",
+        "indicator": "Number of verified members surveyed with recorded consent",
+        "baseline": "No database",
+        "target": "All verified members (up to 1,000)",
+        "mov": "Digital survey records; consent log"
+      },
+      {
+        "level": "Output 2.2",
+        "statement": "Entitlement applications filed and camps held",
+        "indicator": "UDID and SVNSPY applications filed; camps and meets held",
+        "baseline": "0",
+        "target": "300 UDID and 200 SVNSPY applications; 4 UDID camps, 2 ADIP camps, 2 convergence meets",
+        "mov": "Application acknowledgements; camp attendance sheets; tracker"
+      },
+      {
+        "level": "Output 3.1",
+        "statement": "Second-tier leaders and village coordinators in place",
+        "indicator": "Number of leaders trained (of whom women); number of village coordinators active",
+        "baseline": "Single leader",
+        "target": "15 leaders (≥8 women); 10 village coordinators",
+        "mov": "Training records; coordinator activity logs"
+      },
+      {
+        "level": "Output 3.2",
+        "statement": "Governance and data protocol adopted",
+        "indicator": "Bye-laws adopted; data-protection protocol adopted by general-body resolution",
+        "baseline": "None",
+        "target": "Both adopted by Month 8",
+        "mov": "General-body resolutions"
+      }
+    ]
+  },
+  "budget_table": {
+    "categories": [
+      {
+        "name": "A. Human Resources (sub-total INR 9,32,000)",
+        "lines": [
+          {
+            "item": "Project Coordinator (1)",
+            "unit": "person-month",
+            "unit_cost": "28,000",
+            "quantity": "12",
+            "total": "3,36,000",
+            "rate_basis": "sourced",
+            "contributes": "All outcomes: management and government liaison",
+            "source": "C4: JSLPS block-level contractual pay band INR 25,000–40,000/month (2019)"
+          },
+          {
+            "item": "Field Facilitators (2)",
+            "unit": "person-month",
+            "unit_cost": "15,000",
+            "quantity": "24",
+            "total": "3,60,000",
+            "rate_basis": "estimate",
+            "contributes": "OC1, OC2: handholding and application follow-up",
+            "source": "Estimate. Must be at or above the Jharkhand minimum wage for the relevant grade (C6)."
+          },
+          {
+            "item": "Pashu Sakhis / community livestock resource persons (2), honorarium",
+            "unit": "person-month",
+            "unit_cost": "3,000",
+            "quantity": "20 (2 × 10 months)",
+            "total": "60,000",
+            "rate_basis": "estimate",
+            "contributes": "OC1: livestock survival and herd growth",
+            "source": "Estimate. Local or JSLPS rate to confirm."
+          },
+          {
+            "item": "Village Coordinators (10 Sangathan members with disabilities), honorarium",
+            "unit": "person-month",
+            "unit_cost": "800",
+            "quantity": "100 (10 × 10 months)",
+            "total": "80,000",
+            "rate_basis": "estimate",
+            "contributes": "OC2, OC3: portal applications, tracker, local leadership",
+            "source": "Estimate"
+          },
+          {
+            "item": "Accounts & Admin Assistant (50% time)",
+            "unit": "month",
+            "unit_cost": "8,000",
+            "quantity": "12",
+            "total": "96,000",
+            "rate_basis": "estimate",
+            "contributes": "Financial compliance",
+            "source": "Estimate. Pro-rata pay to be at or above the skilled minimum wage (C6)."
+          }
+        ]
+      },
+      {
+        "name": "B. Livelihood Assets (sub-total INR 9,90,000)",
+        "lines": [
+          {
+            "item": "Backyard poultry unit: 20 Vanaraja/Kuroiler 4-week chicks, night shelter, 6-week starter feed, vaccination",
+            "unit": "household unit",
+            "unit_cost": "6,000",
+            "quantity": "70",
+            "total": "4,20,000",
+            "rate_basis": "estimate",
+            "contributes": "OC1: quick income from eggs and birds within the project year",
+            "source": "Estimate. MPVY convergence sought through the District Animal Husbandry Officer; any subsidy frees funds for more households."
+          },
+          {
+            "item": "Goat unit: 4 female + 1 male Black Bengal, with deworming, vaccination, insurance and vet kit",
+            "unit": "household unit",
+            "unit_cost": "21,000",
+            "quantity": "20",
+            "total": "4,20,000",
+            "rate_basis": "estimate",
+            "contributes": "OC1: asset growth; pass-on of 2 female kids per unit",
+            "source": "Estimate. Unit size matches the Jharkhand Animal Husbandry 4+1 scheme norm (S23) for MPVY convergence."
+          },
+          {
+            "item": "Oyster mushroom starter kit for 3 cycles (spawn, polybags, straw, hanging racks). Training excluded, fixing the draft's double count.",
+            "unit": "household kit",
+            "unit_cost": "2,500",
+            "quantity": "30",
+            "total": "75,000",
+            "rate_basis": "estimate",
+            "contributes": "OC1: indoor, low-effort income",
+            "source": "Estimate. KVK or Birsa Agricultural University spawn-lab quote to obtain."
+          },
+          {
+            "item": "Accessible raised-bed kitchen garden: bed construction, seeds for 2 seasons, organic inputs, adapted tools",
+            "unit": "household",
+            "unit_cost": "2,500",
+            "quantity": "30",
+            "total": "75,000",
+            "rate_basis": "estimate",
+            "contributes": "OC1: nutrition and surplus sale",
+            "source": "Estimate. VB-G RAM G or JSLPS nutri-garden convergence sought."
+          }
+        ]
+      },
+      {
+        "name": "C. Livelihood Training, Handholding & Market Linkage (sub-total INR 2,19,000)",
+        "lines": [
+          {
+            "item": "Skills training: 8 batches, 2 days per trainee",
+            "unit": "trainee-day",
+            "unit_cost": "400",
+            "quantity": "300 (150 trainees × 2 days)",
+            "total": "1,20,000",
+            "rate_basis": "sourced",
+            "contributes": "OP1.1",
+            "source": "C1: MANAGE STRY norm, INR 400 per trainee per day, all-inclusive"
+          },
+          {
+            "item": "Accessibility support for trainings (sign interpreter, escort travel, accessible venue, pictorial materials)",
+            "unit": "batch",
+            "unit_cost": "4,000",
+            "quantity": "8",
+            "total": "32,000",
+            "rate_basis": "estimate",
+            "contributes": "Inclusion of non-locomotor disabilities",
+            "source": "Estimate. The MANAGE norm (C1) advises budgeting PwD extras separately."
+          },
+          {
+            "item": "Refresher trainings led by community resource persons (2 per participant)",
+            "unit": "participant-day",
+            "unit_cost": "100",
+            "quantity": "300",
+            "total": "30,000",
+            "rate_basis": "sourced",
+            "contributes": "OC1: enterprise survival",
+            "source": "C2: BPKP norm, INR 100 per participant per one-day CRP training (2021)"
+          },
+          {
+            "item": "Exposure visit within the district (KVK or successful units)",
+            "unit": "participant-day",
+            "unit_cost": "300",
+            "quantity": "40",
+            "total": "12,000",
+            "rate_basis": "sourced",
+            "contributes": "OC1",
+            "source": "C3: ATMA cafeteria norm, INR 300 per participant per day for exposure visits within the district"
+          },
+          {
+            "item": "Livelihood mela and buyer meet",
+            "unit": "event",
+            "unit_cost": "25,000",
+            "quantity": "1",
+            "total": "25,000",
+            "rate_basis": "estimate",
+            "contributes": "OP1.3: market linkage; visibility",
+            "source": "Estimate"
+          }
+        ]
+      },
+      {
+        "name": "D. Baseline Survey & Entitlement Facilitation (sub-total INR 2,94,000)",
+        "lines": [
+          {
+            "item": "Member verification and baseline survey: enumerators",
+            "unit": "enumerator-day",
+            "unit_cost": "600",
+            "quantity": "125 (5 × 25 days)",
+            "total": "75,000",
+            "rate_basis": "estimate",
+            "contributes": "OP2.1: baselines for all outcomes",
+            "source": "Estimate. Must be at or above the semi-skilled or skilled minimum wage (C6)."
+          },
+          {
+            "item": "Digital data collection tool, data cleaning, encrypted storage",
+            "unit": "lump sum",
+            "unit_cost": "15,000",
+            "quantity": "1",
+            "total": "15,000",
+            "rate_basis": "estimate",
+            "contributes": "OP2.1, OP3.2: DPDP-compliant database",
+            "source": "Estimate"
+          },
+          {
+            "item": "UDID and medical-board facilitation camps with DDRC/CMO (accessible venue, shade, water, forms, photos)",
+            "unit": "camp",
+            "unit_cost": "12,500",
+            "quantity": "4",
+            "total": "50,000",
+            "rate_basis": "estimate",
+            "contributes": "OC2: UDID issued",
+            "source": "Estimate. Joint camps with the district sought to share costs."
+          },
+          {
+            "item": "Travel support for PwD plus escort referred to the district medical board",
+            "unit": "PwD",
+            "unit_cost": "250",
+            "quantity": "200",
+            "total": "50,000",
+            "rate_basis": "sourced",
+            "contributes": "OC2",
+            "source": "C5: ADIP transport allowance of INR 250 per PwD plus escort, used as a benchmark"
+          },
+          {
+            "item": "ADIP assessment and distribution camp coordination (devices and beneficiary transport funded by ADIP)",
+            "unit": "camp",
+            "unit_cost": "12,000",
+            "quantity": "2",
+            "total": "24,000",
+            "rate_basis": "estimate",
+            "contributes": "OC2: devices received",
+            "source": "Estimate. ADIP free device up to INR 22,500/month income (C8)."
+          },
+          {
+            "item": "Pension (SVNSPY) and scheme application support (documents, CSC fees, follow-up)",
+            "unit": "application",
+            "unit_cost": "80",
+            "quantity": "500",
+            "total": "40,000",
+            "rate_basis": "estimate",
+            "contributes": "OC2: pensions credited",
+            "source": "Estimate"
+          },
+          {
+            "item": "Multi-department convergence meets",
+            "unit": "event",
+            "unit_cost": "20,000",
+            "quantity": "2",
+            "total": "40,000",
+            "rate_basis": "estimate",
+            "contributes": "OC2; UMF–government visibility",
+            "source": "Estimate"
+          }
+        ]
+      },
+      {
+        "name": "E. Sangathan Strengthening (sub-total INR 2,15,000)",
+        "lines": [
+          {
+            "item": "Monthly meetings of Sangathan representatives (venue, refreshments, accessible travel support)",
+            "unit": "meeting",
+            "unit_cost": "5,000",
+            "quantity": "12",
+            "total": "60,000",
+            "rate_basis": "estimate",
+            "contributes": "OC3",
+            "source": "Estimate. Reduced from the draft's INR 12,000 per meeting."
+          },
+          {
+            "item": "Leadership development: 2-day module for 15 leaders (≥8 women)",
+            "unit": "training",
+            "unit_cost": "50,000",
+            "quantity": "2",
+            "total": "1,00,000",
+            "rate_basis": "sourced",
+            "contributes": "OP3.1, OC3",
+            "source": "C2: BPKP norm, INR 50,000 per 2-day capacity-building training of 15 resource persons"
+          },
+          {
+            "item": "Membership database set-up, accessible consent forms, member ID cards",
+            "unit": "lump sum",
+            "unit_cost": "30,000",
+            "quantity": "1",
+            "total": "30,000",
+            "rate_basis": "estimate",
+            "contributes": "OP2.1, OP3.2",
+            "source": "Estimate"
+          },
+          {
+            "item": "Registration and formalisation (bye-laws, fees, legal advice)",
+            "unit": "lump sum",
+            "unit_cost": "25,000",
+            "quantity": "1",
+            "total": "25,000",
+            "rate_basis": "estimate",
+            "contributes": "OC3",
+            "source": "Estimate"
+          }
+        ]
+      },
+      {
+        "name": "F. Monitoring, Documentation & Visibility (sub-total INR 1,94,600)",
+        "lines": [
+          {
+            "item": "Inception meeting and launch with the Sangathan, UMF and officials",
+            "unit": "event",
+            "unit_cost": "20,000",
+            "quantity": "1",
+            "total": "20,000",
+            "rate_basis": "estimate",
+            "contributes": "Visibility; community buy-in",
+            "source": "Estimate. Reduced from INR 50,000."
+          },
+          {
+            "item": "End-of-project Sangathan convention and handover",
+            "unit": "event",
+            "unit_cost": "35,000",
+            "quantity": "1",
+            "total": "35,000",
+            "rate_basis": "estimate",
+            "contributes": "Visibility; OC3",
+            "source": "Estimate. Reduced from INR 60,000."
+          },
+          {
+            "item": "Consent-based documentation (case studies, photos, short film)",
+            "unit": "lump sum",
+            "unit_cost": "30,000",
+            "quantity": "1",
+            "total": "30,000",
+            "rate_basis": "estimate",
+            "contributes": "UMF CSR communication",
+            "source": "Estimate"
+          },
+          {
+            "item": "End-line survey (income and entitlement receipt)",
+            "unit": "enumerator-day",
+            "unit_cost": "600",
+            "quantity": "45 (3 × 15 days)",
+            "total": "27,000",
+            "rate_basis": "estimate",
+            "contributes": "Outcome measurement",
+            "source": "Estimate. Must be at or above the minimum wage (C6)."
+          },
+          {
+            "item

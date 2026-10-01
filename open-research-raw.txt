@@ -1,0 +1,26 @@
+",
+      "unit": "INR per person-day (FY 2023-24)",
+      "source_title": "Centre Notifies Revised MGNREGA Wage Rates – Outlook India",
+      "source_url": "https://www.outlookindia.com/national/centre-notifies-revised-mgnrega-wage-rates-news-273398"
+    }
+  ],
+  "gaps": [
+    "Khunti district NFHS-5 fact sheet values (child stunting, wasting, severe wasting, underweight, anaemia in children and in pregnant and non-pregnant women, minimum dietary diversity and adequate diet at 6–23 months, exclusive breastfeeding, institutional delivery, 4+ ANC) and NFHS-4 comparison. These were not retrieved; get them from the official NFHS-5 Khunti district fact sheet (rchiips.org/nfhs). Only Jharkhand state figures are cited above.",
+    "Murhu block Census 2011 Primary Census Abstract: ST share, SC share, female literacy, households, child sex ratio. Secondary (non-official) sources report 85,486 population, ST 79.19% and female literacy 53.66%. Confirm these against the District Census Handbook Khunti / Census PCA before use. Note that the district website gives 84,908 for Murhu.",
+    "Tribal composition of Khunti and Murhu (Munda, Oraon, etc.). Only secondary sources were found; confirm from Census 2011 ST-wise tables.",
+    "Number of households in Murhu block and in the 20 target villages. Get this from the Census PCA / village directory and at baseline.",
+    "Poverty, landholding, seasonal migration, food security and PDS/NFSA coverage for Khunti/Murhu. No authoritative figure was retrieved; check SECC 2011, Agriculture Census, NFSA ration-card data (Jharkhand Food & Civil Supplies) and baseline.",
+    "Livelihood and cropping patterns in Murhu (workers by category, main crops, irrigated area). Get from Census workers data, the District Agriculture Contingency Plan (ICAR-CRIDA) and KVK Khunti.",
+    "ICDS project(s) covering Murhu, number of Anganwadi centres, AWW/AWH vacancies, THR delivery status and Poshan Tracker growth-monitoring coverage. Request from the DSWO/CDPO Khunti or the Poshan Tracker dashboard.",
+    "Health facilities in Murhu (CHC, PHCs, sub-centres/Ayushman Arogya Mandirs), ASHA and ANM numbers, VHSND functioning. Request from the Civil Surgeon / District Programme Management Unit, NHM Khunti, or HMIS.",
+    "Location and bed capacity of the nearest MTC for Murhu referrals (e.g., at Sadar Hospital Khunti). Not confirmed from official sources; verify with NHM Jharkhand.",
+    "JSLPS coverage in Murhu: number of SHGs, VOs, CLFs and member households; existing FNHW interventions, Didi Bari / nutri-garden coverage, and cadres (e.g., Poshan Sakhi, Krishi Mitra, Aajeevika Krishak Mitra). Get from the JSLPS Khunti DPMU / NRLM MIS to avoid duplication.",
+    "Jharkhand-specific maternal and child nutrition schemes, the state millet mission, and state convergence guidance or MoUs between ICDS, NHM and JSLPS. Not retrieved; get from the Jharkhand DWCD&SS, Health Department and Agriculture Department.",
+    "Agro-climatic data for Khunti: annual and seasonal rainfall, dry-spell frequency, soil types, groundwater/seasonal water availability, climate risks. Get from IMD district rainfall records, the ICAR-CRIDA District Agriculture Contingency Plan for Khunti, and the JSAC reports.",
+    "Local indigenous crops, greens, millets and forest foods commonly eaten in Murhu (e.g., seasonal leafy greens, finger millet, mushrooms). Collect through KVK Khunti, BAU Ranchi and community seasonal food calendars at baseline.",
+    "Village connectivity, remoteness and security or access constraints in Murhu. No official source retrieved; get from PMGSY road data, the district administration and field assessment.",
+    "Cost norms for Jharkhand: seed and sapling kit costs, fruit sapling rates (state horticulture / MIDH norms), training per-diem and venue norms (JSLPS/NHM training norms), community resource person honoraria (JSLPS cadre rates), baseline/endline survey costs, and ASHA/AWW incentive norms. None found in authoritative sources; get official rate schedules or local quotations.",
+    "Official Gazette/MoRD notification confirming the Jharkhand VB-G RAM G wage (₹300/day) and permissible works. The current figure comes from secondary press reports."
+  ]
+}
+```

@@ -1,0 +1,195 @@
+```json
+{
+  "meta": {
+    "title": "Saksham Divyang: Strengthening Livelihoods, Entitlements and Collective Agency of Persons with Disabilities in Angara Block, Ranchi District, Jharkhand",
+    "org": "Agadhbodh Foundation (Section 8 company, Ranchi; NGO Darpan JH/2020/0270149)",
+    "donor": "Usha Martin Foundation (CSR wing of Usha Martin Limited)",
+    "geography": "10 villages, Angara CD Block, Ranchi District, Jharkhand",
+    "target": "Persons with Disabilities: a 1,000-member PwD Sangathan. 150 households for livelihood support and at least 500 members for entitlement facilitation.",
+    "duration": "12 months",
+    "budget": "INR 29,82,000"
+  },
+  "extracted": {
+    "problem": "PwDs in Angara Block belong to an existing, active 1,000-member Sangathan. They remain economically dependent on able-bodied family members, because their land is rain-fed and needs physical labour. They are poorly linked to entitlements such as UDID, disability pension, ADIP assistive devices, PMAY and MGNREGA. The draft assumes a large certification gap from the national NSS 76th Round figure that only 28.8% of PwDs hold a certificate. The Sangathan also lacks formal structure: no membership database, governance, records or registration.",
+    "objectives": [
+      "Establish independent homestead-based livelihood activities for at least 150 PwD households, generating supplementary income within the project year.",
+      "Facilitate access to government schemes and entitlements for at least 500 Sangathan members through needs assessment and facilitation camps.",
+      "Strengthen the institutional capacity of the Sangathan through membership documentation, leadership development and formal structuring.",
+      "Create a block-level PwD database as a resource for convergence with government programmes."
+    ],
+    "results_present": "Section 6 lists 'Quantitative Outcomes' that are almost entirely outputs: 150 households given livelihood units, 500 members surveyed, 300 UDID registrations and 200 pension applications facilitated, 3 camps, 2 convergence meets, 15-20 leaders trained, 1 database. It also lists 'Qualitative Outcomes' such as economic autonomy, formal institution and a replicable model, none with indicators. No impact-level result is defined. No baselines, no means of verification, and no income or benefit-received targets.",
+    "activities": "Three pillars. (1) Homestead livelihoods: poultry for 50 households, goats for 40, oyster mushroom for 30, raised-bed kitchen gardens for 30, plus training and handholding. (2) Scheme facilitation: a household survey of Sangathan members, UDID camps with DDRC/CMO, pension applications via the BDO, an ADIP camp with ALIMCO, convergence meets, PMAY/MGNREGA/PM-Kisan linkages, and a scheme tracker. (3) Sangathan strengthening: digital membership database with ID cards, a governing body with village coordinators, leadership training for 15-20 people (at least 50% women), documentation, and registration as a society or trust. Also a quarterly timeline and a visibility plan with a launch, livelihood mela and annual convention.",
+    "budget_present": "An itemised budget of INR 29,82,000 across six heads, most with unit rates. Human Resources 8,04,000; Livelihood 6,90,000; Scheme Facilitation 3,80,000; Sangathan 2,94,000; M&E/Events 3,14,000; 'Institutional Overheads @ 5%' 5,00,000. The sub-totals add up correctly. However, direct costs total 24,82,000, so 5% would be 1,24,100. The 5,00,000 shown is about 20% of direct costs.",
+    "logframe_present": false,
+    "toc_explicit": false,
+    "risks_present": false
+  },
+  "strengths": [
+    "Block-specific context is unusually strong. It draws on Census 2011 PCA and the Village Directory for Angara itself: population, ST/SC share, literacy by gender, worker classification and 11.03% irrigated land. It does not rely only on national figures.",
+    "The livelihood logic follows from the evidence. Low irrigation and physical dependence on family for field work lead directly to homestead-based, low-water, low-exertion activities that the PwD can manage alone. The focus on the PwD's own economic agency, rather than 'the household', is a thoughtful design principle.",
+    "Activities are designed with disability in mind. Examples include raised-bed gardens for locomotor disability, indoor mushroom cultivation, and selection matched to disability type and homestead space.",
+    "Core disability statistics use the right primary source: NSS 76th Round (Report No. 583, 2018) for prevalence (2.2%) and certificate possession (28.8%), and Census 2011 for the national count and rural share.",
+    "It is candid that no baseline exists on UDID, pension or scheme status. It builds a full household survey into Months 1-3 as the first step rather than hiding the gap.",
+    "The convergence approach is realistic and non-adversarial. It works with DDRC/CMO for UDID, the BDO for pensions and ALIMCO for ADIP, and positions the project as helping government reach its targets. This is well suited to a CSR donor.",
+    "The partnership base is credible. It builds on an existing UMF-funded skill centre at Angara and a pre-existing, self-organised Sangathan, which reduces start-up and mobilisation risk.",
+    "There are sensible sustainability mechanisms: second-tier leadership with at least 50% women, a scheme tracker handed to the Sangathan, and formal registration so the Sangathan can raise its own funds.",
+    "Donor fit is well argued and evidenced. It references UMF's stated CSR priority 'Empowering Differently Abled Individuals' and the XISS 2023-24 social audit of UMF's geography.",
+    "The budget is itemised with unit rates and quantities for most lines, and the sub-totals are arithmetically correct."
+  ],
+  "weaknesses": [
+    {
+      "area": "Budget: overhead line",
+      "issue": "Line 25 is labelled 'Administrative Overheads @ 5% of direct costs' but is INR 5,00,000. Direct costs (A to E) total INR 24,82,000, so 5% is INR 1,24,100. The figure shown is about 20% of direct costs and about 17% of the grand total. At a true 5%, the grand total would be INR 26,06,100.",
+      "why_it_matters": "This is the single most damaging error in the draft. A CSR finance reviewer will spot it immediately and read it as either carelessness or padding. Either reading undermines trust in every other number. CSR donors routinely cap partner overheads at 5-10%."
+    },
+    {
+      "area": "Budget: livelihood unit costs",
+      "issue": "Several unit rates are not defensible. A goat unit of 3-4 goats plus a veterinary kit at Rs 6,000 is far below Jharkhand market prices; a single adult goat typically costs several thousand rupees, so a 3-4 goat unit is realistically Rs 15,000-30,000. A poultry unit of 15-20 improved birds plus feed plus housing at Rs 3,000 is similarly implausible. No livestock insurance or vaccination costs are budgeted.",
+      "why_it_matters": "Either the units cannot be delivered as described, or the project will quietly shrink them to 1-2 goats or a handful of chicks. Units that small cannot generate meaningful income, so Objective 1 fails. Reviewers familiar with JSLPS or Animal Husbandry unit costs will notice."
+    },
+    {
+      "area": "Budget: balance between beneficiary inputs and events",
+      "issue": "Direct livelihood assets (poultry, goats, mushroom, gardens) total only INR 5,10,000, about 17% of the budget. Events, meetings and visibility cost roughly as much: launch 50k, convention 60k, convergence meets 80k, monthly meetings 1.44 lakh, mid-year documentation 40k. The overhead line alone (5 lakh) is almost equal to all livelihood assets combined. 'Travel & Miscellaneous' (84k) is unexplained and overlaps with other travel lines (items 12 and 23).",
+      "why_it_matters": "The cost per beneficiary reaching the community looks low relative to spend on staff, events and overhead. Combined with the visibility framing, this suggests the project is optimised for display rather than change."
+    },
+    {
+      "area": "Staffing adequacy",
+      "issue": "Only two Field Facilitators are budgeted. Together with one coordinator, they must survey 1,000 members, select and train 150 livelihood households, handhold them, track applications for 500+ members, run 5+ camps and meetings, and form village structures across 10 villages.",
+      "why_it_matters": "This workload is not deliverable at the stated quality. There is no specialist livestock or livelihood staff, no MIS/data person for the database, and no disability-specific expertise such as sign language or rehabilitation. Delivery risk is high and unacknowledged."
+    },
+    {
+      "area": "Outcome vs output discipline",
+      "issue": "Section 6.1, 'Quantitative Outcomes', lists outputs: units distributed, members surveyed, registrations and applications 'facilitated', camps organised, leaders trained, a database created. Section 10 goes further and states that 'every livelihood unit distributed is a countable, reportable, verifiable outcome'. There are no outcome indicators for: UDID cards actually issued, pensions actually sanctioned and received, devices received and in use, change in PwD-controlled income, or reduced dependence.",
+      "why_it_matters": "Facilitating 300 UDID applications is not the same as 300 cards issued; medical board backlogs often stall applications. Distributing 50 poultry units is not the same as 50 households earning. A funder cannot judge whether lives changed, and the project cannot demonstrate impact at the end."
+    },
+    {
+      "area": "Theory of Change",
+      "issue": "The chain from problem to activities is only implied. There is no statement of the impact-level change sought, such as improved economic security and dignity of PwDs. There is no articulation of the intermediate changes needed (documented, then entitled, then receiving benefits; skilled plus asset, then income under PwD control) or of how the three pillars reinforce each other.",
+      "why_it_matters": "Without an explicit ToC, the proposal reads as a bundle of activities. Reviewers cannot see why these activities, in this order, lead to the goal, or where the causal chain could break."
+    },
+    {
+      "area": "Logframe / results framework",
+      "issue": "There is no logframe. No result has a baseline, a target at outcome level, or a means of verification such as UDID portal records, BDO sanction lists, household income tracking or tracker data. Income is the core of Objective 1, yet no income target or measurement method is given.",
+      "why_it_matters": "Most CSR foundations and their auditors (for example, the XISS social audit) expect a results matrix. Its absence also means the Month 1-3 survey is not explicitly designed to generate the baselines the project needs."
+    },
+    {
+      "area": "Risks and assumptions",
+      "issue": "There is no risk section. Section 10 asserts that 'the risk of implementation failure is minimal'. Unaddressed risks include:\n- livestock mortality and disease (a known problem with backyard poultry and goats);\n- lack of a spawn supply chain and market for mushrooms;\n- medical board and DDRC delays in UDID certification;\n- pension sanction delays and budget freezes;\n- ALIMCO camp scheduling outside project control;\n- elite capture in selecting 150 of 1,000 members;\n- dependence on one Sangathan leader;\n- monsoon and seasonal constraints;\n- the 12-month timeframe being too short for goat income.",
+      "why_it_matters": "Claiming 'minimal risk' is a red flag to experienced reviewers. Many key results depend on government systems the project does not control, and naming these dependencies with mitigations is what makes targets credible."
+    },
+    {
+      "area": "Internal consistency: scale and geography",
+      "issue": "Several figures conflict:\n- The draft says 1,000 Sangathan members live in 10 of Angara's 83 villages. Yet it estimates about 2,500 PwDs in the whole block at 2.2%, and Census 2011's Jharkhand rate of 1.7% implies about 1,900. Ten villages would plausibly contain a few hundred PwDs, so the 1,000 figure is either block-wide or includes non-PwD family members.\n- The survey covers 'all 1,000 members' in Section 4.4 but 'at least 500' in Section 6.1.\n- Objective 4 promises a 'block-level' database, but the survey covers only Sangathan members in 10 villages.\n- The Sangathan is said to have no membership database, yet a precise count of 1,000 is asserted.",
+      "why_it_matters": "These inconsistencies strike at the target population, the core number of the proposal. A reviewer who spots them will doubt the whole design."
+    },
+    {
+      "area": "Problem analysis: local PwD evidence",
+      "issue": "The block context is strong on general indicators but has no PwD-specific local data. There is no Census 2011 disability count for Angara or Ranchi district, no NSS 76th Round Jharkhand state figures, no district UDID coverage or pension beneficiary figures, and no sample data from the Sangathan itself. Key claims are unsourced, notably that 'most Sangathan members own 3-5 acres'; Jharkhand's average operational holding per the Agriculture Census is well under 3 acres. Other material is padding that does not inform the disability problem: the NFHS-5 child stunting and anaemia figures, and 2011-era electricity and tap-water figures that are now outdated after Saubhagya and Jal Jeevan Mission.",
+      "why_it_matters": "The entitlement gap, the core justification for Pillar 2, rests on a national average rather than local evidence. The livelihood design depends on the unverified land claim."
+    },
+    {
+      "area": "Methodological misuse of the WHO 16% figure",
+      "issue": "The draft applies the WHO global estimate of 16% ('significant disability') to Angara's population to suggest a much higher PwD count. WHO uses a functional-difficulty definition that is not comparable with Census or NSS definitions or with RPwD Act eligibility.",
+      "why_it_matters": "An informed reviewer will see this as inflating need. The under-reporting argument is stronger if based on Jharkhand's Census vs NSS state figures, or on UDID coverage compared with estimated prevalence."
+    },
+    {
+      "area": "Policy claim on Jharkhand abolishing percentage-based certification",
+      "issue": "The claim rests on a December 2025 newspaper report quoting a minister. The RPwD Act 2016 defines 'benchmark disability' (40%+) centrally, and central entitlements (ADIP, reservations, many schemes) remain tied to it. The draft calls this a 'significant window of opportunity' without clarifying what has actually been notified and which entitlements it affects.",
+      "why_it_matters": "If this is an announcement rather than a notified order, or applies only to state schemes, eligibility estimates and member expectations could be wrong. That is a credibility and do-no-harm risk."
+    },
+    {
+      "area": "Sustainability case",
+      "issue": "The claims are asserted rather than engineered:\n- Livestock 'subsequent cycles funded from returns' has no mechanism: no pass-on-the-gift arrangement or revolving fund, no insurance, no link to pashu sakhis or the government veterinary system, no producer group or market linkage.\n- Entitlements are called 'one-time', but pensions need annual life certificates and verification, and temporary UDID certificates expire.\n- The registered Sangathan has no funding or revenue plan, such as membership fees, government grants under the RPwD Act, or JSLPS/DPO linkages.",
+      "why_it_matters": "Without concrete mechanisms, a funder cannot believe results will outlast the 12 months, especially for livelihoods started in Month 5-6."
+    },
+    {
+      "area": "Timeline realism",
+      "issue": "Livelihood inputs arrive in Quarter 2, and the income assessment happens in Quarter 4. Goats will not produce kids for sale within roughly 6 months. Poultry needs time to reach laying, with mortality risk in the monsoon. Yet Objective 1 promises income 'within the project year'.",
+      "why_it_matters": "The end-line income data will be thin or misleading. The project should either be framed as multi-year or set realistic Year-1 outcome targets."
+    },
+    {
+      "area": "Data protection and consent",
+      "issue": "The project will build a digital database of 1,000 PwDs with photographs, disability details, contact and entitlement status, and share it with government departments. There is no mention of informed consent, data ownership (the Sangathan's or Agadhbodh's), access controls, or compliance with the Digital Personal Data Protection Act 2023.",
+      "why_it_matters": "Disability and health data is highly sensitive. Sharing it without a consent framework is an ethical and legal risk for both the implementer and the corporate donor."
+    },
+    {
+      "area": "Inclusion within the target group",
+      "issue": "There is no disaggregation or differentiated strategy by disability type (visual, hearing/speech, intellectual, psychosocial, multiple), gender (beyond leadership), or age. There are no accessibility provisions for trainings and camps, such as sign language interpreters, accessible venues, or easy-read materials. The criteria for selecting 150 of 1,000 for livelihood support are vague ('interest, feasibility').",
+      "why_it_matters": "Livelihood and camp activities risk favouring those with locomotor disabilities and existing access. Women with disabilities and people with intellectual or psychosocial disabilities are routinely left out."
+    },
+    {
+      "area": "Tone and framing",
+      "issue": "The proposal leans heavily on donor visibility: Section 8, a 'Low Risk, High Visibility' heading, 'high result density' and 'powerful visual narrative'. It also overclaims uniqueness, calling the Sangathan 'rare in Jharkhand and perhaps nationally' without evidence. The existing UMF skill centre's results (numbers trained, placement or income outcomes) are never reported, although the whole case rests on it.",
+      "why_it_matters": "Serious CSR reviewers and social auditors discount visibility-led pitches. Evidence of the prior project's results would be far more persuasive than assertions of trust."
+    },
+    {
+      "area": "Organisational credentials and compliance",
+      "issue": "Registration and Darpan ID are given, but not the CSR-1 registration number (mandatory for implementing agencies under the Companies (CSR Policy) Amendment Rules 2021), 12A/80G status, audited financials, annual budget, or track record. The organisation was founded in 2020, so its record in disability or livelihood work is short.",
+      "why_it_matters": "A company cannot legally route CSR funds to an agency without CSR-1 registration. Absence of this information may stall approval regardless of design quality."
+    }
+  ],
+  "source_authority_flags": [
+    {
+      "claim": "Ranchi district population approximately 41 lakh (2024 estimate), suggesting Angara's population has grown significantly beyond 2011.",
+      "source_used": "indiagrowing.com (Aadhaar-based population estimates)",
+      "problem": "This is an aggregator website with no official standing. Aadhaar saturation figures are not population estimates. The Census 2011 figure for Ranchi district was about 29.1 lakh, so the 41 lakh jump is unverified and likely overstated.",
+      "authoritative_source": "Census of India 2011, Primary Census Abstract (Ranchi district and Angara CD Block). For current estimates, use the Report of the Technical Group on Population Projections 2011-2036 (National Commission on Population / MoHFW, 2020), state-level. Alternatively, state that the 2011 figure is the latest official count."
+    },
+    {
+      "claim": "7 out of 10 disabled persons in India do not have a disability certificate, with the gap most severe in rural and tribal areas.",
+      "source_used": "'Unidentified Persons with Disabilities in India', ResearchGate, 2021",
+      "problem": "ResearchGate is an unrefereed upload platform, not a publisher. The '7 in 10' figure simply restates the NSS 28.8% figure already cited, and the 'tribal areas' claim is not attributed to verifiable data.",
+      "authoritative_source": "NSS Report No. 583, Persons with Disabilities in India, NSS 76th Round (MoSPI/NSO, 2019), including its state-level and rural/urban tables for certificate possession. For tribal differentials, use a peer-reviewed journal article with full citation, or drop the claim."
+    },
+    {
+      "claim": "Under a new system, Jharkhand has abolished percentage-based disability certificates; all PwDs are placed in a single category with equal rights.",
+      "source_used": "The Daily Jagran, December 2025, quoting the Jharkhand Health Minister",
+      "problem": "General press is being used as the origin of a policy fact. A ministerial statement is not a notified order, and the scope relative to RPwD Act benchmark-disability provisions is unclear.",
+      "authoritative_source": "The Government of Jharkhand notification or resolution (Health, Medical Education & Family Welfare Department, or Women, Child Development & Social Security Department) published in the Jharkhand Gazette, or the official department circular. Cite the order number and date."
+    },
+    {
+      "claim": "57.1% of households with a disabled member face catastrophic health expenditure; 19.1% of APL households are pushed below the poverty line.",
+      "source_used": "PLOS ONE, October 2023 (author and title not given)",
+      "problem": "The journal is peer-reviewed, so the source type is acceptable. The citation is incomplete (no authors, title or DOI) and cannot be verified. Such catastrophic-expenditure figures are very sensitive to how the threshold is defined.",
+      "authoritative_source": "Give the full citation (authors, title, volume, DOI) of the PLOS ONE article and state the threshold definition used. The underlying data is NSS 76th Round unit-level data (MoSPI)."
+    },
+    {
+      "claim": "In 2004-05, 60-70% of Ranchi district's population was BPL, falling to 27.82% by 2011-12.",
+      "source_used": "'Planning Commission data, cited in District Census Handbook, Ranchi'",
+      "problem": "This is a second-hand citation. The Planning Commission did not publish official district-level poverty ratios, and the 60-70% range is vague. The origin of the numbers is unclear, and they are over a decade old.",
+      "authoritative_source": "NITI Aayog, National Multidimensional Poverty Index: A Progress Review 2023 (district-level MPI headcount for Ranchi, based on NFHS-4 and NFHS-5). For state income poverty, use the Planning Commission's Tendulkar estimates for Jharkhand, 2011-12 (Press Note, July 2013)."
+    },
+    {
+      "claim": "Literacy rate among PwDs nationally is 54.5%.",
+      "source_used": "PIB Press Release, July 2016",
+      "problem": "PIB is a government outlet but a secondary relay. The statistic should be cited to its primary origin.",
+      "authoritative_source": "Census of India 2011, Disability tables (C-series, ORGI), or MoSPI, Disabled Persons in India: A Statistical Profile 2016. Both carry PwD literacy figures. Also add the NSS 76th Round literacy figure for PwDs, which is more recent."
+    },
+    {
+      "claim": "Jharkhand NFHS-5 indicators: 40% stunting, 22% wasting, 67% child anaemia, 50% of households with health insurance, 32% of women never schooled.",
+      "source_used": "NFHS-5 Jharkhand State Report (IIPS & ICF, 2021)",
+      "problem": "The source is authoritative. However, the health-insurance figure (50%) looks high for Jharkhand and should be checked against the factsheet. The other indicators are state-level child-nutrition data that are not relevant to the disability problem. A district-level NFHS-5 factsheet for Ranchi exists and is not used.",
+      "authoritative_source": "NFHS-5 District Fact Sheet, Ranchi (IIPS/MoHFW), checking the exact insurance indicator. For disability-relevant local data, use the NSS 76th Round Jharkhand state tables and DEPwD/Swavlamban UDID district dashboard figures for Ranchi."
+    },
+    {
+      "claim": "Eligible PwDs receive Rs 1,000/month under Jharkhand's Universal Pension Scheme.",
+      "source_used": "'Government of Jharkhand, Universal Pension Scheme guidelines, 2022' (no document reference)",
+      "problem": "The source is plausibly authoritative but not specifically identified. Jharkhand's disability pension has operated under the Swami Vivekananda Nishakt Swavlamban Protsahan Yojana, alongside the universal pension (Sarvjan Pension) expansion. Eligibility criteria, such as the benchmark percentage, age and residence, need exact citation.",
+      "authoritative_source": "The Department of Women, Child Development & Social Security, Government of Jharkhand, scheme resolution or notification, with its number and date. Also the state social security portal."
+    },
+    {
+      "claim": "Most Sangathan members own 3-5 acres of agricultural land.",
+      "source_used": "None cited",
+      "problem": "This is an unsourced assertion central to the livelihood rationale. It is above Jharkhand's typical landholding size.",
+      "authoritative_source": "Primary data from a sample or rapid survey of Sangathan members. For context, the Agriculture Census 2015-16 (Ministry of Agriculture & Farmers Welfare) average operational holding figures for Jharkhand and Ranchi district."
+    }
+  ],
+  "improvement_plan": [
+    "Fix the overhead line immediately. Either state the true percentage and justify it, or reduce it to a genuine 5% (INR 1,24,100) and reallocate or reduce the total. Recheck every total after any change.",
+    "Re-cost the livelihood units against current Jharkhand market or government unit costs (Animal Husbandry Department, JSLPS or KVK norms). Add vaccination, deworming, livestock insurance and mortality replacement. Decide whether to fund fewer households with viable units or increase the livelihood allocation. Viable unit sizes are needed for the income objective to be credible.",
+    "Resolve the target-population inconsistencies. Clarify whether the 1,000 members are across 10 villages or block-wide, and whether they are all PwDs. Align survey coverage (1,000 vs 500) across Sections 4 and 6. Rename the database to reflect its true scope, or expand its scope explicitly.",
+    "Write an explicit Theory of Change, as a one-page diagram plus narrative. Cover the problem, the changes needed (documentation to entitlement to benefit received; skill plus viable asset plus market to PwD-controlled income; informal to formal, self-sustaining DPO), the objectives, the outcomes and outputs, and the activities. State the assumptions at each link.",
+    "Separate outcomes from outputs and build a logframe. Examples of outcomes:\n- number of UDID cards issued, verified on the Swavlamban portal;\n- pensions sanctioned and first payment received, verified by BDO lists and passbooks;\n- devices received and in use at follow-up;\n- percentage of livelihood households earning at least a defined monthly net income under the PwD's control;\n- Sangathan registered, with an elected body meeting at least quarterly.\nKeep the camps, trainings and units as outputs. Give each indicator a baseline (from the Month 1-3 survey), a target and a means of verification.",
+    "Add a risk and assumptions matrix with likelihood, impact and mitigation. Cover livestock mortality, medical-board delays, pension sanction delays, ALIMCO scheduling, market access, elite capture in beneficiary selection, key-person dependency, seasonality and data-protection risk. Remove the 'minimal risk' claim.",
+    "Strengthen the PwD-specific local problem analysis:\n- Census 2011 disability counts for Ranchi district and Angara.\n- NSS 76th Round Jharkhand state figures (certificate possession, employment, assistive device use).\n- District UDID coverage from the Swavlamban dashboard and the DSWO disability pension beneficiary count for Angara.\n- Evidence from a quick sample of 50-100 Sangathan members on UDID, pension and landholding status.\nDrop or shorten the unrelated child-nutrition and 2011 infrastructure data, and remove the WHO 16% extrapolation.",
+    "Replace weak sources. Cite NSS Report 583 directly instead of ResearchGate. Replace indiagrowing.com with Census 2011 or the Technical Group projections. Cite the Jharkhand government notification rather than Daily Jagran. Use NITI Aayog MPI 2023 for district poverty

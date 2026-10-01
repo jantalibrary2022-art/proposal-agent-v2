@@ -1,0 +1,980 @@
+{
+  "lang": "English",
+  "org": {
+    "name": "EcoKheti Foundation",
+    "experience": "Section 8 non-profit company registered in 2016 and working in Jharkhand and Chhattisgarh. It has 8 years in community-based livelihoods, 6 in maternal and child nutrition and 5 in climate-resilient livelihoods. Annual revenue is Rs 2.4 Crore, with 9 permanent staff and a 5-member board. Relevant track record: (1) an SRLM-funded SHG-led livelihoods and nutrition project with 1,200 women in Khunti and Gumla, which reported an income increase of at least 45% and improved dietary diversity in 60% of households; (2) a CSR-funded climate-resilient agriculture project with 800 farmers in Chhattisgarh, where 70% adopted climate-adaptive practices; (3) strengthening of 3 FPOs (900 members) in Jharkhand, which roughly doubled aggregated sales.",
+    "values": "Community ownership, women's agency, convergence with public systems. No political or religious affiliation."
+  },
+  "theme": "Maternal and child nutrition through SHG-led nutrition-sensitive livelihoods and convergence with ICDS and health services (working title: Poshan Saathi: SHG-led Kitchen Gardens, Nutrition Counselling and ICDS Convergence for Mothers and Young Children in Murhu, Khunti)",
+  "geography": {
+    "state": "Jharkhand",
+    "district": "Khunti",
+    "block": "Murhu",
+    "coverage": "20 villages in Murhu block. The villages are still to be named; they will be selected for existing SHG presence and Anganwadi centre catchments, and checked for overlap with JSLPS Didi Badi / FNHW coverage."
+  },
+  "target": "About 1,200 women from SHG member households with pregnant or lactating women and/or children under five, across 20 villages. How many of the 1,200 are currently pregnant or lactating, and the number of children under five, will be established at baseline and triangulated with Anganwadi registers.",
+  "duration": "24 months (8 quarters)",
+  "budget": "Rs 1,39,89,608 against an indicative ceiling of Rs 1.4 Crore (Rs 1,40,00,000) over 2 years. The ceiling is still to be confirmed.",
+  "donor": "Donor-agnostic",
+  "problem_facts": [
+    "SETTING: Khunti district had a population of 5,31,885 (Census 2011). 91.55% was rural, 73.25% was Scheduled Tribe and 4.52% Scheduled Caste. Forest covers about 40% of the district area. [Khunti district website, S1; Vikaspedia Aspirational Districts, S4]",
+    "MURHU BLOCK: The population was 85,486 and entirely rural, with 79.19% ST and 13,907 children aged 0–6 (Census 2011 PCA as compiled by a secondary source; to be verified against the DCHB). The number of villages and households is a gap to be filled from the DCHB. [S2]",
+    "COMMUNITY: Munda (83.66% of Khunti's ST population) and Oraon (8.52%) are the main tribal communities in the district (secondary compilation of Census 2011; to be verified). Murhu-specific tribal composition is a gap. [S3]",
+    "LOW FEMALE LITERACY: Female literacy is 53.69% in Khunti against 74.08% for males. Murhu figures are almost identical: 53.66% female and 73.15% male (secondary compilation). At state level, 32% of women aged 15–49 in Jharkhand have never attended school (NFHS-5). This supports pictorial, oral counselling for low-literacy audiences. [S1, S2, S6]",
+    "POVERTY: The BPL share in Khunti was 35.45% in 2011-12 (secondary source; the original government source is still to be located). Block-level livelihood, landholding, migration and PDS data are gaps; the baseline will capture household food security, land and water access, and migration. [S5]",
+    "UNDERNUTRITION BURDEN (STATE): In Jharkhand, 40% of children under five are stunted, 22% wasted, 9% severely wasted and 39% underweight (NFHS-5, 2019-21). The national figures are 35.5% stunted, 19.3% wasted and 32.1% underweight, so Jharkhand is worse on each. [S6, S10]",
+    "ANAEMIA: 67% of children in Jharkhand are anaemic (NFHS-5). Anaemia among women has not fallen since NFHS-4. [S7, S6]",
+    "DISTRICT SEVERITY: All 24 Jharkhand districts, Khunti included, are of public health concern on WHO thresholds for stunting, wasting, severe wasting and anaemia. Under NFHS-4, Khunti was among the districts with the highest shares of underweight and severely wasted children (secondary analysis). Khunti's NFHS-5 district values are a GAP and will be taken from the IIPS district fact sheet; project-area values will be established by the baseline survey. [S8, S9]",
+    "FEEDING PRACTICES: Only 22% of children aged 6–23 months in Jharkhand ate iron-rich foods in the previous day (NFHS-5). Minimum dietary diversity, minimum adequate diet and exclusive breastfeeding for Khunti and for target households will be established at baseline. [S6]",
+    "SERVICE UPTAKE GAP: Poshan 2.0 entitles families to supplementary nutrition (THR), nutrition and health education, immunisation, health check-ups and referral. Take-up in Murhu (AWC numbers, THR regularity, growth monitoring coverage, VHSND functioning, ANC and PMMVY uptake) is not documented and will be established at baseline and through a mapping of Anganwadi centres and health facilities. [S22]",
+    "WEAK SAM CONTINUUM: Jharkhand runs 88 Malnutrition Treatment Centres (MTCs) under NHM, and Anganwadi Workers detect severe acute malnutrition (SAM) in the community. A study found that 52% of children were still severely wasted and 83% underweight at the end of the community phase of the MTC programme. This points to weak follow-up after discharge. The nearest functional MTC for Murhu is a gap. [S12]",
+    "CAUSAL LOGIC: Immediate causes are poor dietary diversity and suboptimal feeding and care in pregnancy and the first 1,000 days. Underlying causes are limited year-round access to diverse foods, low awareness in low-literacy households, and incomplete take-up of ICDS and health entitlements. Structural causes are poverty, remoteness and the sex gap in literacy. State programmes exist (Didi Badi Yojana, POSHAN PEHL, SAMAR), but how far they reach into Murhu has not been mapped. [S25, S26]"
+  ],
+  "objective": "Within 24 months, improve dietary diversity and maternal and young-child feeding and care practices, and raise the uptake of ICDS and health services, among about 1,200 women from SHG member households with pregnant or lactating women and children under five in 20 villages of Murhu block, Khunti. All delivery runs through existing SHGs and government platforms.",
+  "results": {
+    "impact": "Contribution to improved nutritional status of mothers and children under five in tribal SHG households of Murhu block, Khunti.",
+    "outcomes": [
+      "O1: Target households eat more diverse diets year-round, drawing on nutri-kitchen gardens and local foods.",
+      "O2: Pregnant and lactating women and caregivers adopt recommended maternal nutrition and infant and young child feeding (IYCF) and care practices.",
+      "O3: Pregnant women, mothers and children under five take up ICDS and health entitlements more fully, and at-risk children are identified, referred and followed up."
+    ],
+    "outputs": [
+      "OP1.1: About 1,200 households have established and are maintaining climate-resilient nutri-kitchen gardens with local crops, greens, millets and fruit saplings.",
+      "OP1.2: 20 village demonstration plots, placed at or near Anganwadi centres where feasible, and 20 SHG-run community seed banks are functional.",
+      "OP2.1: 40 SHG women are selected, trained and working as Community Nutrition Resource Persons (CNRPs).",
+      "OP2.2: Monthly group counselling, cooking demonstrations and home visits in the first 1,000 days are delivered in all 20 villages.",
+      "OP3.1: SHG meetings are linked to Anganwadi and VHSND calendars in all 20 villages, and households are supported with THR, ANC/PNC, immunisation and PMMVY/JSY documentation.",
+      "OP3.2: A community growth-tracking and referral pathway to Anganwadi, CHC and MTC is functional, including post-discharge follow-up.",
+      "OP3.3: Anganwadi Workers (AWWs), ASHAs and SHG leaders are jointly trained, and quarterly block convergence meetings with ICDS and health officials are institutionalised.",
+      "OP4: The household tracking system, baseline and endline surveys, and learning products are delivered. The seed banks, counselling cadre and convergence routines are handed over to Village Organisations and SHG federations."
+    ]
+  },
+  "strategy_facts": [
+    "The approach combines three pathways through one platform. Food access comes from kitchen gardens, behaviour change from counselling, and service uptake from ICDS and health convergence. The existing SHGs and Village Organisations deliver all three, with no parallel groups, as the applicant requires.",
+    "The counselling model follows the evidence on women's groups in eastern India, labelled here as external and demonstrated potential rather than local fact. The Ekjut participatory learning and action (PLA) trial in tribal Jharkhand and Odisha worked through 244 women's groups with local women facilitators and cut neonatal mortality by 45% in its last two years. The same model has since been delivered through ASHAs, which supports embedding it in government platforms. [S13, S14, S15]",
+    "The UPAVAN trial in rural Odisha (external evidence) found that SHG-based nutrition-sensitive agriculture combined with nutrition behaviour change raised minimum dietary diversity in children and mothers compared with controls, and that participation mattered. This is why kitchen gardens are paired with CNRP counselling and household tracking. [S16, S17]",
+    "Realistic targeting: the UPAVAN protocol notes that PLA and agriculture interventions change knowledge and dietary diversity strongly but nutritional status only a little. The primary outcomes are therefore diets, practices and service uptake. Anthropometry is tracked at impact level as a contribution only. [S18]",
+    "The garden design builds on EcoKheti's climate-resilient agriculture model (70% adoption among 800 farmers): millets, indigenous greens, fruit saplings, greywater use and seed saving. Field evidence from Jharkhand is limited but notes land and water constraints, so plots are sized to available homestead land and water. Crop lists will be confirmed with KVK Khunti and through community food mapping, because agro-climatic data are a gap. [S19]",
+    "CONVERGENCE, Didi Badi Yojana (JSLPS Poshan Vatika): The project will map coverage with JSLPS Murhu before starting. Where households are already covered, it will add counselling and service linkage and will not supply duplicate kits. [S25, S26]",
+    "CONVERGENCE, Poshan Vatika at Anganwadi centres: Village demonstration plots will be placed at or near Anganwadi centres or on Gram Panchayat land, as Government of India guidance encourages. [S23]",
+    "CONVERGENCE, Poshan 2.0 / Saksham Anganwadi: The project helps families take up the six Anganwadi services. It supplements growth monitoring and does not replace it; data are reconciled with AWW registers. [S22]",
+    "CONVERGENCE, PMMVY and JSY: CNRPs help pregnant women get documents ready (Aadhaar, bank seeding, MCP card) before AWWs and ASHAs register them. PMMVY pays Rs 5,000 in two instalments for the first child and Rs 6,000 for a second child who is a girl. JSY is paid after institutional delivery. These benefits flow to families as convergence and are not project cost. [S24]",
+    "CONVERGENCE, MGNREGA: Garden fencing, water structures and labour are to be sought through MGNREGA works. ST households in forest areas are entitled to 50 extra days of work on top of the standard 100. The project budget covers only demonstration-plot fencing and water support. [S27]",
+    "CONVERGENCE, NHM and MTC: The project strengthens the link from Anganwadi SAM detection to the MTC and adds community follow-up after discharge, responding to poor recovery after MTC discharge in Jharkhand. The status of SAMAR and POSHAN PEHL in Khunti will be checked and aligned with. [S12, S20, S25]",
+    "The project builds on EcoKheti's earlier SRLM-funded SHG nutrition work in Khunti and its FPO experience. Whether the target villages overlap with that earlier project area is still to be confirmed.",
+    "Sustainability: Village Organisations own the seed banks. CNRPs are linked to SHG federations and, where possible, to JSLPS cadres. Convergence routines are embedded in VHSND and block meetings by the end of the project."
+  ],
+  "risks": [
+    {
+      "risk": "Duplication with or crowding by JSLPS Didi Badi / FNHW interventions or existing cadres in the target villages",
+      "likelihood": "Medium",
+      "impact": "High",
+      "mitigation": "Map coverage with the JSLPS Murhu Block Mission Management Unit in Q1. Choose villages or households to complement existing coverage. Formalise roles in writing, and redirect kit budget to counselling and convergence where gardens already exist."
+    },
+    {
+      "risk": "Dry spells, erratic monsoon or limited water and homestead land reduce the year-round viability of gardens",
+      "likelihood": "Medium",
+      "impact": "High",
+      "mitigation": "Use drought-tolerant indigenous crops and millets, greywater use, mulching and staggered sowing. Take advice from KVK Khunti. Seek MGNREGA water works, and size plots to the water available."
+    },
+    {
+      "risk": "Livestock damage to gardens",
+      "likelihood": "High",
+      "impact": "Medium",
+      "mitigation": "Use live fencing and local materials. Fence demonstration plots from project funds, and seek household fencing through MGNREGA convergence."
+    },
+    {
+      "risk": "Weak Anganwadi or health service supply (THR irregularity, AWW or ASHA vacancies, VHSND not held) limits service uptake outcomes",
+      "likelihood": "Medium",
+      "impact": "High",
+      "mitigation": "Map service gaps in Q1. Raise supply issues at quarterly block and half-yearly district convergence meetings. Support VHSND through SHG participation. Track service availability separately from demand-side uptake."
+    },
+    {
+      "risk": "No formal working relationship yet with the ICDS project office (CDPO), block health team or JSLPS",
+      "likelihood": "Medium",
+      "impact": "Medium",
+      "mitigation": "Seek letters of support or an MoU with the Murhu CDPO, the Medical Officer in charge of the CHC and the JSLPS Block Project Manager in the inception quarter. Use EcoKheti's existing SRLM relationship in Khunti."
+    },
+    {
+      "risk": "CNRP drop-out because the honorarium is modest or domestic workload is heavy",
+      "likelihood": "Medium",
+      "impact": "Medium",
+      "mitigation": "Select CNRPs through SHGs with Village Organisation endorsement. Train two CNRPs per village for redundancy. Give recognition through the federation. Confirm the honorarium against the JSLPS CRP norm."
+    },
+    {
+      "risk": "Remote villages and poor road connectivity or access conditions disrupt field presence and referral",
+      "likelihood": "Medium",
+      "impact": "Medium",
+      "mitigation": "Assess access and connectivity before selecting villages. Base each field facilitator in a cluster. Plan referrals using JSY/NHM transport, with a contingency fund."
+    },
+    {
+      "risk": "Nutritional status changes are small or slow within 24 months, so the project appears to underperform",
+      "likelihood": "High",
+      "impact": "Medium",
+      "mitigation": "Set diets, practices and service uptake as the primary outcomes, as the evidence recommends. Present anthropometry as a contribution-level impact indicator only."
+    },
+    {
+      "risk": "The indicative budget or target definition changes after donor engagement",
+      "likelihood": "Medium",
+      "impact": "Medium",
+      "mitigation": "The budget is modular (kits, CNRP numbers, surveys) and can be scaled. Confirm the target definition in the inception period."
+    }
+  ],
+  "activities_facts": [
+    "A1 Inception and mobilisation (Q1): select and name the 20 villages; map SHGs, Village Organisations, JSLPS coverage, Anganwadi centres, ASHAs, VHSND and the nearest MTC; orient the SHGs and Village Organisations; identify pregnant and lactating women and children under five; secure support letters or MoUs with the CDPO, block health team and JSLPS.",
+    "A2 Baseline survey (Q1–Q2): measure household dietary diversity, maternal and child MDD, IYCF practices, service uptake (ANC, THR, immunisation, PMMVY), food security and anthropometry in the sample.",
+    "A3 Village nutrition action plans: SHGs develop and own a plan in each of the 20 villages through a participatory learning cycle.",
+    "A4 Nutri-kitchen gardens: run 40 one-day household training batches of 30 participants each; supply seed kits for 2 seasons to about 1,200 households and one set of 5 fruit saplings each; provide seasonal follow-up by the Kitchen Garden Specialist and CNRPs at the demonstration plots.",
+    "A5 Demonstration plots and seed banks: set up 20 plots at or near Anganwadi centres or on Gram Panchayat land, with fencing and low-cost water management, plus 20 community seed banks run by Village Organisations. Year-2 seed comes from these banks.",
+    "A6 Community Nutrition Resource Persons: select 40 CNRPs (2 per village) through SHGs; run 6 residential modules (3 batches × 2) and 6 non-residential refresher days each; equip them with pictorial counselling kits in the local language.",
+    "A7 Counselling delivery: hold monthly group sessions in SHG meetings; run 440 cooking demonstrations with local foods (1 per village per month for 22 months); make targeted home visits in pregnancy, lactation and the first 1,000 days; give households pictorial cards.",
+    "A8 ICDS and health convergence: align SHG meetings with Anganwadi and VHSND calendars; help families get THR, ANC/PNC, immunisation and PMMVY/JSY documents ready; support SHG participation in VHSND.",
+    "A9 Early identification and referral: supply supplementary growth-monitoring kits (one per village) used alongside the AWW; track at-risk mothers and children; refer SAM children to the MTC; follow up children after discharge together with the AWW.",
+    "A10 Frontline capacity building: hold 8 joint AWW, ASHA and SHG leader training batches (4 rounds); run 2 in-state exposure visits for 60 leaders and CNRPs; hold 8 quarterly block and 4 half-yearly district convergence meetings.",
+    "A11 Monitoring, evaluation and learning: run a mobile household tracking system on 24 devices; hold quarterly reviews with SHG federations and block officials; run the endline survey (Q8); produce case studies and learning briefs.",
+    "A12 Sustainability and handover (Q7–Q8): transfer seed banks to Village Organisations, link CNRPs to federations and JSLPS cadres, and record convergence routines in block meeting minutes."
+  ],
+  "matrix": {
+    "rows": [
+      {
+        "level": "Impact",
+        "statement": "Contribution to improved nutritional status of mothers and children under five in target SHG households",
+        "indicator": "% of children under five underweight; % of children under five stunted (contribution only, not attributed to the project)",
+        "baseline": "To be established by baseline survey (state reference, NFHS-5: 39% underweight, 40% stunted)",
+        "target": "A declining trend against the project baseline, reported as contribution",
+        "mov": "Baseline and endline anthropometric survey; Poshan Tracker and Anganwadi records"
+      },
+      {
+        "level": "Outcome 1",
+        "statement": "Target households eat more diverse diets year-round",
+        "indicator": "% of women (PW/LW) achieving Minimum Dietary Diversity for Women (MDD-W); % of households consuming garden produce in each season",
+        "baseline": "To be established by baseline survey",
+        "target": "MDD-W: baseline + 20 percentage points; garden produce consumed in at least 2 seasons by 70% of households",
+        "mov": "Baseline and endline survey (24-hour dietary recall); household tracking system"
+      },
+      {
+        "level": "Outcome 2",
+        "statement": "Recommended maternal nutrition and IYCF practices adopted",
+        "indicator": "% of children aged 6–23 months achieving Minimum Dietary Diversity; % of infants under 6 months exclusively breastfed; % of children aged 6–23 months eating iron-rich foods",
+        "baseline": "To be established by baseline survey (state reference, NFHS-5: 22% of children 6–23 months ate iron-rich foods)",
+        "target": "Child MDD: baseline + 15 percentage points; exclusive breastfeeding and iron-rich food intake show significant improvement on baseline",
+        "mov": "Baseline and endline survey; CNRP home-visit records"
+      },
+      {
+        "level": "Outcome 3",
+        "statement": "Uptake of ICDS and health entitlements improved, and at-risk children are referred and followed up",
+        "indicator": "% of pregnant women with 4+ ANC visits; % of eligible PW/LW receiving THR regularly; % of eligible women receiving PMMVY; % of identified SAM children referred who complete post-discharge follow-up",
+        "baseline": "To be established by baseline survey",
+        "target": "ANC 4+ and THR: baseline + 20 percentage points; PMMVY: 80% of eligible women registered; SAM follow-up completed for 80% of referred children",
+        "mov": "Baseline and endline survey; MCP cards; Anganwadi, PMMVY and MTC records; referral register"
+      },
+      {
+        "level": "Output 1.1",
+        "statement": "Household nutri-kitchen gardens established",
+        "indicator": "Number of households with a functional garden (at least 5 crop types) in each season",
+        "baseline": "0 project-supported gardens (existing Didi Badi coverage to be mapped)",
+        "target": "About 1,200 households trained and supplied; 80% functional in the monsoon (kharif) and winter (rabi) seasons",
+        "mov": "Training attendance records; distribution records; seasonal garden verification in the tracking system"
+      },
+      {
+        "level": "Output 1.2",
+        "statement": "Demonstration plots and community seed banks functional",
+        "indicator": "Number of demonstration plots and Village Organisation-managed seed banks functional",
+        "baseline": "0",
+        "target": "20 plots and 20 seed banks",
+        "mov": "Site visits; seed bank registers"
+      },
+      {
+        "level": "Output 2.1",
+        "statement": "CNRP cadre trained and active",
+        "indicator": "Number of CNRPs trained and active each month",
+        "baseline": "0",
+        "target": "40 trained; at least 36 active in any month",
+        "mov": "Training records; monthly activity reports"
+      },
+      {
+        "level": "Output 2.2",
+        "statement": "Counselling, cooking demonstrations and home visits delivered",
+        "indicator": "Number of cooking demonstrations; % of PW/LW receiving the planned home visits",
+        "baseline": "0",
+        "target": "440 demonstrations; 80% of PW/LW receive the planned home visits",
+        "mov": "Session registers; household tracking system"
+      },
+      {
+        "level": "Output 3.1",
+        "statement": "SHG meetings linked with Anganwadi and VHSND calendars",
+        "indicator": "Number of villages with SHG participation recorded in VHSND",
+        "baseline": "To be established by baseline survey",
+        "target": "20 villages",
+        "mov": "VHSND attendance records; SHG minutes"
+      },
+      {
+        "level": "Output 3.2",
+        "statement": "Community growth-tracking and referral pathway functional",
+        "indicator": "Number of villages with a supplementary growth-monitoring kit in use; number of referrals facilitated",
+        "baseline": "0",
+        "target": "20 villages; all identified SAM cases referred",
+        "mov": "Growth-tracking records reconciled with Anganwadi registers; referral register"
+      },
+      {
+        "level": "Output 3.3",
+        "statement": "Frontline workers trained and convergence meetings institutionalised",
+        "indicator": "Number of AWWs, ASHAs and SHG leaders trained; number of block and district convergence meetings held",
+        "baseline": "0",
+        "target": "8 joint training batches; 8 block and 4 district meetings",
+        "mov": "Training records; meeting minutes"
+      },
+      {
+        "level": "Output 4",
+        "statement": "MEL delivered and handover completed",
+        "indicator": "Baseline and endline surveys completed; learning products produced; seed banks and routines formally handed over",
+        "baseline": "0",
+        "target": "2 survey rounds; at least 4 learning products; 20 Village Organisation handover resolutions",
+        "mov": "Survey reports; publications; Village Organisation resolutions"
+      }
+    ]
+  },
+  "budget_table": {
+    "categories": [
+      {
+        "name": "Personnel & Salaries",
+        "lines": [
+          {
+            "item": "Project Coordinator (1 FTE)",
+            "unit": "person-month",
+            "unit_cost": "40,000",
+            "quantity": "24",
+            "total": "9,60,000",
+            "rate_basis": "sourced",
+            "contributes": "Overall management, block and district convergence, reporting",
+            "source": "JSLPS block-level professional band Rs 25,000–40,000/month (GoJ Rural Development Department notification, 2019). Upper end used; escalation not applied."
+          },
+          {
+            "item": "Nutrition and Health Convergence Officer (1 FTE)",
+            "unit": "person-month",
+            "unit_cost": "32,000",
+            "quantity": "24",
+            "total": "7,68,000",
+            "rate_basis": "sourced",
+            "contributes": "Counselling content, ICDS and health linkages, referral systems",
+            "source": "JSLPS block-level band Rs 25,000–40,000 (2019). Middle of band, below the Project Coordinator."
+          },
+          {
+            "item": "Livelihoods / Kitchen Garden Specialist (50% FTE)",
+            "unit": "person-month (pro-rata)",
+            "unit_cost": "18,000",
+            "quantity": "24",
+            "total": "4,32,000",
+            "rate_basis": "sourced",
+            "contributes": "Garden design, crop planning, climate-resilient practices, household training",
+            "source": "JSLPS band (2019), 50% of a Rs 36,000 FTE, within the pro-rata range Rs 12,500–20,000"
+          },
+          {
+            "item": "MEL and Data Officer (50% FTE)",
+            "unit": "person-month (pro-rata)",
+            "unit_cost": "14,000",
+            "quantity": "24",
+            "total": "3,36,000",
+            "rate_basis": "sourced",
+            "contributes": "Tracking system, data quality, progress reporting",
+            "source": "JSLPS band (2019), 50% of a Rs 28,000 FTE, lower end as advised"
+          },
+          {
+            "item": "Field Facilitators / Cluster Coordinators (4, one per 5-village cluster)",
+            "unit": "person-month",
+            "unit_cost": "18,000",
+            "quantity": "96",
+            "total": "17,28,000",
+            "rate_basis": "estimate",
+            "contributes": "Village implementation, SHG facilitation, CNRP supervision",
+            "source": "Estimate based on typical NGO field facilitator pay in rural Jharkhand (graduate, two-wheeler travel). No authoritative norm found."
+          },
+          {
+            "item": "Community Nutrition Resource Persons (40 SHG women, 2 per village, months 3–24)",
+            "unit": "honorarium per person-month",
+            "unit_cost": "3,500",
+            "quantity": "880",
+            "total": "30,80,000",
+            "rate_basis": "estimate",
+            "contributes": "Group counselling, cooking demonstrations, home visits, household tracking",
+            "source": "Estimate set above the NHM ASHA-facilitator floor of about Rs 3,000/month (Rs 150/day × 20 days), which is only a weak proxy"
+          }
+        ]
+      },
+      {
+        "name": "Programme / Activity Costs",
+        "lines": [
+          {
+            "item": "Kitchen garden seed kits (vegetables, greens, millets, pulses)",
+            "unit": "per household kit per season",
+            "unit_cost": "350",
+            "quantity": "2,400",
+            "total": "8,40,000",
+            "rate_basis": "estimate",
+            "contributes": "Garden establishment in about 1,200 households for 2 seasons in Year 1; Year-2 seed from seed banks",
+            "source": "Estimate for a multi-crop local kit. The Odisha minikit rate of Rs 75 (2009-10) is out-of-state, dated and seeds only, so it is used for order of magnitude only."
+          },
+          {
+            "item": "Fruit sapling set (5 saplings, e.g. moringa, papaya, lemon)",
+            "unit": "per household (one-time)",
+            "unit_cost": "250",
+            "quantity": "1,200",
+            "total": "3,00,000",
+            "rate_basis": "estimate",
+            "contributes": "Perennial micronutrient sources",
+            "source": "Estimate from local nursery pricing. No Jharkhand norm found."
+          },
+          {
+            "item": "Village demonstration plots and community seed banks",
+            "unit": "per village",
+            "unit_cost": "25,000",
+            "quantity": "20",
+            "total": "5,00,000",
+            "rate_basis": "estimate",
+            "contributes": "Hands-on learning and continued seed availability",
+            "source": "Estimate for plot inputs, seed storage containers and registers. No official per-village norm found."
+          },
+          {
+            "item": "Low-cost water management and fencing for demonstration plots",
+            "unit": "per demonstration plot",
+            "unit_cost": "15,000",
+            "quantity": "20",
+            "total": "3,00,000",
+            "rate_basis": "estimate",
+            "contributes": "Year-round viability and protection from livestock; household fencing sought via MGNREGA",
+            "source": "Estimate for live or bamboo fencing, greywater channel and drum storage. No official norm found."
+          },
+          {
+            "item": "Household kitchen garden training (1-day village batches of 30)",
+            "unit": "per training batch",
+            "unit_cost": "12,000",
+            "quantity": "40",
+            "total": "4,80,000",
+            "rate_basis": "sourced",
+            "contributes": "Skills for garden establishment and maintenance",
+            "source": "ATMA cafeteria norm Rs 400 per trainee per day (MANAGE; Bilaspur district site) × 30 × 1 day, scaled to a non-residential session"
+          },
+          {
+            "item": "CNRP initial residential training (3 batches × 2 modules, 2 days each)",
+            "unit": "per 2-day batch of about 15",
+            "unit_cost": "50,000",
+            "quantity": "6",
+            "total": "3,00,000",
+            "rate_basis": "sourced",
+            "contributes": "Counselling capacity of the community cadre",
+            "source": "BPKP guidelines (2021): Rs 50,000 per 2-day training of 15 CRPs by external resource persons"
+          },
+          {
+            "item": "CNRP non-residential refreshers (6 days × 40)",
+            "unit": "per participant-day",
+            "unit_cost": "400",
+            "quantity": "240",
+            "total": "96,000",
+            "rate_basis": "sourced",
+            "contributes": "Ongoing skill reinforcement",
+            "source": "ATMA cafeteria rate Rs 400 per trainee per day (MANAGE cost norms)"
+          },
+          {
+            "item": "Joint AWW, ASHA and SHG leader trainings (8 batches of about 30, 1 day)",
+            "unit": "per training batch",
+            "unit_cost": "13,000",
+            "quantity": "8",
+            "total": "1,04,000",
+            "rate_basis": "estimate",
+            "contributes": "Shared convergence routines with frontline workers",
+            "source": "Build-up: 2 resource persons × Rs 500 (NHM BRIDGE norm) plus about Rs 400 per participant for TA/DA and logistics (ATMA proxy). State TA/DA norm not found."
+          },
+          {
+            "item": "Cooking demonstrations and nutrition session materials",
+            "unit": "per session",
+            "unit_cost": "500",
+            "quantity": "440",
+            "total": "2,20,000",
+            "rate_basis": "estimate",
+            "contributes": "Behaviour change on dietary diversity and IYCF",
+            "source": "Estimate for local food ingredients and fuel. The POSHAN community-event rate was seen only in an unofficial source, so it is not cited."
+          },
+          {
+            "item": "Pictorial counselling flipbook kits in local language (40 CNRP + 20 Anganwadi centre)",
+            "unit": "per set",
+            "unit_cost": "2,500",
+            "quantity": "60",
+            "total": "1,50,000",
+            "rate_basis": "estimate",
+            "contributes": "Consistent messages for low-literacy audiences",
+            "source": "Estimate from typical design and print costs for laminated flipbooks. No per-set norm found."
+          },
+          {
+            "item": "Household pictorial take-home cards",
+            "unit": "per household",
+            "unit_cost": "50",
+            "quantity": "1,200",
+            "total": "60,000",
+            "rate_basis": "estimate",
+            "contributes": "Reinforcing messages at home",
+            "source": "Estimate from local print pricing"
+          },
+          {
+            "item": "Supplementary growth-monitoring kit (scale, MUAC tapes, infantometer)",
+            "unit": "per set per village",
+            "unit_cost": "6,000",
+            "quantity": "20",
+            "total": "1,20,000",
+            "rate_basis": "estimate",
+            "contributes": "Community growth tracking alongside the AWW",
+            "source": "Estimate. MWCD device specifications exist, but no unit cost was found."
+          },
+          {
+            "item": "Referral and follow-up support (transport or escort contingency)",
+            "unit": "per referral case",
+            "unit_cost": "1,500",
+            "quantity": "60",
+            "total": "90,000",
+            "rate_basis": "estimate",
+            "contributes": "Access of at-risk children and mothers to CHC and MTC where government transport is unavailable",
+            "source": "Estimate of local travel and escort cost. The case count is a planning figure, not a prevalence estimate."
+          },
+          {
+            "item": "Block-level convergence meetings (quarterly)",
+            "unit": "per meeting",
+            "unit_cost": "750",
+            "quantity": "8",
+            "total": "6,000",
+            "rate_basis": "sourced",
+            "contributes": "Institutionalising coordination with ICDS and health",
+            "source": "NHM ASHA support budget provisions: Rs 9,000 per year for monthly block meeting refreshments (about Rs 750 per meeting)"
+          },
+          {
+            "item": "District-level convergence meetings (half-yearly)",
+            "unit": "per meeting",
+            "unit_cost": "5,000",
+            "quantity": "4",
+            "total": "20,000",
+            "rate_basis": "estimate",
+            "contributes": "District buy-in from DSWO, Civil Surgeon and JSLPS",
+            "source": "Estimate for venue, refreshments and materials. The NHM norm covers block refreshments only."
+          },
+          {
+            "item": "Exposure visits within Jharkhand (60 participants × 2 days × 2 visits)",
+            "unit": "per participant per day",
+            "unit_cost": "400",
+            "quantity": "240",
+            "total": "96,000",
+            "rate_basis": "sourced",
+            "contributes": "Peer learning for SHG leaders and CNRPs",
+            "source": "ATMA cafeteria exposure visit norm, within-state rate Rs 400 per participant per day (Bilaspur district site)"
+          },
+          {
+            "item": "Baseline and endline surveys",
+            "unit": "per survey round",
+            "unit_cost": "3,50,000",
+            "quantity": "2",
+            "total": "7,00,000",
+            "rate_basis": "estimate",
+            "contributes": "Measuring change in outcome indicators, including anthropometry",
+            "source": "Estimate for a sample survey of about 500 households by a regional agency. No official norm found."
+          },
+          {
+            "item": "Mobile devices for household tracking (4 field facilitators + 20 lead CNRPs)",
+            "unit": "per device",
+            "unit_cost": "10,000",
+            "quantity": "24",
+            "total": "2,40,000",
+            "rate_basis": "estimate",
+            "contributes": "Tracking mothers, children and gardens (open-source data collection tool)",
+            "source": "Estimate for an entry-level Android smartphone. The MWCD POSHAN smartphone figure was not found."
+          },
+          {
+            "item": "Mobile data for tracking devices",
+            "unit": "per device-month",
+            "unit_cost": "150",
+            "quantity": "576",
+            "total": "86,400",
+            "rate_basis": "estimate",
+            "contributes": "Data upload and review",
+            "source": "Estimate from prepaid data plan pricing"
+          },
+          {
+            "item": "Documentation and learning products",
+            "unit": "lump sum",
+            "unit_cost": "1,50,000",
+            "quantity": "1",
+            "total": "1,50,000",
+            "rate_basis": "estimate",
+            "contributes": "Case studies, learning briefs, dissemination",
+            "source": "Estimate for writing, design, printing and a dissemination event"
+          },
+          {
+            "item": "Staff travel and local conveyance (6 field-based staff)",
+            "unit": "per person-month",
+            "unit_cost": "3,000",
+            "quantity": "144",
+            "total": "4,32,000",
+            "rate_basis": "estimate",
+            "contributes": "Field presence across 20 villages",
+            "source": "Estimate for two-wheeler fuel and reimbursement in rural Khunti. No norm found."
+          }
+        ]
+      },
+      {
+        "name": "Administrative / Overheads",
+        "lines": [
+          {
+            "item": "Field office running costs, Murhu (rent, utilities, internet, stationery)",
+            "unit": "per month",
+            "unit_cost": "20,000",
+            "quantity": "24",
+            "total": "4,80,000",
+            "rate_basis": "estimate",
+            "contributes": "Operational base in or near Murhu",
+            "source": "Estimate for small block-level office costs in rural Jharkhand. Local quote needed."
+          },
+          {
+            "item": "Administrative and overhead costs (finance, compliance, statutory audit, HQ management)",
+            "unit": "7% of direct costs (Rs 1,30,74,400)",
+            "unit_cost": "9,15,208",
+            "quantity": "1",
+            "total": "9,15,208",
+            "rate_basis": "estimate",
+            "contributes": "Organisational management, finance, compliance and audit",
+            "source": "Estimated rate set to fit the ceiling. No scheme norm found; the donor's permitted rate will apply."
+          }
+        ]
+      }
+    ]
+  },
+  "budget_grand_total": "Personnel & Salaries: 73,04,000. Programme / Activity Costs: 52,90,400. Administrative / Overheads: 13,95,208. Grand total: Rs 1,39,89,608 (ceiling Rs 1,40,00,000).",
+  "rates_to_confirm": [
+    {
+      "item": "Field Facilitators / Cluster Coordinators",
+      "estimated_rate": "Rs 18,000 per person-month",
+      "prompt": "Please confirm, or supply your field facilitator pay rate. Check it against the current JSLPS Community Coordinator band and the April 2026 Jharkhand minimum wage."
+    },
+    {
+      "item": "Community Nutrition Resource Person honorarium",
+      "estimated_rate": "Rs 3,500 per person-month",
+      "prompt": "Please confirm against the current JSLPS Poshan Sakhi or health-and-nutrition CRP honorarium (Khunti DMMU or Murhu BMMU), or supply your own rate."
+    },
+    {
+      "item": "Seed kit per household per season",
+      "estimated_rate": "Rs 350",
+      "prompt": "Please confirm using KVK Khunti, ATMA or Jharkhand Horticulture rates, or local quotes."
+    },
+    {
+      "item": "Fruit sapling set",
+      "estimated_rate": "Rs 250 per household",
+      "prompt": "Please confirm using nursery or Horticulture Department rates."
+    },
+    {
+      "item": "Demonstration plot and seed bank",
+      "estimated_rate": "Rs 25,000 per village",
+      "prompt": "Please confirm or supply your own rate."
+    },
+    {
+      "item": "Demonstration plot fencing and water",
+      "estimated_rate": "Rs 15,000 per plot",
+      "prompt": "Please confirm, and say whether MGNREGA convergence can cover it."
+    },
+    {
+      "item": "Joint frontline training batch",
+      "estimated_rate": "Rs 13,000 per batch",
+      "prompt": "Please confirm the NHM Jharkhand or ICDS TA/DA and logistics norms for AWWs and ASHAs."
+    },
+    {
+      "item": "Cooking demonstration materials",
+      "estimated_rate": "Rs 500 per session",
+      "prompt": "Please confirm, or check against the POSHAN 2.0 community-event norm."
+    },
+    {
+      "item": "Counselling flipbook kit",
+      "estimated_rate": "Rs 2,500 per set",
+      "prompt": "Please confirm with a printer's quote."
+    },
+    {
+      "item": "Household pictorial cards",
+      "estimated_rate": "Rs 50 each",
+      "prompt": "Please confirm with a printer's quote."
+    },
+    {
+      "item": "Growth-monitoring kit",
+      "estimated_rate": "Rs 6,000 per village",
+      "prompt": "Please confirm using a GeM price or supplier quote."
+    },
+    {
+      "item": "Referral support",
+      "estimated_rate": "Rs 1,500 per case, 60 cases",
+      "prompt": "Please confirm the rate and the planning volume."
+    },
+    {
+      "item": "District convergence meeting",
+      "estimated_rate": "Rs 5,000 per meeting",
+      "prompt": "Please confirm with a local venue quote."
+    },
+    {
+      "item": "Baseline and endline surveys",
+      "estimated_rate": "Rs 3,50,000 per round",
+      "prompt": "Please confirm with survey agency quotes and the planned sample size."
+    },
+    {
+      "item": "Tracking smartphone",
+      "estimated_rate": "Rs 10,000 per device",
+      "prompt": "Please confirm using a GeM price or quote."
+    },
+    {
+      "item": "Mobile data",
+      "estimated_rate": "Rs 150 per device-month",
+      "prompt": "Please confirm."
+    },
+    {
+      "item": "Documentation",
+      "estimated_rate": "Rs 1,50,000 lump sum",
+      "prompt": "Please confirm or supply your own figure."
+    },
+    {
+      "item": "Staff travel",
+      "estimated_rate": "Rs 3,000 per person-month",
+      "prompt": "Please confirm against your travel policy."
+    },
+    {
+      "item": "Field office running costs",
+      "estimated_rate": "Rs 20,000 per month",
+      "prompt": "Please confirm with local rent and utility quotes for Murhu."
+    },
+    {
+      "item": "Overhead rate",
+      "estimated_rate": "7% of direct costs",
+      "prompt": "Please confirm the overhead percentage the eventual donor permits, and supply CA audit fee quotes."
+    }
+  ],
+  "budget_adjustments": [
+    "The first full build came to about Rs 1.52 Crore including overheads, so it was trimmed to fit the Rs 1.4 Crore ceiling while keeping the core delivery model: 40 CNRPs, gardens for all 1,200 households, convergence and both surveys.",
+    "Household kitchen garden training was cut from 2 days to 1 day per batch (Rs 9,60,000 to Rs 4,80,000). Seasonal refreshers move to the demonstration plots and SHG meetings at no extra cost.",
+    "Purchased seed kits were cut from 3 seasons to 2 (Year 1), with Year-2 seed from the community seed banks. This reinforces sustainability and saves about Rs 2.4 lakh.",
+    "The field facilitator estimate was set at Rs 18,000 rather than Rs 20,000 per month, saving Rs 1,92,000.",
+    "The survey rounds were costed at Rs 3,50,000 each rather than Rs 4,00,000, with a smaller sample.",
+    "The documentation lump sum was reduced from Rs 2,00,000 to Rs 1,50,000, and the mobile data rate from Rs 200 to Rs 150 per device-month.",
+    "CNRP honoraria are costed for months 3–24 (22 months), after selection and initial training.",
+    "Overheads were set at 7% of direct costs so the total fits the ceiling. If the donor allows a higher rate, some estimated programme lines will need rebalancing.",
+    "Household fencing and water structures are not in the budget. They are to be sought through MGNREGA and Didi Badi convergence. PMMVY and JSY benefits reach families as convergence and are not project cost."
+  ],
+  "timeline": {
+    "units": [
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7",
+      "Q8"
+    ],
+    "rows": [
+      {
+        "activity": "A1 Inception, village selection, mapping, MoUs, SHG/Village Organisation orientation",
+        "active": [
+          1
+        ]
+      },
+      {
+        "activity": "A2 Baseline survey",
+        "active": [
+          1,
+          2
+        ]
+      },
+      {
+        "activity": "A3 Village nutrition action plans",
+        "active": [
+          2,
+          5
+        ]
+      },
+      {
+        "activity": "A4 Household garden training and kits",
+        "active": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "activity": "A5 Demonstration plots and seed banks",
+        "active": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "activity": "A6 CNRP selection, training and refreshers",
+        "active": [
+          1,
+          2,
+          4,
+          6,
+          7
+        ]
+      },
+      {
+        "activity": "A7 Counselling, cooking demonstrations, home visits",
+        "active": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "activity": "A8 ICDS and health convergence, VHSND linkage, PMMVY support",
+        "active": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "activity": "A9 Growth tracking, referral and post-MTC follow-up",
+        "active": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "activity": "A10 Joint trainings, exposure visits, convergence meetings",
+        "active": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "activity": "A11 Tracking system, reviews, documentation",
+        "active": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "activity": "A11 Endline survey",
+        "active": [
+          8
+        ]
+      },
+      {
+        "activity": "A12 Sustainability and handover",
+        "active": [
+          7,
+          8
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "ref": "S1",
+      "title": "About District | District Khunti, Government of Jharkhand",
+      "url": "https://khunti.nic.in/about-district/"
+    },
+    {
+      "ref": "S2",
+      "title": "Murhu block (Wikipedia, citing Census 2011 PCA) [secondary]",
+      "url": "https://en.wikipedia.org/wiki/Murhu_block"
+    },
+    {
+      "ref": "S3",
+      "title": "Rania block (Wikipedia, citing Census 2011) [secondary]",
+      "url": "https://en.wikipedia.org/wiki/Rania_block"
+    },
+    {
+      "ref": "S4",
+      "title": "District Profile | Vikaspedia Aspirational Districts (Khunti)",
+      "url": "https://aspirational.vikaspedia.in/viewcontent/aspirational-districts/jharkhand/khunti/know-your-district/district-profile?lgn=en"
+    },
+    {
+      "ref": "S5",
+      "title": "Karra block (Wikipedia) [secondary]",
+      "url": "https://en.wikipedia.org/wiki/Karra_block"
+    },
+    {
+      "ref": "S6",
+      "title": "NFHS-5 India 2019-21: Jharkhand",
+      "url": "https://dhsprogram.com/pubs/pdf/FR374/FR374_Jharkhand.pdf"
+    },
+    {
+      "ref": "S7",
+      "title": "State Nutrition Profile: Jharkhand (NITI Aayog / IFPRI, 2022)",
+      "url": "https://www.niti.gov.in/sites/default/files/2022-07/SNP_Jharkhand_Final_compressed.pdf"
+    },
+    {
+      "ref": "S8",
+      "title": "State Nutrition Profile: Jharkhand (IFPRI/POSHAN, Dec 2022)",
+      "url": "https://cgspace.cgiar.org/bitstreams/a6a37c2e-88c5-4a02-9d54-16fd7463971c/download"
+    },
+    {
+      "ref": "S9",
+      "title": "Nutrition in Jharkhand (Jharkhand CSO Forum) [secondary]",
+      "url": "https://jharkhandcsoforum.org/Nutration.php"
+    },
+    {
+      "ref": "S10",
+      "title": "PIB release (MoWCD), NFHS-5 vs NFHS-4",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1806601"
+    },
+    {
+      "ref": "S12",
+      "title": "Progress of children with SAM in the MTC rehabilitation program, Jharkhand (Nutrition Journal, 2018)",
+      "url": "https://nutritionj.biomedcentral.com/articles/10.1186/s12937-018-0378-2"
+    },
+    {
+      "ref": "S13",
+      "title": "Ekjut trial process evaluation",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2987759/"
+    },
+    {
+      "ref": "S14",
+      "title": "Improved neonatal survival after PLA with women's groups, rural eastern India",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3777144/"
+    },
+    {
+      "ref": "S15",
+      "title": "Participatory women's groups facilitated by ASHAs (Lancet Global Health)",
+      "url": "https://www.thelancet.com/journals/langlo/article/PIIS2214-109X(15)00287-9/fulltext"
+    },
+    {
+      "ref": "S16",
+      "title": "Feasibility, acceptability and equity of m-UPAVAN in rural Odisha (PLOS Global Public Health)",
+      "url": "https://journals.plos.org/globalpublichealth/article?id=10.1371%2Fjournal.pgph.0003206"
+    },
+    {
+      "ref": "S17",
+      "title": "Can nutrition-sensitive agriculture interventions address intersectional inequalities in women's diets? (PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12405785/"
+    },
+    {
+      "ref": "S18",
+      "title": "UPAVAN trial study protocol (Trials, 2018)",
+      "url": "https://link.springer.com/article/10.1186/s13063-018-2521-y"
+    },
+    {
+      "ref": "S19",
+      "title": "Nutrition garden model (Poshan Vatika) (IJCMPH, 2025)",
+      "url": "https://www.ijcmph.com/index.php/ijcmph/article/download/13055/8225/65959"
+    },
+    {
+      "ref": "S20",
+      "title": "Notes From A Malnutrition Treatment Centre At Dungarpur (Outlook Poshan)",
+      "url": "https://poshan.outlookindia.com/story/poshan-news-notes-from-a-malnutrition-treatment-centre-at-dungarpur-in-rajasthan/339452"
+    },
+    {
+      "ref": "S21",
+      "title": "Effects of PLA, home-visit counselling and crèches on undernutrition in eastern India (BMC Public Health, 2019)",
+      "url": "https://link.springer.com/article/10.1186/s12889-019-7274-3"
+    },
+    {
+      "ref": "S22",
+      "title": "Mission Saksham Anganwadi and Poshan 2.0 | MoWCD",
+      "url": "https://wcd.gov.in/offerings/nutrition-mission-saksham-anganwadi-and-poshan-2-0-mission-saksham-anganwadi-poshan-2-0"
+    },
+    {
+      "ref": "S23",
+      "title": "Poshan Vatika (Nutri-Gardens) at Anganwadi centers (JDRAS)",
+      "url": "https://www.ovid.com/jnls/jdra/fulltext/10.4103/jdras.jdras_137_22~poshan-vatika-nutri-gardens-at-anganwadi-centersholistic"
+    },
+    {
+      "ref": "S24",
+      "title": "PMMVY FAQs | SPNIWCD",
+      "url": "https://www.spniwcd.wcd.gov.in/pradhan-mantri-matru-vandana-yojna/faqs"
+    },
+    {
+      "ref": "S25",
+      "title": "Didi Badi Yojna: One scheme, twin objectives (The Daily Pioneer)",
+      "url": "https://www.dailypioneer.com/2021/state-editions/didi-badi-yojna--one-scheme--twin-objectives.html"
+    },
+    {
+      "ref": "S26",
+      "title": "Impact Evaluation Report: PRIDE (PHRS India)",
+      "url": "https://phrsindia.org/wp-content/uploads/2022/12/Impact-Evaluation-Report_PRIDE.pdf"
+    },
+    {
+      "ref": "S27",
+      "title": "MGNREGS Wage Hike for 2025-26 (Adda247)",
+      "url": "https://currentaffairs.adda247.com/mgnregs-wage-hike-for-2025-26-detailed-analysis/"
+    },
+    {
+      "ref": "S28",
+      "title": "GoJ Rural Development Department – JSLPS notification, Block Project Officer and other posts (2019)",
+      "url": "https://img.freejobalert.com/uploads/2019/06/Notification-JSLPS-Block-Project-Officer-Accounts-Officer-Other-Posts.pdf"
+    },
+    {
+      "ref": "S29",
+      "title": "Annual Budget Provisions for ASHA Support System (NHM)",
+      "url": "https://www.nhm.gov.in/images/pdf/communitisation/asha/support-mechanism/annual-budget-provisions.pdf"
+    },
+    {
+      "ref": "S30",
+      "title": "Plans & Schemes | Directorate of Horticulture, Odisha",
+      "url": "https://odihort.nic.in/node/119"
+    },
+    {
+      "ref": "S31",
+      "title": "Agriculture | District Bilaspur (ATMA cafeteria norms)",
+      "url": "https://bilaspur.gov.in/en/agriculture/"
+    },
+    {
+      "ref": "S32",
+      "title": "STRY & Farmers' Capacity – Cost Norms (MANAGE)",
+      "url": "https://www.manage.gov.in/stry&fcac/costnorms-stry.asp"
+    },
+    {
+      "ref": "S33",
+      "title": "Guidelines of BPKP (NITI Aayog natural farming portal)",
+      "url": "https://naturalfarming.niti.gov.in/wp-content/uploads/2021/09/Guidelines_of_BPKP.pdf"
+    },
+    {
+      "ref": "S34",
+      "title": "IPC Skills Training – BRIDGE Operational Guidelines (NHM)",
+      "url": "https://nhm.gov.in/New_Updates_2018/NHM_Components/Immunization/Guildelines_for_immunization/BRIDGE_Operational_Guidelines.pdf"
+    }
+  ],
+  "flags": [
+    "BUDGET: Rs 1.4 Crore is an indicative planning envelope, not a figure given by the applicant or a donor. It must be confirmed. 20 of the 31 budget lines are estimates and are listed in rates_to_confirm.",
+    "SALARY NORMS: The JSLPS salary band dates from 2019 and was found on a third-party site. No escalation to 2026-28 has been applied. Verify against the current JSLPS schedule; any escalation will need rebalancing within the ceiling.",
+    "TARGET DEFINITION: It is not yet clear whether the ~1,200 women are all pregnant or lactating women, or SHG member women of whom those groups form a subset. The number of children under five is unknown and will be established at baseline.",
+    "VILLAGES: The 20 villages are not yet named. Overlap with EcoKheti's earlier Khunti project area and with JSLPS Didi Badi or FNHW coverage is unconfirmed, and there is a duplication risk.",
+    "DATA GAP: Khunti's NFHS-5 district fact-sheet values were not retrieved. The problem analysis uses Jharkhand state values, which are labelled as state-level. Project-area values will come from the baseline.",
+    "SECONDARY SOURCES: The Murhu block Census figures, district tribal composition, Khunti BPL share and NFHS-4 district ranking come from secondary compilations (Wikipedia, CSO forum). Verify them against the DCHB and official fact sheets before submission.",
+    "CONFLICT: The Khunti sex ratio is given as 997 (district website) and as 994 (other compilations). It is not used in the proposal until resolved from the DCHB.",
+    "UNKNOWN LOCAL SYSTEMS: The number of Anganwadi centres in Murhu, AWW and ASHA vacancies, VHSND functioning, the nearest MTC, the status of SAMAR and POSHAN PEHL, and any Jharkhand ICDS–NHM–JSLPS convergence order are all unknown. They are to be mapped in Q1.",
+    "PARTNERSHIPS: No existing MoU or working relationship with the Murhu CDPO, block health team or JSLPS has been confirmed.",
+    "ACCESS: Village connectivity and security or access conditions in Murhu are unverified and need a field assessment.",
+    "AGRO-CLIMATE: Rainfall, soil, water and local crop suitability data for Khunti are gaps. Crop lists will be confirmed with KVK Khunti and through community food mapping.",
+    "EXTERNAL EVIDENCE: The Ekjut, UPAVAN (Odisha) and Dungarpur (Rajasthan) evidence is used as demonstrated potential only, not as local fact. Logframe targets are project aspirations set relative to a baseline that has not yet been measured."
+  ]
+}

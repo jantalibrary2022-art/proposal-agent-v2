@@ -1,0 +1,104 @@
+{
+  "cost_norms": [
+    {
+      "item": "CRP / Krishi Sakhi honorarium (20 CRPs)",
+      "rate": "INR 5,000",
+      "unit": "CRP-month",
+      "basis": "Honorarium for village-level Community Resource Persons under Bharatiya Prakritik Krishi Paddhati (BPKP). The norm is 10 CRPs per 1,000 ha block cluster, each paid Rs 5,000 per month.",
+      "applicability": "Maps directly. These are the national natural-farming CRP guidelines; no Chhattisgarh-specific rate was found. BPKP is the scheme NMNF replaced, and the norm dates from about 2020, so consider indexing it. NMNF says Krishi Sakhis are paid per activity, within yearly and seasonal caps, rather than a fixed honorarium. The NMNF per-activity amounts were not found, so check them before relying on this figure.",
+      "source_title": "Guidelines of BPKP (NITI Aayog Natural Farming portal)",
+      "source_url": "https://naturalfarming.niti.gov.in/wp-content/uploads/2021/09/Guidelines_of_BPKP.pdf",
+      "year": "c. 2020-21 (uploaded 2021)"
+    },
+    {
+      "item": "Natural Farming / Agronomy Specialist",
+      "rate": "INR 15,000 – 20,000 (floor benchmark)",
+      "unit": "person-month",
+      "basis": "BPKP honoraria for cluster-level technical posts. The CCCF post is paid Rs 20,000 per month. The Senior Local Resource Person (SLRP) is paid Rs 15,000 per month; one SLRP covers each 1,000 ha cluster and may be an experienced natural farmer or an agriculture graduate trained in natural farming.",
+      "applicability": "Partial fit. These are honoraria for field-level resource persons, not a salary scale for a qualified specialist, so treat them as the minimum. A project-level specialist will usually be paid more, and a higher figure needs its own justification. National norm, about 2020.",
+      "source_title": "Guidelines of BPKP (NITI Aayog Natural Farming portal)",
+      "source_url": "https://naturalfarming.niti.gov.in/wp-content/uploads/2021/09/Guidelines_of_BPKP.pdf",
+      "year": "c. 2020-21"
+    },
+    {
+      "item": "Field Coordinators (4)",
+      "rate": "INR 10,000 (floor benchmark)",
+      "unit": "person-month",
+      "basis": "BPKP Local Resource Person (LRP) honorarium. Two LRPs cover each 1,000 ha cluster; they need 2–3 years of natural-farming cluster experience and may come from NGOs.",
+      "applicability": "Partial fit. This is a minimum for field-delivery staff only. Graduate-level NGO field coordinators in a remote block will usually need more, and the Chhattisgarh minimum wage for skilled workers sets a legal floor. National norm, about 2020. No authoritative Bihan scale was found (see gaps).",
+      "source_title": "Guidelines of BPKP (NITI Aayog Natural Farming portal)",
+      "source_url": "https://naturalfarming.niti.gov.in/wp-content/uploads/2021/09/Guidelines_of_BPKP.pdf",
+      "year": "c. 2020-21"
+    },
+    {
+      "item": "Field office running (Durgakondal/Kanker)",
+      "rate": "INR 2,40,000 per year (about INR 20,000 per month)",
+      "unit": "month (derived from the annual norm)",
+      "basis": "BPKP gives each 1,000 ha cluster Rs 2.4 lakh a year to run the cluster office: computer, internet, training kit such as a projector, and a data entry operator for documentation and PGS certification.",
+      "applicability": "Partial fit. It covers a cluster office and data entry operator, but not rent in Kanker town or utilities. Divide by 12 for the monthly figure. Rent needs a local quote. National norm, about 2020.",
+      "source_title": "Guidelines of BPKP (NITI Aayog Natural Farming portal)",
+      "source_url": "https://naturalfarming.niti.gov.in/wp-content/uploads/2021/09/Guidelines_of_BPKP.pdf",
+      "year": "c. 2020-21"
+    },
+    {
+      "item": "CRP residential training of trainers and refreshers",
+      "rate": "INR 400 residential / INR 250 non-residential",
+      "unit": "participant-day",
+      "basis": "MANAGE STRY / farmer capacity-building cost norms (ATMA cafeteria). The limit is Rs 400 per trainee per day for district-level residential training and Rs 250 per trainee per day otherwise. Boarding, lodging and refreshments are included.",
+      "applicability": "Direct fit for the per-participant-day unit; use Rs 400 for residential ToT. The norm itself says location-specific costs need prior approval, so a remote block may justify a small uplift. Two cross-checks from the same BPKP PDF: a 7-day CRP/LRP training including an exposure visit costs Rs 50,000, and a 2-day refresher for 15 resource persons costs Rs 50,000 (about Rs 1,667 per participant-day). The NMNF guidelines give 4-day trainings for Krishi Sakhis/CRPs at Rs 2,000 each, but the extract was cut off before the unit, so confirm it in the PDF (https://www.manage.gov.in/nf/NMNF-Guidelines.pdf).",
+      "source_title": "Skill Training for Rural Youth (STRY) & Farmers' Capacity Assessment – Cost Norms (MANAGE)",
+      "source_url": "https://www.manage.gov.in/stry&fcac/costnorms-stry.asp",
+      "year": null
+    },
+    {
+      "item": "Farmer field school sessions",
+      "rate": "INR 100 per farmer per session (CRP-led), or INR 250 per farmer (expert-led batch)",
+      "unit": "participant per session. With the 25-farmer batch in the norm, that is about INR 2,500 per session.",
+      "basis": "BPKP: CRPs/LRPs run 1-day village trainings for batches of 25 farmers at Rs 100 per farmer per training. Expert-led cluster trainings for batches of 50 farmers cost Rs 250 per farmer.",
+      "applicability": "Good proxy. The per-session figure is my calculation (Rs 100 × 25 farmers), not a published per-session rate. National norm, about 2020. The draft NMNF cafeteria guidelines describe farmer field schools (FFS) as 14 sessions over two seasons for 50 registered farmers. That draft was only found as an unofficial copy, so no per-session cost is taken from it.",
+      "source_title": "Guidelines of BPKP (NITI Aayog Natural Farming portal)",
+      "source_url": "https://naturalfarming.niti.gov.in/wp-content/uploads/2021/09/Guidelines_of_BPKP.pdf",
+      "year": "c. 2020-21"
+    },
+    {
+      "item": "Household bio-input starter kits (drums, tools)",
+      "rate": "INR 4,000 per acre per year for 2 years (ceiling benchmark)",
+      "unit": "per farmer (up to 1 acre)",
+      "basis": "NMNF output-based incentive to farmers practising natural farming. It covers training, upkeep of livestock and preparation of natural-farming inputs.",
+      "applicability": "Indirect fit. This is a DBT incentive, not a price schedule for kits. It shows the government sees about Rs 4,000 per farmer per year as reasonable household input support, so it works as a ceiling. The actual kit price (drums, tools) needs vendor quotes. Also avoid paying for the same thing twice if households already receive the NMNF incentive.",
+      "source_title": "National Mission on Natural Farming (NMNF) – PIB Press Note",
+      "source_url": "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=155019&reg=3&lang=2",
+      "year": "2025"
+    },
+    {
+      "item": "Producer group (CIG) formation and FPO/market linkage support",
+      "rate": "Up to INR 18 lakh per FPO over 3 years (management cost); matching equity grant up to INR 2,000 per farmer member, capped at INR 15 lakh per FPO",
+      "unit": "per FPO (not per CIG)",
+      "basis": "Central Sector Scheme 'Formation and Promotion of 10,000 FPOs': management-cost assistance and matching equity grant.",
+      "applicability": "Indirect fit. The norm is per registered FPO, not per CIG, and the equity grant goes to the FPO, not the NGO. Use it to justify linking CIGs to the scheme rather than as a per-CIG cost. The CBBO fee norm was not found. The per-CIG formation cost needs a field rate.",
+      "source_title": "Central Sector Scheme 'Formation and Promotion of 10,000 new Farmer Producer Organizations (FPOs)' of Rs. 6865 crore – PIB",
+      "source_url": "https://www.pib.gov.in/Pressreleaseshare.aspx?PRID=1696547&reg=3&lang=2",
+      "year": "2021"
+    }
+  ],
+  "gaps": [
+    "Project Manager (Kanker-based): needs local quote or field rate. Bihan (CG SRLM) pays a Block Project Manager about Rs 39,875/month (2026), but this figure only appeared on job-listing sites, not in an official source. Check it against the official Bihan recruitment notice on the district site (e.g. https://dantewada.nic.in/en/notice/notification-for-the-recruitment-of-vacant-posts-under-srlm-bihan/) before citing it.",
+    "FRA & Convergence Officer: needs local quote or field rate. The same unverified 2026 Bihan listings show an Area Coordinator at about Rs 26,490/month; verify against the official notice.",
+    "MEL & Data Officer (50% time): needs local quote or field rate. No authoritative Chhattisgarh or scheme salary norm was found.",
+    "Accounts & Admin Assistant (50% time): needs local quote or field rate. Unverified 2026 Bihan listings show an Accountant / MIS Assistant at about Rs 23,350/month; verify against the official notice. The Chhattisgarh Labour Department minimum-wage notification (April–September 2026) sets the legal floor, but it was not found on an official site.",
+    "Bio-input Resource Centre set-up: the NMNF BRC guidelines of 23 April 2025 give Rs 1 lakh per BRC in two tranches of Rs 50,000, but only media reports of this were found. Cite the official MoA&FW BRC guidelines or the NMNF guidelines PDF (https://www.agriwelfare.gov.in/Documents/HomeWhatsNew/Guideline_NMNF_V2_10022025_Revised.pdf) after checking. Also avoid funding BRCs that already get NMNF support.",
+    "BRC shed / storage top-up (not covered by the NMNF norm): needs local quote or field rate (civil works estimate based on the Chhattisgarh PWD schedule of rates).",
+    "Household listing, baseline and endline surveys: needs local quote or field rate. No government norm was found. Enumerator day-rates should be at least the Chhattisgarh minimum wage and the 2026-27 VB-G RAM G wage for the state, reportedly Rs 300/day; check both in the official notifications.",
+    "Model demonstration plots: needs local quote or field rate. NMNF provides for model demonstration farms (at least 1 on-station and 3 on farmers' fields per institution), but no per-plot cost was found in the official extracts.",
+    "Community seed banks (indigenous varieties): needs local quote or field rate. No MIDH, NMNF or state per-seed-bank norm was found.",
+    "Nutrition garden seed and planting material: needs local quote or field rate. No official per-household cost was found for MIDH, DAY-NRLM Agri-Nutri Garden or Poshan Vatika.",
+    "FRA claim facilitation camps and land mapping: needs local quote or field rate. No Tribal Welfare Department cost norm was found.",
+    "Convergence meetings with line departments: needs local quote or field rate. The only related figure found is BPKP's Rs 1.5 lakh a year for a one-day state-level workshop, which does not fit block-level meetings.",
+    "Exposure visits for lead farmers and CRPs: needs local quote or field rate. ATMA exposure-visit norms were only found on unofficial sources. The BPKP 7-day CRP training including an exposure visit (Rs 50,000 per training) is a possible cross-check.",
+    "Staff field travel and mobility: needs local quote or field rate. No state or scheme norm for NGO staff mobility was found; use actual vehicle-hire or fuel quotes for Durgakondal.",
+    "MEL, mid-term review and documentation (lump sum): needs local quote or field rate.",
+    "Statutory audit and compliance: needs local quote (chartered accountant firm fee quotes).",
+    "Administrative overhead (% of direct costs): no government norm was found. Use the donor's permitted indirect-cost rate.",
+    "Official state-level wage references were not confirmed. The Chhattisgarh MGNREGA/VB-G RAM G wage page (https://mgnrega.cg.nic.in/WageRates.aspx) and the Labour Department minimum-wage notification of 24 March 2026 should be downloaded and cited directly for any wage-based line."
+  ]
+}

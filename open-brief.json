@@ -1,0 +1,178 @@
+{
+  "mode": "direct",
+  "theme": "Maternal and child nutrition through SHG-led nutrition-sensitive livelihoods and convergence with ICDS and health services",
+  "working_title": "Poshan Saathi: SHG-led Kitchen Gardens, Nutrition Counselling and ICDS Convergence for Mothers and Young Children in Murhu, Khunti",
+  "geography": {
+    "state": "Jharkhand",
+    "district": "Khunti",
+    "block": "Murhu",
+    "coverage": "20 villages in Murhu block. Specific villages to be confirmed by the applicant, aligned with existing SHG presence and Anganwadi centre catchments."
+  },
+  "target": "Pregnant and lactating women and children under five in SHG member households: about 1,200 women across 20 villages. The number of children under five is to be established at baseline.",
+  "duration": "2 years (24 months)",
+  "budget_ceiling": "Rs. 1.4 Crore total over 2 years (about Rs. 70 lakh per year), as an indicative planning envelope",
+  "budget_basis": "estimated-to-confirm",
+  "donor": "Donor-agnostic",
+  "donor_basis": "donor-agnostic",
+  "problem_focus": "Poor dietary diversity and inadequate maternal and young-child feeding and care practices in tribal SHG households, alongside incomplete uptake of available ICDS and health entitlements. The proposal addresses household food access through nutri-kitchen gardens, feeding and care behaviours through community counselling, and service uptake through structured convergence with Anganwadi and health systems. All delivery runs through existing SHGs rather than parallel structures.",
+  "planned_activities": [
+    "SHG and Village Organisation mobilisation and orientation: sensitising existing SHGs and their federations in the 20 villages, identifying pregnant and lactating women and households with children under five, and developing village-level nutrition action plans owned by SHGs.",
+    "Nutri-kitchen gardens: training SHG households on year-round, climate-resilient kitchen gardens using local and indigenous crops, millets, greens and fruit saplings; distributing seed and sapling kits; setting up village demonstration plots; promoting low-cost water management (e.g., greywater use) drawing on the organisation's climate-resilient agriculture model.",
+    "Community nutrition counselling: selecting and training women from SHGs as community nutrition resource persons, who run group sessions in SHG meetings, recipe and cooking demonstrations with locally available foods, and targeted home visits during pregnancy, lactation and the first 1,000 days.",
+    "Convergence with ICDS and health services: working with Anganwadi Workers, ASHAs and ANMs to strengthen uptake of Take-Home Ration, growth monitoring, antenatal and postnatal care, immunisation and relevant maternity entitlements; active participation in Village Health, Sanitation and Nutrition Days; linking SHG meetings to Anganwadi calendars.",
+    "Early identification and referral: supporting community-level growth monitoring alongside Anganwadi, tracking at-risk mothers and children, and facilitating referral of severely malnourished children to government nutrition and health facilities.",
+    "Capacity building of frontline and community actors: joint trainings and refresher sessions for SHG leaders, community nutrition resource persons, Anganwadi Workers and ASHAs; exposure visits; block-level convergence meetings with ICDS and health officials.",
+    "Monitoring, evaluation and learning: baseline and endline surveys, a simple household tracking system, periodic review with SHG federations and block officials, and documentation of learning.",
+    "Sustainability and handover: building SHG federation and Village Organisation ownership of kitchen-garden seed banks and nutrition counselling, and embedding convergence routines into existing government platforms by project end."
+  ],
+  "likely_budget_lines": [
+    {
+      "item": "Project Coordinator",
+      "unit": "person-month",
+      "contributes": "Overall project management, convergence with block and district officials, reporting"
+    },
+    {
+      "item": "Nutrition and Health Convergence Officer",
+      "unit": "person-month",
+      "contributes": "Technical lead on counselling content, ICDS and health linkages, referral systems"
+    },
+    {
+      "item": "Livelihoods / Kitchen Garden Specialist (part-time)",
+      "unit": "person-month",
+      "contributes": "Kitchen garden design, crop planning, climate-resilient practices, training of households"
+    },
+    {
+      "item": "Field Facilitators / Cluster Coordinators",
+      "unit": "person-month",
+      "contributes": "Village-level implementation across village clusters, SHG facilitation, supervision of community resource persons"
+    },
+    {
+      "item": "Community Nutrition Resource Persons (SHG women)",
+      "unit": "honorarium per person-month",
+      "contributes": "Group counselling, cooking demonstrations, home visits, household tracking"
+    },
+    {
+      "item": "MEL and Data Officer (part-time)",
+      "unit": "person-month",
+      "contributes": "Tracking system, data quality, progress reporting"
+    },
+    {
+      "item": "Kitchen garden seed and sapling kits",
+      "unit": "per household kit, per season",
+      "contributes": "Establishment of nutri-kitchen gardens in target households"
+    },
+    {
+      "item": "Village demonstration plots and community seed banks",
+      "unit": "per village",
+      "contributes": "Hands-on learning and sustained seed availability"
+    },
+    {
+      "item": "Low-cost water management and fencing support",
+      "unit": "per household or per demonstration plot",
+      "contributes": "Year-round garden viability and protection from livestock"
+    },
+    {
+      "item": "Household kitchen garden training",
+      "unit": "per training batch",
+      "contributes": "Skills for garden establishment and maintenance"
+    },
+    {
+      "item": "Community Nutrition Resource Person training and refreshers",
+      "unit": "per training day or batch",
+      "contributes": "Counselling capacity of community cadre"
+    },
+    {
+      "item": "Joint trainings for Anganwadi Workers, ASHAs and SHG leaders",
+      "unit": "per training batch",
+      "contributes": "Shared understanding and convergence routines with frontline workers"
+    },
+    {
+      "item": "Cooking demonstrations and nutrition sessions materials",
+      "unit": "per session",
+      "contributes": "Behaviour change on dietary diversity and infant and young child feeding"
+    },
+    {
+      "item": "IEC and counselling materials (pictorial, local language)",
+      "unit": "per set or lot",
+      "contributes": "Consistent counselling messages across villages"
+    },
+    {
+      "item": "Growth monitoring support equipment (supplementary)",
+      "unit": "per set per village",
+      "contributes": "Community-level growth tracking alongside Anganwadi"
+    },
+    {
+      "item": "Referral and follow-up support",
+      "unit": "per referral case or lump sum",
+      "contributes": "Facilitating access of at-risk children and mothers to government facilities"
+    },
+    {
+      "item": "Block and district convergence meetings",
+      "unit": "per meeting",
+      "contributes": "Institutionalising coordination with ICDS and health departments"
+    },
+    {
+      "item": "Exposure visits",
+      "unit": "per visit or participant",
+      "contributes": "Peer learning for SHG leaders and community cadre"
+    },
+    {
+      "item": "Baseline and endline surveys",
+      "unit": "per survey round",
+      "contributes": "Measuring change in outcome indicators"
+    },
+    {
+      "item": "Household tracking system (mobile or digital tools)",
+      "unit": "per device or licence, lump sum",
+      "contributes": "Monitoring of mothers, children and garden status"
+    },
+    {
+      "item": "Documentation and learning products",
+      "unit": "lump sum",
+      "contributes": "Case studies, learning briefs, dissemination"
+    },
+    {
+      "item": "Staff travel and local conveyance",
+      "unit": "per person-month",
+      "contributes": "Field presence across 20 villages"
+    },
+    {
+      "item": "Office running costs (field office)",
+      "unit": "per month",
+      "contributes": "Operational base in or near Murhu"
+    },
+    {
+      "item": "Administrative and overhead costs",
+      "unit": "percentage of direct costs",
+      "contributes": "Organisational management, finance, compliance and audit"
+    }
+  ],
+  "research_needs": [
+    "Demographic profile of Khunti district and Murhu block: total population, Scheduled Tribe share and main tribal communities, number of villages and households, literacy (especially female literacy), and sex ratio. Sources: Census 2011, District Census Handbook Khunti, and more recent official estimates where available.",
+    "District maternal and child nutrition indicators for Khunti: stunting, wasting, underweight, and anaemia in children and in pregnant and non-pregnant women; minimum dietary diversity and adequate diet among children 6–23 months; exclusive breastfeeding; institutional delivery; ANC coverage. Sources: NFHS-5 district fact sheet, with trends against NFHS-4 and the Jharkhand state average.",
+    "Socioeconomic context of Murhu block: livelihoods and agricultural patterns, landholding, seasonal migration, poverty and food security indicators, and PDS coverage.",
+    "ICDS infrastructure and service delivery in Murhu: the ICDS project covering Murhu, number of Anganwadi centres, Take-Home Ration and supplementary nutrition delivery status, and growth monitoring practice under Poshan 2.0 / Saksham Anganwadi and Poshan Tracker.",
+    "Health system context in Murhu: health facilities (CHC, PHCs, sub-centres / Health and Wellness Centres), ASHA and ANM coverage, VHSND functioning, and the nearest Malnutrition Treatment Centre (MTC) for referrals.",
+    "Relevant central and state policies and schemes: Poshan Abhiyaan / Mission Poshan 2.0, Pradhan Mantri Matru Vandana Yojana, Janani Suraksha Yojana, any Jharkhand state maternal or child nutrition schemes, Jharkhand millet initiatives, and state convergence guidance between ICDS, health and the SRLM.",
+    "JSLPS (Jharkhand State Livelihood Promotion Society) presence in Murhu: SHG and Village Organisation coverage, any existing nutri-garden, Poshan Vatika or food-nutrition-health-WASH (FNHW) interventions, and community cadres already in place. Needed for alignment and to avoid duplication.",
+    "Agro-climatic suitability for kitchen gardens in Khunti: rainfall pattern, soil types, water availability across seasons, climate risks (dry spells, erratic monsoon), and suitable local and indigenous crops, greens, millets and forest foods.",
+    "Sector evidence on nutrition-sensitive agriculture and homestead or kitchen gardens improving dietary diversity in India or comparable contexts.",
+    "Sector evidence on SHG- or women's-group-based nutrition behaviour change and participatory approaches in tribal eastern India.",
+    "Evidence and good practice on community-level convergence between SHGs, Anganwadi and health services in India.",
+    "Local access and implementation considerations in Murhu relevant to field operations, such as village connectivity and remoteness, to be established from official or credible sources only."
+  ],
+  "org_fit": "This builds directly on EcoKheti's SHG-led livelihoods and nutrition project with 1,200 women in Khunti and Gumla, which reported improved dietary diversity in 60% of households. It also uses the organisation's climate-resilient agriculture practice for year-round kitchen gardens, and its stated values of women's agency and convergence with public systems.",
+  "format_notes": "No external RFP or donor format is prescribed. A standard full proposal structure applies: background and need, problem analysis, objectives, theory of change, activities, implementation plan and timeline, convergence and sustainability strategy, MEL framework with logframe, risk management, organisational capacity, and detailed budget. It can be tailored once a donor is identified.",
+  "gaps": [
+    "The budget was not specified. Rs. 1.4 Crore over 2 years is an indicative planning envelope estimated for this scope and must be confirmed.",
+    "No donor was specified, so the proposal is framed donor-agnostic.",
+    "The target of about 1,200 women needs clarifying: are all of them pregnant or lactating women, or SHG member women of whom pregnant and lactating women and mothers of children under five form a subset? The number of children under five is not stated.",
+    "The 20 villages are not yet named, and it is unclear whether they overlap with the earlier Khunti project area or with existing JSLPS nutrition interventions."
+  ],
+  "questions_for_user": [
+    "We have estimated a total budget of about Rs. 1.4 Crore over 2 years for this scope. Please confirm this figure or give a different ceiling.",
+    "Are the ~1,200 women all pregnant or lactating women, or SHG member women from households with pregnant or lactating women and children under five? Do you have an approximate count of children under five?",
+    "Have the 20 villages in Murhu been identified? Do they continue from your earlier SRLM-funded work in Khunti, or are they new villages?",
+    "Do you have any existing working relationship or MoU with the Murhu ICDS project office, the block health team or JSLPS that the proposal can reference?"
+  ]
+}

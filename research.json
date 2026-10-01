@@ -1,0 +1,195 @@
+{
+  "context_facts": [
+    {
+      "fact": "Total population of Kanker (Uttar Bastar Kanker) district",
+      "value": "748,941 in 2011 (373,338 male, 375,603 female); 15.06% growth over 2001",
+      "geography_level": "District",
+      "source_title": "Kanker (Uttar Bastar Kanker) District Population Census 2011 (census2011.co.in, reproducing Directorate of Census Operations, Chhattisgarh data)",
+      "source_url": "https://www.census2011.co.in/census/district/498-kanker.html",
+      "year": "2011"
+    },
+    {
+      "fact": "Literacy in Kanker district, by gender",
+      "value": "70.29% overall; male 80.03%, female 60.64%",
+      "geography_level": "District",
+      "source_title": "Kanker (Uttar Bastar Kanker) District Population Census 2011 (census2011.co.in, reproducing Census 2011)",
+      "source_url": "https://www.census2011.co.in/census/district/498-kanker.html",
+      "year": "2011"
+    },
+    {
+      "fact": "Scheduled Tribe share of population and ST literacy in Uttar Bastar Kanker",
+      "value": "ST share is 55% of the population. ST child sex ratio is 993. Literacy is 62% overall and 55% for STs. NHSRC's overall literacy figure is lower than the 70.29% in the Census aggregator, probably because of a different denominator, so reconcile before use.",
+      "geography_level": "District",
+      "source_title": "NHSRC – Demographic Status of Scheduled Tribe Population From Census Data",
+      "source_url": "https://nhsrcindia.org/sites/default/files/2021-05/Demographic%20Status%20of%20Scheduled%20Tribe%20Population%20-%20NHSRC.pdf",
+      "year": "2011"
+    },
+    {
+      "fact": "Durgkondal (Durgakondal) tehsil: population and households",
+      "value": "64,293 people (32,211 male, 32,082 female) in 12,888 households; about 900 sq km; density 71 per sq km; children aged 0–6 are 15.11%",
+      "geography_level": "Block/Tehsil",
+      "source_title": "Durgkondal Taluk Population, Uttar Bastar Kanker (censusindia2011.com, reproducing Census 2011; this is a secondary aggregator, so verify against the District Census Handbook)",
+      "source_url": "https://www.censusindia2011.com/chhattisgarh/uttar-bastar-kanker/durgkondal-population.html",
+      "year": "2011"
+    },
+    {
+      "fact": "Durgkondal tehsil: Scheduled Tribe and Scheduled Caste population",
+      "value": "ST 49,250 (about 76.6% of the population); SC 3,453 (about 5.37%)",
+      "geography_level": "Block/Tehsil",
+      "source_title": "List of Villages in Durgkondal Tehsil, Uttar Bastar Kanker (VillageInfo.in, reproducing Census 2011; secondary aggregator, verify against the District Census Handbook)",
+      "source_url": "https://villageinfo.in/chhattisgarh/uttar-bastar-kanker/durgkondal/",
+      "year": "2011"
+    },
+    {
+      "fact": "Durgkondal tehsil: literacy rate",
+      "value": "53.15% overall; male 62.15%, female 44.12%. This is well below the district's 70.29%. There were 34,174 literate persons.",
+      "geography_level": "Block/Tehsil",
+      "source_title": "Durgkondal Taluk Population, Uttar Bastar Kanker (censusindia2011.com, reproducing Census 2011; secondary aggregator, verify against the District Census Handbook)",
+      "source_url": "https://www.censusindia2011.com/chhattisgarh/uttar-bastar-kanker/durgkondal-population.html",
+      "year": "2011"
+    },
+    {
+      "fact": "PVTGs in Chhattisgarh: groups and combined population",
+      "value": "Five centrally notified PVTGs (Abujhmadia, Baiga, Birhor, Kamar, Pahadi Korwa) with a combined population of 1,86,918 across 18 districts. ECI deployed extra vehicles in Kanker as part of its PVTG voter outreach.",
+      "geography_level": "State",
+      "source_title": "PIB – ECI's efforts over last two years brings PVTG Communities into electoral process",
+      "source_url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2019294",
+      "year": "2024"
+    },
+    {
+      "fact": "Kamar PVTG: population and districts where they live",
+      "value": "Kamar live mainly in Gariaband, Dhamtari, Mahasamund and Kanker districts. Their 2011 population was 26,630 (figure from the state ST/SC Development Department Commissioner). The state has also given PVTG status to Pando and Bhunjia.",
+      "geography_level": "State (Kanker listed as a Kamar district)",
+      "source_title": "ThePrint (PTI) – Vulnerable tribal group 'Kamar' in Chhattisgarh's Dhamtari district gets habitat rights",
+      "source_url": "https://theprint.in/india/vulnerable-tribal-group-kamar-in-chhattisgarhs-dhamtari-district-gets-habitat-rights/1708448/",
+      "year": "2023"
+    },
+    {
+      "fact": "Kamar habitat-rights process extends to Kanker",
+      "value": "The state plans a single habitat-rights title for the whole Kamar PVTG, combining sub-habitat titles across Dhamtari, Gariaband, Mahasamund and Kanker",
+      "geography_level": "State / multi-district (includes Kanker)",
+      "source_title": "UNDP India – Empowering PVTGs: Recognition of Habitat Rights in Chhattisgarh",
+      "source_url": "https://www.undp.org/india/blog/empowering-particularly-vulnerable-tribal-groups-pvtgs-recognition-habitat-rights-chhattisgarh",
+      "year": "2023"
+    },
+    {
+      "fact": "FRA implementation status in Chhattisgarh (claims, titles, area)",
+      "value": "9,17,690 claims received (8,66,955 individual; 50,735 community). 4,90,587 titles distributed (4,45,377 individual; 45,210 community). Titled area: about 8,97,549 acres individual and about 47,78,749 acres community (about 56,76,298 acres in total), as of 30.09.2021. Some figures were read from a poorly scanned PDF, so check them against the source.",
+      "geography_level": "State",
+      "source_title": "Ministry of Tribal Affairs – FRA Monthly Progress Report, September 2021",
+      "source_url": "https://tribal.nic.in/downloads/FRA/MPR/2021/(D)%20MPR%20Sep%202021.pdf",
+      "year": "2021"
+    }
+  ],
+  "sector_evidence": [
+    {
+      "point": "Natural farming in Andhra Pradesh raised yields and net incomes, including in tribal farming systems",
+      "detail": "The APCNF True Cost Accounting study (GIST Impact / Global Alliance for the Future of Food) compared natural farming with tribal farming, rainfed dryland farming and chemical-intensive delta farming. Average yields were 11% higher and net incomes 49% higher, driven by lower input costs. The study surveyed 562 households in 12 villages across 3 agro-ecological zones between 2020 and 2022.",
+      "source_title": "GIST Impact – Groundbreaking Comparative Study Reveals Natural Farming Shows Improved Yields, Livelihoods and Health",
+      "source_url": "https://www.gistimpact.com/groundbreaking-comparative-study-reveals-natural-farming-leads-for-yields-livelihoods-and-health/"
+    },
+    {
+      "point": "Crop diversity, labour use and input costs under natural farming",
+      "detail": "Crop diversity on farms rose 88% (from 2.1 to 4 crops) and labour use rose 20%. Input use and production costs fell, including pesticide, fertiliser and machinery. The 20% rise in labour is relevant for planning household labour in PVTG families.",
+      "source_title": "Natural Farming Through a Wide-Angle Lens: True Cost Accounting Study of APCNF (July 2023 report PDF)",
+      "source_url": "https://futureoffood.org/wp-content/uploads/2025/05/apcnf-tca-study_2023.pdf"
+    },
+    {
+      "point": "Health and social co-benefits of natural farming",
+      "detail": "APCNF farmers reported 33% fewer sick days and 26% lower health costs. The study also found stronger social capital, with women playing a key role.",
+      "source_title": "Global Alliance for the Future of Food – Natural Farming through a Wide Angle Lens (publication page)",
+      "source_url": "https://futureoffood.org/publication-library/natural-farming-through-a-wide-angle-lens/"
+    },
+    {
+      "point": "Government position on natural farming and climate resilience",
+      "detail": "The Government of India says natural farming lowers input costs and reliance on purchased inputs, restores soil health, and builds resilience to waterlogging, flood and drought. Trained farmers make Jeevamrit and Beejamrit from their own livestock or buy them from Bio-input Resource Centres.",
+      "source_title": "PMIndia – Launch of National Mission on Natural Farming",
+      "source_url": "https://www.pmindia.gov.in/en/news_updates/launch-of-national-mission-on-natural-farming/"
+    },
+    {
+      "point": "National adoption under NMNF",
+      "detail": "About 70,021 Krishi Sakhis had been trained by 28 March 2025. More than 10 lakh farmers were enrolled by 22 July 2025, and about 28,000 Community Resource Persons had been identified.",
+      "source_title": "DD News – National Mission on Natural Farming brings sustainable shift in agri sector",
+      "source_url": "https://ddnews.gov.in/en/national-mission-on-natural-farming-brings-sustainable-shift-in-agri-sector/"
+    }
+  ],
+  "policy_context": [
+    {
+      "item": "National Mission on Natural Farming (NMNF)",
+      "relevance": "Standalone Centrally Sponsored Scheme approved on 25 November 2024 with an outlay of ₹2,481 crore (Centre ₹1,584 crore, states ₹897 crore), running to 2025-26. Targets: 7.5 lakh ha, 15,000 clusters, 1 crore farmers and 10,000 Bio-input Resource Centres. The project's clusters can converge with this scheme.",
+      "source_title": "PIB – National Mission on Natural Farming (NMNF) press note",
+      "source_url": "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=155019&reg=3&lang=2"
+    },
+    {
+      "item": "NMNF cluster design: Krishi Sakhis, model farms, SRLM/FPO preference",
+      "relevance": "Clusters are formed in willing Gram Panchayats, with preference for areas that have SRLM groups, PACS or FPOs. There are to be about 2,000 model demonstration farms at KVKs and farmers' fields. The project's community resource person model can follow this design.",
+      "source_title": "Vikaspedia – National Mission on Natural Farming",
+      "source_url": "https://en.vikaspedia.in/viewcontent/schemesall/schemes-for-farmers/national-mission-on-natural-farming"
+    },
+    {
+      "item": "Forest Rights Act, 2006: individual, community and PVTG habitat rights",
+      "relevance": "The Act recognises rights of self-cultivation and habitation, community rights, and habitat rights specifically for PVTGs. This is the legal basis for farming on FRA land and for habitat-rights claims for PVTG households.",
+      "source_title": "Ministry of Tribal Affairs – Forest Rights Act",
+      "source_url": "https://tribal.nic.in/fra.aspx"
+    },
+    {
+      "item": "PVTG habitat rights precedent in Chhattisgarh (Kamar)",
+      "relevance": "Kamar in 22 settlements of Magarlod block, Dhamtari, received habitat rights in 2023, reported as a first for a PVTG in the state. The process is planned to extend to Kanker.",
+      "source_title": "ThePrint (PTI) – Vulnerable tribal group 'Kamar' in Chhattisgarh's Dhamtari district gets habitat rights",
+      "source_url": "https://theprint.in/india/vulnerable-tribal-group-kamar-in-chhattisgarhs-dhamtari-district-gets-habitat-rights/1708448/"
+    },
+    {
+      "item": "PM-JANMAN (Pradhan Mantri Janjati Adivasi Nyaya Maha Abhiyan)",
+      "relevance": "Outlay of ₹24,104 crore (Centre ₹15,336 crore). Delivers 11 interventions for PVTGs through 9 ministries. It is the main government programme to converge with for housing, roads, water and livelihoods for PVTG households.",
+      "source_title": "Deccan Herald (PTI) – Union Cabinet approves Pradhan Mantri Janjati Adivasi Nyaya Maha Abhiyan",
+      "source_url": "https://www.deccanherald.com/amp/story/india%2Funion-cabinet-approves-pradhan-mantri-janjati-adivasi-nyaya-maha-abhiyan-2789333"
+    },
+    {
+      "item": "PM-JANMAN habitation-level PVTG data",
+      "relevance": "The Ministry of Tribal Affairs, working through the states, collected habitation-level PVTG population and infrastructure gap data using the PM Gati Shakti app. This is the best source for confirming PVTG households in Durgakondal.",
+      "source_title": "PIB – Rapid Approval of Houses under PM-JANMAN",
+      "source_url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2115300&reg=48&lang=2"
+    }
+  ],
+  "cost_norms": [
+    {
+      "item": "Bio-input Resource Centre (BRC) set-up support under NMNF",
+      "rate": "₹1,00,000, paid in two tranches of ₹50,000. Excludes sheds, land or premises rent. Guidelines dated 23 April 2025. Experts have called this amount inadequate.",
+      "unit": "per BRC",
+      "source_title": "Down To Earth – Centre releases guidelines for setting up bio-resource centres to aid natural farming transition",
+      "source_url": "https://www.downtoearth.org.in/agriculture/centre-releases-guidelines-for-setting-up-bio-resource-centres-to-aid-natural-farming-transition"
+    },
+    {
+      "item": "Farmer incentive for adopting natural farming under NMNF",
+      "rate": "₹4,000 per acre per year, for 2 years",
+      "unit": "per acre per year",
+      "source_title": "PIB – National Mission on Natural Farming (NMNF) press note",
+      "source_url": "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=155019&reg=3&lang=2"
+    },
+    {
+      "item": "Krishi Sakhi / Community Resource Person staffing norm under NMNF",
+      "rate": "2 Krishi Sakhis/CRPs per natural farming cluster. The honorarium amount was not found.",
+      "unit": "per cluster",
+      "source_title": "PIB – National Mission on Natural Farming (NMNF) press note",
+      "source_url": "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=155019&reg=3&lang=2"
+    }
+  ],
+  "gaps": [
+    "Rural employment wage rate (MGNREGA / VB-G RAM G) for Chhattisgarh: I found no official source. Non-official sites give conflicting FY2025-26 figures (₹243 and ₹261 per day) and report that VB-G RAM G replaced MGNREGA from 1 July 2026 with ₹300 per day for Chhattisgarh. Reputable press gives the Chhattisgarh rate as ₹221 per day for 2023-24, with a 9.95% rise for 2024-25. The current rate and the scheme's legal status must be checked against the Ministry of Rural Development gazette notification or mgnrega.cg.nic.in before budgeting.",
+    "Which PVTG(s) live in Durgakondal block, and how many households: not found. Kamar are recorded in Kanker district, but no block-level PVTG count was found. The target of about 1,000 PVTG households must be checked against PM-JANMAN habitation survey data (Kanker district administration or the state Tribal Department) and a field listing. If the number of PVTG households in the block is smaller, the target group may need to be framed as PVTG plus other ST households.",
+    "Block-level Census 2011 data for Durgakondal comes only from secondary aggregators, and they disagree on the village count (141 vs 150). One of them also wrongly labels the block 100% urban. Verify against the Census 2011 District Census Handbook / Primary Census Abstract for Uttar Bastar Kanker.",
+    "NFHS-5 (2019-21) district factsheet for Kanker (child stunting, wasting, anaemia, women's BMI): not retrieved; needs to be collected.",
+    "Poverty data for Kanker/Durgakondal (SECC 2011 deprivation indicators, NITI Aayog multidimensional poverty index for the district): not retrieved.",
+    "Forest cover of Kanker district (India State of Forest Report) and household dependence on forest produce (collection, income share, sale prices): not retrieved; needs ISFR data plus a baseline survey.",
+    "FRA titles at district and block level for Kanker/Durgakondal (number of titles, average area per title, community forest resource titles, PVTG habitat-rights status): not retrieved. The latest state-level Ministry of Tribal Affairs progress report found dates from September 2021 and should be updated.",
+    "Agriculture baseline for Durgakondal: cropping pattern, irrigation share, landholding size, yields of paddy, millets and pulses, current chemical input use and costs. Not found; needs the district agriculture plan, the KVK Kanker, and a baseline survey.",
+    "Climate data for Kanker: rainfall trends, dry spells and extreme events (IMD / state climate change action plan). Not retrieved.",
+    "Chhattisgarh's own natural farming or organic programme and the state's NMNF annual action plan (clusters allotted to Kanker): not retrieved.",
+    "What happens to NMNF after 2025-26: approved only up to the end of the 15th Finance Commission period (2025-26). Its continuation and funding for 2026-29 need to be confirmed.",
+    "NGO field-staff salary norms in Chhattisgarh (project coordinator, field facilitators, community resource persons): no authoritative benchmark found. Consider SRLM/Bihan CRP honoraria, NMNF Krishi Sakhi honorarium, or the state minimum wage notification (Labour Department, April–September 2026), which was not retrieved.",
+    "Training cost norms (per participant per day, residential and non-residential) under ATMA / NMNF / MANAGE guidelines: not retrieved.",
+    "Seed-kit, bio-input kit (drums, cattle-dung and urine collection, tools) and nursery cost norms (for example state horticulture or MIDH rates per nursery, costs per sapling): not retrieved; need official unit-cost schedules or local market quotes.",
+    "FPO/collective support norms (for example the central 10,000 FPO scheme's support per FPO, equity grant and cluster-based business organisation fees): not retrieved in this search and needs verifying from official scheme guidelines.",
+    "Field evidence on natural farming yields, costs and adoption specific to Chhattisgarh or Bastar: none found. Evidence here comes from Andhra Pradesh and national sources; a local pilot or baseline would strengthen the case."
+  ]
+}

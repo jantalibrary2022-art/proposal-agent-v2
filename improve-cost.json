@@ -1,0 +1,76 @@
+{
+  "cost_norms": [
+    {
+      "item": "MGNREGA wage rate, Jharkhand (current). MGNREGA has been replaced by VB-G RAM G",
+      "rate": "INR 300 per person-day (unskilled manual work)",
+      "unit": "per person-day",
+      "basis": "The Ministry of Rural Development notified revised wage rates under the VB-G RAM G Act, 2025, which replaced MGNREGA, effective 1 July 2026. The notification sets an interim base wage of INR 300 per day, so no notified state wage can be lower. It also names Jharkhand among the states getting substantial increases. The Centre did not revise MGNREGA wages for 2026-27, so the 2025-26 rates applied from April to June 2026.",
+      "applicability": "Use this as the statutory rural unskilled wage benchmark from 1 July 2026, for example for valuing community labour contributions or checking daily honoraria for unskilled work. The PIB release sets the INR 300 floor and names Jharkhand. The exact Jharkhand figure of INR 300 comes from press reports of the notification (Outlook Business and Tribune, 1 July 2026). Attach the MoRD gazette notification to the proposal. For any April-June 2026 period, the older MGNREGA 2025-26 rate applies and should be checked separately.",
+      "source_title": "Government Notifies Revised Wage Rates under the VB–G RAM G Act, 2025 (PIB, Ministry of Rural Development)",
+      "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2279660&reg=3&lang=1",
+      "year": "2026"
+    },
+    {
+      "item": "Project Coordinator salary (NGO project staff, Jharkhand)",
+      "rate": "INR 25,000 – 40,000 per month (consolidated, inclusive of all)",
+      "unit": "per month",
+      "basis": "A Government of Jharkhand Rural Development Department / JSLPS recruitment notice for block-level contractual posts (Block Project Officer, Accounts Officer and others). It sets pay at INR 25,000–40,000 per month depending on qualification and experience, all inclusive. Mediclaim, communication and laptop allowances are paid on top.",
+      "applicability": "This is the closest state benchmark for a block-level coordinator running a single-block, 12-month project in Angara block. The notice dates from 2019, so justify a figure near the top of the band, or check it against a current JSLPS notice. The copy found is the official notice hosted on a third-party site (freejobalert). Get the original from jslps.in if the reviewer asks for it. Reading the notice, the range seems to cover several posts, including Accounts Officer, but this could not be confirmed post by post.",
+      "source_title": "Government of Jharkhand (Rural Development Department) – JSLPS Notification: Block Project Officer, Accounts Officer & Other Posts",
+      "source_url": "https://img.freejobalert.com/uploads/2019/06/Notification-JSLPS-Block-Project-Officer-Accounts-Officer-Other-Posts.pdf",
+      "year": "2019"
+    },
+    {
+      "item": "Statutory wage floor for Field Facilitator, Accounts/Admin support and survey enumerators (Jharkhand minimum wage)",
+      "rate": "Unskilled, Category A: INR 515 per day (about INR 13,385 per month). Semi-skilled, skilled, highly skilled and Category C (rural) rates are in the notification.",
+      "unit": "per day / per month",
+      "basis": "A notification of 25 May 2026 from the Government of Jharkhand Department of Labour, Employment, Training & Skill Development, issued under Section 6 of the Code on Wages, 2019. It revises the Variable Dearness Allowance, with effect from 1 April 2026. Category A covers Ranchi Municipal Corporation and other large urban bodies. Category C is rural areas.",
+      "applicability": "This is a legal minimum, not a salary norm. Field Facilitator, Accounts/Admin and enumerator pay must not fall below the relevant grade: skilled or highly skilled for accounts staff, semi-skilled or skilled for facilitators and enumerators. Angara is rural (Category C), but an office in Ranchi city would fall under Category A. The INR 515 figure comes from a compliance service's summary of the notification, not the gazette itself. At least one other secondary source said no April 2026 revision had been issued. Get the gazette PDF from the Jharkhand Labour Department before finalising, and read the Category C and skilled rates from it.",
+      "source_title": "Minimum Rate of Wages – Jharkhand (May, 2026) – SGCMS Regulatory Updates (summarising the Jharkhand Labour Department notification dated 25-05-2026)",
+      "source_url": "https://www.sgcms.com/regulatory-updates/minimum-rate-of-wages-jharkhand-may-2026/",
+      "year": "2026"
+    },
+    {
+      "item": "Livelihood skills training, per batch: village/block-level trainee cost norm",
+      "rate": "INR 400 per trainee per day (all-inclusive)",
+      "unit": "per trainee per day",
+      "basis": "MANAGE cost norms for Skill Training of Rural Youth (STRY) and farmers' capacity building. INR 400 per trainee per day is allowed under the ATMA cafeteria and covers boarding, lodging, resource persons, materials and similar costs.",
+      "applicability": "Directly applicable to non-residential or short livelihood trainings on poultry, goat, mushroom and kitchen gardens. Batch cost = trainees × days × INR 400. For example, 25 trainees × 2 days = INR 20,000 per batch. Budget extra for PwD participants (accessible venue, escorts, sign-language interpretation) and justify it separately. This is a national norm; no Jharkhand-specific ATMA schedule was found.",
+      "source_title": "Skill Training for Rural Youth (STRY) & Farmers' Capacity Assessment – Cost Norms (MANAGE)",
+      "source_url": "https://www.manage.gov.in/stry&fcac/costnorms-stry.asp",
+      "year": null
+    },
+    {
+      "item": "Livelihood skills training, per batch: ATMA cafeteria farmer-training norm (alternative benchmark)",
+      "rate": "Within district: INR 250 per farmer per day. Within state: INR 1,000 per farmer per day. Inter-state: INR 1,250 per farmer per day. Exposure visit within district: INR 300 per participant per day.",
+      "unit": "per participant per day",
+      "basis": "ATMA cafeteria cost norms for farmer training and exposure visits, as published on a district government site. The site is not in Jharkhand and appears to be Bilaspur, Chhattisgarh.",
+      "applicability": "Use the within-district INR 250 rate for block-level trainings held in Angara, and the INR 300 rate for exposure visits within the district. These are older national ATMA norms. The Operational Guidelines of ATMA Scheme, 2025 are on agriwelfare.gov.in (https://agriwelfare.gov.in/Documents/Revised_guidelinesATMA_2025.pdf), but their revised rates could not be pulled from search. Check that document before citing it as current.",
+      "source_title": "Agriculture | District Bilaspur (ATMA cafeteria norms)",
+      "source_url": "https://bilaspur.gov.in/en/agriculture/",
+      "year": null
+    },
+    {
+      "item": "Livelihood skills training, per batch: community-resource-person-led village training norm",
+      "rate": "INR 250 per farmer for village-level cluster trainings (batches of 50). INR 100 per farmer per one-day CRP/LRP training (batches of 25). INR 50,000 for a 2-day capacity-building training of 15 resource persons.",
+      "unit": "per participant per training / per batch",
+      "basis": "Guidelines of Bhartiya Prakritik Krishi Paddhati (BPKP, the natural farming sub-scheme), published on NITI Aayog's natural farming portal. They set capacity-building cost norms for village-level farmer trainings and for training CRPs and LRPs.",
+      "applicability": "A good fit for refresher trainings run by CRPs or the PwD collective's own resource persons. For example, 25 participants × INR 100 = INR 2,500 per one-day batch. The INR 50,000 per 15-person norm can be used to train CRPs or PwD collective leaders. These are national norms from a 2021 guideline and may need an inflation adjustment.",
+      "source_title": "Guidelines of BPKP (NITI Aayog Natural Farming portal)",
+      "source_url": "https://naturalfarming.niti.gov.in/wp-content/uploads/2021/09/Guidelines_of_BPKP.pdf",
+      "year": "2021"
+    }
+  ],
+  "gaps": [
+    "Field Facilitator salary: no authoritative JSLPS pay norm was found for Community Coordinators or equivalent field cadre. Figures of about INR 12,500–20,000 per month appear only on coaching and job websites, which are not authoritative. Needs a local quote or field rate, or the current JSLPS recruitment notice. Pay must be at or above the Jharkhand minimum wage for the relevant grade (see cost_norms).",
+    "Accounts / Admin support salary: no Jharkhand scheme norm was found specific to a part-time or full-time NGO accounts assistant. The JSLPS 2019 notice lists Accounts Officer posts, but the pay range could not be confirmed post by post. Needs a local quote or field rate, at or above the Jharkhand skilled minimum wage.",
+    "Backyard poultry unit (15–20 Vanaraja/Kuroiler birds + feed + night shelter): the Jharkhand Animal Husbandry Directorate runs backyard poultry under the Mukhyamantri Pashudhan Vikas Yojana (MPVY), but no official per-unit cost schedule could be found. A figure of about INR 14,700 per unit appears only in news reports and doesn't match this unit size. Needs a local quote or field rate, or the current MPVY guideline or district AH office unit-cost order, which may also allow 75–90% subsidy convergence for PwD beneficiaries.",
+    "Goat unit (3–4 Black Bengal goats + veterinary kit): the Jharkhand Animal Husbandry Directorate sets the scheme unit as 4 female + 1 male Black Bengal goats, with priority for women, SHGs and destitute widows from BPL families (animalhusbandry.jharkhand.gov.in/state-schemes/). No official INR unit cost was found. Needs a local quote or field rate, or the current MPVY goat-unit cost order from the District Animal Husbandry Officer, Ranchi. Consider matching the project unit to the 4+1 scheme norm so beneficiaries can use MPVY convergence.",
+    "Oyster mushroom starter kit (per household): MIDH / NHB cost norms (nhb.gov.in MIDH Operational Guidelines 2025) cover commercial mushroom production, spawn and compost units, not household kits. No authoritative household-kit norm was found. Needs a local quote or field rate, for example from a spawn lab at a KVK or Birsa Agricultural University.",
+    "Kitchen / nutrition garden inputs (raised bed, seeds, organic inputs, per household): no government per-household cost norm was found. Poshan Vatika norms from NMPB/Ayush are for school or Anganwadi gardens, and JSLPS 'Didi Bari' unit costs were not found in any official source. Needs a local quote or field rate. Also look at convergence with VB-G RAM G (formerly MGNREGA) or JSLPS nutri-garden support.",
+    "Household survey enumerator cost (per interview or per day, Jharkhand): no authoritative Jharkhand or national per-interview rate was found. Needs a local quote or field rate, with a per-day rate at or above the Jharkhand semi-skilled or skilled minimum wage.",
+    "Government scheme facilitation camp (per event: venue, tent, refreshments, documentation, accessibility): no authoritative per-event norm was found. Needs a local quote or field rate. Ask the district administration about joint camps (for example with the District Disability Rehabilitation Centre, ALIMCO assessment camps, or 'Aapki Yojana Aapki Sarkar Aapke Dwar' style camps) so government funds cover part of the cost.",
+    "Minimum wage verification: the official Jharkhand Labour Department gazette for 1 April 2026 (Category C rural rates, all skill grades) could not be retrieved from a government URL. Get it from the Labour Department before finalising staff and enumerator rates.",
+    "VB-G RAM G wage for Jharkhand: the INR 300 per day figure for Jharkhand comes from press reports. Attach the MoRD gazette notification (effective 1 July 2026) for the exact state figure."
+  ]
+}

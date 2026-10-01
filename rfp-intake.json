@@ -1,0 +1,209 @@
+{
+  "donor": "SBI Foundation (SBIF)",
+  "themes": [
+    "Climate Smart Livelihoods (focus of this call)",
+    "SBIF general focus areas listed in the RFP 'About' section: Livelihoods & Entrepreneurship, Education, Environment, Sports, Rural Development, Healthcare, Disability & Inclusion, Women Empowerment"
+  ],
+  "geography": {
+    "stated": "India",
+    "constraint": "The applicant must be registered in India and have an existing presence in the state where the project is proposed.",
+    "left_to_applicant": true
+  },
+  "target_group": {
+    "stated": "Small and marginal farmers in climate-vulnerable areas, tribal communities, landless farmers, women, youth, persons with disabilities, and members of Self-Help Groups (SHGs), Farmer Producer Organisations (FPOs), Joint Liability Groups (JLGs) and Common Interest Groups (CIGs).",
+    "left_to_applicant": true
+  },
+  "budget": {
+    "min": "Rs. 50.00 Lakhs",
+    "max": "Rs. 5.00 Crore",
+    "currency": "INR",
+    "notes": "Eligibility depends on revenue tier. Proposals of Rs. 50-100 Lakh require cumulative annual revenue of Rs. 2 Crore or more. Larger proposals require Rs. 5 Crore or more. EcoKheti's revenue is Rs. 2.4 Crore, so its effective ceiling is Rs. 1.00 Crore (100 Lakh)."
+  },
+  "duration": {
+    "min": "1 year",
+    "max": "3 years",
+    "notes": "The support period must start in the current financial year. The RFP does not name the financial year. With a 14 June 2025 deadline, this most likely means FY 2025-26 under India's April-March financial year. This is an inference and should be confirmed."
+  },
+  "eligibility": [
+    "Registered non-profit with a minimum of 3 years of organisational existence",
+    "Registered in India",
+    "Minimum 3 years of experience in the proposed thematic area",
+    "Existing presence in the proposed state",
+    "Cumulative annual revenue of Rs. 2 Crore or more for proposals of Rs. 50-100 Lakh; Rs. 5 Crore or more for larger proposals",
+    "Minimum 3 board members",
+    "Minimum 5 permanent employees",
+    "Completed at least 3 similar projects funded by public, government or foundation sources",
+    "No political or religious affiliations",
+    "Ineligible if an individual donor is among the organisation's top 3 donors",
+    "Rejection if due diligence documents (Annexure II) are not furnished"
+  ],
+  "eligibility_check": [
+    {
+      "requirement": "Registered non-profit with a minimum of 3 years of organisational existence",
+      "status": "met",
+      "evidence": "Section 8 non-profit company registered in India in 2016, giving roughly 9 years of existence."
+    },
+    {
+      "requirement": "Registered in India",
+      "status": "met",
+      "evidence": "Profile legal_status: 'Section 8 non-profit company, registered in India'."
+    },
+    {
+      "requirement": "Minimum 3 years of experience in the proposed thematic area (Climate Smart Livelihoods)",
+      "status": "met",
+      "evidence": "thematic_experience lists 'Climate smart / climate-resilient livelihoods' at 5 years and 'Community-based livelihoods' at 8 years."
+    },
+    {
+      "requirement": "Existing presence in the proposed state",
+      "status": "met",
+      "evidence": "Met only if the project is located in Jharkhand or Chhattisgarh, the two states in states_present. A project in any other state would fail this gate."
+    },
+    {
+      "requirement": "Cumulative annual revenue ≥ Rs. 2 Crore (for proposals of Rs. 50-100 Lakh)",
+      "status": "met",
+      "evidence": "annual_revenue: Rs. 2.4 Crore. The profile does not say which year(s) this figure covers or whether it is audited. The RFP's word 'cumulative' is undefined."
+    },
+    {
+      "requirement": "Cumulative annual revenue ≥ Rs. 5 Crore (for proposals above Rs. 100 Lakh)",
+      "status": "not_met",
+      "evidence": "annual_revenue of Rs. 2.4 Crore is below Rs. 5 Crore. EcoKheti must keep its request at or below Rs. 1.00 Crore."
+    },
+    {
+      "requirement": "Minimum 3 board members",
+      "status": "met",
+      "evidence": "board_members: 5."
+    },
+    {
+      "requirement": "Minimum 5 permanent employees",
+      "status": "met",
+      "evidence": "permanent_staff: 9."
+    },
+    {
+      "requirement": "Completed at least 3 similar projects funded by public, government or foundation sources",
+      "status": "met",
+      "evidence": "Three past projects have qualifying funders: State Rural Livelihoods Mission (government), a CSR foundation (foundation) and a public programme (public). All are livelihood projects. Only one (climate-resilient agriculture, Chhattisgarh) is explicitly climate-focused, and the profile does not say whether the projects are completed. If SBIF reads 'similar' strictly as climate-smart livelihoods, or requires completion evidence, this gate carries risk."
+    },
+    {
+      "requirement": "No political or religious affiliations",
+      "status": "met",
+      "evidence": "affiliations: 'None (no political or religious affiliation)'."
+    },
+    {
+      "requirement": "No individual donor among the organisation's top 3 donors",
+      "status": "met",
+      "evidence": "donor_concentration: 'No individual donor is among the top 3 donors'."
+    },
+    {
+      "requirement": "Furnish due diligence documents listed in Annexure II",
+      "status": "unclear",
+      "evidence": "The profile is silent on document readiness, and Annexure II is not included in the RFP text provided."
+    }
+  ],
+  "evaluation_criteria": [
+    "Preference to organisations demonstrating measurable outcomes to ensure effectiveness and efficiency",
+    "Proven track record of designing and implementing climate smart livelihoods projects"
+  ],
+  "deadline": "14 June 2025",
+  "prescribed_format": null,
+  "limits": {
+    "word": null,
+    "page": null
+  },
+  "mandatory_components": [
+    "Proposal",
+    "Due diligence documents as listed in Annexure II"
+  ],
+  "compliance_notes": [
+    "Annexure II (the due diligence document list) is referenced but not included in the RFP text. Obtain it before submission, because missing documents lead to rejection.",
+    "Keep the total request between Rs. 50 Lakh and Rs. 1.00 Crore. EcoKheti's Rs. 2.4 Crore revenue does not meet the Rs. 5 Crore threshold for larger proposals.",
+    "Locate the project in Jharkhand or Chhattisgarh to satisfy the existing-state-presence requirement.",
+    "Prepare evidence of the revenue figure (audited financials) and clarify what 'cumulative annual revenue' means: the latest year, an average, or a multi-year sum.",
+    "Prepare evidence for the 3 similar projects (completion reports, funder details) and frame them around climate-smart livelihoods to address the 'similar' test and the track-record criterion.",
+    "Prepare evidence of board composition (5 members), permanent staff (9), donor concentration and non-affiliation, as these are likely due diligence items.",
+    "The project must start in the current financial year. Plan the implementation timeline accordingly.",
+    "The submission method (portal, email or address) and the time and time zone on the deadline date are not stated. Confirm them with SBIF.",
+    "No prescribed proposal format or word/page limits are specified. The applicant may choose the structure.",
+    "The RFP text was compiled from a fundsforNGOs listing for internal testing. Verify all terms against the official SBIF call."
+  ],
+  "clarity": {
+    "charts_clear_path": false,
+    "open_decisions": [
+      {
+        "field": "Project concept / thematic focus",
+        "undefined": "The call is titled Climate Smart Livelihoods, but it also lists eight broad SBIF focus areas. It does not define what counts as a climate smart livelihoods intervention.",
+        "why_it_matters": "The concept drives the entire proposal and determines how strongly EcoKheti's track record maps to the second evaluation criterion.",
+        "bounds": "Must sit within Climate Smart Livelihoods."
+      },
+      {
+        "field": "Geography (state and districts)",
+        "undefined": "The RFP names all of India. The specific state, districts and blocks are left to the applicant.",
+        "why_it_matters": "Existing state presence is an eligibility gate. Climate vulnerability of the chosen area also supports targeting of the priority group.",
+        "bounds": "India; must be a state where the applicant already works (Jharkhand or Chhattisgarh for EcoKheti)."
+      },
+      {
+        "field": "Target group and scale",
+        "undefined": "The RFP lists many eligible groups but sets no priority among them and no minimum or maximum number of beneficiaries.",
+        "why_it_matters": "The choice of group and reach sets cost-per-beneficiary, efficiency and the measurability of outcomes, which are evaluation preferences.",
+        "bounds": "Must be drawn from the listed groups."
+      },
+      {
+        "field": "Budget",
+        "undefined": "The RFP sets a wide band of Rs. 50 Lakh to Rs. 5 Crore, gated by the applicant's revenue.",
+        "why_it_matters": "The budget sets scope and duration, and a request above the eligible tier would disqualify the proposal.",
+        "bounds": "Rs. 50 Lakh to Rs. 1.00 Crore for EcoKheti (revenue tier)."
+      },
+      {
+        "field": "Duration",
+        "undefined": "The support period can be anywhere from 1 to 3 years.",
+        "why_it_matters": "Duration affects which outcomes are achievable and measurable, and how the budget is phased.",
+        "bounds": "1 to 3 years, starting in the current financial year."
+      },
+      {
+        "field": "Proposal structure",
+        "undefined": "No format, sections or length limits are prescribed.",
+        "why_it_matters": "The engine must choose a structure that foregrounds measurable outcomes and the climate-smart track record.",
+        "bounds": null
+      }
+    ],
+    "contradictions": [
+      "The call is framed as 'Climate Smart Livelihoods', yet it lists eight SBIF focus areas (for example, Sports, Education and Healthcare). It is unclear whether proposals outside climate smart livelihoods are accepted. The call title suggests they are not.",
+      "'Cumulative annual revenue' is internally ambiguous. 'Cumulative' suggests a multi-year sum, while 'annual' suggests a single year."
+    ],
+    "missing_essentials": [
+      "Annexure II due diligence document list",
+      "Submission method and channel",
+      "Time and time zone on the deadline date",
+      "Evaluation scoring weights or process",
+      "Definition of 'similar projects' and whether completion proof is required",
+      "Definition of the reference period for the revenue test",
+      "Explicit identification of the 'current financial year' and the expected start date",
+      "Budget template, overhead or admin cost policy, and any co-funding expectations"
+    ]
+  },
+  "questions_for_user": [
+    {
+      "id": "q1_project_idea",
+      "question": "What specific climate smart livelihoods intervention do you want to propose? Examples include scaling climate-resilient agriculture with small and marginal farmers, strengthening FPOs with climate-adaptive value chains, or SHG-led climate-resilient enterprises. Give the core idea in 2-3 sentences.",
+      "why": "The RFP leaves the concept open. The engine needs the core idea to build the logic, results framework and activities for you to endorse.",
+      "must_respect": "Must fall within Climate Smart Livelihoods."
+    },
+    {
+      "id": "q2_geography",
+      "question": "Which state and districts (or blocks) will the project cover, and why this location? For example, climate vulnerability or existing community relationships.",
+      "why": "The RFP names only India. The location must satisfy the existing-state-presence gate, and its climate vulnerability strengthens targeting.",
+      "must_respect": "Must be Jharkhand or Chhattisgarh, where EcoKheti already has presence."
+    },
+    {
+      "id": "q3_target_group_scale",
+      "question": "Which target group(s) will the project primarily serve, and roughly how many people, households or groups do you aim to reach?",
+      "why": "The RFP lists many eligible groups without priority. The group and scale drive design, cost-efficiency and measurable outcomes.",
+      "must_respect": "Choose from the RFP-listed groups: small/marginal farmers in climate-vulnerable areas, tribal communities, landless farmers, women, youth, persons with disabilities, or members of SHGs/FPOs/JLGs/CIGs."
+    },
+    {
+      "id": "q4_budget_duration",
+      "question": "What total budget and project duration do you intend to request?",
+      "why": "Both are wide bands in the RFP. The engine will size activities and propose budget lines to fit your chosen envelope.",
+      "must_respect": "Total of Rs. 50 Lakh to Rs. 1.00 Crore (your revenue tier caps you at Rs. 100 Lakh); duration of 1 to 3 years, starting in the current financial year."
+    }
+  ]
+}

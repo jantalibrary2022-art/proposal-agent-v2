@@ -1,0 +1,799 @@
+{
+  "lang": "English",
+  "org": {
+    "name": "EcoKheti Foundation",
+    "experience": "Section 8 non-profit, registered in 2016 and present in Jharkhand and Chhattisgarh. It has 8 years in community-based livelihoods, 6 years in maternal and child nutrition, and 5 years in climate-resilient livelihoods. Track record: climate-resilient agriculture with 800 farmers in Chhattisgarh (CSR foundation), where 70% adopted climate-adaptive practices. SHG-led livelihoods and nutrition with 1,200 women in Khunti and Gumla (SRLM), with at least 45% income increase and dietary diversity improved in 60% of households. FPO strengthening for 3 FPOs with 900 members (public programme), where aggregated sales roughly doubled. Annual revenue Rs 2.4 Crore; 9 permanent staff; 5 board members.",
+    "values": "Community ownership, women's agency, convergence with public systems"
+  },
+  "theme": "Climate Smart Livelihoods: natural farming for climate resilience and livelihood security of PVTG households",
+  "geography": {
+    "state": "Chhattisgarh",
+    "district": "Uttar Bastar Kanker",
+    "block": "Durgakondal (Durgkondal)",
+    "coverage": "PVTG habitations in Durgakondal block. Villages will be identified from PM-JANMAN habitation-level data and a project household listing in Q1. The block is remote and mostly forested, with a direct link to Forest Rights Act (FRA) land."
+  },
+  "target": "Up to 1,000 PVTG households in Durgakondal block. The target is not yet verified: no block-level PVTG count was found. It will be confirmed in Q1 through PM-JANMAN data and a field listing. If fewer PVTG households exist, the cohort will be PVTG households first, topped up with other ST households.",
+  "duration": "3 years (12 quarters), starting in the current financial year (inferred FY 2025-26; to be confirmed with SBIF)",
+  "budget": "INR 99,00,000 requested (EcoKheti's revenue tier caps requests at INR 1.00 Crore); costed at INR 98,89,000",
+  "donor": "SBI Foundation (SBIF)",
+  "problem_facts": [
+    "Remote, sparse block: Durgakondal tehsil had 64,293 people in 12,888 households over about 900 sq km (density 71/sq km); children aged 0–6 were 15.11% (Census 2011 via censusindia2011.com; secondary, verify against the District Census Handbook) [S1].",
+    "Deeply tribal: STs are 49,250 people, about 76.6% of the block, against 55% for Kanker district [S2][S3].",
+    "Education deficit that shapes the training design: block literacy is 53.15%, with female literacy at 44.12%, against 70.29% for the district (Census 2011 aggregator). NHSRC gives ST literacy in the district as 55% [S1][S4][S3].",
+    "PVTG context: Chhattisgarh has 5 centrally notified PVTGs with a combined population of 1,86,918 across 18 districts. Kanker was a focus of ECI's PVTG voter outreach [S5].",
+    "Kamar PVTG are recorded in Kanker, along with Gariaband, Dhamtari and Mahasamund; their 2011 population was 26,630. The state has also given PVTG status to Pando and Bhunjia [S6].",
+    "Land tenure is in flux: the first PVTG habitat rights in the state went to the Kamar in 22 settlements of Magarlod, Dhamtari (2023). A single Kamar habitat title covering Kanker is planned [S6][S7].",
+    "FRA scale in the state (Sept 2021): 9,17,690 claims and 4,90,587 titles, covering about 8.98 lakh acres individual and 47.79 lakh acres community. Titled land needs productive, sustainable use. District and block figures are not available and will be collected [S8][S9].",
+    "Which PVTG(s) live in Durgakondal, and how many households, is unknown. The listing and baseline will establish this.",
+    "The following are not yet known and will be established by the baseline survey and secondary collection: cropping pattern, irrigation, landholding size, yields, chemical input use and cost; forest-produce dependence; climate stress such as rainfall trends and dry spells (IMD data); nutrition status (NFHS-5); and poverty (NITI MPI).",
+    "External evidence of potential, from Andhra Pradesh and not local: in the APCNF True Cost Accounting study, natural farming, including in tribal systems, gave 11% higher yields and 49% higher net incomes, driven by lower input costs. It surveyed 562 households across 3 agro-ecological zones between 2020 and 2022 [S10].",
+    "External, AP: crop diversity rose from 2.1 to 4 crops and input costs fell, but labour use rose 20%, which is a design risk for labour-constrained PVTG households [S11].",
+    "External, AP: farmers reported 33% fewer sick days and 26% lower health costs, and social capital was stronger, with women playing a key role [S12].",
+    "Government of India position: natural farming cuts purchased inputs, restores soil health and builds resilience to drought, flood and waterlogging [S13].",
+    "No Chhattisgarh or Bastar field evidence on natural farming was found. The project generates it through baseline, mid-term and endline measurement."
+  ],
+  "objective": "By the end of 3 years, up to 1,000 PVTG households in Durgakondal block practise natural farming on their own and FRA land. This lowers their cash input costs, diversifies crops and strengthens climate resilience and farm income. It is delivered through a women-led community resource person model converged with NMNF, FRA and PM-JANMAN.",
+  "results": {
+    "impact": "Improved climate resilience and livelihood security of PVTG households in Durgakondal block, Kanker.",
+    "outcomes": [
+      "O1: PVTG households adopt natural farming practices (on-farm bio-inputs, crop diversification, indigenous seed) on their cultivated and FRA land.",
+      "O2: Adopting households reduce cash cultivation costs and increase net farm income, crop diversity and collective marketing.",
+      "O3: PVTG households secure entitlements that sustain the transition: FRA and habitat-rights claims facilitated, NMNF enrolment and incentive, PM-JANMAN services and CIG-to-FPO linkage."
+    ],
+    "outputs": [
+      "1.1: 20 CRPs, preferably PVTG women, selected, trained (6-day ToT) and refreshed, each supporting about 50 households.",
+      "1.2: Up to 1,000 farmers complete 6 CRP-led farmer field school sessions across Kharif and Rabi.",
+      "1.3: 20 model demonstration plots, 5 community seed banks (indigenous varieties) and 5 Bio-input Resource Centre sheds established.",
+      "2.1: 100 Common Interest Groups (about 10 households each) formed and equipped with shared bio-input starter kits.",
+      "2.2: 40 CRPs and lead farmers complete exposure visits; CIGs linked to an FPO or the 10,000 FPO scheme for aggregation.",
+      "3.1: 8 FRA claim-facilitation camps held, and PVTG habitat-rights processes supported with the Tribal Department.",
+      "3.2: 12 quarterly block convergence meetings held; eligible households enrolled in NMNF and linked to PM-JANMAN interventions.",
+      "3.3: Household listing, baseline, mid-term review and endline completed, with learning documented."
+    ]
+  },
+  "strategy_facts": [
+    "The theory of change links secure land (FRA), low-cost natural farming, collective institutions and entitlements to lower input costs and better climate resilience.",
+    "The CRP model mirrors NMNF design (2 Krishi Sakhis/CRPs per cluster; clusters prefer areas with SRLM groups and FPOs) [S14][S15]. CRPs will be registered as NMNF Krishi Sakhis so the role continues after the project.",
+    "Women's agency: CRP roles go preferentially to PVTG women. This builds on the AP evidence of women's key role and on EcoKheti's SHG track record.",
+    "Low-literacy design (block female literacy 44.12%): practical field schools and demonstration plots in local language, not classroom training.",
+    "Labour risk (AP labour use +20%): practices are sequenced for low labour, and inputs are prepared jointly at CIG and BRC level to reduce household drudgery.",
+    "NMNF convergence: the farmer incentive of ₹4,000/acre/year for 2 years goes directly to farmers. It is not a project cost; the project facilitates enrolment [S14]. BRC set-up support (₹1 lakh per BRC) is sought from NMNF, and the project funds only shed and storage top-ups [S16].",
+    "FRA convergence: claim facilitation and alignment with the planned Kamar habitat title covering Kanker put natural farming on legally secure land [S9][S7].",
+    "PM-JANMAN convergence: the project uses habitation-level PVTG data for targeting and links households to its 11 interventions (housing, roads, water, livelihoods) [S17][S18].",
+    "FPO convergence: CIGs aggregate produce and link to an FPO under the 10,000 FPO scheme (up to ₹18 lakh management support per FPO and ₹2,000 matching equity per member, paid to the FPO, not the project) [S19].",
+    "KVK and NMNF model-farm design informs the demonstration plots [S15].",
+    "EcoKheti's evidence base: 70% adoption of climate-adaptive practices among 800 farmers in Chhattisgarh, and FPO sales roughly doubled in Jharkhand.",
+    "Sustainability: CRPs move to NMNF or Bihan roles, CIGs are federated into an FPO, and BRCs and seed banks are community-managed. Q12 is a planned handover.",
+    "Risk: NMNF is approved only to 2025-26. If it is not extended, CRP continuity will rely on Bihan/SRLM and FPO revenue."
+  ],
+  "activities_facts": [
+    "A1 Targeting and baseline: verify PVTG habitations through PM-JANMAN data, list up to 1,000 households, and run a baseline on agriculture, costs, income, crop diversity, FRA status and entitlements (Q1–Q2).",
+    "A2 CRP cadre: select 20 CRPs; run a 6-day residential ToT and 4 two-day refreshers; pay a monthly honorarium for 30 months (Q2–Q11); certify CRPs as NMNF Krishi Sakhis.",
+    "A3 Farmer field schools: 6 CRP-led sessions per farmer over two seasons, covering Jeevamrit, Beejamrit, mulching, multi-cropping, indigenous seed and pest management.",
+    "A4 Demonstration and infrastructure: 20 model plots (1 per CRP); 5 BRC sheds, with NMNF BRC support sought; 5 community seed banks of indigenous varieties.",
+    "A5 Collectives: form 100 CIGs of about 10 households; provide shared starter kits (drums, tools); run exposure visits for 40 CRPs and lead farmers; link CIGs to an FPO and aggregate surplus.",
+    "A6 Rights and entitlements: hold 8 FRA claim camps with the Tribal Department and support habitat-rights processes; enrol households in NMNF; link them to PM-JANMAN; hold quarterly block convergence meetings.",
+    "A7 MEL: a CRP-level household tracker, mid-term review (Q6), endline (Q11–Q12), learning documentation and handover."
+  ],
+  "matrix": {
+    "rows": [
+      {
+        "level": "Impact",
+        "statement": "Improved climate resilience and livelihood security of PVTG households in Durgakondal",
+        "indicator": "% of project households reporting stable or improved farm output in a climate-stress season; change in household farm income",
+        "baseline": "To be established by baseline survey",
+        "target": "Improvement over baseline among adopters (magnitude validated after baseline)",
+        "mov": "Baseline and endline household surveys; IMD seasonal data"
+      },
+      {
+        "level": "Outcome 1",
+        "statement": "PVTG households adopt natural farming practices",
+        "indicator": "No. and % of enrolled households practising at least 3 core natural farming practices on at least part of their land",
+        "baseline": "To be established by baseline survey",
+        "target": "At least 600 households (60% of enrolled)",
+        "mov": "CRP household tracker; endline survey; field verification sample"
+      },
+      {
+        "level": "Outcome 2",
+        "statement": "Reduced cultivation costs, higher net farm income and crop diversity",
+        "indicator": "Cash input cost per acre; net farm income; number of crops per farm among adopters",
+        "baseline": "To be established by baseline survey",
+        "target": "At least 20% lower cash input cost; at least 25% higher net farm income; at least 1 additional crop per farm (targets validated after baseline)",
+        "mov": "Baseline, mid-term and endline surveys; farmer cost diaries (sample)"
+      },
+      {
+        "level": "Outcome 3",
+        "statement": "Households secure entitlements that sustain the transition",
+        "indicator": "No. of households enrolled in NMNF; FRA claims filed or resolved; households linked to PM-JANMAN interventions; CIGs linked to an FPO",
+        "baseline": "To be established by baseline survey",
+        "target": "At least 600 households enrolled in NMNF; all eligible unclaimed households supported to file FRA claims; 100 CIGs linked to an FPO",
+        "mov": "NMNF enrolment records; Tribal Department and FRA committee records; FPO membership registers"
+      },
+      {
+        "level": "Output 1.1",
+        "statement": "20 CRPs trained and active",
+        "indicator": "CRPs completing ToT and refreshers; CRPs certified as Krishi Sakhis",
+        "baseline": "0",
+        "target": "20 trained; at least 15 certified",
+        "mov": "Training attendance; certification records"
+      },
+      {
+        "level": "Output 1.2",
+        "statement": "Farmers complete farmer field schools",
+        "indicator": "Farmers attending at least 5 of 6 sessions",
+        "baseline": "0",
+        "target": "At least 900 farmers",
+        "mov": "FFS attendance registers; geo-tagged photos"
+      },
+      {
+        "level": "Output 1.3",
+        "statement": "Demonstration plots, seed banks and BRCs established",
+        "indicator": "Functional demo plots, seed banks and BRCs",
+        "baseline": "0",
+        "target": "20 demo plots; 5 seed banks; 5 BRCs",
+        "mov": "Asset register; field visit reports"
+      },
+      {
+        "level": "Output 2.1",
+        "statement": "CIGs formed and equipped",
+        "indicator": "CIGs with registers and shared kits in use",
+        "baseline": "0",
+        "target": "100",
+        "mov": "CIG registers; kit distribution records"
+      },
+      {
+        "level": "Output 2.2",
+        "statement": "Exposure visits and FPO linkage",
+        "indicator": "Participants completing exposure visits; CIGs aggregating through an FPO",
+        "baseline": "0",
+        "target": "40 participants; 100 CIGs linked",
+        "mov": "Visit reports; FPO sales records"
+      },
+      {
+        "level": "Output 3.1",
+        "statement": "FRA claim facilitation",
+        "indicator": "Camps held; claims facilitated",
+        "baseline": "To be established by baseline survey",
+        "target": "8 camps; claims facilitated for all eligible listed households",
+        "mov": "Camp reports; claim acknowledgement copies"
+      },
+      {
+        "level": "Output 3.2",
+        "statement": "Block convergence and scheme enrolment",
+        "indicator": "Convergence meetings held; households enrolled in NMNF or PM-JANMAN",
+        "baseline": "0",
+        "target": "12 meetings; at least 600 households enrolled",
+        "mov": "Meeting minutes; scheme records"
+      },
+      {
+        "level": "Output 3.3",
+        "statement": "MEL completed",
+        "indicator": "Listing, baseline, mid-term review and endline delivered",
+        "baseline": "0",
+        "target": "4 deliverables",
+        "mov": "Survey reports; mid-term review; endline report"
+      }
+    ]
+  },
+  "budget_table": {
+    "categories": [
+      {
+        "name": "Personnel & Salaries",
+        "lines": [
+          {
+            "item": "Project Manager (Kanker-based, full time)",
+            "unit": "person-month",
+            "unit_cost": "33,000",
+            "quantity": "36",
+            "total": "11,88,000",
+            "rate_basis": "estimate",
+            "contributes": "All outcomes; management and convergence",
+            "source": "Sector estimate for a remote-block NGO programme manager; an unverified Bihan BPM listing shows about ₹39,875"
+          },
+          {
+            "item": "Natural Farming / Agronomy Specialist",
+            "unit": "person-month",
+            "unit_cost": "22,000",
+            "quantity": "36",
+            "total": "7,92,000",
+            "rate_basis": "estimate",
+            "contributes": "O1, O2; CRP training and demo plots",
+            "source": "Above the BPKP floor of ₹15,000–20,000 honorarium (NITI BPKP guidelines), as a project-level specialist post"
+          },
+          {
+            "item": "Field Coordinators (2; one holds FRA and convergence duties)",
+            "unit": "person-month",
+            "unit_cost": "14,000",
+            "quantity": "72",
+            "total": "10,08,000",
+            "rate_basis": "estimate",
+            "contributes": "O1–O3; CRP supervision and FRA camps",
+            "source": "Above the BPKP LRP floor of ₹10,000; graduate field staff in a remote block"
+          },
+          {
+            "item": "MEL & Data Officer (50% time)",
+            "unit": "person-month",
+            "unit_cost": "12,500",
+            "quantity": "36",
+            "total": "4,50,000",
+            "rate_basis": "estimate",
+            "contributes": "Output 3.3; logframe tracking",
+            "source": "50% of an estimated ₹25,000 per month; no authoritative norm found"
+          },
+          {
+            "item": "Accounts & Admin Assistant (50% time)",
+            "unit": "person-month",
+            "unit_cost": "10,000",
+            "quantity": "36",
+            "total": "3,60,000",
+            "rate_basis": "estimate",
+            "contributes": "Financial management and compliance",
+            "source": "About 50% of an unverified Bihan Accountant/MIS listing of about ₹23,350"
+          },
+          {
+            "item": "CRP / Krishi Sakhi honorarium (20 CRPs, Q2–Q11)",
+            "unit": "CRP-month",
+            "unit_cost": "5,000",
+            "quantity": "600",
+            "total": "30,00,000",
+            "rate_basis": "sourced",
+            "contributes": "O1, O2; last-mile delivery to about 50 households per CRP",
+            "source": "BPKP Guidelines (NITI Aayog Natural Farming portal), ₹5,000 per CRP per month [S20]"
+          }
+        ]
+      },
+      {
+        "name": "Capital Expenditure",
+        "lines": [
+          {
+            "item": "BRC shed / storage top-up (NMNF ₹1 lakh set-up support sought separately)",
+            "unit": "per BRC",
+            "unit_cost": "50,000",
+            "quantity": "5",
+            "total": "2,50,000",
+            "rate_basis": "estimate",
+            "contributes": "Output 1.3; community bio-input supply",
+            "source": "Low-cost shed estimate; the NMNF norm excludes sheds; PWD schedule of rates or local quote needed"
+          }
+        ]
+      },
+      {
+        "name": "Programme / Activity Costs",
+        "lines": [
+          {
+            "item": "Household listing, baseline and endline surveys",
+            "unit": "household-round",
+            "unit_cost": "175",
+            "quantity": "2,000",
+            "total": "3,50,000",
+            "rate_basis": "estimate",
+            "contributes": "Output 3.3; target verification",
+            "source": "Enumerator cost per household interview; must be at least the state minimum wage"
+          },
+          {
+            "item": "CRP residential ToT (6 days) and refreshers (4 × 2 days)",
+            "unit": "participant-day",
+            "unit_cost": "400",
+            "quantity": "280",
+            "total": "1,12,000",
+            "rate_basis": "sourced",
+            "contributes": "Output 1.1",
+            "source": "MANAGE STRY/ATMA cost norms, ₹400 per trainee per day residential [S21]"
+          },
+          {
+            "item": "CRP-led farmer field school sessions (6 per farmer)",
+            "unit": "farmer-session",
+            "unit_cost": "100",
+            "quantity": "6,000",
+            "total": "6,00,000",
+            "rate_basis": "sourced",
+            "contributes": "Output 1.2; O1",
+            "source": "BPKP Guidelines, ₹100 per farmer per CRP-led village training [S20]"
+          },
+          {
+            "item": "Shared bio-input starter kits (drums, tools) per CIG",
+            "unit": "per CIG kit",
+            "unit_cost": "2,500",
+            "quantity": "100",
+            "total": "2,50,000",
+            "rate_basis": "estimate",
+            "contributes": "Output 2.1; O1",
+            "source": "Market estimate for 1–2 drums plus tools; the NMNF ₹4,000/acre is a ceiling reference only"
+          },
+          {
+            "item": "Model demonstration plots",
+            "unit": "per plot",
+            "unit_cost": "6,000",
+            "quantity": "20",
+            "total": "1,20,000",
+            "rate_basis": "estimate",
+            "contributes": "Output 1.3",
+            "source": "Inputs, signage and field-day costs per plot; no NMNF per-plot norm found"
+          },
+          {
+            "item": "Community seed banks (indigenous varieties)",
+            "unit": "per seed bank",
+            "unit_cost": "20,000",
+            "quantity": "5",
+            "total": "1,00,000",
+            "rate_basis": "estimate",
+            "contributes": "Output 1.3; climate-resilient seed",
+            "source": "Storage bins, initial seed stock and registers; no official norm found"
+          },
+          {
+            "item": "FRA claim-facilitation camps and mapping",
+            "unit": "per camp",
+            "unit_cost": "12,500",
+            "quantity": "8",
+            "total": "1,00,000",
+            "rate_basis": "estimate",
+            "contributes": "Output 3.1; O3",
+            "source": "Venue, documentation, GPS mapping and refreshments; no Tribal Department norm found"
+          },
+          {
+            "item": "Block convergence meetings (quarterly)",
+            "unit": "per meeting",
+            "unit_cost": "4,000",
+            "quantity": "12",
+            "total": "48,000",
+            "rate_basis": "estimate",
+            "contributes": "Output 3.2",
+            "source": "Venue and refreshments for a block-level meeting"
+          },
+          {
+            "item": "Exposure visits for CRPs and lead farmers",
+            "unit": "per participant",
+            "unit_cost": "2,500",
+            "quantity": "40",
+            "total": "1,00,000",
+            "rate_basis": "estimate",
+            "contributes": "Output 2.2",
+            "source": "Travel, stay and food for an in-state visit; the BPKP 7-day training with exposure visit is a cross-check"
+          },
+          {
+            "item": "CIG formation and orientation",
+            "unit": "per CIG",
+            "unit_cost": "1,000",
+            "quantity": "100",
+            "total": "1,00,000",
+            "rate_basis": "estimate",
+            "contributes": "Output 2.1",
+            "source": "Registers, stationery and an orientation meeting per CIG"
+          },
+          {
+            "item": "Staff field travel and mobility",
+            "unit": "month",
+            "unit_cost": "9,000",
+            "quantity": "36",
+            "total": "3,24,000",
+            "rate_basis": "estimate",
+            "contributes": "All outputs; supervision in remote habitations",
+            "source": "Fuel and 2-wheeler reimbursement for field staff; local quotes needed"
+          },
+          {
+            "item": "Mid-term review and learning documentation",
+            "unit": "lump sum",
+            "unit_cost": "1,00,000",
+            "quantity": "1",
+            "total": "1,00,000",
+            "rate_basis": "estimate",
+            "contributes": "Output 3.3",
+            "source": "External reviewer days plus a case-study documentation lump sum"
+          }
+        ]
+      },
+      {
+        "name": "Administrative / Overheads",
+        "lines": [
+          {
+            "item": "Field office running, Durgakondal (rent, utilities, internet)",
+            "unit": "month",
+            "unit_cost": "12,000",
+            "quantity": "36",
+            "total": "4,32,000",
+            "rate_basis": "estimate",
+            "contributes": "Operations base",
+            "source": "Below the BPKP ₹20,000/month cluster-office norm (which includes a DEO) because data work sits with the MEL officer; rent quote needed"
+          },
+          {
+            "item": "Statutory audit and compliance",
+            "unit": "year",
+            "unit_cost": "35,000",
+            "quantity": "3",
+            "total": "1,05,000",
+            "rate_basis": "estimate",
+            "contributes": "Donor compliance",
+            "source": "Typical CA fee for a project audit; quotes needed"
+          }
+        ]
+      }
+    ]
+  },
+  "budget_grand_total": "INR 98,89,000 (Personnel & Salaries 67,98,000; Capital Expenditure 2,50,000; Programme / Activity Costs 23,04,000; Administrative / Overheads 5,37,000)",
+  "rates_to_confirm": [
+    {
+      "item": "Project Manager",
+      "estimated_rate": "₹33,000/month",
+      "prompt": "Confirm the PM salary, or supply your current scale for Kanker."
+    },
+    {
+      "item": "Natural Farming / Agronomy Specialist",
+      "estimated_rate": "₹22,000/month",
+      "prompt": "Confirm this rate or supply your own (BPKP floor is ₹15,000–20,000)."
+    },
+    {
+      "item": "Field Coordinators",
+      "estimated_rate": "₹14,000/month",
+      "prompt": "Confirm this rate against your pay scale and the Chhattisgarh skilled minimum wage."
+    },
+    {
+      "item": "MEL & Data Officer (50%)",
+      "estimated_rate": "₹12,500/month",
+      "prompt": "Confirm the time share and rate."
+    },
+    {
+      "item": "Accounts & Admin Assistant (50%)",
+      "estimated_rate": "₹10,000/month",
+      "prompt": "Confirm the time share and rate."
+    },
+    {
+      "item": "BRC shed / storage top-up",
+      "estimated_rate": "₹50,000 per BRC",
+      "prompt": "Supply a local civil works quote or PWD schedule-of-rates estimate."
+    },
+    {
+      "item": "Listing, baseline and endline surveys",
+      "estimated_rate": "₹175 per household-round",
+      "prompt": "Confirm, or supply an agency or enumerator quote."
+    },
+    {
+      "item": "Shared bio-input starter kits",
+      "estimated_rate": "₹2,500 per CIG",
+      "prompt": "Supply vendor quotes for drums and tools."
+    },
+    {
+      "item": "Model demonstration plots",
+      "estimated_rate": "₹6,000 per plot",
+      "prompt": "Confirm the per-plot cost."
+    },
+    {
+      "item": "Community seed banks",
+      "estimated_rate": "₹20,000 each",
+      "prompt": "Confirm, or supply your own cost for bins and seed stock."
+    },
+    {
+      "item": "FRA claim camps",
+      "estimated_rate": "₹12,500 per camp",
+      "prompt": "Confirm based on your past camp costs."
+    },
+    {
+      "item": "Block convergence meetings",
+      "estimated_rate": "₹4,000 per meeting",
+      "prompt": "Confirm the per-meeting cost."
+    },
+    {
+      "item": "Exposure visits",
+      "estimated_rate": "₹2,500 per participant",
+      "prompt": "Confirm the destination and per-person cost."
+    },
+    {
+      "item": "CIG formation",
+      "estimated_rate": "₹1,000 per CIG",
+      "prompt": "Confirm the per-CIG cost."
+    },
+    {
+      "item": "Staff mobility",
+      "estimated_rate": "₹9,000/month",
+      "prompt": "Supply fuel or vehicle-hire rates for Durgakondal."
+    },
+    {
+      "item": "Mid-term review and documentation",
+      "estimated_rate": "₹1,00,000 lump sum",
+      "prompt": "Confirm or adjust the lump sum."
+    },
+    {
+      "item": "Field office running",
+      "estimated_rate": "₹12,000/month",
+      "prompt": "Supply the rent quote and utility costs for Durgakondal."
+    },
+    {
+      "item": "Statutory audit",
+      "estimated_rate": "₹35,000/year",
+      "prompt": "Supply CA firm fee quotes."
+    }
+  ],
+  "budget_adjustments": [
+    "Field coordinators reduced from 4 to 2 to fit the ceiling. The PM and NF specialist share field supervision.",
+    "The dedicated FRA & Convergence Officer post was dropped. Its duties are assigned to one field coordinator and the PM.",
+    "CRP honorarium is budgeted for 30 months (Q2–Q11), not 36. Q1 covers selection and ToT; Q12 is handover to NMNF or Bihan roles.",
+    "Household-level bio-input kits were replaced with 100 shared CIG-level kits, supported by 5 community BRCs.",
+    "The nutrition garden line was dropped. The project will seek convergence with Bihan/SRLM nutrition initiatives instead.",
+    "Farmer field schools are limited to 6 CRP-led sessions per farmer. Expert-led sessions are not budgeted.",
+    "BRC set-up support (₹1 lakh per BRC) is not budgeted, to avoid double funding; it is sought from NMNF. Only shed and storage top-ups are costed.",
+    "The NMNF farmer incentive of ₹4,000/acre/year is treated as convergence, not a project cost.",
+    "Estimated rates for PM, office running, mobility, demo plots and convergence meetings were set conservatively to keep the grand total within INR 99,00,000.",
+    "No remote-location uplift was applied to MANAGE training rates.",
+    "No percentage overhead line is included, because SBIF's overhead policy is not stated. Admin is costed as actual lines."
+  ],
+  "timeline": {
+    "units": [
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7",
+      "Q8",
+      "Q9",
+      "Q10",
+      "Q11",
+      "Q12"
+    ],
+    "rows": [
+      {
+        "activity": "A1 PVTG verification, household listing and baseline",
+        "active": [
+          1,
+          2
+        ]
+      },
+      {
+        "activity": "A2 CRP selection, ToT and refreshers",
+        "active": [
+          1,
+          2,
+          5,
+          9
+        ]
+      },
+      {
+        "activity": "A2 CRP field support (honorarium period)",
+        "active": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "activity": "A5 CIG formation and starter kits",
+        "active": [
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "activity": "A3 Farmer field schools (Kharif and Rabi)",
+        "active": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "activity": "A4 Model demonstration plots",
+        "active": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "activity": "A4 BRC sheds and community seed banks",
+        "active": [
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "activity": "A6 FRA claim-facilitation camps",
+        "active": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "activity": "A6 NMNF enrolment, PM-JANMAN linkage and convergence meetings",
+        "active": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      {
+        "activity": "A5 Exposure visits",
+        "active": [
+          4,
+          8
+        ]
+      },
+      {
+        "activity": "A5 CIG aggregation and FPO linkage",
+        "active": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      {
+        "activity": "A7 Mid-term review",
+        "active": [
+          6
+        ]
+      },
+      {
+        "activity": "A7 Endline, documentation and handover",
+        "active": [
+          11,
+          12
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "ref": "S1",
+      "title": "Durgkondal Taluk Population, Uttar Bastar Kanker (censusindia2011.com, Census 2011; secondary)",
+      "url": "https://www.censusindia2011.com/chhattisgarh/uttar-bastar-kanker/durgkondal-population.html"
+    },
+    {
+      "ref": "S2",
+      "title": "List of Villages in Durgkondal Tehsil (VillageInfo.in, Census 2011; secondary)",
+      "url": "https://villageinfo.in/chhattisgarh/uttar-bastar-kanker/durgkondal/"
+    },
+    {
+      "ref": "S3",
+      "title": "NHSRC – Demographic Status of Scheduled Tribe Population From Census Data",
+      "url": "https://nhsrcindia.org/sites/default/files/2021-05/Demographic%20Status%20of%20Scheduled%20Tribe%20Population%20-%20NHSRC.pdf"
+    },
+    {
+      "ref": "S4",
+      "title": "Kanker District Population Census 2011 (census2011.co.in)",
+      "url": "https://www.census2011.co.in/census/district/498-kanker.html"
+    },
+    {
+      "ref": "S5",
+      "title": "PIB – ECI's efforts bring PVTG communities into electoral process",
+      "url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2019294"
+    },
+    {
+      "ref": "S6",
+      "title": "ThePrint (PTI) – Kamar in Dhamtari gets habitat rights",
+      "url": "https://theprint.in/india/vulnerable-tribal-group-kamar-in-chhattisgarhs-dhamtari-district-gets-habitat-rights/1708448/"
+    },
+    {
+      "ref": "S7",
+      "title": "UNDP India – Empowering PVTGs: Recognition of Habitat Rights in Chhattisgarh",
+      "url": "https://www.undp.org/india/blog/empowering-particularly-vulnerable-tribal-groups-pvtgs-recognition-habitat-rights-chhattisgarh"
+    },
+    {
+      "ref": "S8",
+      "title": "MoTA – FRA Monthly Progress Report, September 2021",
+      "url": "https://tribal.nic.in/downloads/FRA/MPR/2021/(D)%20MPR%20Sep%202021.pdf"
+    },
+    {
+      "ref": "S9",
+      "title": "Ministry of Tribal Affairs – Forest Rights Act",
+      "url": "https://tribal.nic.in/fra.aspx"
+    },
+    {
+      "ref": "S10",
+      "title": "GIST Impact – Comparative study: natural farming yields, livelihoods and health",
+      "url": "https://www.gistimpact.com/groundbreaking-comparative-study-reveals-natural-farming-leads-for-yields-livelihoods-and-health/"
+    },
+    {
+      "ref": "S11",
+      "title": "Natural Farming Through a Wide-Angle Lens: TCA Study of APCNF (2023)",
+      "url": "https://futureoffood.org/wp-content/uploads/2025/05/apcnf-tca-study_2023.pdf"
+    },
+    {
+      "ref": "S12",
+      "title": "Global Alliance for the Future of Food – Natural Farming through a Wide Angle Lens",
+      "url": "https://futureoffood.org/publication-library/natural-farming-through-a-wide-angle-lens/"
+    },
+    {
+      "ref": "S13",
+      "title": "PMIndia – Launch of National Mission on Natural Farming",
+      "url": "https://www.pmindia.gov.in/en/news_updates/launch-of-national-mission-on-natural-farming/"
+    },
+    {
+      "ref": "S14",
+      "title": "PIB – National Mission on Natural Farming (NMNF) press note",
+      "url": "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=155019&reg=3&lang=2"
+    },
+    {
+      "ref": "S15",
+      "title": "Vikaspedia – National Mission on Natural Farming",
+      "url": "https://en.vikaspedia.in/viewcontent/schemesall/schemes-for-farmers/national-mission-on-natural-farming"
+    },
+    {
+      "ref": "S16",
+      "title": "Down To Earth – Guidelines for bio-resource centres",
+      "url": "https://www.downtoearth.org.in/agriculture/centre-releases-guidelines-for-setting-up-bio-resource-centres-to-aid-natural-farming-transition"
+    },
+    {
+      "ref": "S17",
+      "title": "Deccan Herald (PTI) – Cabinet approves PM-JANMAN",
+      "url": "https://www.deccanherald.com/amp/story/india%2Funion-cabinet-approves-pradhan-mantri-janjati-adivasi-nyaya-maha-abhiyan-2789333"
+    },
+    {
+      "ref": "S18",
+      "title": "PIB – Rapid Approval of Houses under PM-JANMAN",
+      "url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2115300&reg=48&lang=2"
+    },
+    {
+      "ref": "S19",
+      "title": "PIB – Formation and Promotion of 10,000 FPOs",
+      "url": "https://www.pib.gov.in/Pressreleaseshare.aspx?PRID=1696547&reg=3&lang=2"
+    },
+    {
+      "ref": "S20",
+      "title": "Guidelines of BPKP (NITI Aayog Natural Farming portal)",
+      "url": "https://naturalfarming.niti.gov.in/wp-content/uploads/2021/09/Guidelines_of_BPKP.pdf"
+    },
+    {
+      "ref": "S21",
+      "title": "MANAGE – STRY & Farmers' Capacity Assessment Cost Norms",
+      "url": "https://www.manage.gov.in/stry&fcac/costnorms-stry.asp"
+    },
+    {
+      "ref": "S22",
+      "title": "DD News – NMNF brings sustainable shift in agri sector",
+      "url": "https://ddnews.gov.in/en/national-mission-on-natural-farming-brings-sustainable-shift-in-agri-sector/"
+    }
+  ],
+  "flags": [
+    "Target unverified: no block-level PVTG count exists for Durgakondal, and which PVTG(s) live there is unconfirmed (Kamar are recorded only at district level). Confirm using PM-JANMAN habitation data and the Q1 listing. The fallback is PVTG plus other ST households.",
+    "Block Census figures come from secondary aggregators that disagree (village count 141 vs 150; one wrongly labels the block urban). Verify against the District Census Handbook.",
+    "District literacy figures conflict (70.29% in the Census aggregator vs 62% from NHSRC). Reconcile before the final text.",
+    "State FRA figures date from September 2021 and some were read from a poor scan. Update them, and obtain district and block FRA and habitat-rights data.",
+    "All natural farming outcome evidence is external (Andhra Pradesh). There is no Chhattisgarh or Bastar evidence; outcome targets must be validated after the baseline.",
+    "The CRP honorarium of ₹5,000/month comes from BPKP (about 2020). NMNF pays Krishi Sakhis per activity, amounts not found. Confirm the rate and avoid paying the same CRPs twice with NMNF.",
+    "NMNF is approved only to 2025-26. Its continuation for the project period, and its BRC and incentive support, must be confirmed. The BRC ₹1 lakh norm is from media only; verify it against the official guidelines.",
+    "Date inconsistency: the RFP deadline is 14 June 2025 (implying FY 2025-26 start), but the research cites July 2025 NMNF data and 2026 wage and scheme changes (VB-G RAM G). Confirm the current financial year and the start date with SBIF.",
+    "Wage-based lines (surveys, field staff) must comply with the Chhattisgarh minimum wage and the VB-G RAM G/MGNREGA rate, neither of which was verified from official sources.",
+    "The 'similar projects' eligibility gate carries risk: only one of the three past projects is explicitly climate-focused, and completion evidence is needed.",
+    "Annexure II (due diligence documents), the submission channel, overhead policy and budget template are missing. Obtain them before submission.",
+    "Personnel, including CRPs, is about 69% of the budget, because the core delivery model is CRP-led. Be ready to justify this.",
+    "The APCNF evidence shows a 20% rise in labour; the labour burden on PVTG households is a design risk to monitor."
+  ]
+}

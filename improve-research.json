@@ -1,0 +1,274 @@
+{
+  "context_facts": [
+    {
+      "fact": "Census 2011 counted about 2.68 crore persons with disabilities in India, out of a total population of 121 crore",
+      "value": "2.68 crore PwDs",
+      "geography_level": "National",
+      "source_title": "Disabled Persons in India: A Statistical Profile 2016 (MoSPI)",
+      "source_url": "https://niepmd.tn.nic.in/documents/Disabledpersons2016_2408.pdf",
+      "year": "2011"
+    },
+    {
+      "fact": "Around 70% of persons with disabilities in India live in rural areas. Age-standardised disability prevalence is higher among women, rural residents, Scheduled Tribes and Scheduled Castes (Census 2011 analysis)",
+      "value": "~70% rural; 26.8 million PwDs",
+      "geography_level": "National",
+      "source_title": "Disability Divides in India: Evidence from the 2011 Census (PLOS ONE, 2016)",
+      "source_url": "https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0159809",
+      "year": "2011"
+    },
+    {
+      "fact": "Jharkhand's share of all disabled persons in India under Census 2011, as shown in the state-share figure (Fig. 4.2) of MoSPI's Statistical Profile 2016. This is Jharkhand's share of the national disabled population, NOT the prevalence within the state",
+      "value": "2.87% of India's disabled population",
+      "geography_level": "State (Jharkhand)",
+      "source_title": "Disabled Persons in India: A Statistical Profile 2016, Chapter 4 – Status of Disabled Persons in States/UTs (MoSPI; copy hosted by CEO Bihar)",
+      "source_url": "https://ceoelection.bihar.gov.in/PDF/disabled_persons_in_India_2016.pdf",
+      "year": "2011"
+    },
+    {
+      "fact": "CORRECTION to the draft: the '1.7% prevalence, among the lowest' figure for Jharkhand does NOT come from Census 2011. It is from an older MoSPI chapter that compares NSS 2002 and Census 2001 results ('beginning of the new millennium'). That chapter lists Jharkhand, Punjab and Delhi at 1.7% each and says Assam and Jharkhand had low prevalence. Do not cite it as Census 2011",
+      "value": "1.7% (Census 2001/NSS 58th round era, not 2011)",
+      "geography_level": "State (Jharkhand)",
+      "source_title": "D1 Chapter 4: Dimension of Disability in India (MoSPI)",
+      "source_url": "https://www.mospi.gov.in/sites/default/files/reports_and_publication/statistical_publication/social_statistics/Chapter%204-Dimension_Disability.pdf",
+      "year": "2001-2002"
+    },
+    {
+      "fact": "NSS 76th Round: disability prevalence in India was 2.2% (2.3% rural, 2.0% urban; 2.4% for males, 1.9% for females). Incidence was 86 per 1,00,000 persons",
+      "value": "2.2% overall; 2.3% rural",
+      "geography_level": "National",
+      "source_title": "NSS Report No. 583: Persons with Disabilities in India, NSS 76th Round (PIB press release, MoSPI/NSO)",
+      "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1593253&reg=48&lang=2",
+      "year": "2018"
+    },
+    {
+      "fact": "NSS 76th Round: only 28.8% of persons with disabilities reported having a disability certificate, so about 71% (roughly 7 in 10) had none. This supports the draft's '7 out of 10' claim when cited to the primary source",
+      "value": "28.8% with certificate (~71.2% without)",
+      "geography_level": "National",
+      "source_title": "NSS Report No. 583: Persons with Disabilities in India, NSS 76th Round (PIB press release, MoSPI/NSO)",
+      "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1593253&reg=48&lang=2",
+      "year": "2018"
+    },
+    {
+      "fact": "NSS 76th Round gender gap in certification: 24.1% of females and 32.4% of males with disabilities had certificates. 62.1% of PwDs reported having a caregiver",
+      "value": "Female 24.1%; Male 32.4%",
+      "geography_level": "National",
+      "source_title": "Persons with Disabilities in India: NSS 76th round (PARI Library summary of NSO Report 583)",
+      "source_url": "https://ruralindiaonline.org/en/library/resource/persons-with-disabilities-in-india-nss-76th-round-july-december-2018/",
+      "year": "2018"
+    },
+    {
+      "fact": "Primary NSS Report No. 583 PDF (MoSPI), which holds the state, rural/urban and social-group tables. The table index includes tables by household social group",
+      "value": "Primary report reference",
+      "geography_level": "National/State tables",
+      "source_title": "Epidemiology of disability and access to disability support and rehabilitation services in India: secondary analysis of NSS 2018 (PMC), citing MoSPI Report 583",
+      "source_url": "https://www.mospi.gov.in/sites/default/files/publication_reports/Report_583_Final_0.pdf",
+      "year": "2019"
+    },
+    {
+      "fact": "Ranchi district ranks first of Jharkhand's 24 districts by population and fourth by area. Density is 572 persons per sq km and the sex ratio is 949 (Census 2011)",
+      "value": "Rank 1 by population; 572/sq km; sex ratio 949",
+      "geography_level": "District (Ranchi)",
+      "source_title": "Census of India 2011, Jharkhand, Series-21 Part XII-B, District Census Handbook Ranchi (Village and Town wise PCA)",
+      "source_url": "https://cdn.s3waas.gov.in/s32b8a61594b1f4c4db0902a8a395ced93/uploads/2018/04/2018042966.pdf",
+      "year": "2011"
+    },
+    {
+      "fact": "Jharkhand total population, Census 2011 (Registrar General & Census Commissioner data via CEIC)",
+      "value": "32,988,134",
+      "geography_level": "State (Jharkhand)",
+      "source_title": "Census: Population: Jharkhand (CEIC, sourced from Office of the Registrar General & Census Commissioner, India)",
+      "source_url": "https://www.ceicdata.com/en/india/census-population-by-states/census-population-jharkhand",
+      "year": "2011"
+    },
+    {
+      "fact": "NFHS-5 Jharkhand: 40% of children under 5 are stunted and 22% are wasted",
+      "value": "Stunting 40%; wasting 22%",
+      "geography_level": "State (Jharkhand)",
+      "source_title": "National Family Health Survey (NFHS-5) 2019-21: Jharkhand State Report (IIPS/MoHFW)",
+      "source_url": "https://dhsprogram.com/pubs/pdf/FR374/FR374_Jharkhand.pdf",
+      "year": "2019-21"
+    },
+    {
+      "fact": "NFHS-5 Jharkhand: 32% of women and 14% of men aged 15-49 have never been to school. Only 19% of women have completed 12 or more years of schooling",
+      "value": "32% women never schooled; 19% women 12+ years",
+      "geography_level": "State (Jharkhand)",
+      "source_title": "National Family Health Survey (NFHS-5) 2019-21: Jharkhand State Report (IIPS/MoHFW)",
+      "source_url": "https://dhsprogram.com/pubs/pdf/FR374/FR374_Jharkhand.pdf",
+      "year": "2019-21"
+    },
+    {
+      "fact": "NFHS-5 Ranchi district (as cited in a peer-reviewed study): 45.9% of pregnant women are anaemic, and only 20% consumed IFA for 180 days during pregnancy",
+      "value": "45.9% pregnant women anaemic; 20% IFA 180 days",
+      "geography_level": "District (Ranchi)",
+      "source_title": "Bottlenecks in the Coverage of the Anemia Mukt Bharat Programme in Rural Jharkhand and the Way Forward: A Qualitative Research (PMC)",
+      "source_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12464789/",
+      "year": "2019-21"
+    },
+    {
+      "fact": "Ranchi is on NITI Aayog's official list of 112 Aspirational Districts (serial no. 55), one of 19 Jharkhand districts on the list",
+      "value": "Yes – Aspirational District",
+      "geography_level": "District (Ranchi)",
+      "source_title": "List of Aspirational Districts (NITI Aayog)",
+      "source_url": "https://www.niti.gov.in/sites/default/files/2022-09/List-of-Aspirational-Districts.pdf",
+      "year": "2022"
+    },
+    {
+      "fact": "National MPI headcount ratio fell from 24.85% (NFHS-4, 2015-16) to 14.96% (NFHS-5, 2019-21). The report gives estimates for 707 districts; the Ranchi figure has to be taken from the district annex",
+      "value": "14.96% (national, 2019-21)",
+      "geography_level": "National",
+      "source_title": "National Multidimensional Poverty Index: A Progress Review 2023 (NITI Aayog)",
+      "source_url": "https://www.niti.gov.in/sites/default/files/2023-08/India-National-Multidimentional-Poverty-Index-2023.pdf",
+      "year": "2019-21"
+    },
+    {
+      "fact": "Tendulkar-method official poverty ratio for 2011-12 (Planning Commission): 21.9% for all India. State-wise rural/urban/combined figures are in Table 2 of the Press Note",
+      "value": "21.9% (national)",
+      "geography_level": "National",
+      "source_title": "India: Trends in Poverty, 2011-12 to 2022-23, Methodology Note (World Bank, May 2025); Press Note on Poverty Estimates 2011-12 (Planning Commission)",
+      "source_url": "https://www.niti.gov.in/sites/default/files/2020-05/press-note-poverty-2011-12-23-08-16.pdf",
+      "year": "2011-12"
+    },
+    {
+      "fact": "Jal Jeevan Mission: Jharkhand had about 55% of rural households with functional household tap connections (JJM IMIS, accessed January 2025)",
+      "value": "~55% FHTC coverage",
+      "geography_level": "State (Jharkhand)",
+      "source_title": "Budget Insights: Trends in Finances for Jal Jeevan Mission, Vol 2 Issue 12 (Foundation for Responsive Governance/Accountability Initiative, Feb 2025)",
+      "source_url": "https://www.resgov.org/contents/reports/JJM-Budget-Insights-2025.pdf",
+      "year": "2025"
+    },
+    {
+      "fact": "Jal Jeevan Mission national position: 15.44 crore rural households (79.74%) had tap connections by 1 Feb 2025, up from 3.23 crore (17%) at launch in August 2019",
+      "value": "79.74% (national rural)",
+      "geography_level": "National",
+      "source_title": "Jal Jeevan Mission: Ensuring Tap Water for 15 Crore Rural Families (PIB)",
+      "source_url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2098651",
+      "year": "2025"
+    }
+  ],
+  "sector_evidence": [
+    {
+      "point": "Disability causes catastrophic health expenditure and impoverishment (verified full citation for the draft's claim)",
+      "detail": "Yadav J, Tripathi N, Menon GR, Nair S, Singh J, Singh R, et al. 'Measuring the financial impact of disabilities in India (an analysis of national sample survey data)'. PLOS ONE, 2023; DOI: 10.1371/journal.pone.0292592. Using NSS 76th round data: 57.1% of households faced catastrophic health expenditure (CHE) at a 10% threshold (34.1% at 20%). 19.1% of households that were above the poverty line were pushed below it by disability treatment spending. Out-of-pocket disability spending took about 20.32% of monthly household consumption expenditure. Rural households faced CHE more often than urban ones.",
+      "source_title": "Measuring the financial impact of disabilities in India (an analysis of national sample survey data) | PLOS ONE",
+      "source_url": "https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0292592"
+    },
+    {
+      "point": "Certificate access is lower among poorer and less-educated PwDs",
+      "detail": "Secondary analysis of NSS 76th round data found the poorest MPCE quintiles less likely to hold a disability certificate, and the chance of holding one rising with education. This is a preprint; use it only for context, and cite NSS 583 for the headline figure.",
+      "source_title": "Unidentified Persons With Disabilities in India – A Study Based on 76th Round of NSS (Research Square preprint)",
+      "source_url": "https://www.researchsquare.com/article/rs-742723/v1"
+    },
+    {
+      "point": "Jharkhand saw a large rise in catastrophic health expenditure",
+      "detail": "Between 2004 and 2014, the incidence of CHE rose by 51.3% in Jharkhand.",
+      "source_title": "Variations in catastrophic health expenditure across the states of India: 2004 to 2014 (PLOS ONE, 2018)",
+      "source_url": "https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0205510"
+    },
+    {
+      "point": "Disability prevalence is rising in successive NSS rounds",
+      "detail": "Rural prevalence rose from 1.8% (36th round, 1981) to 2.3% (76th round, 2018), and the overall rate from 1.6% to 2.2%.",
+      "source_title": "Epidemiology of disability and access to disability support and rehabilitation services in India: a secondary data analysis of the NSS (2018) (PMC)",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12083387/"
+    },
+    {
+      "point": "Poverty within Jharkhand is concentrated in rural and tribal districts; Ranchi is relatively better-off overall",
+      "detail": "A district-wise analysis of NITI Aayog MPI 2023 data found that Pakur, Sahebganj and West Singhbhum have high MPI values while Ranchi, East Singhbhum and Bokaro do relatively better. Deprivation remains concentrated in rural and tribal areas, which supports focusing on rural blocks such as Angara. This is a secondary journal source; confirm Ranchi's figure in the NITI annex.",
+      "source_title": "Multidimensional Poverty in Jharkhand: A District-wise Analysis Based on Secondary Data (IERJ)",
+      "source_url": "https://ierj.in/journal/index.php/ierj/article/view/5104"
+    }
+  ],
+  "policy_context": [
+    {
+      "item": "Jharkhand announcement abolishing percentage-based disability categorisation (NEWS REPORT ONLY – no official resolution found)",
+      "relevance": "The Health Minister announced that all PwDs, whether assessed at 10%, 20% or 50%, would fall into a single category. Applications go through the UDID portal, certificates are to be issued within one month, and appeals can be filed within 90 days. No Government of Jharkhand resolution or notification was found, so its scope (for example, whether it overrides the 40% benchmark for the SVNSPY pension or central schemes) is UNVERIFIED. Present it as an announcement, not as settled entitlement.",
+      "source_title": "Jharkhand Becomes First State To Abolish Percentage System For Disability Certificates (The Daily Jagran, 4 Dec 2025)",
+      "source_url": "https://www.thedailyjagran.com/jharkhand/jharkhand-becomes-first-state-to-abolish-percentage-system-for-disability-certificates-check-new-rules-how-to-apply-for-udid-card-40060538"
+    },
+    {
+      "item": "Swami Vivekananda Nishakt Swavalamban Protsahan Yojana (SVNSPY): Jharkhand's disability pension scheme",
+      "relevance": "This is the correct scheme name, replacing the draft's 'Jharkhand Universal Pension Scheme'. A 2024 Khunti district release reports Rs 1,000 per month for life, granted on the basis of a disability certificate showing 40% or more disability. This conflicts with the reported abolition of percentage categorisation, so field verification is needed. The scheme is listed on the national myScheme portal.",
+      "source_title": "New hope for people suffering from sickle cell anemia, approval of pension under SVNSPY (Jharkhand State News, June 2024); Swami Vivekananda Nishakta Swavlamban Protsahan Yojana (myScheme, GoI)",
+      "source_url": "https://www.myscheme.gov.in/schemes/svnspy"
+    },
+    {
+      "item": "ADIP Scheme (Assistance to Disabled Persons for Purchase/Fitting of Aids and Appliances), DEPwD, MoSJE",
+      "relevance": "Running since 1981. Grants-in-aid go to implementing agencies including ALIMCO, National Institutes, CRCs, DDRCs and state corporations, to supply certified assistive devices; corrective surgery is covered where needed. This is the main convergence route for assistive-device camps for Sangathan members.",
+      "source_title": "ADIP | Department of Empowerment of Persons with Disabilities (DEPwD)",
+      "source_url": "https://depwd.gov.in/en/adip/"
+    },
+    {
+      "item": "UDID / Swavlamban Card portal",
+      "relevance": "The national portal for UDID registration and disability-scheme search. The entitlement-facilitation work for 500+ members should go through it.",
+      "source_title": "Disability Schemes - UDID (swavlambancard.gov.in)",
+      "source_url": "https://swavlambancard.gov.in//schemes/search"
+    },
+    {
+      "item": "NITI Aayog Aspirational Districts Programme",
+      "relevance": "Ranchi is a notified Aspirational District. Cite this INSTEAD of the Backward Regions Grant Fund, whose Ranchi listing was only found on Wikipedia and which is an older, 2012-era programme. The programme targets health, nutrition, education and basic infrastructure indicators.",
+      "source_title": "List of Aspirational Districts (NITI Aayog)",
+      "source_url": "https://www.niti.gov.in/sites/default/files/2022-09/List-of-Aspirational-Districts.pdf"
+    },
+    {
+      "item": "Jal Jeevan Mission (Har Ghar Jal)",
+      "relevance": "Replaces the draft's outdated 2011 village water figures. Village-level FHTC status for the 10 project villages can be pulled from the JJM IMIS dashboard.",
+      "source_title": "JJM Dashboard - Tap water supply in households (Ministry of Jal Shakti)",
+      "source_url": "https://ejalshakti.gov.in/jjmreport/jjmindia.aspx"
+    }
+  ],
+  "cost_norms": [
+    {
+      "item": "ADIP beneficiary income ceiling for a 100% free device",
+      "rate": "Monthly income up to Rs 22,500",
+      "unit": "per beneficiary/guardian monthly income",
+      "source_title": "ADIP Scheme (DEPwD, Govt of Maharashtra page reproducing central norms); ADIP_English.pdf (DEPwD)",
+      "source_url": "https://adip.depwd.gov.in/files/ADIP_English.pdf"
+    },
+    {
+      "item": "ADIP 50% subsidy band",
+      "rate": "50% of device cost for income Rs 22,501–30,000/month",
+      "unit": "per device",
+      "source_title": "Scheme of Assistance to Disabled Persons (ADIP) – DEPwD Maharashtra",
+      "source_url": "https://depwd.maharashtra.gov.in/en/scheme/7-scheme-of-assistance-to-disabled-persons-for-purchase-fitting-of-aids-appliances-adip-scheme/"
+    },
+    {
+      "item": "ADIP transport allowance for PwD plus one escort to attend a centre/distribution camp",
+      "rate": "Rs 250",
+      "unit": "per PwD (irrespective of number of visits)",
+      "source_title": "Scheme of Assistance to Disabled Persons (ADIP) – DEPwD Maharashtra",
+      "source_url": "https://depwd.maharashtra.gov.in/en/scheme/7-scheme-of-assistance-to-disabled-persons-for-purchase-fitting-of-aids-appliances-adip-scheme/"
+    },
+    {
+      "item": "ADIP boarding and lodging expense",
+      "rate": "Rs 100",
+      "unit": "per day",
+      "source_title": "Scheme of Assistance to Disabled Persons (ADIP) – DEPwD Maharashtra",
+      "source_url": "https://depwd.maharashtra.gov.in/en/scheme/7-scheme-of-assistance-to-disabled-persons-for-purchase-fitting-of-aids-appliances-adip-scheme/"
+    },
+    {
+      "item": "SVNSPY disability pension (entitlement value, for leveraging/convergence calculations)",
+      "rate": "Rs 1,000",
+      "unit": "per beneficiary per month (as reported 2024; verify current rate)",
+      "source_title": "Pension Benefit to Sickle Cell Anemia Affected People in J'khand's Khunti (LatestLY/PTI, June 2024)",
+      "source_url": "https://www.latestly.com/agency-news/india-news-pension-benefit-to-sickle-cell-anemia-affected-people-in-jkhands-khunti-6048074.html"
+    }
+  ],
+  "gaps": [
+    "Census 2011 Table C-20 for Jharkhand: the exact disabled population count and prevalence (%) were not retrieved. Take them from censusindia.gov.in C-20 Jharkhand. The draft's '1.7%' figure dates from 2001/2002 and must not be labelled Census 2011.",
+    "Census 2011 disabled population for Ranchi district and Angara block (C-20 district table / DCHB): not retrieved.",
+    "Ranchi district total population (Census 2011) and Angara block population/ST share/literacy: take directly from DCHB Ranchi Part XII-B (URL in context_facts). Angara's literacy of 64.92% is known only via Wikipedia and needs verification.",
+    "Population projection: the Technical Group on Population Projections 2011–2036 (NCP/MoHFW, 2020) figure for Jharkhand was not retrieved, and it gives no district figures. Drop the '41 lakh (2024)' Aadhaar-based claim for Ranchi and use Census 2011 with a note on its age.",
+    "Planning Commission 2011-12 Tendulkar poverty ratio for Jharkhand (rural/urban/combined): in Table 2 of the Press Note (URL given) but the value was not extracted. The Ranchi district BPL figure of 27.82% is sourced only to Wikipedia; there is no official district Tendulkar estimate, so drop it.",
+    "NITI Aayog MPI 2023 Ranchi district headcount ratio and intensity: take from the district annex of the MPI 2023 report (URL given); the value was not retrieved.",
+    "NFHS-5 Ranchi district factsheet: child stunting, wasting, underweight, child/women anaemia, women with 10+ years schooling and women's BMI were not retrieved (only anaemia among pregnant women, 45.9%, via a secondary source). Download the Ranchi district fact sheet from rchiips.org / data.gov.in.",
+    "NSS Report 583 rural/urban and social-group (ST/SC/OBC) certificate coverage, and the Jharkhand state table on certificates and prevalence: not extracted. Take them from the Report 583 PDF (Statements/Tables).",
+    "Literacy rate among PwDs (54.5%, Census 2011) was not verified in MoSPI's Statistical Profile 2016 or Table C-20. Verify before use.",
+    "Official Government of Jharkhand resolution/notification (Health Dept or Women, Child Development & Social Security Dept) abolishing percentage-based certification: NOT found. Its scope, legal status and interaction with the 40% benchmark under the RPwD Act and SVNSPY are unverified.",
+    "SVNSPY official resolution/guidelines from the Dept of Women, Child Development & Social Security: current monthly rate (possible revision after 2024), age criteria and income/BPL criteria not confirmed from a government document.",
+    "RPwD Act 2016 entitlements (21 disabilities, benchmark disability definition, 4% reservation in government jobs, 5% in higher education, etc.) were not retrieved in this search. Cite the Act text on legislative.gov.in / depwd.gov.in.",
+    "Saubhagya household electrification status for Ranchi/Jharkhand: not retrieved.",
+    "Jal Jeevan Mission tap-connection coverage for Ranchi district, Angara block and the 10 project villages: not retrieved; pull from the JJM IMIS dashboard. The state figure varies by date (20.01% in an older JJM media item vs ~55% in Jan 2025).",
+    "Backward Regions Grant Fund inclusion of Ranchi: sourced only to Wikipedia. Replace with the Aspirational District status.",
+    "Budget cost norms for Jharkhand (MGNREGA wage rate, JSLPS community resource person honoraria, training per-diem rates, livelihood asset unit costs for about 150 households): not retrieved. Primary or official collection is needed.",
+    "Baseline data for the 10 project villages (PwD count by disability type, certificate/UDID status, pension coverage, livelihood profile): needs a primary household survey."
+  ]
+}

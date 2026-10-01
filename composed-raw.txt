@@ -1,0 +1,359 @@
+###TITLE###
+Samridh Mahila, Swasth Parivar: Women's Income and Family Nutrition in Arki Block, Khunti
+
+###SUBTITLE###
+A 24-month programme by EcoKheti Foundation to build stable, diversified and woman-controlled incomes for 800 Scheduled Tribe women across all 16 Gram Panchayats of Arki block, Jharkhand, while improving maternal and child nutrition in their households. Submitted to Grameen Vikas Foundation for a total budget of INR 60,00,000.
+
+###PROBLEM###
+This chapter explains why Scheduled Tribe women in Arki block remain caught between low, insecure incomes and poor health and nutrition, and why these two conditions have to be addressed together. The chapter looks at each dimension separately, then shows how they connect. That connection is the basis for every design choice that follows.
+
+## The Geographic and Administrative Context
+
+Arki is the most underserved block in Khunti district. Being the least-served block in a district that already has significant development deficits means that services reach Arki later, more thinly and less reliably than elsewhere. Frontline workers cover dispersed habitations. Banking points, markets and block offices are harder to reach. Information about entitlements travels slowly. The programme covers all 16 Gram Panchayats of the block. This is deliberate. A partial footprint in an underserved block tends to leave the most remote panchayats behind, and those are usually where need is deepest. Working block-wide also allows the programme to engage block-level officials of the line departments as one coherent partner rather than panchayat by panchayat.
+
+## The Social and Community Structure
+
+About 80% of Arki's population is Scheduled Tribe, predominantly Munda. This is the central fact of the social landscape. Munda communities have strong traditions of collective village life, customary institutions and deep ties to land and forest. These traditions are an asset. A community used to collective decision-making can take to group-based structures such as Self-Help Groups more readily than a fragmented one. The same fact also carries disadvantage. Tribal households in Jharkhand are overrepresented among the poor. Public services and markets are often designed around norms, languages and institutional habits unfamiliar to them. So a programme here must respect customary structures and work through them, not around them. It must also help women cross into formal systems such as banks, scheme registries and health platforms, where they have historically been at a disadvantage.
+
+## The Economic and Livelihoods Dimension
+
+Livelihoods in Arki depend on rain-fed agriculture and seasonal forest produce. Households have little or no land and no stable off-farm income. Each of these features adds to the vulnerability created by the others:
+
+- **Rain-fed farming** means one uncertain cropping cycle. Output depends on the monsoon.
+- **Forest produce** is seasonal by nature. It is usually sold raw, at low value, soon after collection, when prices are weakest.
+- **Landlessness or near-landlessness** removes the main collateral and buffer a rural household might otherwise draw on.
+- **No stable off-farm income** means nothing smooths consumption through the lean months.
+
+The result is not only low income but income that arrives in bursts and disappears in long gaps. The lean periods are when households cut back on food quality, borrow on unfavourable terms and delay health spending.
+
+The wider figures confirm this. 60% of Scheduled Caste and Scheduled Tribe populations in Jharkhand are below the poverty line, well above the state average of about 46%. In a block where roughly four in five people are Scheduled Tribe, the local poverty burden is likely to be at least this severe. A baseline survey will establish the exact household income position of the 800 target women, which the logframe rightly treats as yet to be measured.
+
+What these households lack is not effort. They lack diversified, year-round income sources and access to the credit, skills and markets needed to build them. Experience with SHG-based livelihood promotion under the National Rural Livelihoods Mission in Jharkhand shows that small livestock, improved homestead cultivation and value-addition to forest produce can give landless households income streams that do not depend on owning farmland. This is why the programme focuses on these activities.
+
+## The Gender Dimension
+
+The target group is 800 women of reproductive age from landless and near-landless households. In such households, women carry a heavy load: field labour, forest collection, water and fuel gathering, cooking and the full burden of child care. Yet the money these activities earn, when there is any, is rarely under their control. This matters in three ways:
+
+- **Nutrition.** When women control income, a larger share tends to go to food, children's needs and health.
+- **Participation.** Women with no independent income and limited literacy are less able to negotiate with banks, markets or government offices.
+- **Decision-making.** Women's own health, especially during pregnancy, is often deprioritised within the household.
+
+The objective therefore specifies incomes "under their own control". An increase in household income that stays outside women's hands would not reliably reach the plates of pregnant women and young children. Separating income gain from women's control would weaken the nutrition result the programme seeks.
+
+## Health and Nutrition
+
+The health picture is severe. 65% of women in Jharkhand are anaemic (NFHS-5). 47% of tribal women are undernourished, compared with 29% of non-tribal women. The gap of eighteen percentage points is not caused by any intrinsic difference. It reflects the combined effect of poverty, low dietary diversity, heavy physical workloads and weaker access to health services.
+
+For a woman of reproductive age, anaemia and undernutrition have consequences beyond her own health:
+
+- They reduce her capacity for physical work, and so her earnings.
+- They raise the risks of pregnancy and childbirth.
+- They increase the likelihood of low birth weight in her baby.
+
+The damage then passes to the next generation. 40% of children in Jharkhand are stunted (NFHS-5), and the logframe baseline for under-five stunting is 39.6%. Stunting reflects chronic undernutrition in the first years of life, much of it rooted in the mother's nutritional status during pregnancy and in infant and young child feeding practices. A stunted child faces lifelong disadvantage in learning and earning. This is how malnutrition becomes intergenerational.
+
+The practices that could interrupt this cycle are well established: iron and folic acid supplementation, antenatal care, appropriate infant and young child feeding, and a diverse diet. Their uptake among tribal households in blocks like Arki is held back by two things. The first is limited knowledge. The second, and more important, is the lack of food diversity at home. A mother cannot follow dietary advice if her household cannot grow or buy the foods involved.
+
+## Education and Human Capital
+
+Female literacy in Arki is 41.02% (Census 2011). This means well over half the women in the block cannot read or write. The consequences are practical and widespread. A woman who cannot read a passbook, a scheme form or a health card depends on others to explain them. This makes her vulnerable to exclusion, error and exploitation. It also shapes how any programme must work. Written materials alone will not reach most participants. Learning must be oral, visual, participatory and repeated, delivered in familiar settings by trusted community members. Low literacy also limits women's ability to access information on health, markets and entitlements, which deepens every other disadvantage described here. Over time, the literacy gap turns into a gap in human capital that holds back the whole household.
+
+## Migration and Its Social Cost
+
+The substance does not give migration figures for Arki. However, the combination of rain-fed farming, seasonal forest income, landlessness and no stable off-farm work is the usual driver of distress seasonal migration in tribal Jharkhand. Where it occurs, migration disrupts children's schooling. It interrupts contact with Anganwadi and health services for pregnant women and young children. It often leaves women managing households alone with even less support. Field data from the baseline survey on the extent and pattern of seasonal migration in the 16 Gram Panchayats would sharpen this analysis. The logic still holds without it: local, year-round income sources reduce the pressure to migrate and keep families within reach of the services they need.
+
+## Access to Government Schemes and Entitlements
+
+Many relevant public programmes already exist:
+
+- the National Rural Livelihoods Mission, delivered through JSLPS
+- MGNREGA
+- the Public Distribution System
+- ICDS
+- the National Health Mission
+- PMMVY
+
+In principle, these cover much of what Arki's women need: organised savings and credit, wage employment, subsidised food grain, supplementary nutrition, maternal cash support and health services. In an underserved block with low female literacy, however, the gap between entitlement and actual receipt is likely to be wide. Women may not know what they are eligible for, may lack documents, or may find the process too difficult to complete. The programme does not need to create parallel services. It needs to make existing ones work for these women. The baseline will record current enrolment and receipt so that improvements can be measured.
+
+## The Agro-Ecological Dimension
+
+Dependence on rain and forest ties household welfare directly to ecological conditions. A weak monsoon affects both crop output and, in many years, forest yields. Households with little land cannot spread this risk across plots or crops. This environmental exposure also explains why homestead-based options fit the context. Kitchen gardens, small livestock such as goats and poultry, and value-addition to non-timber forest produce all use the small spaces and local resources that landless families do have. They do not depend on the main monsoon crop.
+
+## How the Dimensions Reinforce One Another
+
+The substance summarises the core dynamic: economic vulnerability and health and nutrition deficits reinforce each other in a cycle. The dimensions above show how the cycle works:
+
+1. Irregular, low income, outside women's control, limits the quantity and diversity of food.
+2. Poor diets produce anaemia and undernutrition among women.
+3. Undernourished women have less capacity to work and earn, and give birth to children at higher risk of stunting.
+4. Stunted children grow into adults with reduced learning and earning potential.
+5. Low literacy and weak access to schemes prevent households from using the public support that could break the pattern.
+6. Ecological exposure and the absence of off-farm work keep the cycle turning year after year.
+
+This situation will not resolve on its own. Each deficit keeps the others in place, and a single-sector response leaves the rest untouched. An income programme that ignores nutrition may raise earnings without improving children's growth. A nutrition programme that ignores income asks women to adopt practices their households cannot afford. The response must therefore work on both at once, through one platform, with women at the centre.
+
+###OBJECTIVE###
+The Problem Analysis showed a cycle in which economic insecurity and poor nutrition reinforce each other in Scheduled Tribe households of Arki block. The programme's objective responds directly to that cycle.
+
+**Objective:** To strengthen the economic independence of 800 Scheduled Tribe women in Arki block through stable, diversified incomes under their own control, while improving maternal and child nutrition of their households, over 24 months.
+
+The objective has four defining features.
+
+**Whom it serves.** The programme serves 800 Scheduled Tribe women of reproductive age, predominantly Munda, from landless and near-landless households across all 16 Gram Panchayats of Arki block. These are the women at the centre of both halves of the cycle. They are the economic actors whose incomes are most insecure, and they are the mothers whose nutrition shapes the next generation.
+
+**What changes, first strand.** Women's incomes are to become stable, diversified and under their own control. Each of these words carries weight:
+
+- **Stable** income addresses lean-season gaps.
+- **Diversified** income addresses dependence on rain and forest.
+- **Under their own control** ensures that income gains reach household nutrition.
+
+**What changes, second strand.** Maternal and child nutrition in these households is to improve. This covers the practices and diets of the women themselves and of their young children.
+
+**Timeframe.** The programme runs for 24 months. Its results will be measured through baseline and endline surveys. The targets are:
+
+- at least a 50% increase in income, from at least two sources
+- at least 60% of women achieving minimum dietary diversity
+- a trend in under-five stunting in beneficiary households below the block baseline
+
+The two strands are not separate aims joined together. They are one objective, because in Arki neither can be achieved sustainably without the other.
+
+###STRATEGY###
+The objective commits the programme to two linked changes: women's economic independence and household nutrition. This chapter explains the approach chosen to deliver them together and why it suits Arki. The approach rests on four decisions: a single community platform, a phased sequence, deliberate convergence with public systems, and activities designed to serve both strands at once.
+
+## One Platform for Two Strands
+
+The core of the strategy is an SHG-anchored community platform. It is the single delivery structure for both the economic and the health strands. This choice follows from the problem analysis. Since income and nutrition deficits reinforce each other within the same households, they should be addressed through the same institution, with the same women, in the same regular meetings.
+
+About 53 SHGs will be formed or strengthened across the 16 Gram Panchayats. Each will meet regularly to save, lend and plan livelihoods. The same meetings will host structured discussions on iron and folic acid supplementation, antenatal care, infant and young child feeding and dietary diversity. This has three practical advantages:
+
+- **Lower burden on women.** Their time is already stretched, so they attend one forum rather than several.
+- **Link between the two strands.** A woman planning how to use a loan for goats is, in the same meeting, thinking about what her children eat.
+- **Lasting ownership.** The platform belongs to the women. This reflects EcoKheti Foundation's commitment to community ownership and women's agency, and it is what allows the structure to outlast the project.
+
+The SHG also suits the social context. Munda communities have strong collective traditions, and a group-based model builds on these. For women with limited literacy, the group provides peer support, shared record-keeping and collective confidence when dealing with banks and government offices, which individual women might find difficult to approach alone.
+
+## Integration by Design
+
+The strategy chooses livelihood activities that produce both income and nutrition:
+
+- **Kitchen gardens** supply vegetables to the household diet and can produce a surplus for sale.
+- **Livestock such as poultry and goats** provide saleable assets and income, and poultry can add animal-source foods to the family's diet.
+
+These homestead activities also fit the agro-ecological reality described in the Problem Analysis. They use the small spaces and local resources that landless households have, and they do not depend on the main rain-fed crop.
+
+This addresses a common weakness of nutrition programmes, which advise mothers to diversify diets their households cannot supply. Here, the counselling and the means to act on it arrive together. Other livelihood options, including value-addition to non-timber forest produce and micro-enterprise, extend income diversification beyond the homestead. They help turn the seasonal, low-value forest income identified in the problem analysis into something more rewarding.
+
+## Convergence with Public Systems
+
+The programme does not build parallel services. It connects women to existing ones:
+
+| Public system | What it offers the women |
+|---|---|
+| NRLM through JSLPS | Institutional support for SHGs and bank linkage |
+| MGNREGA | Wage employment |
+| PDS | Food security |
+| ICDS and Anganwadi Workers | Supplementary nutrition and child growth monitoring |
+| National Health Mission, ASHAs and VHSNDs | Antenatal care and maternal health services |
+| PMMVY | Maternal cash support |
+
+Convergence serves two purposes. It greatly increases the resources that reach women beyond what a 24-month project budget could provide. It also means that when the project ends, women remain connected to permanent public systems rather than to a project that has closed. This reflects the organisation's commitment to working with public systems, and it responds directly to the entitlement gaps identified in the problem analysis.
+
+## Three Phases over 24 Months
+
+The work follows a deliberate sequence:
+
+1. **Mobilisation and group formation.** Trust is built, women are organised and SHGs begin saving. Nothing durable can be built without functioning groups.
+2. **Capacity-building and asset support.** Skills training is delivered, productive assets and input kits are provided, kitchen gardens are established, and nutrition counselling becomes a regular part of group life. Assets arrive only once groups are functioning, so the groups can take ownership of them.
+3. **Consolidation, market linkage and transition.** Bank linkages are deepened, market connections are established, scheme enrolment is completed and responsibility shifts steadily to the SHGs and public systems.
+
+## Why This Approach Fits Arki
+
+Arki's problems are interlinked, so the response is integrated. The block is underserved, so the programme links women to public services that are already there. Female literacy is low, so learning is oral, repeated and group-based. The Munda community has collective traditions, so the delivery structure is a collective one. Households are landless, so livelihoods are built around homesteads, livestock and forest produce rather than land. Each feature of the strategy responds to a specific finding in the Problem Analysis.
+
+###RESULTS###
+The strategy sets out how the programme will work. This chapter sets out what it will achieve and why each level of result can reasonably be expected to follow from the one below. The results chain has three levels: outputs, which the programme directly delivers; outcomes, which reflect changes in women's lives and practices; and an impact to which these contribute over time.
+
+## Impact: Reduced Intergenerational Poverty and Malnutrition
+
+The long-term change the programme contributes to is reduced intergenerational poverty and malnutrition among Scheduled Tribe households in Arki block. The main impact indicator is under-five stunting prevalence in beneficiary households. The logframe records a Jharkhand baseline of 39.6% (NFHS-5), with a target of trending below the block baseline. This will be measured through an endline anthropometric survey and ICDS records.
+
+The indicator is chosen because stunting captures the intergenerational link identified in the problem analysis. It reflects both the mother's nutrition and the child's early feeding. The target is intentionally modest. Stunting responds slowly, and a 24-month programme can realistically aim to shift the trend, not eliminate the problem. This is an impact to which the programme contributes, alongside public nutrition and health services, and it is framed accordingly.
+
+## Outcome 1: Increased and Diversified Incomes under Women's Control
+
+The first outcome is that 800 Scheduled Tribe women have increased and diversified household incomes under their own control. The indicators are average annual income and number of income sources. The targets are at least a 50% increase in income and at least two income sources per woman. The baseline will be established through a survey at the start of the project, and progress will be tracked through baseline and endline income surveys and SHG records.
+
+This outcome follows from Outputs 1, 2, 3 and 5:
+
+- **Organised groups (Output 1)** give women savings, access to credit and collective strength.
+- **Skills and productive assets (Output 2)** give them the means to earn.
+- **Links to markets, schemes and financial services (Output 3)** turn production into income and expand the resources available to them.
+- **Kitchen gardens (Output 5)** can produce a saleable surplus in addition to food for the household.
+
+The target of at least two income sources speaks directly to the diversification problem identified earlier. A household with goat income alongside forest produce, or a kitchen garden surplus alongside wage work, is less exposed to the failure of any single source.
+
+## Outcome 2: Improved Maternal and Child Health, Nutrition and Care Practices
+
+The second outcome is that 800 women and their families adopt improved maternal and child health, nutrition and care practices. The indicator is the percentage of women achieving minimum dietary diversity, with a target of at least 60%. The baseline will be established at the start of the project, and progress will be measured through an endline Knowledge, Attitudes and Practices survey and ICDS records.
+
+This outcome follows from Outputs 4 and 5, supported by Outcome 1:
+
+- **Nutrition and health knowledge (Output 4)** reaches 800 women and 400 family members. Including family members matters, because decisions about food, rest during pregnancy and care-seeking are made within the household, often by others besides the mother.
+- **Kitchen gardens (Output 5)** supply the foods that make dietary diversity possible.
+- **Higher income under women's control (Outcome 1)** allows households to buy what they cannot grow.
+
+This is where the integrated design becomes visible in the results. Knowledge alone rarely changes diets when food is scarce, and income alone does not guarantee better feeding practices. The two together make the change far more likely.
+
+## Outputs: What the Programme Delivers
+
+1. **About 53 functioning SHGs with savings and credit**, involving all 800 women. Baseline: zero. Verification: SHG registers and bank passbooks. This is the foundation on which all other outputs depend.
+2. **800 women equipped with diversified livelihood skills and productive assets**, covering agriculture, poultry, goatery, NTFP value-addition and micro-enterprise.
+3. **800 women linked to markets, government schemes and financial services**, including SHG-bank linkage and enrolment in NRLM, MGNREGA and PMMVY.
+4. **800 women and 400 family members reached with maternal and child nutrition and health knowledge**, through SHG meetings and household visits.
+5. **500 household kitchen gardens established and maintained.** Baseline: zero. Verification: field verification at endline and harvest logs.
+
+## How the Chain Holds Together
+
+The logic runs upward. The programme organises women (Output 1) and equips, connects and informs them (Outputs 2 to 4). It also provides the kitchen gardens that link food production to income (Output 5). Together these produce income gains under women's control (Outcome 1) and better nutrition practices (Outcome 2). The two outcomes reinforce each other, in the same way that the underlying deficits did in the problem analysis. Together they contribute to breaking the intergenerational cycle of poverty and malnutrition (Impact).
+
+The chain also depends on certain assumptions that the programme will monitor:
+
+- Public services continue to be available.
+- Markets remain accessible for what women produce.
+- Rainfall does not fail so severely that it overwhelms homestead activities.
+
+###ACTIVITIES###
+The results chain describes what will change. This chapter describes how the programme will bring that change about. The activities are grouped into clusters. For each, the chapter explains the mechanism by which it produces its result, so the work visibly builds the Theory of Change.
+
+## Cluster 1: Community Mobilisation and SHG Formation and Strengthening
+
+**Contributes to:** Output 1, and underpins all other outputs.
+
+Work begins across all 16 Gram Panchayats with meetings in each habitation. These meetings explain the programme and identify landless and near-landless Scheduled Tribe women of reproductive age. Existing groups are identified and strengthened where they are active, and new groups are formed where they are not, to reach about 53 SHGs covering 800 women.
+
+**How it works.** The groups are built up in steps:
+
+- Groups agree on rules and set a regular meeting rhythm.
+- Members begin saving and then start internal lending.
+- Record-keeping is designed for low literacy, using oral recall, visual aids and group verification, alongside registers and passbooks.
+- Leadership roles rotate so that capacity does not rest with a single literate member.
+
+**Who does the work.** Five Community Mobilisers work across the block for the full 24 months, supported by a Project Coordinator. This gives the continuous, face-to-face presence that an underserved block with low female literacy requires.
+
+**Why it matters.** This cluster establishes the single platform on which everything else rests. Without functioning groups, assets would have no owners, credit would have no channel and nutrition learning would have no regular setting.
+
+## Cluster 2: Livelihood Skills Training
+
+**Contributes to:** Output 2 and Outcome 1.
+
+Training covers five areas:
+
+- improved homestead agriculture
+- poultry
+- goatery
+- value-addition to non-timber forest produce
+- micro-enterprise
+
+It is delivered in 20 batches of 40 women, which reaches all 800 participants. Costs follow NRLM training norms.
+
+**How it works.** Each woman chooses her area of focus through planning within her SHG, based on her household's space, labour and preferences. This allows diversification to happen at household level rather than every woman doing the same thing. Training is practical and demonstration-based, suited to women with limited literacy. Livestock training covers animal care, disease prevention and when to sell. NTFP value-addition training addresses the problem, identified earlier, of forest produce being sold raw at low value soon after collection. Micro-enterprise training covers basic costing and record-keeping.
+
+## Cluster 3: Provision of Productive Assets and Input Kits
+
+**Contributes to:** Output 2 and Outcome 1.
+
+Skills are backed by the means to use them. Assets and input kits are provided once groups are functioning and training is under way. They include goat units of two does each, provided to 100 women and costed according to state livestock scheme norms, along with other input kits linked to the chosen livelihoods.
+
+**How it works.** Assets are channelled through the SHG, which helps select recipients and follows up on how they are used. Goats are a suitable asset for landless households. They need little land, they multiply, and they can be sold when the household needs cash, which gives families a buffer against lean-season shocks. Linking the asset to the group creates peer accountability and helps protect the asset from being sold off in distress.
+
+## Cluster 4: Financial, Scheme and Market Linkages
+
+**Contributes to:** Output 3 and Outcome 1.
+
+Once SHGs have a record of regular saving and lending, they are supported to open bank accounts and access bank credit. At the same time, women are helped to enrol in the schemes relevant to them:
+
+- NRLM, for institutional support to their SHG
+- MGNREGA, for wage work
+- PMMVY, for maternal benefit
+
+**How it works.** Mobilisers help women assemble the required documents, accompany groups on their first bank and block-office visits and follow each application until it is approved. This practical accompaniment directly addresses the entitlement gap identified in the problem analysis.
+
+For market linkage, the programme connects women selling livestock, surplus vegetables and processed forest produce with buyers. It helps SHGs aggregate their produce so they can negotiate better prices. This is what turns production into income under women's own control.
+
+## Cluster 5: Nutrition and Health Counselling
+
+**Contributes to:** Output 4 and Outcome 2.
+
+Nutrition counselling is part of regular SHG meetings and is reinforced through household visits. It covers four areas:
+
+- iron and folic acid supplementation
+- infant and young child feeding
+- antenatal care
+- dietary diversity
+
+**How it works.** Group sessions use discussion, demonstration and shared experience, which suit oral learning. Household visits reach pregnant women and mothers of young children individually. They also involve family members, 400 of whom are to be reached, because household decisions about food and care are not made by mothers alone. Because the sessions take place in the same group where women plan their livelihoods, the link between what a household earns, grows and eats is made explicit and practical.
+
+## Cluster 6: Kitchen Garden Establishment
+
+**Contributes to:** Output 5, Outcome 2 and Outcome 1.
+
+500 households receive seeds, saplings and technical support to establish and maintain kitchen gardens. The per-household kit cost in the budget is marked for local confirmation and will be finalised before procurement.
+
+**How it works.** Support covers crop selection for year-round availability, use of household wastewater and compost, and seed saving so that gardens do not depend on external inputs. Harvest logs track both what is eaten at home and what is sold. This gives a direct measure of the dual nutrition and income benefit that is central to the integration logic. The gardens are the practical link between counselling and consumption. They put diverse foods within reach of the women being encouraged to eat them.
+
+## Cluster 7: Convergence Facilitation with Frontline Health and Nutrition Services
+
+**Contributes to:** Output 4, Outcome 2 and sustainability.
+
+The programme works alongside ASHAs, Anganwadi Workers and Village Health, Sanitation and Nutrition Days (VHSNDs).
+
+**How it works.** SHG members are encouraged and helped to attend VHSNDs. Pregnant women are linked to antenatal care through ASHAs, and children are linked to Anganwadi growth monitoring and supplementary nutrition. Where appropriate, frontline workers are invited to SHG meetings. This does not replace public services. It increases their use, strengthens the relationship between women and their frontline workers, and makes ICDS records a source of verification for the programme's nutrition results.
+
+## How the Clusters Build the Theory of Change
+
+The clusters follow the three phases. Mobilisation (Cluster 1) comes first. Skills, assets, gardens and counselling (Clusters 2, 3, 5 and 6) follow once groups are functioning. Linkages and convergence (Clusters 4 and 7) run throughout and deepen during consolidation.
+
+Each cluster feeds a specific output, and the outputs combine into the two outcomes. Women who are organised, skilled, equipped and connected earn more from more sources. Women who are informed, who have gardens and who are linked to health services eat and feed better. Because it is the same women in the same groups, the gains in income and nutrition support each other, and together they begin to reverse the cycle described in the Problem Analysis.
+
+###SUSTAINABILITY###
+The activities build change over 24 months. This chapter explains why that change can last beyond the project. Sustainability has been designed into the programme from the start rather than left to the final months. It rests on five foundations.
+
+## Institutions Owned by Women
+
+The most durable output is the network of about 53 SHGs owned and run by the women themselves. By the end of the project, these groups will have two years of saving, internal lending and record-keeping behind them, along with bank linkages. Their savings belong to members, and their credit history with banks continues after the project closes. Rotating leadership reduces dependence on any single member. SHGs formed under NRLM norms can also be federated into the JSLPS community institutional structure, which offers ongoing institutional support. This reflects EcoKheti Foundation's value of community ownership. The organisation's role is to facilitate the groups, not to own them.
+
+## Assets That Renew Themselves
+
+The livelihood assets were chosen partly because they can renew themselves:
+
+- **Goats** multiply, so a household's herd can grow without further external support.
+- **Kitchen gardens** can be kept going through seed saving, composting and household wastewater.
+- **Skills** in livestock care, forest produce value-addition and micro-enterprise stay with the women.
+
+None of these requires continued project inputs, and none depends on owning land. This matters for landless and near-landless households.
+
+## Lasting Connections to Public Systems
+
+Women enrolled in MGNREGA, PMMVY and NRLM, and connected to ASHAs, Anganwadi Workers and VHSNDs, remain connected to these permanent public systems after the project ends. By linking women to existing entitlements rather than creating parallel services, the programme ensures that ongoing support comes from institutions that will continue to operate. Women who have learned to deal with banks and block offices, often for the first time, carry that confidence and knowledge forward.
+
+## Practices That Become Habits
+
+Changes in nutrition and care practices are supported in three ways, which makes them more likely to last than advice alone:
+
+- The 400 family members reached share an understanding of why these practices matter.
+- Kitchen gardens keep diverse foods available.
+- Continuing contact with frontline workers reinforces the practices.
+
+When dietary diversity becomes normal within a household and a group, it tends to continue without outside prompting.
+
+## A Planned Transition
+
+The third phase, covering consolidation, market linkage and transition, is dedicated to handing over. During this phase, mobilisers step back from direct facilitation. SHGs take responsibility for their own meetings, records and market relationships, and links with JSLPS, banks and frontline services are formalised. By the end, the groups will be managing without project staff and the project will have withdrawn in an orderly way.
+
+## Conclusion
+
+The Problem Analysis described a cycle in which low, insecure incomes and poor nutrition reinforce each other across generations. This programme responds with the same integrated logic in reverse. Women's own institutions, self-renewing assets, permanent public entitlements and established household practices reinforce one another after the project closes.
+
+The programme asks Grameen Vikas Foundation to invest INR 60,00,000 over 24 months to start that process for 800 Munda women and their families across the 16 Gram Panchayats of Arki block. The aim is for the gains in income and nutrition to continue well beyond the grant period.
+
+###END###

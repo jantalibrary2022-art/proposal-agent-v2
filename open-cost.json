@@ -1,0 +1,141 @@
+{
+  "cost_norms": [
+    {
+      "item": "Project Coordinator",
+      "rate": "Rs 25,000 to Rs 40,000 per month, all-inclusive, depending on qualification and experience. Mediclaim, communication and laptop allowances are paid on top.",
+      "unit": "person-month",
+      "basis": "JSLPS recruitment notice for Block Project Officer and related block-level posts (Government of Jharkhand, Rural Development Department). The posts need at least 2 years as a JSLPS Community Coordinator, Field Thematic Coordinator or equivalent.",
+      "applicability": "The closest Jharkhand SRLM benchmark for a block-level manager who handles convergence and reporting. A project coordinator managing one block and 20 villages fits the upper half of this band. The notice is from 2019 and the copy found is hosted on a third-party site, so check it against the current JSLPS schedule on jslps.in and add an escalation factor for 2026-28.",
+      "source_title": "Government of Jharkhand (Rural Development Department) – JSLPS notification, Block Project Officer / Accounts Officer / Other Posts",
+      "source_url": "https://img.freejobalert.com/uploads/2019/06/Notification-JSLPS-Block-Project-Officer-Accounts-Officer-Other-Posts.pdf",
+      "year": "2019"
+    },
+    {
+      "item": "Nutrition and Health Convergence Officer",
+      "rate": "Rs 25,000 to Rs 40,000 per month, all-inclusive",
+      "unit": "person-month",
+      "basis": "Same JSLPS block-level professional band (Government of Jharkhand, Rural Development Department notification).",
+      "applicability": "Used as a proxy for a block-level technical lead. No Jharkhand norm specific to a nutrition or convergence officer was found. Place in the lower-to-middle part of the band, below the Project Coordinator. Verify against the current JSLPS HR schedule and escalate from 2019.",
+      "source_title": "Government of Jharkhand (Rural Development Department) – JSLPS notification, Block Project Officer / Accounts Officer / Other Posts",
+      "source_url": "https://img.freejobalert.com/uploads/2019/06/Notification-JSLPS-Block-Project-Officer-Accounts-Officer-Other-Posts.pdf",
+      "year": "2019"
+    },
+    {
+      "item": "Livelihoods / Kitchen Garden Specialist (part-time)",
+      "rate": "Rs 25,000 to Rs 40,000 per month full-time equivalent. Pay pro-rata to the time share, e.g. 50% = Rs 12,500 to Rs 20,000.",
+      "unit": "person-month (pro-rata FTE)",
+      "basis": "JSLPS block-level professional band (Government of Jharkhand, Rural Development Department notification).",
+      "applicability": "Indirect proxy. No official Jharkhand rate for a part-time horticulture or kitchen-garden specialist was found. Apply the FTE share and verify against the current JSLPS schedule.",
+      "source_title": "Government of Jharkhand (Rural Development Department) – JSLPS notification, Block Project Officer / Accounts Officer / Other Posts",
+      "source_url": "https://img.freejobalert.com/uploads/2019/06/Notification-JSLPS-Block-Project-Officer-Accounts-Officer-Other-Posts.pdf",
+      "year": "2019"
+    },
+    {
+      "item": "MEL and Data Officer (part-time)",
+      "rate": "Rs 25,000 to Rs 40,000 per month full-time equivalent, paid pro-rata to the time share",
+      "unit": "person-month (pro-rata FTE)",
+      "basis": "JSLPS block-level professional band (Government of Jharkhand, Rural Development Department notification).",
+      "applicability": "Indirect proxy. No Jharkhand norm for an MEL or data officer was found. Pay pro-rata, most likely at the lower end of the band. Verify against the current JSLPS schedule.",
+      "source_title": "Government of Jharkhand (Rural Development Department) – JSLPS notification, Block Project Officer / Accounts Officer / Other Posts",
+      "source_url": "https://img.freejobalert.com/uploads/2019/06/Notification-JSLPS-Block-Project-Officer-Accounts-Officer-Other-Posts.pdf",
+      "year": "2019"
+    },
+    {
+      "item": "Community Nutrition Resource Persons (SHG women)",
+      "rate": "Rs 150 per day including food and transport, up to 20 visit-days a month (about Rs 3,000 per month at maximum)",
+      "unit": "per person-day / person-month",
+      "basis": "NHM (MoHFW) annual budget provisions for the ASHA support system: honorarium for ASHA facilitators' field visits, inclusive of food and transport.",
+      "applicability": "Weak proxy only. It is a national NHM norm for community-level facilitators and is not a JSLPS CRP norm. It is old and likely below current Jharkhand pay expectations. Treat it as a documented floor, and get the current JSLPS honorarium for Poshan Sakhi or health-and-nutrition CRPs to set the actual rate.",
+      "source_title": "Annual Budget Provisions for ASHA Support System (National Health Mission)",
+      "source_url": "https://www.nhm.gov.in/images/pdf/communitisation/asha/support-mechanism/annual-budget-provisions.pdf",
+      "year": null
+    },
+    {
+      "item": "Kitchen garden seed and sapling kits",
+      "rate": "Rs 75 per vegetable seed minikit (full cost). Farmers paid a subsidised Rs 10.",
+      "unit": "per household kit, per season",
+      "basis": "Odisha Directorate of Horticulture state plan scheme for supplying vegetable seed minikits. The same scheme supplies at least five fruit plants per beneficiary at 75% subsidy on planting material.",
+      "applicability": "Out-of-state and dated (2009-10). It covers seeds only; saplings (moringa, papaya, lemon) cost extra. Use it only to show the order of magnitude. Get a Jharkhand Horticulture Directorate, ATMA Khunti or KVK Khunti rate, or local quotes, for the actual kit price.",
+      "source_title": "Plans & Schemes | Directorate of Horticulture, Government of Odisha",
+      "source_url": "https://odihort.nic.in/node/119",
+      "year": "2009-10"
+    },
+    {
+      "item": "Household kitchen garden training",
+      "rate": "Rs 24,000 per training of 30 farmers for 2 days (about Rs 400 per participant per day). The ATMA cafeteria per-trainee rate is Rs 400 per day.",
+      "unit": "per training batch",
+      "basis": "ATMA (Support to State Extension Programmes for Extension Reforms) cafeteria norm for farmers' training, as published by a district administration. MANAGE separately notes Rs 400 per day per trainee under the ATMA cafeteria.",
+      "applicability": "Directly applicable national ATMA norm for village-level farmer training. The per-batch figure was found on an out-of-state district site, so confirm the current rate with ATMA Khunti. For village-level, non-residential sessions, scale the batch cost to the actual size and duration.",
+      "source_title": "Agriculture | District Bilaspur | India",
+      "source_url": "https://bilaspur.gov.in/en/agriculture/",
+      "year": null
+    },
+    {
+      "item": "Community Nutrition Resource Person training and refreshers",
+      "rate": "Rs 400 per trainee per day (ATMA cafeteria rate). An alternative national benchmark is Rs 50,000 for a 2-day capacity-building training of 15 resource persons.",
+      "unit": "per participant-day / per batch",
+      "basis": "MANAGE skill training cost norms, which cite the ATMA cafeteria at Rs 400 per day per trainee. The BPKP (natural farming) guidelines set Rs 50,000 for a two-day training of 15 CRPs, LRPs and other resource persons by external resource persons.",
+      "applicability": "Both are national norms for training community cadre in agriculture. Use the ATMA per-day rate for non-residential sessions. The BPKP figure (about Rs 1,667 per person-day) suits residential training with external trainers. No Jharkhand-specific norm for CRP training was found.",
+      "source_title": "Skill Training for Rural Youth (STRY) & Farmers' Capacity – Cost Norms (MANAGE)",
+      "source_url": "https://www.manage.gov.in/stry&fcac/costnorms-stry.asp",
+      "year": null
+    },
+    {
+      "item": "Community Nutrition Resource Person training and refreshers (residential / external-trainer variant)",
+      "rate": "Rs 50,000 per 2-day training of 15 resource persons",
+      "unit": "per training batch",
+      "basis": "Bhartiya Prakritik Krishi Paddhati (BPKP) guidelines: yearly capacity building of CRPs, LRPs and similar cadre by external resource persons.",
+      "applicability": "National scheme norm for training community resource persons. Use it for residential or expert-led refreshers. It is not nutrition-specific and not Jharkhand-specific.",
+      "source_title": "Guidelines of BPKP (NITI Aayog natural farming portal)",
+      "source_url": "https://naturalfarming.niti.gov.in/wp-content/uploads/2021/09/Guidelines_of_BPKP.pdf",
+      "year": "2021"
+    },
+    {
+      "item": "Joint trainings for Anganwadi Workers, ASHAs and SHG leaders",
+      "rate": "Resource person honorarium Rs 500 per day. TA/DA for ASHAs and AWWs and training logistics (venue, stationery) are paid per state government norms.",
+      "unit": "per training batch (build-up: RP days + participant TA/DA + logistics)",
+      "basis": "NHM (MoHFW) BRIDGE operational guidelines for IPC skills training of frontline workers (ASHA and AWW).",
+      "applicability": "Directly relevant national NHM norm for training ASHAs and AWWs together. Take participant TA/DA and logistics from NHM Jharkhand or the state government's current norms. The participant-day cost for SHG leaders can use the ATMA Rs 400 per day rate.",
+      "source_title": "IPC Skills Training in Routine Immunization for Frontline Workers – BRIDGE Operational Guidelines (NHM)",
+      "source_url": "https://nhm.gov.in/New_Updates_2018/NHM_Components/Immunization/Guildelines_for_immunization/BRIDGE_Operational_Guidelines.pdf",
+      "year": "2017-18"
+    },
+    {
+      "item": "Block and district convergence meetings",
+      "rate": "Rs 9,000 per year for tea and refreshments at monthly meetings (about Rs 750 per meeting)",
+      "unit": "per meeting",
+      "basis": "NHM annual budget provisions for the ASHA support system: refreshment cost for monthly block-level meetings.",
+      "applicability": "National NHM norm for routine block-level coordination meetings. It covers refreshments only and is dated. District-level meetings, or meetings needing a hall or participant travel, need local quotes.",
+      "source_title": "Annual Budget Provisions for ASHA Support System (National Health Mission)",
+      "source_url": "https://www.nhm.gov.in/images/pdf/communitisation/asha/support-mechanism/annual-budget-provisions.pdf",
+      "year": null
+    },
+    {
+      "item": "Exposure visits",
+      "rate": "Within district Rs 300, within state Rs 400, inter-state Rs 800, each per participant per day",
+      "unit": "per participant per day",
+      "basis": "ATMA cafeteria cost norm for farmers' exposure visits, as published by a district administration.",
+      "applicability": "Directly applicable national ATMA norm for peer-learning visits by SHG leaders and cadre, e.g. to JSLPS or KVK sites within Jharkhand at Rs 400. Found on an out-of-state district site; confirm the current rate with ATMA Khunti.",
+      "source_title": "Agriculture | District Bilaspur | India",
+      "source_url": "https://bilaspur.gov.in/en/agriculture/",
+      "year": null
+    }
+  ],
+  "gaps": [
+    "Field Facilitators / Cluster Coordinators: needs local quote or field rate. No authoritative current JSLPS Community Coordinator or Field Thematic Coordinator pay schedule was found; only unofficial job-portal ranges. Get the current JSLPS HR manual (L1–L9 bands) or a recruitment notice, and make sure pay is at least the current Jharkhand minimum wage (April 2026 revision) for the right skill category.",
+    "Community Nutrition Resource Persons: the NHM Rs 150 per day proxy above is a weak match. Get the current JSLPS honorarium for Poshan Sakhi or health-and-nutrition CRPs from JSLPS Khunti DMMU or Murhu BMMU.",
+    "Village demonstration plots and community seed banks: needs local quote or field rate. No official per-village norm was found. Check ATMA Khunti field-demonstration norms, KVK Khunti and MIDH Jharkhand.",
+    "Low-cost water management and fencing support: needs local quote or field rate. No official per-household norm was found. Look into MGNREGA or VB-G RAM-G convergence (Didi Bari Yojana nutri-gardens via JSLPS) through the current MoRD wage-rate gazette for Jharkhand; only secondary news reports of that rate were found.",
+    "Cooking demonstrations and nutrition session materials: needs local quote or field rate. A POSHAN Abhiyaan Community Based Event rate of Rs 250 per event per AWC was seen only in an unofficial source. Check the MWCD POSHAN 2.0 cost-norm annexure or the Jharkhand Social Welfare / ICDS Directorate before citing it.",
+    "IEC and counselling materials (pictorial, local language): needs local quote or field rate from printers. No per-set official norm was found. The ATMA norm of Rs 4 lakh per district for printed dissemination is not a per-set rate.",
+    "Growth monitoring support equipment: needs local quote or GeM price. MWCD has published POSHAN specifications for the 4-device set (infantometer, stadiometer, infant scale, mother-and-child scale) at spniwcd.wcd.gov.in, but no unit cost was found.",
+    "Referral and follow-up support: needs local quote or field rate (transport or escort costs to CHC/MTC). No authoritative norm was found.",
+    "Baseline and endline surveys: needs local quote from survey agencies. No official norm was found.",
+    "Household tracking system (mobile or digital tools): needs local quote or GeM price. MWCD has issued a revised smartphone cost under POSHAN Abhiyaan (18 Oct 2023), but the figure was not found.",
+    "Documentation and learning products: needs local quote or field rate.",
+    "Staff travel and local conveyance: needs local quote or field rate. No Jharkhand or scheme norm for NGO field staff was found; check the JSLPS travel policy.",
+    "Office running costs (field office, Murhu): needs local quote (rent, utilities, internet).",
+    "Administrative and overhead costs: no scheme norm found. Apply the donor's permitted overhead percentage and include audit fees from CA quotes.",
+    "Casual labour wage reference (garden establishment or fencing work): the current Jharkhand minimum wage (revision effective 1 April 2026) and the Jharkhand rural employment wage were seen only in secondary sources. Cite the Jharkhand Labour Department notification and the MoRD wage-rate gazette directly before using either."
+  ]
+}
