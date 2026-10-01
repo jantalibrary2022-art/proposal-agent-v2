@@ -1,0 +1,467 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { createClient } from "../../../lib/supabase/client";
+
+const steps = ["Organisation", "The RFP", "RFP check", "Your approach", "Where & who", "Timeline & budget", "Review"];
+
+export default function RfpPage() {
+  const router = useRouter();
+  const [step, setStep] = useState(0);
+
+  const [profiles, setProfiles] = useState<any[]>([]);
+  const [profilesLoaded, setProfilesLoaded] = useState(false);
+  const [orgProfileId, setOrgProfileId] = useState<string>("");
+  const [noProfile, setNoProfile] = useState(false);
+  const [quickName, setQuickName] = useState("");
+  const [quickAbout, setQuickAbout] = useState("");
+
+  const [starting, setStarting] = useState(false);
+  const [answers, setAnswers] = useState({
+    rfp_text: "", idea: "", location: "", beneficiaries: "", duration: "", budget: "",
+  });
+  const set = (k: string, v: string) => setAnswers((a) => ({ ...a, [k]: v }));
+
+  const [extracting, setExtracting] = useState(false);
+  const [uploadName, setUploadName] = useState("");
+  const [uploadErr, setUploadErr] = useState("");
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const [analysis, setAnalysis] = useState<any>(null);
+  const [analyzing, setAnalyzing] = useState(false);
+  const [analyzeErr, setAnalyzeErr] = useState("");
+  const analyzedTextRef = useRef("");
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => {
+      if (!data.user) return;
+      supabase.from("org_profiles").select("id,name,type,is_default").eq("user_id", data.user.id).order("is_default", { ascending: false }).order("created_at", { ascending: true }).then(({ data: rows }) => {
+        const list = rows || [];
+        setProfiles(list);
+        const def = list.find((p: any) => p.is_default) || list[0];
+        if (def) setOrgProfileId(def.id); else setNoProfile(true);
+        setProfilesLoaded(true);
+      });
+    });
+  }, []);
+
+  const onPickRfpFile = async (e: any) => {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    setUploadErr(""); setUploadName(f.name); setExtracting(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", f);
+      const res = await fetch("/api/rfp/extract-text", { method: "POST", body: fd });
+      const data = await res.json();
+      if (data.ok && data.text) { set("rfp_text", data.text); }
+      else { setUploadName(""); setUploadErr(data.error === "unsupported_type" ? "Please upload a PDF, Word (.docx), or .txt file." : "Could not read that file. You can paste the text instead."); }
+    } catch { setUploadName(""); setUploadErr("Could not read that file. You can paste the text instead."); }
+    setExtracting(false);
+    if (fileRef.current) fileRef.current.value = "";
+  };
+
+  const profilePayload = () => noProfile
+    ? { quick_profile: { name: quickName.trim(), about: quickAbout.trim() } }
+    : { org_profile_id: orgProfileId };
+
+  const prefillFromAnalysis = (a: any) => {
+    const g = a.geography || {};
+    const geoStated = g.stated || g.constraint || "";
+    const tg = a.target_group || {};
+    const tgStated = tg.stated || "";
+    const dur = a.duration || {};
+    const durText = dur.notes || [dur.min, dur.max].filter(Boolean).join(" to ") || "";
+    const bud = a.budget || {};
+    const budText = bud.notes || [bud.min, bud.max].filter(Boolean).join(" to ") || bud.max || "";
+    setAnswers((s) => ({
+      ...s,
+      location: s.location || geoStated,
+      beneficiaries: s.beneficiaries || tgStated,
+      duration: s.duration || durText,
+      budget: s.budget || budText,
+    }));
+  };
+
+  const runAnalyze = async () => {
+    setAnalyzing(true); setAnalyzeErr("");
+    try {
+      const res = await fetch("/api/rfp/analyze", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ rfp_text: answers.rfp_text, ...profilePayload() }) });
+      const data = await res.json();
+      if (data.ok && data.analysis) {
+        setAnalysis(data.analysis);
+        analyzedTextRef.current = answers.rfp_text;
+        prefillFromAnalysis(data.analysis);
+        setAnalyzing(false);
+        setStep(2);
+        return;
+      }
+      setAnalyzeErr(data.error === "no_profile" ? "Pick an organisation profile first." : data.error === "missing_rfp" ? "Add more of the RFP text first." : "Could not read the RFP. Check the text and try again.");
+    } catch { setAnalyzeErr("Could not read the RFP. Try again."); }
+    setAnalyzing(false);
+  };
+
+  const generate = async () => {
+    setStarting(true);
+    const payload: any = { ...answers, rfp_analysis: analysis, ...profilePayload() };
+    try {
+      const res = await fetch("/api/proposals/generate-rfp", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers: payload }) });
+      const data = await res.json();
+      if (data.ok && data.id) { router.push("/proposals/" + data.id); return; }
+      alert("Could not start: " + (data.error || "unknown error"));
+    } catch (e) { alert("Could not start the proposal."); }
+    setStarting(false);
+  };
+
+  const [listening, setListening] = useState(false);
+  const [supported, setSupported] = useState(true);
+  const [lang, setLang] = useState("en-IN");
+  const recognitionRef = useRef<any>(null);
+  const keepRef = useRef(false);
+  const committedRef = useRef("");
+
+  useEffect(() => {
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SR) setSupported(false);
+  }, []);
+
+  const run = () => {
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SR) { setSupported(false); return; }
+    const recognition = new SR();
+    recognition.lang = lang;
+    recognition.interimResults = true;
+    recognition.continuous = true;
+    recognition.onresult = (event: any) => {
+      let interim = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const t = event.results[i][0].transcript;
+        if (event.results[i].isFinal) committedRef.current += t + " ";
+        else interim += t;
+      }
+      set("idea", (committedRef.current + interim).replace(/\s+/g, " ").trimStart());
+    };
+    recognition.onend = () => { if (keepRef.current) { try { recognition.start(); } catch {} } else setListening(false); };
+    recognition.onerror = (event: any) => {
+      if (event.error === "not-allowed" || event.error === "service-not-allowed") { keepRef.current = false; setListening(false); }
+    };
+    recognitionRef.current = recognition;
+    try { recognition.start(); } catch {}
+  };
+  const startListening = () => {
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SR) { setSupported(false); return; }
+    committedRef.current = answers.idea ? answers.idea.trim() + " " : "";
+    keepRef.current = true; setListening(true); run();
+  };
+  const stopListening = () => { keepRef.current = false; recognitionRef.current?.stop(); setListening(false); };
+  const toggleMic = () => { listening ? stopListening() : startListening(); };
+
+  const canContinue = () => {
+    if (step === 0) return noProfile ? quickName.trim().length > 0 : !!orgProfileId;
+    if (step === 1) return answers.rfp_text.trim().length > 40 && !analyzing;
+    if (step === 2) return !!analysis;
+    if (step === 3) return answers.idea.trim().length > 0;
+    if (step === 4) return Boolean(answers.location.trim() && answers.beneficiaries.trim());
+    if (step === 5) return answers.duration.trim().length > 0;
+    return true;
+  };
+  const goNext = async () => {
+    if (listening) stopListening();
+    if (step === 1) {
+      if (analysis && analyzedTextRef.current === answers.rfp_text) { setStep(2); return; }
+      await runAnalyze(); return;
+    }
+    if (step < steps.length - 1) setStep(step + 1);
+  };
+  const goBack = () => { if (listening) stopListening(); if (step === 0) router.push("/dashboard"); else setStep(step - 1); };
+
+  const input = "w-full box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] px-4 h-[52px] text-[16px] bg-card outline-none focus:border-ink";
+  const inputLocked = "w-full box-border border-[1.5px] border-[#DEDDD6] rounded-[5px] px-4 h-[52px] text-[16px] bg-[#F2F1EC] text-[#55554D] outline-none";
+  const label = "block text-[14px] font-semibold text-[#3A3A32] mb-2";
+  const selectedProfile = profiles.find((p) => p.id === orgProfileId);
+  const orgReview = noProfile ? (quickName.trim() || "Without a saved profile") : (selectedProfile ? selectedProfile.name : "—");
+
+  const pickProfile = (id: string) => { setNoProfile(false); setOrgProfileId(id); };
+  const pickNone = () => { setNoProfile(true); setOrgProfileId(""); };
+
+  const rfpChars = answers.rfp_text.trim().length;
+
+  const g = (analysis && analysis.geography) || {};
+  const geoConstraint = g.stated || g.constraint || "";
+  const geoLocked = !!analysis && g.left_to_applicant === false && !!geoConstraint;
+  const tgA = (analysis && analysis.target_group) || {};
+  const tgStated = tgA.stated || "";
+  const tgLocked = !!analysis && tgA.left_to_applicant === false && !!tgStated;
+  const elig = (analysis && analysis.eligibility_check) || [];
+  const notMet = elig.filter((e: any) => e.status === "not_met").length;
+
+  const budgetLine = () => {
+    const b = (analysis && analysis.budget) || {};
+    const t = b.notes || [b.min, b.max].filter(Boolean).join(" to ") || b.max || "";
+    return t ? (b.currency ? b.currency + " " + t : t) : "";
+  };
+  const durationLine = () => {
+    const d = (analysis && analysis.duration) || {};
+    return d.notes || [d.min, d.max].filter(Boolean).join(" to ") || "";
+  };
+
+  const statusChip = (s: string) => {
+    const map: any = {
+      met: { bg: "#E2EDE3", fg: "#2F5E3A", t: "Met" },
+      not_met: { bg: "#F4E0DA", fg: "#9A3B1E", t: "Not met" },
+      unclear: { bg: "#F0EAD8", fg: "#7A6A2E", t: "Unclear" },
+      not_applicable: { bg: "#E8E7E1", fg: "#55554D", t: "N/A" },
+    };
+    const c = map[s] || map.not_applicable;
+    return <span className="text-[11px] font-semibold px-2 py-0.5 rounded shrink-0" style={{ background: c.bg, color: c.fg }}>{c.t}</span>;
+  };
+
+  return (
+    <div className="min-h-screen bg-canvas text-ink flex flex-col">
+      <header className="h-16 shrink-0 px-6 sm:px-11 flex items-center justify-between border-b border-line">
+        <Link href="/dashboard" className="flex items-center gap-2">
+          <span className="w-[26px] h-[26px] bg-ink rounded-[3px] flex items-center justify-center text-paper font-extrabold text-[15px]">प्र</span>
+          <span className="font-extrabold text-[19px] tracking-tight">Prastav</span>
+        </Link>
+        <Link href="/dashboard" className="text-[14.5px] text-muted">Save &amp; exit</Link>
+      </header>
+
+      <div className="h-[5px] bg-[#DEDDD6]"><div className="h-[5px] bg-ink transition-all" style={{ width: `${((step + 1) / steps.length) * 100}%` }} /></div>
+
+      <main className="flex-grow px-6 sm:px-11 py-12 flex justify-center gap-11">
+        <aside className="hidden lg:block w-[220px] shrink-0">
+          <div className="text-[12px] tracking-wide text-muted mb-5 font-semibold">RESPOND TO AN RFP</div>
+          <div className="flex flex-col gap-1">
+            {steps.map((s, i) => (
+              <div key={s} className="flex items-center gap-3 py-2.5">
+                <span className={`w-[26px] h-[26px] rounded-full flex items-center justify-center text-[12px] font-bold shrink-0 ${i <= step ? "bg-ink text-paper" : "bg-[#DEDDD6] text-muted"}`}>{i < step ? "✓" : i + 1}</span>
+                <span className={`text-[15px] ${i === step ? "font-bold text-ink" : "text-muted"}`}>{s}</span>
+              </div>
+            ))}
+          </div>
+        </aside>
+
+        <div className="w-full max-w-[640px]">
+          <div className="text-[12px] tracking-wide text-muted mb-3 font-semibold">STEP {step + 1} OF {steps.length}</div>
+
+          {step === 0 && (
+            <>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Which organisation is applying?</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">Pick the profile this application should be written as. Its experience and track record ground the proposal and the eligibility check against the RFP.</p>
+              {!profilesLoaded ? (
+                <div className="text-[15px] text-muted">Loading your profiles…</div>
+              ) : (
+                <div className="flex flex-col gap-3">
+                  {profiles.map((p) => (
+                    <button key={p.id} type="button" onClick={() => pickProfile(p.id)} className={`text-left rounded-lg border p-4 ${!noProfile && orgProfileId === p.id ? "border-ink bg-card" : "border-line bg-card"}`}>
+                      <div className="flex items-center gap-3">
+                        <span className={`w-[18px] h-[18px] rounded-full border-[2px] flex items-center justify-center shrink-0 ${!noProfile && orgProfileId === p.id ? "border-ink" : "border-[#C9C7BF]"}`}>{!noProfile && orgProfileId === p.id && <span className="w-[9px] h-[9px] rounded-full bg-ink" />}</span>
+                        <span className="text-[15.5px] font-semibold">{p.name}</span>
+                        {p.is_default && <span className="text-[10px] tracking-wide font-semibold bg-[#E3E2DC] text-[#45453D] px-1.5 py-0.5 rounded">DEFAULT</span>}
+                        <span className="text-[13px] text-muted capitalize ml-auto">{p.type}</span>
+                      </div>
+                    </button>
+                  ))}
+
+                  <button type="button" onClick={pickNone} className={`text-left rounded-lg border p-4 ${noProfile ? "border-ink bg-card" : "border-line bg-card"}`}>
+                    <div className="flex items-center gap-3">
+                      <span className={`w-[18px] h-[18px] rounded-full border-[2px] flex items-center justify-center shrink-0 ${noProfile ? "border-ink" : "border-[#C9C7BF]"}`}>{noProfile && <span className="w-[9px] h-[9px] rounded-full bg-ink" />}</span>
+                      <span className="text-[15.5px] font-semibold">Continue without a saved profile</span>
+                    </div>
+                  </button>
+
+                  {noProfile && (
+                    <div className="rounded-lg border border-line bg-card p-5 flex flex-col gap-4">
+                      <div>
+                        <label className={label}>Name</label>
+                        <input className={input} value={quickName} onChange={(e) => setQuickName(e.target.value)} placeholder="Your name or organisation's name" />
+                      </div>
+                      <div>
+                        <label className={label}>A line about you or your organisation</label>
+                        <input className={input} value={quickAbout} onChange={(e) => setQuickAbout(e.target.value)} placeholder="e.g. a Jharkhand NGO working on SHG livelihoods and nutrition" />
+                      </div>
+                      <div className="text-[13.5px] text-muted leading-relaxed">The eligibility check and capacity sections will be lighter without a full profile. You can <Link href="/profiles" className="font-semibold text-ink underline">create a full profile</Link> any time to make future applications stronger.</div>
+                    </div>
+                  )}
+
+                  {profiles.length > 0 && <Link href="/profiles" className="text-[13.5px] font-semibold text-ink underline mt-1">Manage profiles</Link>}
+                </div>
+              )}
+            </>
+          )}
+
+          {step === 1 && (
+            <>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Add the donor's RFP</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">Upload the call for proposals as a PDF or Word file, or paste the text below. When you continue, Prastav reads it, checks your eligibility, and then asks you only what the RFP leaves open.</p>
+              <div className="mb-4 flex items-center gap-3 flex-wrap">
+                <input ref={fileRef} type="file" accept=".pdf,.docx,.txt" onChange={onPickRfpFile} className="hidden" />
+                <button type="button" onClick={() => fileRef.current?.click()} disabled={extracting} className="flex items-center gap-2 px-4 py-[10px] rounded-[4px] text-[14.5px] font-semibold border-[1.5px] bg-card text-ink border-ink disabled:opacity-40">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                  {extracting ? "Reading…" : "Upload RFP (PDF or Word)"}
+                </button>
+                {uploadName && !extracting && <span className="text-[13.5px] text-muted">Loaded {uploadName}, review the text below.</span>}
+              </div>
+              {uploadErr && <div className="mb-3 text-[13.5px] text-[#9A3B1E]">{uploadErr}</div>}
+              <textarea value={answers.rfp_text} onChange={(e) => set("rfp_text", e.target.value)} placeholder="Upload a file above, or paste the full text of the RFP here, including eligibility, scope, required sections, budget limits, and submission instructions." className="w-full h-[300px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[15px] leading-relaxed bg-card resize-none outline-none focus:border-ink font-mono" />
+              <div className="mt-2 text-[13px] text-muted">{rfpChars > 0 ? `${rfpChars.toLocaleString()} characters` : "The more complete the text, the better the fit and the eligibility check."}</div>
+              {analyzeErr && <div className="mt-3 text-[13.5px] text-[#9A3B1E]">{analyzeErr}</div>}
+            </>
+          )}
+
+          {step === 2 && (
+            <>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">What the RFP requires</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">This is what Prastav read from the donor's call, and how your selected profile measures against its eligibility. The next questions ask only what the RFP leaves to you.</p>
+              {analysis && (
+                <div className="flex flex-col gap-5">
+                  <div className="bg-card border border-line rounded-lg divide-y divide-[#EFEEE7]">
+                    {[
+                      ["Donor", analysis.donor],
+                      ["Themes", (analysis.themes || []).join(", ")],
+                      ["Geography", geoConstraint || (g.left_to_applicant ? "Left to the applicant" : "")],
+                      ["Target group", tgStated || (tgA.left_to_applicant ? "Left to the applicant" : "")],
+                      ["Budget", budgetLine()],
+                      ["Duration", durationLine()],
+                      ["Deadline", analysis.deadline],
+                      ["Prescribed sections", analysis.prescribed_format && analysis.prescribed_format.sections ? analysis.prescribed_format.sections.join(", ") : ""],
+                    ].filter(([, v]) => v && String(v).trim()).map(([k, v]) => (
+                      <div key={k as string} className="px-5 py-3.5">
+                        <div className="text-[12px] tracking-wide text-muted font-semibold mb-1">{k}</div>
+                        <div className="text-[15px] leading-relaxed">{v}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {elig.length > 0 && (
+                    <div>
+                      <div className="text-[13px] tracking-wide text-muted font-semibold mb-2">ELIGIBILITY CHECK</div>
+                      <div className="bg-card border border-line rounded-lg divide-y divide-[#EFEEE7]">
+                        {elig.map((e: any, i: number) => (
+                          <div key={i} className="px-5 py-3.5 flex items-start gap-3">
+                            <div className="flex-grow">
+                              <div className="text-[14.5px] font-semibold leading-snug">{e.requirement}</div>
+                              {e.evidence && <div className="text-[13px] text-muted leading-snug mt-0.5">{e.evidence}</div>}
+                            </div>
+                            {statusChip(e.status)}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {notMet > 0 && (
+                    <div className="rounded-lg border border-[#E6C9BE] bg-[#F7ECE7] px-5 py-4 text-[14px] text-[#7A3016] leading-relaxed">
+                      Your profile does not clearly meet {notMet === 1 ? "one requirement" : notMet + " requirements"} the RFP states. You can still build a response, but review these before you submit.
+                    </div>
+                  )}
+                </div>
+              )}
+            </>
+          )}
+
+          {step === 3 && (
+            <>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">How do you want to respond?</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">Your project idea for this RFP, in a sentence or two. We will shape it to the donor's themes and requirements. You can type, or speak your answer.</p>
+              <textarea value={answers.idea} onChange={(e) => set("idea", e.target.value)} placeholder="For example: A 24-month intervention improving maternal and child nutrition in tribal SHG households through kitchen gardens, community counselling, and convergence with ICDS and health services." className="w-full h-[150px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[16px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
+              <div className="mt-3 flex items-center gap-3 flex-wrap">
+                <button type="button" onClick={toggleMic} disabled={!supported} className={`flex items-center gap-2 px-4 py-[10px] rounded-[4px] text-[14.5px] font-semibold border-[1.5px] ${listening ? "bg-ink text-paper border-ink" : "bg-card text-ink border-ink"} disabled:opacity-40`}>
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                  {listening ? "Listening… tap to stop" : "Speak your answer"}
+                </button>
+                {supported && (
+                  <div className="flex items-center gap-1 bg-[#DEDDD6] rounded-[4px] p-1">
+                    <button type="button" onClick={() => setLang("en-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "en-IN" ? "bg-ink text-paper" : "text-muted"}`}>English</button>
+                    <button type="button" onClick={() => setLang("hi-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "hi-IN" ? "bg-ink text-paper" : "text-muted"}`}>हिन्दी</button>
+                  </div>
+                )}
+              </div>
+              {!supported && <div className="mt-2 text-[13.5px] text-muted">Voice input is not available in this browser. It works best in Chrome. You can type instead.</div>}
+            </>
+          )}
+
+          {step === 4 && (
+            <>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Where will this work happen, and who will it help?</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">Anything the RFP fixed is shown as set. Fill in only what it left open to you.</p>
+              <div className="mb-5">
+                <label className={label}>Location</label>
+                {geoLocked ? (
+                  <>
+                    <input className={inputLocked} value={answers.location} readOnly />
+                    <div className="mt-1.5 text-[13px] text-muted">Set by the RFP.</div>
+                  </>
+                ) : (
+                  <>
+                    <input className={input} value={answers.location} onChange={(e) => set("location", e.target.value)} placeholder="District, block, or area, e.g. Murhu block, Khunti, Jharkhand" />
+                    {geoConstraint && <div className="mt-1.5 text-[13px] text-muted">The RFP requires: {geoConstraint}. Add the specific blocks or panchayats you will work in.</div>}
+                  </>
+                )}
+              </div>
+              <div>
+                <label className={label}>Who it will help</label>
+                {tgLocked ? (
+                  <>
+                    <input className={inputLocked} value={answers.beneficiaries} readOnly />
+                    <div className="mt-1.5 text-[13px] text-muted">Set by the RFP.</div>
+                  </>
+                ) : (
+                  <>
+                    <input className={input} value={answers.beneficiaries} onChange={(e) => set("beneficiaries", e.target.value)} placeholder="e.g. 1,200 women in SHG households and their children under 5" />
+                    {tgStated && <div className="mt-1.5 text-[13px] text-muted">From the RFP; adjust the scale or specifics if needed.</div>}
+                  </>
+                )}
+              </div>
+            </>
+          )}
+
+          {step === 5 && (
+            <>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Timeline and budget</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">Stay within any bound the RFP sets. We have pre-filled what the RFP stated, adjust it if you intend something different.</p>
+              <div className="mb-5">
+                <label className={label}>How long will it run?</label>
+                <input className={input} value={answers.duration} onChange={(e) => set("duration", e.target.value)} placeholder="e.g. 24 months" />
+                {durationLine() && <div className="mt-1.5 text-[13px] text-muted">RFP: {durationLine()}.</div>}
+              </div>
+              <div>
+                <label className={label}>Budget</label>
+                <input className={input} value={answers.budget} onChange={(e) => set("budget", e.target.value)} placeholder="e.g. around Rs 1.4 crore, or within the RFP ceiling" />
+                {budgetLine() && <div className="mt-1.5 text-[13px] text-muted">RFP: {budgetLine()}.</div>}
+              </div>
+            </>
+          )}
+
+          {step === 6 && (
+            <>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Review before we build</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">Check your answers. You can go back to change anything. We will build a response that fits the donor's requirements.</p>
+              <div className="bg-card border border-line rounded-lg divide-y divide-[#EFEEE7]">
+                {[["Organisation", orgReview], ["RFP", rfpChars > 0 ? `${rfpChars.toLocaleString()} characters read` : "—"], ["Your approach", answers.idea], ["Location", answers.location], ["Who it will help", answers.beneficiaries], ["Duration", answers.duration], ["Budget", answers.budget || "Not specified"]].map(([k, v]) => (
+                  <div key={k} className="px-5 py-4">
+                    <div className="text-[12px] tracking-wide text-muted font-semibold mb-1">{k}</div>
+                    <div className="text-[15px] leading-relaxed whitespace-pre-wrap">{v}</div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
+          <div className="flex items-center justify-between mt-11">
+            <button type="button" onClick={goBack} className="text-muted text-[15.5px] font-semibold">&larr; Back</button>
+            {step < steps.length - 1 ? (
+              <button type="button" onClick={goNext} disabled={!canContinue()} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{step === 1 ? (analyzing ? "Reading the RFP…" : "Read the RFP") : "Continue"}</button>
+            ) : (
+              <button type="button" onClick={generate} disabled={starting} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{starting ? "Starting…" : "Build RFP response"}</button>
+            )}
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}

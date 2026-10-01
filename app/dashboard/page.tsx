@@ -71,12 +71,13 @@ export default async function Dashboard() {
           <nav className="hidden sm:flex gap-6">
             <span className="text-[12px] tracking-wide font-semibold">PROPOSALS</span>
             <Link href="/profiles" className="text-[12px] tracking-wide text-muted">ORG PROFILE</Link>
+            <Link href="/account" className="text-[12px] tracking-wide text-muted">ACCOUNT</Link>
             <span className="text-[12px] tracking-wide text-muted">HELP</span>
           </nav>
         </div>
         <div className="flex items-center gap-4">
           <span className="hidden sm:inline text-[14px] text-muted">{user.email}</span>
-          <div className="w-9 h-9 rounded-full bg-ink text-paper flex items-center justify-center font-bold text-[13px]">{initials}</div>
+          <Link href="/account" className="w-9 h-9 rounded-full bg-ink text-paper flex items-center justify-center font-bold text-[13px]">{initials}</Link>
           <form action={signOut}>
             <button className="text-[12px] tracking-wide text-muted">LOG OUT</button>
           </form>
@@ -93,16 +94,16 @@ export default async function Dashboard() {
             <div className="text-[14.5px] text-white/60">Your own project, or help shaping one.</div>
             <div className="mt-4 text-[12px] tracking-wide text-white/70">START →</div>
           </Link>
-          <div className="flex-1 bg-card border border-line rounded-lg p-6">
+          <Link href="/new/rfp" className="flex-1 bg-card border border-line rounded-lg p-6">
             <div className="text-[18px] font-bold mb-1.5">Respond to an RFP</div>
             <div className="text-[14.5px] text-muted">Paste a donor call and answer it.</div>
             <div className="mt-4 text-[12px] tracking-wide">START →</div>
-          </div>
-          <div className="flex-1 bg-card border border-line rounded-lg p-6">
+          </Link>
+          <Link href="/new/improve" className="flex-1 bg-card border border-line rounded-lg p-6">
             <div className="text-[18px] font-bold mb-1.5">Improve a draft</div>
             <div className="text-[14.5px] text-muted">Upload and strengthen an existing one.</div>
             <div className="mt-4 text-[12px] tracking-wide">START →</div>
-          </div>
+          </Link>
         </div>
 
         <div className="text-[21px] font-bold tracking-[-0.02em] mb-4">Recent proposals</div>
