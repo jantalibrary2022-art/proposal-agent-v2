@@ -96,7 +96,11 @@ export async function POST(req: NextRequest) {
 
   (async () => {
     try {
-      const draft = await runOpenDraft(engineAnswers, engineOrg, { brief: form.brief && typeof form.brief === "object" ? form.brief : null });
+      const draft = await runOpenDraft(engineAnswers, engineOrg, {
+        brief: form.brief && typeof form.brief === "object" ? form.brief : null,
+        applicantEvidence: form.applicant_evidence ? String(form.applicant_evidence) : null,
+        chosenApproach: form.chosen_approach && typeof form.chosen_approach === "object" ? form.chosen_approach : null,
+      });
       await admin.from("proposals").update({ status: "draft", title: draft.meta.title, meta: draft.meta, substance: draft.substance, composed: draft.composed, updated_at: new Date().toISOString() }).eq("id", proposalId);
     } catch (e: any) {
       await admin.from("proposals").update({ status: "error", error: (e && e.message) || "generation_failed", updated_at: new Date().toISOString() }).eq("id", proposalId);

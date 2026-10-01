@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "../../../../lib/supabase/server";
-import { openIntake } from "../../../../lib/open-intake";
+import { suggestApproaches } from "../../../../lib/suggest-approaches";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -44,11 +44,8 @@ export async function POST(req: NextRequest) {
 
   let body: any = null;
   try { body = await req.json(); } catch { body = null; }
-  if (!body) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-
-  const mode = body.mode === "ideate" ? "ideate" : "direct";
-  if (mode === "direct" && (!body.idea || !String(body.idea).trim())) {
-    return NextResponse.json({ ok: false, error: "missing_idea" }, { status: 400 });
+  if (!body || !body.brief || typeof body.brief !== "object") {
+    return NextResponse.json({ ok: false, error: "missing_brief" }, { status: 400 });
   }
 
   let engineOrg: any;
@@ -71,25 +68,10 @@ export async function POST(req: NextRequest) {
   const userDocs = body.evidence ? String(body.evidence) : "";
 
   try {
-    if (mode === "ideate") {
-      const hints = { note: String(body.hints || "").trim() };
-      const r = await openIntake({ orgProfile: engineOrg, hints, userDocs }, { mode: "ideate" });
-      if (!r._parsed) return NextResponse.json({ ok: false, error: "could_not_ideate" }, { status: 502 });
-      return NextResponse.json({ ok: true, data: r.data });
-    }
-    const answers = {
-      has_idea: true,
-      project_about: String(body.idea),
-      geography: body.location ? String(body.location) : "",
-      target_group: body.beneficiaries ? { group: String(body.beneficiaries), scale: "" } : null,
-      duration: body.duration ? String(body.duration) : "",
-      budget: body.budget ? String(body.budget) : null,
-      donor: body.funder ? String(body.funder) : null,
-    };
-    const r = await openIntake({ orgProfile: engineOrg, answers, userDocs }, { mode: "direct" });
-    if (!r._parsed) return NextResponse.json({ ok: false, error: "could_not_read_idea" }, { status: 502 });
+    const r = await suggestApproaches({ orgProfile: engineOrg, brief: body.brief, userDocs });
+    if (!r._parsed) return NextResponse.json({ ok: false, error: "could_not_suggest" }, { status: 502 });
     return NextResponse.json({ ok: true, data: r.data });
   } catch (e: any) {
-    return NextResponse.json({ ok: false, error: (e && e.message) || "intake_failed" }, { status: 500 });
+    return NextResponse.json({ ok: false, error: (e && e.message) || "approaches_failed" }, { status: 500 });
   }
 }
