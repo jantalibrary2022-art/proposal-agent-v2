@@ -62,7 +62,8 @@ export default async function Dashboard() {
 
   return (
     <main className="min-h-screen bg-canvas flex flex-col">
-      <header className="h-16 border-b border-line flex items-center justify-between px-6 sm:px-11">
+      <header className="h-16 border-b border-line">
+        <div className="h-full max-w-[1600px] mx-auto px-6 sm:px-11 flex items-center justify-between">
         <div className="flex items-center gap-9">
           <div className="flex items-center gap-2">
             <span className="w-[26px] h-[26px] rounded-[3px] bg-ink text-paper font-extrabold text-[15px] flex items-center justify-center">प्र</span>
@@ -82,9 +83,10 @@ export default async function Dashboard() {
             <button className="text-[12px] tracking-wide text-muted">LOG OUT</button>
           </form>
         </div>
+        </div>
       </header>
 
-      <div className="flex-1 px-6 sm:px-11 py-10 max-w-6xl w-full mx-auto">
+      <div className="flex-1 px-6 sm:px-11 py-10 w-full max-w-[1600px] mx-auto">
         <h1 className="font-extrabold text-[34px] tracking-[-0.04em] mb-1.5">Welcome back, {firstName}</h1>
         <p className="text-[16px] text-muted mb-9">Your Prastav workspace. Proposals is live, more services for the development sector are on the way.</p>
 
