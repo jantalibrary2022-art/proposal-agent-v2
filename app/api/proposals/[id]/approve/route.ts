@@ -26,15 +26,18 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
     const applied = applyEdits({ substance: row.substance, composed: row.composed, meta: row.meta }, edits);
     const files = await renderProposalFiles(applied.substance, applied.composed);
     const base = user.id + "/" + id;
-    const up = async (name: string, buf: Buffer, type: string) => {
+    // buf is an opaque binary blob (PDF/DOCX/XLSX) from the CommonJS renderer,
+    // passed straight to Supabase storage; typed any to avoid cross-library
+    // Buffer/Uint8Array generic conflicts at build time.
+    const up = async (name: string, buf: any, type: string) => {
       const path = base + "/" + name;
       const { error } = await admin.storage.from("proposals").upload(path, buf, { contentType: type, upsert: true });
       if (error) throw new Error("upload " + name + ": " + error.message);
       return path;
     };
-    const pdf_path = await up("proposal.pdf", files.pdf as Buffer, "application/pdf");
-    const docx_path = await up("proposal.docx", files.docx as Buffer, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
-    const xlsx_path = await up("budget.xlsx", files.xlsx as Buffer, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+    const pdf_path = await up("proposal.pdf", files.pdf, "application/pdf");
+    const docx_path = await up("proposal.docx", files.docx, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+    const xlsx_path = await up("budget.xlsx", files.xlsx, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     await admin.from("proposals").update({ status: "ready", title: applied.meta.title, meta: applied.meta, substance: applied.substance, composed: applied.composed, pdf_path, docx_path, xlsx_path, updated_at: new Date().toISOString() }).eq("id", id);
     return NextResponse.json({ ok: true });
   } catch (e: any) {
