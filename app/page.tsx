@@ -119,18 +119,13 @@ export default function Home() {
               <img src="/prakash-kumar.jpg" alt="Prakash Kumar" className="w-[190px] md:w-full aspect-[4/5] object-cover object-top rounded-xl grayscale" />
               <div className="mt-4">
                 <div className="text-[17px] font-bold tracking-[-0.02em]">Prakash Kumar</div>
-                <div className="text-[13.5px] text-white/55 mt-0.5 leading-snug">Founder, Prastav. Independent development-sector consultant.</div>
+                <div className="text-[13.5px] text-white/55 mt-0.5 leading-snug">Founder, Prastav · Development-sector consultant</div>
               </div>
             </div>
             <div className="min-w-0 flex-grow">
               <h2 className="font-extrabold text-[clamp(26px,4.3vw,40px)] tracking-[-0.03em] leading-[1.06] max-w-[620px]">Built on 24 years of practice.</h2>
               <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-white/75 max-w-[620px]">Prastav applies the judgment of a practitioner who has spent 24 years in the development sector, across health, gender, child protection and livelihoods. His work centres on research studies, programme design, and building the capacity of the teams that run them, the same discipline the tool brings to your proposal.</p>
-              <p className="mt-4 text-[16px] leading-relaxed text-white/60 max-w-[620px]">A registered social auditor, he is often the person organisations bring in to get the evidence and the method right. That is the standard every draft is held to here.</p>
-              <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-x-8 gap-y-3 text-[13.5px]">
-                <span className="text-white/70"><span className="text-white/40">Education&nbsp;&nbsp;</span>XISS, Ranchi — PGDRD</span>
-                <span className="text-white/70"><span className="text-white/40">Accreditation&nbsp;&nbsp;</span>Registered Social Auditor, ISAI (SA-654)</span>
-                <span className="text-white/70"><span className="text-white/40">Specialism&nbsp;&nbsp;</span>Research &amp; capacity building</span>
-              </div>
+              <p className="mt-4 text-[16px] leading-relaxed text-white/60 max-w-[620px]">A registered social auditor (ISAI, SA-654), he is often the person organisations bring in to get the evidence and the method right. That is the standard every draft is held to here.</p>
             </div>
           </div>
 
@@ -144,18 +139,19 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <div className="text-[11px] tracking-[0.08em] text-white/35 mb-3">GOVERNMENT MISSIONS</div>
+                <div className="text-[11px] tracking-[0.08em] text-white/35 mb-3">GOVERNMENT &amp; PUBLIC INSTITUTIONS</div>
                 <div className="flex flex-col gap-1.5 text-[15px] font-semibold text-white/85">
-                  <span>NRLM</span><span>BRLPS</span><span>JSLPS</span><span>SHSRC Chhattisgarh</span>
+                  <span>NRLM</span><span>BRLPS</span><span>JSLPS</span><span>SHSRC Chhattisgarh</span><span>Nalanda Medical College &amp; Hospital</span>
                 </div>
               </div>
               <div>
-                <div className="text-[11px] tracking-[0.08em] text-white/35 mb-3">CORPORATE &amp; ADVISORY</div>
+                <div className="text-[11px] tracking-[0.08em] text-white/35 mb-3">CSR, AUDIT &amp; ADVISORY</div>
                 <div className="flex flex-col gap-1.5 text-[15px] font-semibold text-white/85">
-                  <span>Marico</span><span>Welspun</span><span>Protiviti</span><span>OakNorth</span>
+                  <span>Protiviti</span><span>Medica Synergie</span><span>OakNorth</span>
                 </div>
               </div>
             </div>
+            <div className="mt-7 text-[13px] leading-relaxed text-white/45 max-w-[840px]">As lead evaluator with Protiviti, assessed CSR programmes for Welspun and Marico; with Medica Synergie, led systems audits of the NRHM across Manipur, Mizoram and Nagaland.</div>
           </div>
         </div>
       </section>
