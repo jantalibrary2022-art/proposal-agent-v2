@@ -7,7 +7,7 @@ export default function Home() {
       <Track path="/" />
       {/* Nav */}
       <header className="border-b border-line">
-        <div className="flex items-center justify-between px-5 sm:px-8 h-[60px] w-full max-w-[1280px] mx-auto">
+        <div className="flex items-center justify-between px-5 sm:px-8 h-[60px]">
           <div className="flex items-center gap-2">
             <span className="w-6 h-6 rounded-[3px] bg-ink text-paper font-extrabold text-[14px] flex items-center justify-center">प्र</span>
             <span className="font-extrabold text-[18px] tracking-[-0.02em]">Prastav</span>
@@ -42,8 +42,7 @@ export default function Home() {
       </div>
 
       {/* Framed panel */}
-      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-8 my-7">
-      <section className="relative min-h-[540px] lg:min-h-[600px] rounded-[18px] bg-panel overflow-hidden">
+      <section className="relative mx-4 sm:mx-8 my-7 min-h-[540px] lg:min-h-[600px] rounded-[18px] bg-panel overflow-hidden">
         <div aria-hidden className="pointer-events-none select-none absolute -bottom-10 left-0 w-full text-center font-extrabold tracking-[-0.04em] text-white/[0.04] leading-none text-[clamp(120px,22vw,210px)]">EVIDENCE</div>
 
         {/* Proposal specimen */}
@@ -95,10 +94,9 @@ export default function Home() {
           <Link href="/language" className="text-[13px] sm:text-[13.5px] font-semibold text-panel bg-paper px-4 sm:px-[18px] py-2 rounded-full">Start free</Link>
         </div>
       </section>
-      </div>
 
       {/* Why not a chatbot */}
-      <section className="px-5 sm:px-8 w-full max-w-[1280px] mx-auto py-20 sm:py-28">
+      <section className="mx-4 sm:mx-8 py-20 sm:py-28">
         <div className="text-[12px] tracking-[0.1em] text-muted mb-4">WHY NOT JUST A CHATBOT</div>
         <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">A general chatbot will invent a figure to fill a gap. A donor will notice.</h2>
         <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-[#3A3A31] max-w-[720px]">Prastav is built the other way round. It cites only authoritative sources, fetches the current figure and attributes it, and where no sound source has the number, it flags the gap for you to fill rather than guessing. Every statistic in your proposal is one you can stand behind.</p>
@@ -118,7 +116,7 @@ export default function Home() {
 
       {/* The practitioner */}
       <section className="bg-panel text-paper">
-        <div className="px-5 sm:px-8 w-full max-w-[1280px] mx-auto py-20 sm:py-28">
+        <div className="mx-4 sm:mx-8 py-20 sm:py-28">
           <div className="text-[12px] tracking-[0.1em] text-white/45 mb-8">THE PRACTITIONER BEHIND IT</div>
           <div className="flex flex-col md:flex-row gap-10 md:gap-14 md:items-start">
             <div className="shrink-0 md:w-[260px]">
@@ -163,7 +161,7 @@ export default function Home() {
       </section>
 
       {/* Three ways in */}
-      <section id="how" className="px-5 sm:px-8 w-full max-w-[1280px] mx-auto py-20 sm:py-28 scroll-mt-16">
+      <section id="how" className="mx-4 sm:mx-8 py-20 sm:py-28 scroll-mt-16">
         <div className="text-[12px] tracking-[0.1em] text-muted mb-4">HOW IT WORKS</div>
         <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">Three ways in. One rigorous proposal out.</h2>
         <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-[#3A3A31] max-w-[720px]">However you arrive, Prastav reads what you give it, asks only what it still needs, researches the evidence, and builds a complete proposal you review section by section.</p>
@@ -184,7 +182,7 @@ export default function Home() {
 
       {/* The standard */}
       <section className="bg-faint border-y border-line">
-        <div className="px-5 sm:px-8 w-full max-w-[1280px] mx-auto py-20 sm:py-28">
+        <div className="mx-4 sm:mx-8 py-20 sm:py-28">
           <div className="text-[12px] tracking-[0.1em] text-muted mb-4">THE STANDARD IT BUILDS TO</div>
           <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">What makes a proposal fundable, built in by default.</h2>
           <div className="mt-11 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-7 max-w-[900px]">
@@ -209,7 +207,7 @@ export default function Home() {
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="px-5 sm:px-8 w-full max-w-[1280px] mx-auto py-20 sm:py-28 scroll-mt-16">
+      <section id="pricing" className="mx-4 sm:mx-8 py-20 sm:py-28 scroll-mt-16">
         <div className="text-[12px] tracking-[0.1em] text-muted mb-4">PRICING</div>
         <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">One clear fee, with a practitioner on call.</h2>
         <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-[#3A3A31] max-w-[720px]">The fee delivers a complete, submission-grade proposal, built to the full method and reviewed section by section. When a proposal needs personal attention, Prakash is available to work with you directly.</p>
@@ -231,7 +229,7 @@ export default function Home() {
 
       {/* Final CTA */}
       <section className="bg-panel text-paper">
-        <div className="px-5 sm:px-8 w-full max-w-[1280px] mx-auto py-20 sm:py-28 text-center">
+        <div className="mx-4 sm:mx-8 py-20 sm:py-28 text-center">
           <h2 className="font-extrabold text-[clamp(30px,5vw,48px)] tracking-[-0.03em] leading-[1.03] max-w-[720px] mx-auto">Write your next proposal on 24 years of practice.</h2>
           <div className="mt-9 flex items-center justify-center gap-3 flex-wrap">
             <Link href="/language" className="bg-paper text-panel text-[15px] font-semibold px-7 py-3.5 rounded-[4px]">Start free</Link>
@@ -242,7 +240,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-line">
-        <div className="px-5 sm:px-8 w-full max-w-[1280px] mx-auto py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mx-4 sm:mx-8 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="w-6 h-6 rounded-[3px] bg-ink text-paper font-extrabold text-[14px] flex items-center justify-center">प्र</span>
             <span className="font-extrabold text-[16px] tracking-[-0.02em]">Prastav</span>
