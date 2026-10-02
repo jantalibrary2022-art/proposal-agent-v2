@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useDict } from "./LocaleProvider";
 
 // Optional access-code field on the final step of each entry flow. The typed
@@ -53,6 +54,12 @@ export default function AccessCodeInput({
       {status === "checking" && <p className="text-[13px] text-muted mt-2">{fl.accessCodeChecking}</p>}
       {status === "valid" && <p className="text-[13px] mt-2 font-semibold text-ink">✓ {msg}</p>}
       {status === "invalid" && <p className="text-[13px] mt-2 text-muted">{msg}</p>}
+      {value.trim() !== "" && (
+        <p className="text-[12.5px] text-muted leading-relaxed mt-3 max-w-[480px]">
+          {fl.accessCodeConsent}{" "}
+          <Link href="/privacy" target="_blank" className="underline font-semibold text-ink">{fl.privacyPolicyLink}</Link>
+        </p>
+      )}
     </div>
   );
 }

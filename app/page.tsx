@@ -246,6 +246,7 @@ export default async function Home() {
             <a href="#pricing">{t.footer.pricing}</a>
             <Link href="/help">{t.footer.help}</Link>
             <Link href="/contact">{t.footer.contact}</Link>
+            <Link href="/privacy">{t.footer.privacy}</Link>
             <Link href="/dashboard">{t.footer.signIn}</Link>
           </div>
           <div className="text-[12.5px] text-muted">{t.footer.tagline}</div>

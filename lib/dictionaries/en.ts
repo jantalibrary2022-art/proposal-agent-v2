@@ -104,6 +104,7 @@ export const en = {
     pricing: "Pricing",
     help: "Help",
     contact: "Contact",
+    privacy: "Privacy",
     signIn: "Sign in",
     tagline: "An AI workbench for the development sector.",
     copyright: "© 2026 Prastav. All rights reserved.",
@@ -476,6 +477,8 @@ export const en = {
     accessCodeChecking: "Checking…",
     accessCodeFree: "Valid — this proposal is free",
     accessCodeInvalid: "That code isn't valid or has been used.",
+    accessCodeConsent: "By applying a testing code, you agree that the proposal you generate will be visible to Prastav for testing, review and quality purposes.",
+    privacyPolicyLink: "Read our Privacy Policy",
   },
   improve: {
     steps: ["Your draft", "Diagnosis", "Clarify", "Review"],

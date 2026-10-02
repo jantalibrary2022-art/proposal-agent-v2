@@ -107,6 +107,7 @@ export const hi: typeof en = {
     pricing: "मूल्य",
     help: "सहायता",
     contact: "संपर्क",
+    privacy: "गोपनीयता",
     signIn: "साइन इन",
     tagline: "विकास क्षेत्र के लिए एक AI वर्कबेंच।",
     copyright: "© 2026 Prastav. सर्वाधिकार सुरक्षित।",
@@ -479,6 +480,8 @@ export const hi: typeof en = {
     accessCodeChecking: "जाँच हो रही है…",
     accessCodeFree: "मान्य — यह प्रस्ताव निःशुल्क है",
     accessCodeInvalid: "यह कोड मान्य नहीं है या उपयोग हो चुका है।",
+    accessCodeConsent: "परीक्षण कोड लगाने पर, आप सहमति देते हैं कि आपके द्वारा तैयार प्रस्ताव परीक्षण, समीक्षा और गुणवत्ता उद्देश्यों के लिए Prastav को दिखाई देगा।",
+    privacyPolicyLink: "हमारी गोपनीयता नीति पढ़ें",
   },
   improve: {
     steps: ["आपका मसौदा", "विश्लेषण", "स्पष्ट करें", "समीक्षा"],
