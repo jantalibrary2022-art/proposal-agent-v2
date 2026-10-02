@@ -151,6 +151,7 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
         </div>
 
         <div className="mt-10 text-right text-[13px] font-semibold">{locale === "hi" ? `${sellerName} ${inv.forSeller}` : `${inv.forSeller}${sellerName}`}</div>
+        <div className="mt-3 text-right text-[11.5px] text-muted">{inv.computerGenerated}</div>
       </div>
     </div>
   );

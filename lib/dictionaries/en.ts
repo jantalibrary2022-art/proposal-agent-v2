@@ -374,6 +374,7 @@ export const en = {
     subtotal: "Sub-total",
     total: "Total",
     forSeller: "For ",
+    computerGenerated: "This is a computer-generated invoice and does not require a signature.",
     paid: "paid",
     customer: "Customer",
   },

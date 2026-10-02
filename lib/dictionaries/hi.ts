@@ -377,6 +377,7 @@ export const hi: typeof en = {
     subtotal: "उप-योग",
     total: "कुल",
     forSeller: "के लिए ",
+    computerGenerated: "यह कंप्यूटर-जनित चालान है और इस पर हस्ताक्षर की आवश्यकता नहीं है।",
     paid: "भुगतान किया",
     customer: "ग्राहक",
   },
