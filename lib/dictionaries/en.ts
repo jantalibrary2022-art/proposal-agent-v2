@@ -465,6 +465,10 @@ export const en = {
     metaDuration: "Duration",
     metaBudget: "Budget",
     dash: "—",
+    outLangLabel: "Write the proposal in",
+    outLangNote: "This is the language of the finished proposal, separate from the language of this website. Many donors expect English even when you work in Hindi.",
+    outLangEnglish: "English",
+    outLangHindi: "Hindi",
   },
   improve: {
     steps: ["Your draft", "Diagnosis", "Clarify", "Review"],

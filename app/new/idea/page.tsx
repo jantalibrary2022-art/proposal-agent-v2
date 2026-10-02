@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "../../../lib/supabase/client";
 import { useDict } from "../../_components/LocaleProvider";
+import OutputLanguagePicker, { defaultOutputLanguage, type OutputLanguage } from "../../_components/OutputLanguagePicker";
 
 export default function IdeaPage() {
   const router = useRouter();
   const { locale, t } = useDict();
+  const [outLang, setOutLang] = useState<OutputLanguage>(defaultOutputLanguage(locale));
   const d = t.idea;
   const fl = t.flows;
   const steps = d.steps;
@@ -151,6 +153,7 @@ export default function IdeaPage() {
     const ideaText = ideaMode === "shape" && conceptIdx != null ? conceptToIdea(concepts[conceptIdx]) : idea;
     const extra = qaPairs.length ? "\n\nApplicant clarifications:\n" + qaPairs.map((p: any) => "- " + p.question + " " + p.answer).join("\n") : "";
     const payload: any = {
+      output_language: outLang,
       idea: ideaText + extra,
       location: answers.location, beneficiaries: answers.beneficiaries, duration: answers.duration, budget: answers.budget, funder: answers.funder,
       brief, chosen_approach: chosen, applicant_evidence: evidenceText,
@@ -419,6 +422,8 @@ export default function IdeaPage() {
               </div>
             </>
           )}
+
+          {step === steps.length - 1 && <OutputLanguagePicker value={outLang} onChange={setOutLang} />}
 
           <div className="flex items-center justify-between mt-11">
             <button type="button" onClick={goBack} className="text-muted text-[15.5px] font-semibold">{fl.back}</button>

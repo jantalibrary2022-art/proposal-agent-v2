@@ -4,6 +4,11 @@ import { createAdminClient } from "../../../../lib/supabase/admin";
 import { runOpenDraft } from "../../../../lib/run-open";
 
 export const runtime = "nodejs";
+
+function outputLanguage(v: unknown): "English" | "Hindi" {
+  return v === "Hindi" ? "Hindi" : "English";
+}
+
 export const maxDuration = 60;
 
 function toEngineAnswers(f: any) {
@@ -100,6 +105,7 @@ export async function POST(req: NextRequest) {
         brief: form.brief && typeof form.brief === "object" ? form.brief : null,
         applicantEvidence: form.applicant_evidence ? String(form.applicant_evidence) : null,
         chosenApproach: form.chosen_approach && typeof form.chosen_approach === "object" ? form.chosen_approach : null,
+        language: outputLanguage(form.output_language),
       });
       await admin.from("proposals").update({ status: "draft", title: draft.meta.title, meta: draft.meta, substance: draft.substance, composed: draft.composed, updated_at: new Date().toISOString() }).eq("id", proposalId);
     } catch (e: any) {

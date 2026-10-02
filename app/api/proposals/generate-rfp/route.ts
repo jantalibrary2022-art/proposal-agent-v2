@@ -4,6 +4,11 @@ import { createAdminClient } from "../../../../lib/supabase/admin";
 import { runRfpDraft } from "../../../../lib/run-rfp";
 
 export const runtime = "nodejs";
+
+function outputLanguage(v: unknown): "English" | "Hindi" {
+  return v === "Hindi" ? "Hindi" : "English";
+}
+
 export const maxDuration = 60;
 
 function toEngineAnswers(f: any) {
@@ -97,7 +102,7 @@ export async function POST(req: NextRequest) {
 
   (async () => {
     try {
-      const draft = await runRfpDraft(rfpText, engineAnswers, engineOrg, { analysis: form.rfp_analysis && typeof form.rfp_analysis === "object" ? form.rfp_analysis : null });
+      const draft = await runRfpDraft(rfpText, engineAnswers, engineOrg, { analysis: form.rfp_analysis && typeof form.rfp_analysis === "object" ? form.rfp_analysis : null, language: outputLanguage(form.output_language) });
       const a = draft.analysis || {};
       const meta = {
         ...draft.meta,

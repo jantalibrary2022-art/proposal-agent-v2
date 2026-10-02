@@ -4,6 +4,11 @@ import { createAdminClient } from "../../../../lib/supabase/admin";
 import { runImproveDraft } from "../../../../lib/run-improve";
 
 export const runtime = "nodejs";
+
+function outputLanguage(v: unknown): "English" | "Hindi" {
+  return v === "Hindi" ? "Hindi" : "English";
+}
+
 export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
@@ -35,7 +40,7 @@ export async function POST(req: NextRequest) {
 
   (async () => {
     try {
-      const draft = await runImproveDraft(draftText, qa, { diagnosis });
+      const draft = await runImproveDraft(draftText, qa, { diagnosis, language: outputLanguage(form.output_language) });
       const meta = {
         ...draft.meta,
         improve: {

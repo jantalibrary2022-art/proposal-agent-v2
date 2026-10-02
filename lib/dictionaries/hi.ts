@@ -468,6 +468,10 @@ export const hi: typeof en = {
     metaDuration: "अवधि",
     metaBudget: "बजट",
     dash: "—",
+    outLangLabel: "प्रस्ताव किस भाषा में लिखा जाए",
+    outLangNote: "यह तैयार प्रस्ताव की भाषा है, इस वेबसाइट की भाषा से अलग। कई दानदाता अंग्रेज़ी में प्रस्ताव चाहते हैं, भले ही आप हिंदी में काम करें।",
+    outLangEnglish: "English (अंग्रेज़ी)",
+    outLangHindi: "हिंदी",
   },
   improve: {
     steps: ["आपका मसौदा", "विश्लेषण", "स्पष्ट करें", "समीक्षा"],
