@@ -3,8 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { createClient } from "../../lib/supabase/client";
+import { useDict } from "../_components/LocaleProvider";
 
 export default function ForgotPage() {
+  const { t } = useDict();
+  const d = t.auth.forgot;
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
@@ -13,7 +16,7 @@ export default function ForgotPage() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    if (!email.trim()) { setError("Enter your email."); return; }
+    if (!email.trim()) { setError(d.enterEmail); return; }
     setSending(true);
     const supabase = createClient();
     const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
@@ -36,21 +39,21 @@ export default function ForgotPage() {
         <div className="w-full max-w-[420px]">
           {!sent ? (
             <>
-              <h1 className="font-extrabold text-[28px] tracking-tight mb-2">Reset your password</h1>
-              <p className="text-[15px] text-muted leading-relaxed mb-7">Enter the email you registered with and we will send you a link to set a new password.</p>
+              <h1 className="font-extrabold text-[28px] tracking-tight mb-2">{d.title}</h1>
+              <p className="text-[15px] text-muted leading-relaxed mb-7">{d.intro}</p>
               <form onSubmit={submit}>
-                <label className="block text-[14px] font-semibold text-[#3A3A32] mb-2">Email</label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] px-4 h-[52px] text-[16px] bg-card outline-none focus:border-ink" placeholder="you@example.org" />
+                <label className="block text-[14px] font-semibold text-[#3A3A32] mb-2">{d.email}</label>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] px-4 h-[52px] text-[16px] bg-card outline-none focus:border-ink" placeholder={d.emailPlaceholder} />
                 {error && <div className="mt-3 text-[14px] text-[#B42318]">{error}</div>}
-                <button type="submit" disabled={sending} className="mt-5 w-full bg-ink text-paper text-[16px] font-semibold h-[52px] rounded-[4px] disabled:opacity-40">{sending ? "Sending…" : "Send reset link"}</button>
+                <button type="submit" disabled={sending} className="mt-5 w-full bg-ink text-paper text-[16px] font-semibold h-[52px] rounded-[4px] disabled:opacity-40">{sending ? d.submitting : d.submit}</button>
               </form>
-              <div className="mt-6 text-[14.5px] text-muted">Remembered it? <Link href="/login" className="font-semibold text-ink">Back to log in</Link></div>
+              <div className="mt-6 text-[14.5px] text-muted">{d.remembered} <Link href="/login" className="font-semibold text-ink">{d.backToLogin}</Link></div>
             </>
           ) : (
             <>
-              <h1 className="font-extrabold text-[28px] tracking-tight mb-2">Check your email</h1>
-              <p className="text-[15px] text-muted leading-relaxed mb-7">If an account exists for {email}, we have sent a link to reset your password. Open it on this device to continue.</p>
-              <Link href="/login" className="inline-block bg-ink text-paper text-[15px] font-semibold px-6 py-3 rounded-[4px]">Back to log in</Link>
+              <h1 className="font-extrabold text-[28px] tracking-tight mb-2">{d.sentTitle}</h1>
+              <p className="text-[15px] text-muted leading-relaxed mb-7">{d.sentBody1}{email}{d.sentBody2}</p>
+              <Link href="/login" className="inline-block bg-ink text-paper text-[15px] font-semibold px-6 py-3 rounded-[4px]">{d.backToLogin}</Link>
             </>
           )}
         </div>

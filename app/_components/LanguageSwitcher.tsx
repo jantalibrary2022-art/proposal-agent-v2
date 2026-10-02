@@ -42,7 +42,7 @@ export default function LanguageSwitcher({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className={`flex items-center gap-1 text-[11.5px] tracking-wide ${trigger}`}
+        className={`flex items-center gap-1 text-[13px] ${trigger}`}
         aria-haspopup="listbox"
         aria-expanded={open}
       >

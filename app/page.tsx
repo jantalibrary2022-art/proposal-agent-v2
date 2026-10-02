@@ -9,6 +9,7 @@ export default async function Home() {
   if (!chosen) redirect("/language");
   const locale = chosen || DEFAULT_LOCALE;
   const t = dictFor(locale);
+  const navCls = locale === "hi" ? "text-[13.5px]" : "text-[11.5px] tracking-wide";
 
   return (
     <main className="min-h-screen flex flex-col">
@@ -21,13 +22,13 @@ export default async function Home() {
             <span className="font-extrabold text-[18px] tracking-[-0.02em]">Prastav</span>
           </div>
           <nav className="flex items-center gap-4 sm:gap-6">
-            <a href="#how" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">{t.nav.method}</a>
-            <a href="#pricing" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">{t.nav.pricing}</a>
-            <Link href="/samples" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">{t.nav.samples}</Link>
-            <Link href="/help" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">{t.nav.help}</Link>
-            <Link href="/contact" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">{t.nav.contact}</Link>
+            <a href="#how" className={`hidden sm:inline ${navCls} text-muted`}>{t.nav.method}</a>
+            <a href="#pricing" className={`hidden sm:inline ${navCls} text-muted`}>{t.nav.pricing}</a>
+            <Link href="/samples" className={`hidden sm:inline ${navCls} text-muted`}>{t.nav.samples}</Link>
+            <Link href="/help" className={`hidden sm:inline ${navCls} text-muted`}>{t.nav.help}</Link>
+            <Link href="/contact" className={`hidden sm:inline ${navCls} text-muted`}>{t.nav.contact}</Link>
             <LanguageSwitcher current={locale} />
-            <Link href="/dashboard" className="hidden sm:inline text-[11.5px] tracking-wide">{t.nav.signIn}</Link>
+            <Link href="/dashboard" className={`hidden sm:inline ${navCls}`}>{t.nav.signIn}</Link>
             <Link href="/signup" className="bg-ink text-paper text-[12.5px] font-semibold px-4 py-2 rounded-[3px]">{t.nav.startFree}</Link>
           </nav>
         </div>

@@ -1,29 +1,7 @@
 import { cookies } from "next/headers";
-import { en } from "./dictionaries/en";
-import { hi } from "./dictionaries/hi";
+import { LOCALE_COOKIE, DEFAULT_LOCALE, dictFor, isLocale, type Locale, type Dict } from "./locale";
 
-export const LOCALES = ["en", "hi"] as const;
-export type Locale = (typeof LOCALES)[number];
-export const DEFAULT_LOCALE: Locale = "en";
-export const LOCALE_COOKIE = "NEXT_LOCALE";
-
-// Native + roman labels for the language picker and switcher.
-export const LOCALE_LABELS: Record<Locale, { native: string; roman: string }> = {
-  en: { native: "English", roman: "ENGLISH" },
-  hi: { native: "हिन्दी", roman: "HINDI" },
-};
-
-export type Dict = typeof en;
-
-const DICTS: Record<Locale, Dict> = { en, hi: hi as Dict };
-
-export function dictFor(locale: Locale): Dict {
-  return DICTS[locale] || DICTS[DEFAULT_LOCALE];
-}
-
-export function isLocale(v: string | undefined | null): v is Locale {
-  return !!v && (LOCALES as readonly string[]).includes(v);
-}
+export * from "./locale";
 
 // Server-side: the locale chosen by the visitor, or null if they have not chosen yet.
 export async function getChosenLocale(): Promise<Locale | null> {
