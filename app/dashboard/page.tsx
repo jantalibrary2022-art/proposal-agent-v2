@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "../../lib/supabase/server";
+import LogoutButton from "../_components/LogoutButton";
 
 const MODE: Record<string, string> = { open: "OPEN IDEA", rfp: "RFP", improve: "IMPROVED" };
 
@@ -53,13 +54,6 @@ export default async function Dashboard() {
     .limit(25);
   const proposals = proposalsData || [];
 
-  async function signOut() {
-    "use server";
-    const s = await createClient();
-    await s.auth.signOut();
-    redirect("/login");
-  }
-
   return (
     <main className="min-h-screen bg-canvas flex flex-col">
       <header className="sticky top-0 z-40 h-16 border-b border-line bg-canvas">
@@ -81,9 +75,7 @@ export default async function Dashboard() {
         <div className="flex items-center gap-4">
           <span className="hidden sm:inline text-[14px] text-muted">{user.email}</span>
           <Link href="/account" className="w-9 h-9 rounded-full bg-ink text-paper flex items-center justify-center font-bold text-[13px]">{initials}</Link>
-          <form action={signOut}>
-            <button className="text-[12px] tracking-wide text-muted">LOG OUT</button>
-          </form>
+          <LogoutButton className="text-[12px] tracking-wide text-muted" />
         </div>
         </div>
       </header>
