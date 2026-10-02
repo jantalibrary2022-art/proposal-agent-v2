@@ -397,6 +397,8 @@ export const en = {
     errorBody1: "This one is on us, not you, nothing you did caused it. You can start again from the dashboard, and if it happens again, reach us at ",
     errorBody2: " and we will help you get it sorted right away.",
     technical: "Technical detail: ",
+    stalledTitle: "This is taking longer than expected",
+    stalledBody: "It may have hit a snag. Your work is saved and nothing has been charged. You can keep this page open, or come back to it anytime from your dashboard. If it still has not finished, start again from the dashboard or get help.",
     getHelp: "Get help",
     reviewKicker: "REVIEW YOUR DRAFT",
     reviewTitle: "Review and refine",

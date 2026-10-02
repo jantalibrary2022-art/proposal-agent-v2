@@ -259,7 +259,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
 
   const fetchRow = async (reschedule: boolean) => {
     const supabase = createClient();
-    const { data } = await supabase.from("proposals").select("id,status,title,meta,composed,substance,error").eq("id", id).single();
+    const { data } = await supabase.from("proposals").select("id,status,title,meta,composed,substance,error,created_at,updated_at").eq("id", id).single();
     if (!data) { setMissing(true); return; }
     setRow(data);
     if (reschedule && (data.status === "generating" || data.status === "rendering")) {
@@ -332,6 +332,9 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
   };
 
   const status = row?.status;
+  const STALL_MIN = 15;
+  const stallBase = status === "rendering" ? (row?.updated_at || row?.created_at) : row?.created_at;
+  const stalled = (status === "generating" || status === "rendering") && !!stallBase && (Date.now() - new Date(stallBase).getTime()) / 60000 >= STALL_MIN;
   const protect = status === "draft";
   const wmSvg = encodeURIComponent(
     `<svg xmlns='http://www.w3.org/2000/svg' width='360' height='210'><text x='10' y='120' transform='rotate(-28 180 105)' fill='rgba(20,20,18,0.07)' font-size='17' font-family='sans-serif' font-weight='bold'>DRAFT &#183; ${email || "preview"} &#183; PRASTAV</text></svg>`
@@ -379,6 +382,17 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
               </div>
               <h1 className="font-extrabold text-[clamp(24px,4vw,30px)] tracking-tight mb-2">{p.finalisingTitle}</h1>
               <p className="text-[15px] text-muted leading-relaxed">{p.finalisingBody}</p>
+            </div>
+          )}
+
+          {!missing && stalled && (
+            <div className="bg-card border-l-[3px] border-ink rounded-[6px] p-6 mt-4">
+              <h2 className="font-bold text-[18px] tracking-tight mb-2">{p.stalledTitle}</h2>
+              <p className="text-[15px] text-muted leading-relaxed mb-4">{p.stalledBody}</p>
+              <div className="flex items-center gap-3 flex-wrap">
+                <Link href="/dashboard" className="inline-block bg-ink text-paper text-[15px] font-semibold px-6 py-3 rounded-[4px]">{p.backToDashboard}</Link>
+                <a href="mailto:hello@prastav.app?subject=Help%20with%20my%20Prastav%20proposal" className="inline-block border border-ink text-ink text-[15px] font-semibold px-6 py-3 rounded-[4px]">{p.getHelp}</a>
+              </div>
             </div>
           )}
 
