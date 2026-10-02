@@ -20,7 +20,7 @@ export default function Home() {
             <Link href="/contact" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">CONTACT</Link>
             <span className="text-[11.5px] tracking-wide">EN</span>
             <Link href="/dashboard" className="hidden sm:inline text-[11.5px] tracking-wide">SIGN IN</Link>
-            <Link href="/language" className="bg-ink text-paper text-[12.5px] font-semibold px-4 py-2 rounded-[3px]">Start free</Link>
+            <Link href="/signup" className="bg-ink text-paper text-[12.5px] font-semibold px-4 py-2 rounded-[3px]">Start free</Link>
           </nav>
         </div>
       </header>
@@ -93,7 +93,7 @@ export default function Home() {
           <span className="w-[22px] h-[22px] rounded-full bg-paper text-panel font-extrabold text-[12px] flex items-center justify-center mr-1">प्र</span>
           <a href="#how" className="text-[13px] sm:text-[13.5px] font-medium text-white/85 px-3 sm:px-3.5 py-2">How it works</a>
           <Link href="/samples" className="text-[13px] sm:text-[13.5px] font-medium text-white/85 px-3 sm:px-3.5 py-2">See a sample</Link>
-          <Link href="/language" className="text-[13px] sm:text-[13.5px] font-semibold text-panel bg-paper px-4 sm:px-[18px] py-2 rounded-full">Start free</Link>
+          <Link href="/signup" className="text-[13px] sm:text-[13.5px] font-semibold text-panel bg-paper px-4 sm:px-[18px] py-2 rounded-full">Start free</Link>
         </div>
       </section>
 
@@ -234,7 +234,7 @@ export default function Home() {
         <div className="px-5 sm:px-8 w-full max-w-[1200px] mx-auto py-20 sm:py-28 text-center">
           <h2 className="font-extrabold text-[clamp(30px,5vw,48px)] tracking-[-0.03em] leading-[1.03] max-w-[720px] mx-auto">Write your next proposal on 24 years of practice.</h2>
           <div className="mt-9 flex items-center justify-center gap-3 flex-wrap">
-            <Link href="/language" className="bg-paper text-panel text-[15px] font-semibold px-7 py-3.5 rounded-[4px]">Start free</Link>
+            <Link href="/signup" className="bg-paper text-panel text-[15px] font-semibold px-7 py-3.5 rounded-[4px]">Start free</Link>
             <a href="#how" className="border border-white/25 text-paper text-[15px] font-semibold px-7 py-3.5 rounded-[4px]">See how it works</a>
           </div>
         </div>
