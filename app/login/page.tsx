@@ -26,10 +26,10 @@ export default function Login() {
   return (
     <main className="min-h-screen flex">
       <aside className="hidden lg:flex w-[440px] shrink-0 bg-panel text-paper flex-col p-14">
-        <div className="flex items-center gap-2 mb-16">
+        <Link href="/" className="flex items-center gap-2 mb-16 w-fit">
           <span className="w-[26px] h-[26px] rounded-[3px] bg-paper text-panel font-extrabold text-[15px] flex items-center justify-center">प्र</span>
           <span className="font-extrabold text-[20px] tracking-[-0.02em]">Prastav</span>
-        </div>
+        </Link>
         <h2 className="font-extrabold text-[36px] leading-[1.08] tracking-[-0.03em] mb-5">Welcome back.</h2>
         <p className="text-[16px] leading-relaxed text-white/60">Pick up your proposals where you left off.</p>
         <div className="mt-auto text-[13px] text-white/40">An AI workbench for the development sector.</div>
@@ -37,6 +37,7 @@ export default function Login() {
 
       <section className="flex-1 flex flex-col justify-center px-6 sm:px-16 py-12">
         <div className="w-full max-w-[460px] mx-auto">
+          <Link href="/" className="inline-flex items-center gap-1.5 text-[13.5px] text-muted hover:text-ink mb-6">← Back to home</Link>
           <div className="flex items-center justify-between mb-8">
             <h1 className="font-extrabold text-[30px] tracking-[-0.03em]">Log in</h1>
             <span className="text-[14.5px] text-muted">New here? <Link href="/signup" className="font-semibold text-ink">Register</Link></span>

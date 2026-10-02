@@ -59,10 +59,10 @@ export default function SignUp() {
   return (
     <main className="min-h-screen flex">
       <aside className="hidden lg:flex w-[440px] shrink-0 bg-panel text-paper flex-col p-14">
-        <div className="flex items-center gap-2 mb-16">
+        <Link href="/" className="flex items-center gap-2 mb-16 w-fit">
           <span className="w-[26px] h-[26px] rounded-[3px] bg-paper text-panel font-extrabold text-[15px] flex items-center justify-center">प्र</span>
           <span className="font-extrabold text-[20px] tracking-[-0.02em]">Prastav</span>
-        </div>
+        </Link>
         <h2 className="font-extrabold text-[36px] leading-[1.08] tracking-[-0.03em] mb-5">Proposals that hold up to scrutiny.</h2>
         <p className="text-[16px] leading-relaxed text-white/60 mb-10">Set up in a minute. Your work is saved as you go, so you can leave and return anytime.</p>
         <div className="space-y-[18px]">
@@ -74,6 +74,7 @@ export default function SignUp() {
 
       <section className="flex-1 flex flex-col justify-center px-6 sm:px-16 py-12">
         <div className="w-full max-w-[520px] mx-auto">
+          <Link href="/" className="inline-flex items-center gap-1.5 text-[13.5px] text-muted hover:text-ink mb-6">← Back to home</Link>
           <div className="flex items-center justify-between mb-7">
             <h1 className="font-extrabold text-[30px] tracking-[-0.03em]">Create your account</h1>
             <span className="text-[14.5px] text-muted">Have one? <Link href="/login" className="font-semibold text-ink">Log in</Link></span>
