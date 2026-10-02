@@ -18,6 +18,12 @@ function injectProtection(html: string): string {
     "*{-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important;}" +
     "img{-webkit-user-drag:none;}" +
     "@media print{html,body{display:none!important;}}" +
+    "@media screen{" +
+    "html{background:#56565a;}" +
+    "body{background:#56565a!important;margin:0;}" +
+    ".cover,.toc,body>section,.back{box-sizing:border-box;width:210mm;max-width:94vw;margin:11mm auto!important;background:#fff!important;padding:20mm 18mm!important;box-shadow:0 4px 22px rgba(0,0,0,.40);border-radius:2px;}" +
+    ".cover{height:247mm!important;}" +
+    "}" +
     "#prastav-wm{position:fixed;inset:0;z-index:2147483647;pointer-events:none;background-repeat:repeat;background-image:url('" + wm + "');}" +
     "</style>" +
     "<div id=\"prastav-wm\"></div>" +

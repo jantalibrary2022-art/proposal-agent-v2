@@ -33,7 +33,7 @@ export default function SampleViewer({ meta, html }: { meta: Sample; html: strin
         </div>
         <span className="text-[11px] tracking-[0.08em] text-muted shrink-0">VIEW ONLY</span>
       </header>
-      <iframe title={meta.title} srcDoc={html} sandbox="allow-scripts" className="flex-grow w-full border-0 bg-white" />
+      <iframe title={meta.title} srcDoc={html} sandbox="allow-scripts" className="flex-grow w-full border-0 bg-[#56565a]" />
     </div>
   );
 }
