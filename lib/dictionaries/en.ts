@@ -741,4 +741,14 @@ export const en = {
     setDefault: "Set as default",
     delete: "Delete",
   },
+  samples: {
+    back: "← Back",
+    kicker: "SAMPLE PROPOSALS",
+    title: "See what Prastav produces, one proposal from each way in.",
+    intro: "These are real proposals built with Prastav, shown view-only. Each carries the full structure a donor expects: an evidence-based problem analysis, a results framework, a costed budget with sourced and flagged rates, risks, and a sustainability case.",
+    view: "VIEW SAMPLE →",
+    note: "Samples are for viewing only. Copying, download and printing are disabled.",
+    allSamples: "← All samples",
+    viewOnly: "VIEW ONLY",
+  },
 };
