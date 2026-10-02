@@ -112,26 +112,48 @@ export default function Home() {
       {/* The practitioner */}
       <section className="bg-panel text-paper">
         <div className="px-5 sm:px-8 w-full max-w-[1100px] mx-auto py-20 sm:py-28">
-          <div className="text-[12px] tracking-[0.1em] text-white/45 mb-4">THE PRACTITIONER BEHIND IT</div>
-          <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[800px]">Built on 24 years of getting proposals funded.</h2>
-          <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-white/75 max-w-[760px]">Prastav encodes how Prakash Kumar builds a proposal: the theory of change, the evidence discipline, the results logic and the budgeting that a seasoned development professional applies before a draft ever reaches a donor. It is a method with 24 years behind it, not a chatbot with a prompt.</p>
-          <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-9">
-            {[
-              ["24 years", "Across livelihoods, M&E, baseline studies, CSR programme design and social audit."],
-              ["XISS, Ranchi", "Post-Graduate Diploma in Rural Development (PGDRD)."],
-              ["Registered Social Auditor", "With ISAI (Member No. ISAI/SA-654)."],
-              ["Four states", "Field work across Jharkhand, Chhattisgarh, Uttarakhand and West Bengal."],
-            ].map(([h, d]) => (
-              <div key={h}>
-                <div className="text-[19px] font-bold tracking-[-0.02em] mb-1.5">{h}</div>
-                <div className="text-[13.5px] leading-relaxed text-white/60">{d}</div>
+          <div className="text-[12px] tracking-[0.1em] text-white/45 mb-8">THE PRACTITIONER BEHIND IT</div>
+          <div className="flex flex-col md:flex-row gap-10 md:gap-14 md:items-start">
+            <div className="shrink-0 md:w-[260px]">
+              <img src="/prakash-kumar.jpg" alt="Prakash Kumar" className="w-[190px] md:w-full aspect-[4/5] object-cover object-top rounded-xl grayscale" />
+              <div className="mt-4">
+                <div className="text-[17px] font-bold tracking-[-0.02em]">Prakash Kumar</div>
+                <div className="text-[13.5px] text-white/55 mt-0.5 leading-snug">Founder, Prastav. Independent development-sector consultant.</div>
               </div>
-            ))}
+            </div>
+            <div className="min-w-0 flex-grow">
+              <h2 className="font-extrabold text-[clamp(26px,4.3vw,40px)] tracking-[-0.03em] leading-[1.06] max-w-[620px]">Built on 24 years of practice.</h2>
+              <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-white/75 max-w-[620px]">Prastav applies the judgment of a practitioner who has spent 24 years in the development sector, across health, gender, child protection and livelihoods. His work centres on research studies, programme design, and building the capacity of the teams that run them, the same discipline the tool brings to your proposal.</p>
+              <p className="mt-4 text-[16px] leading-relaxed text-white/60 max-w-[620px]">A registered social auditor, he is often the person organisations bring in to get the evidence and the method right. That is the standard every draft is held to here.</p>
+              <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-x-8 gap-y-3 text-[13.5px]">
+                <span className="text-white/70"><span className="text-white/40">Education&nbsp;&nbsp;</span>XISS, Ranchi — PGDRD</span>
+                <span className="text-white/70"><span className="text-white/40">Accreditation&nbsp;&nbsp;</span>Registered Social Auditor, ISAI (SA-654)</span>
+                <span className="text-white/70"><span className="text-white/40">Specialism&nbsp;&nbsp;</span>Research &amp; capacity building</span>
+              </div>
+            </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-white/12">
-            <div className="text-[12px] tracking-[0.1em] text-white/45 mb-3">24 YEARS OF WORK WITH ORGANISATIONS INCLUDING</div>
-            <div className="flex flex-wrap gap-x-7 gap-y-3 text-[15px] sm:text-[16px] font-semibold text-white/85">
-              <span>UNICEF</span><span>Azim Premji Foundation</span><span>Welspun / Protiviti</span><span>SHSRC Chhattisgarh</span><span>OakNorth</span>
+
+          <div className="mt-14 pt-9 border-t border-white/12">
+            <div className="text-[12px] tracking-[0.1em] text-white/45 mb-6">A SELECTION OF ORGANISATIONS HE HAS WORKED WITH</div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-8">
+              <div>
+                <div className="text-[11px] tracking-[0.08em] text-white/35 mb-3">MULTILATERAL &amp; INTERNATIONAL</div>
+                <div className="flex flex-col gap-1.5 text-[15px] font-semibold text-white/85">
+                  <span>World Bank</span><span>UNICEF</span><span>Save the Children</span><span>HelpAge India</span><span>Research Triangle Institute</span>
+                </div>
+              </div>
+              <div>
+                <div className="text-[11px] tracking-[0.08em] text-white/35 mb-3">GOVERNMENT MISSIONS</div>
+                <div className="flex flex-col gap-1.5 text-[15px] font-semibold text-white/85">
+                  <span>NRLM</span><span>BRLPS</span><span>JSLPS</span><span>SHSRC Chhattisgarh</span>
+                </div>
+              </div>
+              <div>
+                <div className="text-[11px] tracking-[0.08em] text-white/35 mb-3">CORPORATE &amp; ADVISORY</div>
+                <div className="flex flex-col gap-1.5 text-[15px] font-semibold text-white/85">
+                  <span>Marico</span><span>Welspun</span><span>Protiviti</span><span>OakNorth</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
