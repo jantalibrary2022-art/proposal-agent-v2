@@ -335,6 +335,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
   const STALL_MIN = 15;
   const stallBase = status === "rendering" ? (row?.updated_at || row?.created_at) : row?.created_at;
   const stalled = (status === "generating" || status === "rendering") && !!stallBase && (Date.now() - new Date(stallBase).getTime()) / 60000 >= STALL_MIN;
+  const isBusy = status === "error" && typeof row?.error === "string" && row.error.startsWith("busy:");
   const protect = status === "draft";
   const wmSvg = encodeURIComponent(
     `<svg xmlns='http://www.w3.org/2000/svg' width='360' height='210'><text x='10' y='120' transform='rotate(-28 180 105)' fill='rgba(20,20,18,0.07)' font-size='17' font-family='sans-serif' font-weight='bold'>DRAFT &#183; ${email || "preview"} &#183; PRASTAV</text></svg>`
@@ -396,7 +397,18 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
             </div>
           )}
 
-          {!missing && status === "error" && (
+          {!missing && status === "error" && isBusy && (
+            <div className="bg-card border-l-[3px] border-ink rounded-[6px] p-8">
+              <h1 className="font-extrabold text-[24px] tracking-tight mb-2">{p.busyTitle}</h1>
+              <p className="text-[15px] text-muted leading-relaxed mb-6">{p.busyBody}</p>
+              <div className="flex items-center gap-3 flex-wrap">
+                <Link href="/dashboard" className="inline-block bg-ink text-paper text-[15px] font-semibold px-6 py-3 rounded-[4px]">{p.backToDashboard}</Link>
+                <a href="mailto:hello@prastav.app?subject=Help%20with%20my%20Prastav%20proposal" className="inline-block border border-ink text-ink text-[15px] font-semibold px-6 py-3 rounded-[4px]">{p.getHelp}</a>
+              </div>
+            </div>
+          )}
+
+          {!missing && status === "error" && !isBusy && (
             <div className="bg-card border-l-[3px] border-ink rounded-[6px] p-8">
               <h1 className="font-extrabold text-[24px] tracking-tight mb-2">{p.errorTitle}</h1>
               <p className="text-[15px] text-muted leading-relaxed mb-4">{p.errorBody1}<a href="mailto:hello@prastav.app?subject=Help%20with%20my%20Prastav%20proposal" className="font-semibold text-ink underline">hello@prastav.app</a>{p.errorBody2}</p>

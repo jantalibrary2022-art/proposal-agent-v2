@@ -3,6 +3,8 @@ import { createClient } from "../../../../lib/supabase/server";
 import { createAdminClient } from "../../../../lib/supabase/admin";
 import { runOpenDraft } from "../../../../lib/run-open";
 import { normalizeCode, validateCoupon, redeemCoupon, paywallEnabled } from "../../../../lib/coupons";
+import { genErrorMessage } from "../../../../lib/gen-errors";
+import { sendProposalReady, sendProposalFailed } from "../../../../lib/email";
 
 export const runtime = "nodejs";
 
@@ -125,9 +127,11 @@ export async function POST(req: NextRequest) {
         language: outputLanguage(form.output_language),
       });
       await admin.from("proposals").update({ status: "draft", title: draft.meta.title, meta: draft.meta, substance: draft.substance, composed: draft.composed, updated_at: new Date().toISOString() }).eq("id", proposalId);
+      if (user.email) { try { await sendProposalReady(user.email, { id: proposalId }); } catch {} }
     } catch (e: any) {
-      await admin.from("proposals").update({ status: "error", error: (e && e.message) || "generation_failed", updated_at: new Date().toISOString() }).eq("id", proposalId);
-      try { await admin.from("error_alerts").insert({ user_id: user.id, proposal_id: proposalId, mode: "open", message: (e && e.message) || "generation_failed" }); } catch {}
+      await admin.from("proposals").update({ status: "error", error: genErrorMessage(e), updated_at: new Date().toISOString() }).eq("id", proposalId);
+      if (user.email) { try { await sendProposalFailed(user.email, { id: proposalId, busy: genErrorMessage(e).startsWith("busy:") }); } catch {} }
+      try { await admin.from("error_alerts").insert({ user_id: user.id, proposal_id: proposalId, mode: "open", message: genErrorMessage(e) }); } catch {}
     }
   })();
 
