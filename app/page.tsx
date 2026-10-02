@@ -10,8 +10,8 @@ export default function Home() {
           <span className="font-extrabold text-[18px] tracking-[-0.02em]">Prastav</span>
         </div>
         <nav className="flex items-center gap-4 sm:gap-6">
-          <span className="hidden sm:inline text-[11.5px] tracking-wide text-muted">METHOD</span>
-          <span className="hidden sm:inline text-[11.5px] tracking-wide text-muted">PRICING</span>
+          <a href="#how" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">METHOD</a>
+          <a href="#pricing" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">PRICING</a>
           <span className="text-[11.5px] tracking-wide">EN</span>
           <Link href="/dashboard" className="hidden sm:inline text-[11.5px] tracking-wide">SIGN IN</Link>
           <Link href="/language" className="bg-ink text-paper text-[12.5px] font-semibold px-4 py-2 rounded-[3px]">Start free</Link>
@@ -37,7 +37,7 @@ export default function Home() {
       </div>
 
       {/* Framed panel */}
-      <section className="relative mx-4 sm:mx-8 my-7 flex-1 min-h-[540px] rounded-[18px] bg-panel overflow-hidden">
+      <section className="relative mx-4 sm:mx-8 my-7 min-h-[540px] lg:min-h-[600px] rounded-[18px] bg-panel overflow-hidden">
         <div aria-hidden className="pointer-events-none select-none absolute -bottom-10 left-0 w-full text-center font-extrabold tracking-[-0.04em] text-white/[0.04] leading-none text-[clamp(120px,22vw,210px)]">EVIDENCE</div>
 
         {/* Proposal specimen */}
@@ -84,11 +84,150 @@ export default function Home() {
         {/* Pill */}
         <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-black/70 border border-white/15 rounded-full py-2 pl-3 sm:pl-4 pr-2 backdrop-blur">
           <span className="w-[22px] h-[22px] rounded-full bg-paper text-panel font-extrabold text-[12px] flex items-center justify-center mr-1">प्र</span>
-          <a href="#" className="text-[13px] sm:text-[13.5px] font-medium text-white/85 px-3 sm:px-3.5 py-2">How it works</a>
-          <a href="#" className="text-[13px] sm:text-[13.5px] font-medium text-white/85 px-3 sm:px-3.5 py-2">See a sample</a>
+          <a href="#how" className="text-[13px] sm:text-[13.5px] font-medium text-white/85 px-3 sm:px-3.5 py-2">How it works</a>
+          <a href="#pricing" className="text-[13px] sm:text-[13.5px] font-medium text-white/85 px-3 sm:px-3.5 py-2">Pricing</a>
           <Link href="/language" className="text-[13px] sm:text-[13.5px] font-semibold text-panel bg-paper px-4 sm:px-[18px] py-2 rounded-full">Start free</Link>
         </div>
       </section>
+
+      {/* Why not a chatbot */}
+      <section className="px-5 sm:px-8 w-full max-w-[1100px] mx-auto py-20 sm:py-28">
+        <div className="text-[12px] tracking-[0.1em] text-muted mb-4">WHY NOT JUST A CHATBOT</div>
+        <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">A general chatbot will invent a figure to fill a gap. A donor will notice.</h2>
+        <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-[#3A3A31] max-w-[720px]">Prastav is built the other way round. It cites only authoritative sources, fetches the current figure and attributes it, and where no sound source has the number, it flags the gap for you to fill rather than guessing. Every statistic in your proposal is one you can stand behind.</p>
+        <div className="mt-11 grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {[
+            ["Grounded evidence", "Figures come from Census, NFHS, NSS, government portals and recognised institutions, with the source attached so you can verify every number."],
+            ["Honest gaps", "Where no authoritative source has a figure, Prastav names the gap and the source that would hold it, instead of filling it with something a reviewer can puncture."],
+            ["Expert vetting", "You review and edit every section before it goes out. The tool drafts to a practitioner's standard; your judgment is the final check."],
+          ].map(([t, d]) => (
+            <div key={t} className="bg-card border border-line rounded-lg p-6">
+              <div className="text-[16px] font-bold mb-2">{t}</div>
+              <div className="text-[14.5px] leading-relaxed text-[#4A4A42]">{d}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* The practitioner */}
+      <section className="bg-panel text-paper">
+        <div className="px-5 sm:px-8 w-full max-w-[1100px] mx-auto py-20 sm:py-28">
+          <div className="text-[12px] tracking-[0.1em] text-white/45 mb-4">THE PRACTITIONER BEHIND IT</div>
+          <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[800px]">Built on 24 years of getting proposals funded.</h2>
+          <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-white/75 max-w-[760px]">Prastav encodes how Prakash Kumar builds a proposal: the theory of change, the evidence discipline, the results logic and the budgeting that a seasoned development professional applies before a draft ever reaches a donor. It is a method with 24 years behind it, not a chatbot with a prompt.</p>
+          <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-9">
+            {[
+              ["24 years", "Across livelihoods, M&E, baseline studies, CSR programme design and social audit."],
+              ["XISS, Ranchi", "Post-Graduate Diploma in Rural Development (PGDRD)."],
+              ["Registered Social Auditor", "With ISAI (Member No. ISAI/SA-654)."],
+              ["Four states", "Field work across Jharkhand, Chhattisgarh, Uttarakhand and West Bengal."],
+            ].map(([h, d]) => (
+              <div key={h}>
+                <div className="text-[19px] font-bold tracking-[-0.02em] mb-1.5">{h}</div>
+                <div className="text-[13.5px] leading-relaxed text-white/60">{d}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 pt-8 border-t border-white/12">
+            <div className="text-[12px] tracking-[0.1em] text-white/45 mb-3">24 YEARS OF WORK WITH ORGANISATIONS INCLUDING</div>
+            <div className="flex flex-wrap gap-x-7 gap-y-3 text-[15px] sm:text-[16px] font-semibold text-white/85">
+              <span>UNICEF</span><span>Azim Premji Foundation</span><span>Welspun / Protiviti</span><span>SHSRC Chhattisgarh</span><span>OakNorth</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Three ways in */}
+      <section id="how" className="px-5 sm:px-8 w-full max-w-[1100px] mx-auto py-20 sm:py-28 scroll-mt-16">
+        <div className="text-[12px] tracking-[0.1em] text-muted mb-4">HOW IT WORKS</div>
+        <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">Three ways in. One rigorous proposal out.</h2>
+        <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-[#3A3A31] max-w-[720px]">However you arrive, Prastav reads what you give it, asks only what it still needs, researches the evidence, and builds a complete proposal you review section by section.</p>
+        <div className="mt-11 grid grid-cols-1 md:grid-cols-3 gap-5">
+          {[
+            ["Start from your idea", "Describe your project, or let Prastav suggest approaches grounded in your organisation's work. Attach a baseline study and it builds on your own data."],
+            ["Respond to an RFP", "Paste the donor's call. Prastav reads it, checks your eligibility, follows the prescribed format, and asks only what the RFP leaves open."],
+            ["Improve a draft", "Upload a proposal you have already written. Prastav diagnoses it against a fundable standard, corrects weak evidence, and rebuilds a stronger version."],
+          ].map(([t, d], i) => (
+            <div key={t} className="bg-card border border-line rounded-lg p-6">
+              <div className="text-[12px] tracking-[0.1em] text-muted mb-3">0{i + 1}</div>
+              <div className="text-[17px] font-bold mb-2">{t}</div>
+              <div className="text-[14.5px] leading-relaxed text-[#4A4A42]">{d}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* The standard */}
+      <section className="bg-faint border-y border-line">
+        <div className="px-5 sm:px-8 w-full max-w-[1100px] mx-auto py-20 sm:py-28">
+          <div className="text-[12px] tracking-[0.1em] text-muted mb-4">THE STANDARD IT BUILDS TO</div>
+          <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">What makes a proposal fundable, built in by default.</h2>
+          <div className="mt-11 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-7 max-w-[900px]">
+            {[
+              ["A clear theory of change", "Problem, what must change, objective, results, activities, each following from the last, stated explicitly."],
+              ["A real logframe", "Every result with an indicator, a baseline, a target and a means of verification, outcomes kept distinct from outputs."],
+              ["Evidence-based problem analysis", "Authoritative national data and the specific local situation, not national figures standing in for the district."],
+              ["A defensible budget", "Line items tied to activities, rates sourced where they exist and clearly flagged where they are estimates."],
+              ["Risks and assumptions", "Made explicit, each with a likelihood, an impact and a concrete mitigation."],
+              ["Three formats, submission-grade", "A professionally formatted PDF, an editable Word document, and a live Excel budget, in English or Hindi."],
+            ].map(([t, d]) => (
+              <div key={t} className="flex gap-3.5">
+                <span className="mt-[6px] w-2 h-2 rounded-full bg-ink shrink-0" />
+                <div>
+                  <div className="text-[16px] font-bold mb-1">{t}</div>
+                  <div className="text-[14.5px] leading-relaxed text-[#4A4A42]">{d}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="pricing" className="px-5 sm:px-8 w-full max-w-[1100px] mx-auto py-20 sm:py-28 scroll-mt-16">
+        <div className="text-[12px] tracking-[0.1em] text-muted mb-4">PRICING</div>
+        <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">One fee per proposal. The document is professional either way.</h2>
+        <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-[#3A3A31] max-w-[720px]">Every proposal, at every price, comes out as a properly formatted, submission-grade document. What you pay more for is sharper writing, not basic presentation.</p>
+        <div className="mt-11 grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[820px]">
+          <div className="bg-card border border-line rounded-lg p-7">
+            <div className="text-[12px] tracking-[0.1em] text-muted mb-3">BASE</div>
+            <div className="flex items-baseline gap-1.5 mb-1"><span className="text-[34px] font-extrabold tracking-[-0.03em]">₹6,999</span><span className="text-[14px] text-muted">per proposal</span></div>
+            <div className="text-[14.5px] leading-relaxed text-[#4A4A42] mt-3">The full method, grounded research, a complete proposal in three formats, reviewed section by section. Discounts for grassroots organisations and in bulk.</div>
+          </div>
+          <div className="bg-panel text-paper rounded-lg p-7">
+            <div className="text-[12px] tracking-[0.1em] text-white/45 mb-3">FULL POLISH · ADD-ON</div>
+            <div className="flex items-baseline gap-1.5 mb-1"><span className="text-[34px] font-extrabold tracking-[-0.03em]">+₹500</span><span className="text-[14px] text-white/55">per proposal</span></div>
+            <div className="text-[14.5px] leading-relaxed text-white/70 mt-3">The whole proposal re-composed in one pass for a sharper argument and a stronger, more persuasive voice. A difference in the writing, not the formatting.</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="bg-panel text-paper">
+        <div className="px-5 sm:px-8 w-full max-w-[1100px] mx-auto py-20 sm:py-28 text-center">
+          <h2 className="font-extrabold text-[clamp(30px,5vw,48px)] tracking-[-0.03em] leading-[1.03] max-w-[720px] mx-auto">Write your next proposal on 24 years of practice.</h2>
+          <div className="mt-9 flex items-center justify-center gap-3 flex-wrap">
+            <Link href="/language" className="bg-paper text-panel text-[15px] font-semibold px-7 py-3.5 rounded-[4px]">Start free</Link>
+            <a href="#how" className="border border-white/25 text-paper text-[15px] font-semibold px-7 py-3.5 rounded-[4px]">See how it works</a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-line">
+        <div className="px-5 sm:px-8 w-full max-w-[1100px] mx-auto py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="w-6 h-6 rounded-[3px] bg-ink text-paper font-extrabold text-[14px] flex items-center justify-center">प्र</span>
+            <span className="font-extrabold text-[16px] tracking-[-0.02em]">Prastav</span>
+          </div>
+          <div className="flex items-center gap-6 text-[13px] text-muted">
+            <a href="#how">Method</a>
+            <a href="#pricing">Pricing</a>
+            <Link href="/dashboard">Sign in</Link>
+          </div>
+          <div className="text-[12.5px] text-muted">An AI workbench for the development sector.</div>
+        </div>
+      </footer>
     </main>
   );
 }
