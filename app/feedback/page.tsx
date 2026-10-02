@@ -3,15 +3,18 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { createClient } from "../../lib/supabase/client";
-
-const DIMS: [string, string, string][] = [
-  ["process", "The overall process", "From your idea to a finished proposal."],
-  ["ease", "Ease of use", "How simple it was to get what you needed."],
-  ["quality", "Quality of the proposal", "How strong and usable the output was."],
-  ["website", "Website experience", "Speed, clarity and how it felt to use."],
-];
+import { useDict } from "../_components/LocaleProvider";
 
 export default function FeedbackPage() {
+  const { t } = useDict();
+  const f = t.feedbackPage;
+  const DIMS: [string, string, string][] = [
+    ["process", f.dProcess, f.dProcessH],
+    ["ease", f.dEase, f.dEaseH],
+    ["quality", f.dQuality, f.dQualityH],
+    ["website", f.dWebsite, f.dWebsiteH],
+  ];
+
   const [loaded, setLoaded] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [proposalId, setProposalId] = useState<string | null>(null);
@@ -37,7 +40,7 @@ export default function FeedbackPage() {
   const canSubmit = DIMS.every(([k]) => (ratings[k] || 0) > 0);
 
   const submit = async () => {
-    if (!canSubmit) { setErr("Please rate each of the four."); return; }
+    if (!canSubmit) { setErr(f.rateAll); return; }
     setErr(""); setSaving(true);
     const supabase = createClient();
     const { error } = await supabase.from("feedback").insert({
@@ -58,32 +61,32 @@ export default function FeedbackPage() {
           <span className="w-[26px] h-[26px] bg-ink rounded-[3px] flex items-center justify-center text-paper font-extrabold text-[15px]">प्र</span>
           <span className="font-extrabold text-[19px] tracking-tight">Prastav</span>
         </Link>
-        <Link href="/dashboard" className="text-[14.5px] text-muted">Back to dashboard</Link>
+        <Link href="/dashboard" className="text-[14.5px] text-muted">{t.common.backToDashboard}</Link>
       </header>
 
       <main className="flex-grow px-6 sm:px-11 py-12 flex justify-center">
         <div className="w-full max-w-[560px]">
           {!loaded ? (
-            <div className="text-[15px] text-muted">Loading…</div>
+            <div className="text-[15px] text-muted">{t.common.loading}</div>
           ) : !userId ? (
             <div>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Share your feedback</h1>
-              <p className="text-[16px] text-muted leading-relaxed">Please <Link href="/login" className="font-semibold text-ink underline">log in</Link> to leave feedback, so we can follow up if you would like us to.</p>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{f.loginTitle}</h1>
+              <p className="text-[16px] text-muted leading-relaxed">{f.loginPre}<Link href="/login" className="font-semibold text-ink underline">{f.loginLink}</Link>{f.loginPost}</p>
             </div>
           ) : done ? (
             <div>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Thank you</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-6">Your feedback helps us make Prastav better. We read every response.</p>
-              <Link href="/dashboard" className="inline-block bg-ink text-paper text-[15px] font-semibold px-6 py-3 rounded-[4px]">Back to dashboard</Link>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{f.thankTitle}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">{f.thankBody}</p>
+              <Link href="/dashboard" className="inline-block bg-ink text-paper text-[15px] font-semibold px-6 py-3 rounded-[4px]">{t.common.backToDashboard}</Link>
             </div>
           ) : (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">How was it?</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-8">A minute of feedback on four things. 1 is poor, 5 is great.</p>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{f.title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-8">{f.intro}</p>
               <div className="flex flex-col gap-7">
-                {DIMS.map(([k, label, hint]) => (
+                {DIMS.map(([k, labelTxt, hint]) => (
                   <div key={k}>
-                    <div className="text-[15.5px] font-semibold">{label}</div>
+                    <div className="text-[15.5px] font-semibold">{labelTxt}</div>
                     <div className="text-[13.5px] text-muted mb-3">{hint}</div>
                     <div className="flex gap-2">
                       {[1, 2, 3, 4, 5].map((n) => (
@@ -93,12 +96,12 @@ export default function FeedbackPage() {
                   </div>
                 ))}
                 <div>
-                  <div className="text-[15.5px] font-semibold mb-2">Anything else? (optional)</div>
-                  <textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder="What worked, what didn't, what you'd want next." className="w-full h-[110px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-3 text-[15px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
+                  <div className="text-[15.5px] font-semibold mb-2">{f.elseLabel}</div>
+                  <textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder={f.elsePh} className="w-full h-[110px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-3 text-[15px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
                 </div>
                 {err && <div className="text-[14px] text-[#B4442F]">{err}</div>}
                 <div>
-                  <button type="button" onClick={submit} disabled={saving} className="bg-ink text-paper text-[16px] font-semibold px-7 py-[14px] rounded-[4px] disabled:opacity-40">{saving ? "Sending…" : "Send feedback"}</button>
+                  <button type="button" onClick={submit} disabled={saving} className="bg-ink text-paper text-[16px] font-semibold px-7 py-[14px] rounded-[4px] disabled:opacity-40">{saving ? f.sending : f.send}</button>
                 </div>
               </div>
             </>

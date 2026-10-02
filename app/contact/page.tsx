@@ -2,8 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useDict } from "../_components/LocaleProvider";
 
 export default function ContactPage() {
+  const { t } = useDict();
+  const c = t.contactPage;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -15,8 +18,8 @@ export default function ContactPage() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErr("");
-    if (!message.trim()) { setErr("Please write a short message."); return; }
-    if (!email.trim()) { setErr("Please add your email so we can reply."); return; }
+    if (!message.trim()) { setErr(c.errMsg); return; }
+    if (!email.trim()) { setErr(c.errEmail); return; }
     setSending(true);
     try {
       const res = await fetch("/api/contact", {
@@ -26,11 +29,11 @@ export default function ContactPage() {
       });
       const j = await res.json();
       setSending(false);
-      if (!j.ok) { setErr(j.error || "Something went wrong. Please email us instead."); return; }
+      if (!j.ok) { setErr(j.error || c.errGeneric); return; }
       setDone(true);
     } catch {
       setSending(false);
-      setErr("Something went wrong. Please email us at hello@prastav.app instead.");
+      setErr(c.errGeneric);
     }
   };
 
@@ -45,56 +48,55 @@ export default function ContactPage() {
           <span className="font-extrabold text-[19px] tracking-tight">Prastav</span>
         </Link>
         <div className="flex items-center gap-6">
-          <Link href="/help" className="text-[13px] tracking-wide text-muted">HELP</Link>
-          <Link href="/dashboard" className="text-[14.5px] text-muted">Dashboard</Link>
+          <Link href="/help" className="text-[13px] tracking-wide text-muted">{c.help}</Link>
+          <Link href="/dashboard" className="text-[14.5px] text-muted">{c.dashboard}</Link>
         </div>
       </header>
 
       <main className="flex-grow px-6 sm:px-11 py-14 flex justify-center">
         <div className="w-full max-w-[640px]">
-          <h1 className="font-extrabold text-[clamp(28px,5vw,40px)] tracking-[-0.02em] leading-[1.08] mb-3">Get in touch</h1>
+          <h1 className="font-extrabold text-[clamp(28px,5vw,40px)] tracking-[-0.02em] leading-[1.08] mb-3">{c.title}</h1>
           <p className="text-[17px] text-muted leading-relaxed mb-8">
-            Questions about Prastav, your proposal, or working with Prakash directly. Write to us and we will get back to you. You can also email
-            {" "}<a href="mailto:hello@prastav.app" className="font-semibold text-ink underline">hello@prastav.app</a> directly.
+            {c.intro1}<a href="mailto:hello@prastav.app" className="font-semibold text-ink underline">hello@prastav.app</a>{c.intro2}
           </p>
 
           {done ? (
             <div className="bg-card border border-line rounded-lg p-8">
-              <h2 className="text-[20px] font-bold mb-2">Thank you, your message is in.</h2>
-              <p className="text-[15.5px] text-muted leading-relaxed mb-5">We have your note and will reply to the email you gave us. If it is urgent, email us at hello@prastav.app.</p>
-              <Link href="/" className="inline-block bg-ink text-paper text-[15px] font-semibold px-6 py-3 rounded-[4px]">Back to home</Link>
+              <h2 className="text-[20px] font-bold mb-2">{c.doneTitle}</h2>
+              <p className="text-[15.5px] text-muted leading-relaxed mb-5">{c.doneBody}</p>
+              <Link href="/" className="inline-block bg-ink text-paper text-[15px] font-semibold px-6 py-3 rounded-[4px]">{c.backHome}</Link>
             </div>
           ) : (
             <form onSubmit={submit} className="flex flex-col gap-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className={label}>Your name</label>
-                  <input className={input} value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
+                  <label className={label}>{c.name}</label>
+                  <input className={input} value={name} onChange={(e) => setName(e.target.value)} placeholder={c.namePh} />
                 </div>
                 <div>
-                  <label className={label}>Email</label>
-                  <input type="email" className={input} value={email} onChange={(e) => { setEmail(e.target.value); setErr(""); }} placeholder="you@organisation.org" />
+                  <label className={label}>{c.email}</label>
+                  <input type="email" className={input} value={email} onChange={(e) => { setEmail(e.target.value); setErr(""); }} placeholder={c.emailPh} />
                 </div>
               </div>
               <div>
-                <label className={label}>Subject</label>
-                <input className={input} value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="What is this about?" />
+                <label className={label}>{c.subject}</label>
+                <input className={input} value={subject} onChange={(e) => setSubject(e.target.value)} placeholder={c.subjectPh} />
               </div>
               <div>
-                <label className={label}>Message</label>
-                <textarea value={message} onChange={(e) => { setMessage(e.target.value); setErr(""); }} placeholder="Tell us what you need." className="w-full box-border h-[150px] border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[16px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
+                <label className={label}>{c.message}</label>
+                <textarea value={message} onChange={(e) => { setMessage(e.target.value); setErr(""); }} placeholder={c.messagePh} className="w-full box-border h-[150px] border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[16px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
               </div>
               {err && <div className="text-[14px] text-[#B4442F]">{err}</div>}
               <div>
-                <button type="submit" disabled={sending} className="bg-ink text-paper text-[16px] font-semibold px-7 py-[14px] rounded-[4px] disabled:opacity-40">{sending ? "Sending…" : "Send message"}</button>
+                <button type="submit" disabled={sending} className="bg-ink text-paper text-[16px] font-semibold px-7 py-[14px] rounded-[4px] disabled:opacity-40">{sending ? c.sending : c.send}</button>
               </div>
             </form>
           )}
 
           <div className="mt-12 pt-8 border-t border-line text-[14px] text-muted leading-relaxed">
-            <div className="font-semibold text-ink mb-1">Prastav</div>
-            An AI workbench for the development sector, built by Prakash Kumar, Ranchi.
-            <br />Email <a href="mailto:hello@prastav.app" className="font-semibold text-ink underline">hello@prastav.app</a>
+            <div className="font-semibold text-ink mb-1">{c.footName}</div>
+            {c.footBody}
+            <br />{c.footEmail}<a href="mailto:hello@prastav.app" className="font-semibold text-ink underline">hello@prastav.app</a>
           </div>
         </div>
       </main>

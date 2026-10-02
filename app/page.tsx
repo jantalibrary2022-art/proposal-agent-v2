@@ -250,6 +250,9 @@ export default async function Home() {
           </div>
           <div className="text-[12.5px] text-muted">{t.footer.tagline}</div>
         </div>
+        <div className="border-t border-line">
+          <div className="px-5 sm:px-8 w-full max-w-[1200px] mx-auto py-5 text-[12.5px] text-muted">{t.footer.copyright}</div>
+        </div>
       </footer>
     </main>
   );
