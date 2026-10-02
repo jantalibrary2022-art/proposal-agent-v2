@@ -3,17 +3,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { createClient } from "../../../lib/supabase/client";
-
-const SECTIONS: [string, string, boolean][] = [
-  ["Title", "title", true],
-  ["Subtitle", "subtitle", true],
-  ["Problem analysis", "problem", false],
-  ["Objective", "objective", false],
-  ["Strategy / approach", "strategy", false],
-  ["Results", "results_narrative", false],
-  ["Activities", "activities", false],
-  ["Sustainability", "sustainability", false],
-];
+import { useDict } from "../../_components/LocaleProvider";
 
 function parseAmt(s: string) { const n = Number(String(s == null ? "" : s).replace(/[^0-9.]/g, "")); return isNaN(n) ? 0 : n; }
 function fmtIN(n: number) {
@@ -32,6 +22,8 @@ function paras(text: string) {
 }
 
 function Dictation({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const { locale, t } = useDict();
+  const p = t.proposal;
   const [listening, setListening] = useState(false);
   const [supported, setSupported] = useState(true);
   const recRef = useRef<any>(null);
@@ -45,14 +37,14 @@ function Dictation({ value, onChange }: { value: string; onChange: (v: string) =
     const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (!SR) { setSupported(false); return; }
     const rec = new SR();
-    rec.lang = "en-IN"; rec.interimResults = true; rec.continuous = true;
+    rec.lang = locale === "hi" ? "hi-IN" : "en-IN"; rec.interimResults = true; rec.continuous = true;
     let committed = baseRef.current;
     rec.onresult = (e: any) => {
       let interim = "";
       for (let i = e.resultIndex; i < e.results.length; i++) {
-        const t = e.results[i][0].transcript;
-        if (e.results[i].isFinal) committed += (committed ? " " : "") + t.trim();
-        else interim += t;
+        const tr = e.results[i][0].transcript;
+        if (e.results[i].isFinal) committed += (committed ? " " : "") + tr.trim();
+        else interim += tr;
       }
       onChange((committed + (interim ? " " + interim : "")).trim());
     };
@@ -69,12 +61,14 @@ function Dictation({ value, onChange }: { value: string; onChange: (v: string) =
   return (
     <button type="button" onClick={toggle} className={`shrink-0 flex items-center gap-2 px-3 h-[40px] rounded-[4px] text-[13.5px] font-semibold border-[1.5px] ${listening ? "bg-ink text-paper border-ink" : "bg-card text-ink border-ink"}`}>
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
-      {listening ? "Stop" : "Speak"}
+      {listening ? p.stop : p.speak}
     </button>
   );
 }
 
 function Section({ id, label, single, text, proposalId, onCommit }: { id: string; label: string; single: boolean; text: string; proposalId: string; onCommit: (section: string, newText: string) => Promise<boolean>; }) {
+  const { t } = useDict();
+  const p = t.proposal;
   const [open, setOpen] = useState(false);
   const [comment, setComment] = useState("");
   const [busy, setBusy] = useState(false);
@@ -92,10 +86,10 @@ function Section({ id, label, single, text, proposalId, onCommit }: { id: string
         body: JSON.stringify({ section: id, comment, currentText: shown }),
       });
       const data = await res.json();
-      if (!data.ok) { setNote("Could not revise: " + (data.error || "error")); setBusy(false); return; }
+      if (!data.ok) { setNote(p.couldNotRevise + (data.error || "error")); setBusy(false); return; }
       setNote(data.note || "");
       if (data.changed) setProposed(data.revised);
-    } catch { setNote("Something went wrong reaching the agent."); }
+    } catch { setNote(p.reachError); }
     setBusy(false);
   };
 
@@ -113,15 +107,15 @@ function Section({ id, label, single, text, proposalId, onCommit }: { id: string
     <div className="bg-card border border-line rounded-lg p-6">
       <div className="flex items-start justify-between gap-4 mb-3">
         <div className="text-[12px] tracking-wide font-semibold text-muted">{label.toUpperCase()}</div>
-        <button type="button" onClick={() => setOpen(!open)} className="shrink-0 text-[13px] font-semibold text-ink underline">{open ? "Close" : "Suggest a change"}</button>
+        <button type="button" onClick={() => setOpen(!open)} className="shrink-0 text-[13px] font-semibold text-ink underline">{open ? p.close : p.suggestChange}</button>
       </div>
 
       <div style={{ userSelect: "none" }} className={single ? "font-bold text-[18px]" : "text-[15px] text-ink"}>
-        {single ? (shown || "(empty)") : paras(shown)}
+        {single ? (shown || p.empty) : paras(shown)}
       </div>
 
       {proposed != null && (
-        <div className="mt-3 text-[12px] tracking-wide font-semibold text-ink">PROPOSED CHANGE SHOWN ABOVE &mdash; ACCEPT TO KEEP IT</div>
+        <div className="mt-3 text-[12px] tracking-wide font-semibold text-ink">{p.proposedBanner}</div>
       )}
 
       {open && (
@@ -129,17 +123,17 @@ function Section({ id, label, single, text, proposalId, onCommit }: { id: string
           {note && <div className="mb-3 bg-paper border border-line rounded-[5px] px-4 py-3 text-[14px] leading-relaxed" style={{ userSelect: "none" }}>{note}</div>}
           {proposed == null ? (
             <>
-              <label className="block text-[13px] font-semibold text-muted mb-2">What would you like changed here?</label>
-              <textarea value={comment} onChange={(e) => setComment(e.target.value)} rows={3} placeholder="For example: make the second paragraph shorter, or add a line on migration" className="w-full box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-3 text-[15px] bg-card outline-none focus:border-ink resize-y" />
+              <label className="block text-[13px] font-semibold text-muted mb-2">{p.whatChange}</label>
+              <textarea value={comment} onChange={(e) => setComment(e.target.value)} rows={3} placeholder={p.changePh} className="w-full box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-3 text-[15px] bg-card outline-none focus:border-ink resize-y" />
               <div className="mt-3 flex items-center gap-3">
-                <button type="button" onClick={ask} disabled={busy || !comment.trim()} className="bg-ink text-paper text-[14.5px] font-semibold px-5 py-[10px] rounded-[4px] disabled:opacity-40">{busy ? "Working…" : "Ask the agent"}</button>
+                <button type="button" onClick={ask} disabled={busy || !comment.trim()} className="bg-ink text-paper text-[14.5px] font-semibold px-5 py-[10px] rounded-[4px] disabled:opacity-40">{busy ? p.working : p.askAgent}</button>
                 <Dictation value={comment} onChange={setComment} />
               </div>
             </>
           ) : (
             <div className="flex items-center gap-3">
-              <button type="button" onClick={accept} disabled={busy} className="bg-ink text-paper text-[14.5px] font-semibold px-5 py-[10px] rounded-[4px] disabled:opacity-40">{busy ? "Saving…" : "Accept this change"}</button>
-              <button type="button" onClick={discard} disabled={busy} className="text-[14.5px] font-semibold text-muted">Discard</button>
+              <button type="button" onClick={accept} disabled={busy} className="bg-ink text-paper text-[14.5px] font-semibold px-5 py-[10px] rounded-[4px] disabled:opacity-40">{busy ? p.savingChange : p.acceptChange}</button>
+              <button type="button" onClick={discard} disabled={busy} className="text-[14.5px] font-semibold text-muted">{p.discard}</button>
             </div>
           )}
         </div>
@@ -149,6 +143,8 @@ function Section({ id, label, single, text, proposalId, onCommit }: { id: string
 }
 
 function BudgetTable({ budget, rates, setRates }: { budget: any; rates: Record<string, string>; setRates: (r: Record<string, string>) => void }) {
+  const { t } = useDict();
+  const p = t.proposal;
   const cats = (budget && budget.categories) || (budget && budget.lines ? [{ name: "", lines: budget.lines }] : []);
   if (!cats.length) return null;
   const effUnit = (line: any) => { const o = rates[line.item]; return o != null && o !== "" ? o : line.unit_cost; };
@@ -162,18 +158,18 @@ function BudgetTable({ budget, rates, setRates }: { budget: any; rates: Record<s
 
   return (
     <div className="bg-card border border-line rounded-lg p-6">
-      <div className="text-[16px] font-bold mb-1">Budget</div>
-      <p className="text-[14px] text-muted leading-relaxed mb-4">Every line and its rate. Override any rate by typing your own figure in "Your rate", the totals update as you type. Lines marked ESTIMATE had no official rate, so they are the natural ones to confirm. Lines marked SOURCED carry an official rate, override those only if you must.</p>
+      <div className="text-[16px] font-bold mb-1">{p.budget}</div>
+      <p className="text-[14px] text-muted leading-relaxed mb-4">{p.budgetIntro}</p>
       <div className="overflow-x-auto">
         <table className="w-full text-[13.5px] border-collapse" style={{ userSelect: "none" }}>
           <thead>
             <tr className="text-left text-muted border-b border-line">
-              <th className="py-2 pr-3 font-semibold">Item</th>
-              <th className="py-2 px-2 font-semibold">Unit</th>
-              <th className="py-2 px-2 font-semibold text-right">Rate</th>
-              <th className="py-2 px-2 font-semibold text-right">Qty</th>
-              <th className="py-2 px-2 font-semibold text-right">Total</th>
-              <th className="py-2 pl-2 font-semibold w-[140px]">Your rate</th>
+              <th className="py-2 pr-3 font-semibold">{p.colItem}</th>
+              <th className="py-2 px-2 font-semibold">{p.colUnit}</th>
+              <th className="py-2 px-2 font-semibold text-right">{p.colRate}</th>
+              <th className="py-2 px-2 font-semibold text-right">{p.colQty}</th>
+              <th className="py-2 px-2 font-semibold text-right">{p.colTotal}</th>
+              <th className="py-2 pl-2 font-semibold w-[140px]">{p.colYourRate}</th>
             </tr>
           </thead>
           <tbody>
@@ -193,7 +189,7 @@ function BudgetTable({ budget, rates, setRates }: { budget: any; rates: Record<s
                           <td className="py-2 pr-3">
                             <div className="text-ink">{l.item}</div>
                             <div className="mt-0.5">
-                              <span className={`text-[10.5px] tracking-wide font-semibold px-1.5 py-0.5 rounded ${estimate ? "bg-[#FCE8CC] text-[#8A5A00]" : sourced ? "bg-[#E6EFEA] text-[#0F6E5C]" : "bg-[#E3E2DC] text-[#45453D]"}`}>{estimate ? "ESTIMATE" : sourced ? "SOURCED" : "CONFIRMED"}</span>
+                              <span className={`text-[10.5px] tracking-wide font-semibold px-1.5 py-0.5 rounded ${estimate ? "bg-[#FCE8CC] text-[#8A5A00]" : sourced ? "bg-[#E6EFEA] text-[#0F6E5C]" : "bg-[#E3E2DC] text-[#45453D]"}`}>{estimate ? p.tagEstimate : sourced ? p.tagSourced : p.tagConfirmed}</span>
                               {l.source ? <span className="text-[11.5px] text-muted ml-2">{l.source}</span> : null}
                             </div>
                           </td>
@@ -207,17 +203,17 @@ function BudgetTable({ budget, rates, setRates }: { budget: any; rates: Record<s
                         </tr>
                         {sourced && overridden && (
                           <tr><td colSpan={6} className="pb-2">
-                            <div className="text-[12.5px] text-[#8A5A00] bg-[#FCF3E6] border border-[#F0E0C8] rounded px-3 py-2">Caution: this rate comes from an official source{l.source ? " (" + l.source + ")" : ""}. Overriding it with your own figure can weaken the budget's defensibility to the donor. Change it only if you have a firm local quote.</div>
+                            <div className="text-[12.5px] text-[#8A5A00] bg-[#FCF3E6] border border-[#F0E0C8] rounded px-3 py-2">{p.caution1}{l.source ? " (" + l.source + ")" : ""}{p.caution2}</div>
                           </td></tr>
                         )}
                       </Fragment>
                     );
                   })}
-                  <tr className="border-b border-line"><td colSpan={4} className="py-2 text-right font-semibold text-muted">Subtotal {c.name}</td><td className="py-2 px-2 text-right font-semibold">{fmtIN(sub)}</td><td></td></tr>
+                  <tr className="border-b border-line"><td colSpan={4} className="py-2 text-right font-semibold text-muted">{p.subtotal} {c.name}</td><td className="py-2 px-2 text-right font-semibold">{fmtIN(sub)}</td><td></td></tr>
                 </Fragment>
               );
             })}
-            <tr><td colSpan={4} className="py-3 text-right font-extrabold">GRAND TOTAL</td><td className="py-3 px-2 text-right font-extrabold">{fmtIN(grand)}</td><td></td></tr>
+            <tr><td colSpan={4} className="py-3 text-right font-extrabold">{p.grandTotal}</td><td className="py-3 px-2 text-right font-extrabold">{fmtIN(grand)}</td><td></td></tr>
           </tbody>
         </table>
       </div>
@@ -226,16 +222,30 @@ function BudgetTable({ budget, rates, setRates }: { budget: any; rates: Record<s
 }
 
 function DownloadCard({ id, kind, label, note, primary }: { id: string; kind: string; label: string; note: string; primary?: boolean }) {
+  const { t } = useDict();
   return (
     <a href={"/api/proposals/" + id + "/file/" + kind} className={`block rounded-lg p-5 border ${primary ? "bg-panel text-paper border-panel" : "bg-card text-ink border-line"}`}>
       <div className="text-[17px] font-bold">{label}</div>
       <div className={`text-[13px] ${primary ? "text-white/60" : "text-muted"}`}>{note}</div>
-      <div className={`mt-6 text-[12px] tracking-wide font-semibold ${primary ? "text-paper" : "text-ink"}`}>DOWNLOAD &rarr;</div>
+      <div className={`mt-6 text-[12px] tracking-wide font-semibold ${primary ? "text-paper" : "text-ink"}`}>{t.proposal.download}</div>
     </a>
   );
 }
 
 export default function ProposalPage({ params }: { params: Promise<{ id: string }> }) {
+  const { t } = useDict();
+  const p = t.proposal;
+  const SECTIONS: [string, string, boolean][] = [
+    [p.secTitle, "title", true],
+    [p.secSubtitle, "subtitle", true],
+    [p.secProblem, "problem", false],
+    [p.secObjective, "objective", false],
+    [p.secStrategy, "strategy", false],
+    [p.secResults, "results_narrative", false],
+    [p.secActivities, "activities", false],
+    [p.secSustainability, "sustainability", false],
+  ];
+
   const [id, setId] = useState("");
   const [row, setRow] = useState<any>(null);
   const [missing, setMissing] = useState(false);
@@ -245,7 +255,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
   const [approving, setApproving] = useState(false);
   const timer = useRef<any>(null);
 
-  useEffect(() => { params.then((p) => setId(p.id)); }, [params]);
+  useEffect(() => { params.then((pr) => setId(pr.id)); }, [params]);
 
   const fetchRow = async (reschedule: boolean) => {
     const supabase = createClient();
@@ -301,10 +311,10 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
         body: JSON.stringify({ section, text: newText }),
       });
       const data = await res.json();
-      if (!data.ok) { alert("Could not save: " + (data.error || "error")); return false; }
-      setTexts((t: any) => ({ ...t, [section]: newText }));
+      if (!data.ok) { alert(p.couldNotSave + (data.error || "error")); return false; }
+      setTexts((tx: any) => ({ ...tx, [section]: newText }));
       return true;
-    } catch { alert("Could not save the change."); return false; }
+    } catch { alert(p.couldNotSaveChange); return false; }
   };
 
   const approve = async () => {
@@ -315,9 +325,9 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
         body: JSON.stringify({ rates }),
       });
       const data = await res.json();
-      if (!data.ok) { alert("Could not finalise: " + (data.error || "error")); setApproving(false); return; }
+      if (!data.ok) { alert(p.couldNotFinalise + (data.error || "error")); setApproving(false); return; }
       await fetchRow(false);
-    } catch { alert("Could not finalise."); }
+    } catch { alert(p.couldNotFinaliseShort); }
     setApproving(false);
   };
 
@@ -337,7 +347,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
           <span className="w-[26px] h-[26px] bg-ink rounded-[3px] flex items-center justify-center text-paper font-extrabold text-[15px]">प्र</span>
           <span className="font-extrabold text-[19px] tracking-tight">Prastav</span>
         </Link>
-        <Link href="/dashboard" className="text-[14.5px] text-muted">&larr; All proposals</Link>
+        <Link href="/dashboard" className="text-[14.5px] text-muted">{p.allProposals}</Link>
       </header>
 
       <main className="flex-grow px-6 sm:px-11 py-12 flex justify-center relative z-10">
@@ -345,8 +355,8 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
 
           {missing && (
             <div className="bg-card border border-line rounded-lg p-8 text-center">
-              <div className="text-[18px] font-bold mb-2">Proposal not found</div>
-              <Link href="/dashboard" className="text-muted underline">Back to dashboard</Link>
+              <div className="text-[18px] font-bold mb-2">{p.notFound}</div>
+              <Link href="/dashboard" className="text-muted underline">{p.backToDashboard}</Link>
             </div>
           )}
 
@@ -354,10 +364,10 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
             <div className="bg-card border border-line rounded-lg p-8">
               <div className="flex items-center gap-3 mb-2">
                 <span className="w-[22px] h-[22px] rounded-full border-[3px] border-[#E4E3DC] border-t-ink animate-spin" />
-                <span className="text-[12px] tracking-wide font-semibold text-muted">BUILDING YOUR DRAFT</span>
+                <span className="text-[12px] tracking-wide font-semibold text-muted">{p.buildingKicker}</span>
               </div>
-              <h1 className="font-extrabold text-[clamp(24px,4vw,30px)] tracking-tight mb-2">{row?.title || "Your proposal"}</h1>
-              <p className="text-[15px] text-muted leading-relaxed">This takes about 5 to 11 minutes. The engine is researching real data, costing the budget and writing the full document. You can leave this page open, it refreshes on its own, then you review the draft before any files are made.</p>
+              <h1 className="font-extrabold text-[clamp(24px,4vw,30px)] tracking-tight mb-2">{row?.title || p.buildingTitleFallback}</h1>
+              <p className="text-[15px] text-muted leading-relaxed">{p.buildingBody}</p>
             </div>
           )}
 
@@ -365,21 +375,21 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
             <div className="bg-card border border-line rounded-lg p-8">
               <div className="flex items-center gap-3 mb-2">
                 <span className="w-[22px] h-[22px] rounded-full border-[3px] border-[#E4E3DC] border-t-ink animate-spin" />
-                <span className="text-[12px] tracking-wide font-semibold text-muted">FINALISING</span>
+                <span className="text-[12px] tracking-wide font-semibold text-muted">{p.finalisingKicker}</span>
               </div>
-              <h1 className="font-extrabold text-[clamp(24px,4vw,30px)] tracking-tight mb-2">Generating your files…</h1>
-              <p className="text-[15px] text-muted leading-relaxed">Applying your changes and producing the PDF, Word and Excel.</p>
+              <h1 className="font-extrabold text-[clamp(24px,4vw,30px)] tracking-tight mb-2">{p.finalisingTitle}</h1>
+              <p className="text-[15px] text-muted leading-relaxed">{p.finalisingBody}</p>
             </div>
           )}
 
           {!missing && status === "error" && (
             <div className="bg-card border-l-[3px] border-ink rounded-[6px] p-8">
-              <h1 className="font-extrabold text-[24px] tracking-tight mb-2">We hit a snag building your proposal</h1>
-              <p className="text-[15px] text-muted leading-relaxed mb-4">This one is on us, not you, nothing you did caused it. You can start again from the dashboard, and if it happens again, reach us at <a href="mailto:hello@prastav.app?subject=Help%20with%20my%20Prastav%20proposal" className="font-semibold text-ink underline">hello@prastav.app</a> and we will help you get it sorted right away.</p>
-              {row?.error && <p className="text-[12.5px] text-muted mb-6 break-words">Technical detail: {row.error}</p>}
+              <h1 className="font-extrabold text-[24px] tracking-tight mb-2">{p.errorTitle}</h1>
+              <p className="text-[15px] text-muted leading-relaxed mb-4">{p.errorBody1}<a href="mailto:hello@prastav.app?subject=Help%20with%20my%20Prastav%20proposal" className="font-semibold text-ink underline">hello@prastav.app</a>{p.errorBody2}</p>
+              {row?.error && <p className="text-[12.5px] text-muted mb-6 break-words">{p.technical}{row.error}</p>}
               <div className="flex items-center gap-3 flex-wrap">
-                <Link href="/dashboard" className="inline-block bg-ink text-paper text-[15px] font-semibold px-6 py-3 rounded-[4px]">Back to dashboard</Link>
-                <a href="mailto:hello@prastav.app?subject=Help%20with%20my%20Prastav%20proposal" className="inline-block border border-ink text-ink text-[15px] font-semibold px-6 py-3 rounded-[4px]">Get help</a>
+                <Link href="/dashboard" className="inline-block bg-ink text-paper text-[15px] font-semibold px-6 py-3 rounded-[4px]">{p.backToDashboard}</Link>
+                <a href="mailto:hello@prastav.app?subject=Help%20with%20my%20Prastav%20proposal" className="inline-block border border-ink text-ink text-[15px] font-semibold px-6 py-3 rounded-[4px]">{p.getHelp}</a>
               </div>
             </div>
           )}
@@ -387,9 +397,9 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
           {!missing && status === "draft" && texts && (
             <>
               <div className="mb-6">
-                <span className="text-[12px] tracking-wide font-semibold text-muted">REVIEW YOUR DRAFT</span>
-                <h1 className="font-extrabold text-[clamp(24px,4vw,30px)] tracking-tight mt-1 mb-1">Review and refine</h1>
-                <p className="text-[15px] text-muted leading-relaxed">Read each section. To change anything, click Suggest a change and tell the agent in your own words, by typing or speaking. It will advise and make the change for you, so the writing stays strong. Nothing is final until you finalise.</p>
+                <span className="text-[12px] tracking-wide font-semibold text-muted">{p.reviewKicker}</span>
+                <h1 className="font-extrabold text-[clamp(24px,4vw,30px)] tracking-tight mt-1 mb-1">{p.reviewTitle}</h1>
+                <p className="text-[15px] text-muted leading-relaxed">{p.reviewBody}</p>
               </div>
 
               <div className="flex flex-col gap-4">
@@ -403,8 +413,8 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
               </div>
 
               <div className="flex items-center gap-4 mt-8">
-                <button type="button" onClick={approve} disabled={approving} className="bg-ink text-paper text-[16px] font-semibold px-8 py-[15px] rounded-[4px] disabled:opacity-40">{approving ? "Finalising…" : "Finalise & generate files"}</button>
-                <Link href="/dashboard" className="text-muted text-[15px] font-semibold">Save &amp; exit</Link>
+                <button type="button" onClick={approve} disabled={approving} className="bg-ink text-paper text-[16px] font-semibold px-8 py-[15px] rounded-[4px] disabled:opacity-40">{approving ? p.finalising : p.finalise}</button>
+                <Link href="/dashboard" className="text-muted text-[15px] font-semibold">{p.saveExit}</Link>
               </div>
             </>
           )}
@@ -413,23 +423,23 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
             <>
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-[22px] h-[22px] rounded-full bg-ink text-paper flex items-center justify-center text-[13px]">&#10003;</span>
-                <span className="text-[12px] tracking-wide font-semibold">YOUR PROPOSAL IS READY</span>
+                <span className="text-[12px] tracking-wide font-semibold">{p.readyKicker}</span>
               </div>
               <h1 className="font-extrabold text-[clamp(24px,4vw,30px)] tracking-tight leading-tight mb-1">{row?.meta?.title || row?.title}</h1>
               <div className="text-[15px] text-muted mb-7">{[row?.meta?.geography, row?.meta?.duration, row?.meta?.budget].filter(Boolean).join(" · ")}</div>
               <div className="grid sm:grid-cols-3 gap-4 mb-7">
-                <DownloadCard id={id} kind="pdf" label="PDF" note="Submission-ready" primary />
-                <DownloadCard id={id} kind="docx" label="Word" note="Editable" />
-                <DownloadCard id={id} kind="xlsx" label="Excel" note="Live budget" />
+                <DownloadCard id={id} kind="pdf" label={p.dlPdf} note={p.dlPdfNote} primary />
+                <DownloadCard id={id} kind="docx" label={p.dlWord} note={p.dlWordNote} />
+                <DownloadCard id={id} kind="xlsx" label={p.dlExcel} note={p.dlExcelNote} />
               </div>
               <div className="bg-card border border-line rounded-lg p-5 flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
                 <div className="flex-grow">
-                  <div className="text-[15px] font-semibold">How was this proposal?</div>
-                  <div className="text-[13.5px] text-muted">A minute of feedback helps us improve.</div>
+                  <div className="text-[15px] font-semibold">{p.howWas}</div>
+                  <div className="text-[13.5px] text-muted">{p.howWasSub}</div>
                 </div>
-                <Link href={"/feedback?proposal=" + id} className="shrink-0 bg-ink text-paper text-[14px] font-semibold px-5 py-2.5 rounded-[4px] text-center">Share feedback</Link>
+                <Link href={"/feedback?proposal=" + id} className="shrink-0 bg-ink text-paper text-[14px] font-semibold px-5 py-2.5 rounded-[4px] text-center">{p.shareFeedback}</Link>
               </div>
-              <Link href="/dashboard" className="text-[15px] font-semibold text-muted">&larr; Back to dashboard</Link>
+              <Link href="/dashboard" className="text-[15px] font-semibold text-muted">{p.backToDashboard}</Link>
             </>
           )}
 
