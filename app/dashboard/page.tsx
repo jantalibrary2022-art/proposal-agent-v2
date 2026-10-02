@@ -42,6 +42,9 @@ export default async function Dashboard() {
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
+  const adminList = (process.env.ADMIN_EMAILS || "").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean);
+  const isAdmin = !!user.email && adminList.includes(user.email.toLowerCase());
+
   const fullName = (user.user_metadata?.full_name as string | undefined) ?? "";
   const firstName = fullName.split(" ")[0] || (user.email ? user.email.split("@")[0] : "there");
   const initials = (fullName || user.email || "U").slice(0, 2).toUpperCase();
@@ -70,6 +73,8 @@ export default async function Dashboard() {
             <Link href="/purchases" className="text-[12px] tracking-wide text-muted">PURCHASES</Link>
             <Link href="/feedback" className="text-[12px] tracking-wide text-muted">FEEDBACK</Link>
             <Link href="/help" className="text-[12px] tracking-wide text-muted">HELP</Link>
+            <Link href="/contact" className="text-[12px] tracking-wide text-muted">CONTACT</Link>
+            {isAdmin && <Link href="/admin" className="text-[12px] tracking-wide text-muted">ADMIN</Link>}
           </nav>
         </div>
         <div className="flex items-center gap-4">

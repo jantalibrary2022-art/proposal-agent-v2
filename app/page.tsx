@@ -16,6 +16,8 @@ export default function Home() {
             <a href="#how" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">METHOD</a>
             <a href="#pricing" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">PRICING</a>
             <Link href="/samples" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">SAMPLES</Link>
+            <Link href="/help" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">HELP</Link>
+            <Link href="/contact" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">CONTACT</Link>
             <span className="text-[11.5px] tracking-wide">EN</span>
             <Link href="/dashboard" className="hidden sm:inline text-[11.5px] tracking-wide">SIGN IN</Link>
             <Link href="/language" className="bg-ink text-paper text-[12.5px] font-semibold px-4 py-2 rounded-[3px]">Start free</Link>
