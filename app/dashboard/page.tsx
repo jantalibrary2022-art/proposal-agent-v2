@@ -62,7 +62,7 @@ export default async function Dashboard() {
 
   return (
     <main className="min-h-screen bg-canvas flex flex-col">
-      <header className="h-16 border-b border-line">
+      <header className="sticky top-0 z-40 h-16 border-b border-line bg-canvas">
         <div className="h-full max-w-[1600px] mx-auto px-6 sm:px-11 flex items-center justify-between">
         <div className="flex items-center gap-9">
           <div className="flex items-center gap-2">
@@ -75,7 +75,7 @@ export default async function Dashboard() {
             <Link href="/account" className="text-[12px] tracking-wide text-muted">ACCOUNT</Link>
             <Link href="/purchases" className="text-[12px] tracking-wide text-muted">PURCHASES</Link>
             <Link href="/feedback" className="text-[12px] tracking-wide text-muted">FEEDBACK</Link>
-            <span className="text-[12px] tracking-wide text-muted">HELP</span>
+            <Link href="/help" className="text-[12px] tracking-wide text-muted">HELP</Link>
           </nav>
         </div>
         <div className="flex items-center gap-4">

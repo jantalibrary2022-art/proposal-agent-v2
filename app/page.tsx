@@ -6,7 +6,7 @@ export default function Home() {
     <main className="min-h-screen flex flex-col">
       <Track path="/" />
       {/* Nav */}
-      <header className="border-b border-line">
+      <header className="sticky top-0 z-40 border-b border-line bg-canvas">
         <div className="flex items-center justify-between px-5 sm:px-8 h-[60px]">
           <div className="flex items-center gap-2">
             <span className="w-6 h-6 rounded-[3px] bg-ink text-paper font-extrabold text-[14px] flex items-center justify-center">प्र</span>
@@ -221,7 +221,7 @@ export default function Home() {
             <div className="text-[12px] tracking-[0.1em] text-white/45 mb-3">PERSONAL ATTENTION</div>
             <div className="text-[22px] font-extrabold tracking-[-0.02em] leading-tight mb-2">Work with Prakash directly</div>
             <div className="text-[14.5px] leading-relaxed text-white/70">When a proposal calls for a practitioner's hand, Prakash is available for consulting. Reach out, and he will work with you on it.</div>
-            <a href="mailto:hello@prastav.app?subject=Consulting%20enquiry" className="inline-block self-start mt-5 bg-paper text-panel text-[14px] font-semibold px-5 py-2.5 rounded-[4px]">Get in touch</a>
+            <Link href="/contact" className="inline-block self-start mt-5 bg-paper text-panel text-[14px] font-semibold px-5 py-2.5 rounded-[4px]">Get in touch</Link>
             <div className="mt-4 text-[12.5px] text-white/40">Terms and conditions apply.</div>
           </div>
         </div>
@@ -248,6 +248,8 @@ export default function Home() {
           <div className="flex items-center gap-6 text-[13px] text-muted">
             <a href="#how">Method</a>
             <a href="#pricing">Pricing</a>
+            <Link href="/help">Help</Link>
+            <Link href="/contact">Contact</Link>
             <Link href="/dashboard">Sign in</Link>
           </div>
           <div className="text-[12.5px] text-muted">An AI workbench for the development sector.</div>
