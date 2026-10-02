@@ -115,6 +115,14 @@ export default function AccountPage() {
                 </form>
               </section>
 
+              <section className="bg-card border border-line rounded-lg p-6 flex items-center justify-between gap-4">
+                <div>
+                  <h2 className="text-[17px] font-bold mb-1">Billing</h2>
+                  <div className="text-[13.5px] text-muted">Your purchases and invoices.</div>
+                </div>
+                <Link href="/purchases" className="shrink-0 bg-ink text-paper text-[14px] font-semibold px-5 py-2.5 rounded-[4px]">View purchases</Link>
+              </section>
+
               <div className="text-[14px] text-muted">Forgot your current password? <Link href="/forgot" className="font-semibold text-ink underline">Reset it by email</Link> instead.</div>
             </div>
           )}
