@@ -4,11 +4,14 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "../../../lib/supabase/client";
-
-const steps = ["Organisation", "The RFP", "RFP check", "Your approach", "Where & who", "Timeline & budget", "Review"];
+import { useDict } from "../../_components/LocaleProvider";
 
 export default function RfpPage() {
   const router = useRouter();
+  const { locale, t } = useDict();
+  const rf = t.rfp;
+  const fl = t.flows;
+  const steps = rf.steps;
   const [step, setStep] = useState(0);
 
   const [profiles, setProfiles] = useState<any[]>([]);
@@ -58,8 +61,8 @@ export default function RfpPage() {
       const res = await fetch("/api/rfp/extract-text", { method: "POST", body: fd });
       const data = await res.json();
       if (data.ok && data.text) { set("rfp_text", data.text); }
-      else { setUploadName(""); setUploadErr(data.error === "unsupported_type" ? "Please upload a PDF, Word (.docx), or .txt file." : "Could not read that file. You can paste the text instead."); }
-    } catch { setUploadName(""); setUploadErr("Could not read that file. You can paste the text instead."); }
+      else { setUploadName(""); setUploadErr(data.error === "unsupported_type" ? rf.errUpload : rf.errReadPaste); }
+    } catch { setUploadName(""); setUploadErr(rf.errReadPaste); }
     setExtracting(false);
     if (fileRef.current) fileRef.current.value = "";
   };
@@ -99,8 +102,8 @@ export default function RfpPage() {
         setStep(2);
         return;
       }
-      setAnalyzeErr(data.error === "no_profile" ? "Pick an organisation profile first." : data.error === "missing_rfp" ? "Add more of the RFP text first." : "Could not read the RFP. Check the text and try again.");
-    } catch { setAnalyzeErr("Could not read the RFP. Try again."); }
+      setAnalyzeErr(data.error === "no_profile" ? rf.errPickProfile : data.error === "missing_rfp" ? rf.errMissingRfp : rf.errAnalyze);
+    } catch { setAnalyzeErr(rf.errAnalyzeRetry); }
     setAnalyzing(false);
   };
 
@@ -111,14 +114,14 @@ export default function RfpPage() {
       const res = await fetch("/api/proposals/generate-rfp", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers: payload }) });
       const data = await res.json();
       if (data.ok && data.id) { router.push("/proposals/" + data.id); return; }
-      alert("Could not start: " + (data.error || "unknown error"));
-    } catch (e) { alert("Could not start the proposal."); }
+      alert(rf.couldNotStart + (data.error || "unknown error"));
+    } catch (e) { alert(rf.couldNotStartShort); }
     setStarting(false);
   };
 
   const [listening, setListening] = useState(false);
   const [supported, setSupported] = useState(true);
-  const [lang, setLang] = useState("en-IN");
+  const [lang, setLang] = useState(locale === "hi" ? "hi-IN" : "en-IN");
   const recognitionRef = useRef<any>(null);
   const keepRef = useRef(false);
   const committedRef = useRef("");
@@ -183,7 +186,7 @@ export default function RfpPage() {
   const inputLocked = "w-full box-border border-[1.5px] border-[#DEDDD6] rounded-[5px] px-4 h-[52px] text-[16px] bg-[#F2F1EC] text-[#55554D] outline-none";
   const label = "block text-[14px] font-semibold text-[#3A3A32] mb-2";
   const selectedProfile = profiles.find((p) => p.id === orgProfileId);
-  const orgReview = noProfile ? (quickName.trim() || "Without a saved profile") : (selectedProfile ? selectedProfile.name : "—");
+  const orgReview = noProfile ? (quickName.trim() || rf.withoutProfile) : (selectedProfile ? selectedProfile.name : fl.dash);
 
   const pickProfile = (id: string) => { setNoProfile(false); setOrgProfileId(id); };
   const pickNone = () => { setNoProfile(true); setOrgProfileId(""); };
@@ -211,10 +214,10 @@ export default function RfpPage() {
 
   const statusChip = (s: string) => {
     const map: any = {
-      met: { bg: "#E2EDE3", fg: "#2F5E3A", t: "Met" },
-      not_met: { bg: "#F4E0DA", fg: "#9A3B1E", t: "Not met" },
-      unclear: { bg: "#F0EAD8", fg: "#7A6A2E", t: "Unclear" },
-      not_applicable: { bg: "#E8E7E1", fg: "#55554D", t: "N/A" },
+      met: { bg: "#E2EDE3", fg: "#2F5E3A", t: rf.chipMet },
+      not_met: { bg: "#F4E0DA", fg: "#9A3B1E", t: rf.chipNotMet },
+      unclear: { bg: "#F0EAD8", fg: "#7A6A2E", t: rf.chipUnclear },
+      not_applicable: { bg: "#E8E7E1", fg: "#55554D", t: rf.chipNA },
     };
     const c = map[s] || map.not_applicable;
     return <span className="text-[11px] font-semibold px-2 py-0.5 rounded shrink-0" style={{ background: c.bg, color: c.fg }}>{c.t}</span>;
@@ -227,14 +230,14 @@ export default function RfpPage() {
           <span className="w-[26px] h-[26px] bg-ink rounded-[3px] flex items-center justify-center text-paper font-extrabold text-[15px]">प्र</span>
           <span className="font-extrabold text-[19px] tracking-tight">Prastav</span>
         </Link>
-        <Link href="/dashboard" className="text-[14.5px] text-muted">Save &amp; exit</Link>
+        <Link href="/dashboard" className="text-[14.5px] text-muted">{fl.saveExit}</Link>
       </header>
 
       <div className="h-[5px] bg-[#DEDDD6]"><div className="h-[5px] bg-ink transition-all" style={{ width: `${((step + 1) / steps.length) * 100}%` }} /></div>
 
       <main className="flex-grow px-6 sm:px-11 py-12 flex justify-center gap-11">
         <aside className="hidden lg:block w-[220px] shrink-0">
-          <div className="text-[12px] tracking-wide text-muted mb-5 font-semibold">RESPOND TO AN RFP</div>
+          <div className="text-[12px] tracking-wide text-muted mb-5 font-semibold">{rf.sidebar}</div>
           <div className="flex flex-col gap-1">
             {steps.map((s, i) => (
               <div key={s} className="flex items-center gap-3 py-2.5">
@@ -246,14 +249,14 @@ export default function RfpPage() {
         </aside>
 
         <div className="w-full max-w-[640px]">
-          <div className="text-[12px] tracking-wide text-muted mb-3 font-semibold">STEP {step + 1} OF {steps.length}</div>
+          <div className="text-[12px] tracking-wide text-muted mb-3 font-semibold">{fl.step} {step + 1} {fl.of} {steps.length}</div>
 
           {step === 0 && (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Which organisation is applying?</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-6">Pick the profile this application should be written as. Its experience and track record ground the proposal and the eligibility check against the RFP.</p>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{rf.s0Title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">{rf.s0Body}</p>
               {!profilesLoaded ? (
-                <div className="text-[15px] text-muted">Loading your profiles…</div>
+                <div className="text-[15px] text-muted">{rf.loadingProfiles}</div>
               ) : (
                 <div className="flex flex-col gap-3">
                   {profiles.map((p) => (
@@ -261,7 +264,7 @@ export default function RfpPage() {
                       <div className="flex items-center gap-3">
                         <span className={`w-[18px] h-[18px] rounded-full border-[2px] flex items-center justify-center shrink-0 ${!noProfile && orgProfileId === p.id ? "border-ink" : "border-[#C9C7BF]"}`}>{!noProfile && orgProfileId === p.id && <span className="w-[9px] h-[9px] rounded-full bg-ink" />}</span>
                         <span className="text-[15.5px] font-semibold">{p.name}</span>
-                        {p.is_default && <span className="text-[10px] tracking-wide font-semibold bg-[#E3E2DC] text-[#45453D] px-1.5 py-0.5 rounded">DEFAULT</span>}
+                        {p.is_default && <span className="text-[10px] tracking-wide font-semibold bg-[#E3E2DC] text-[#45453D] px-1.5 py-0.5 rounded">{rf.default}</span>}
                         <span className="text-[13px] text-muted capitalize ml-auto">{p.type}</span>
                       </div>
                     </button>
@@ -270,25 +273,25 @@ export default function RfpPage() {
                   <button type="button" onClick={pickNone} className={`text-left rounded-lg border p-4 ${noProfile ? "border-ink bg-card" : "border-line bg-card"}`}>
                     <div className="flex items-center gap-3">
                       <span className={`w-[18px] h-[18px] rounded-full border-[2px] flex items-center justify-center shrink-0 ${noProfile ? "border-ink" : "border-[#C9C7BF]"}`}>{noProfile && <span className="w-[9px] h-[9px] rounded-full bg-ink" />}</span>
-                      <span className="text-[15.5px] font-semibold">Continue without a saved profile</span>
+                      <span className="text-[15.5px] font-semibold">{rf.noProfile}</span>
                     </div>
                   </button>
 
                   {noProfile && (
                     <div className="rounded-lg border border-line bg-card p-5 flex flex-col gap-4">
                       <div>
-                        <label className={label}>Name</label>
-                        <input className={input} value={quickName} onChange={(e) => setQuickName(e.target.value)} placeholder="Your name or organisation's name" />
+                        <label className={label}>{rf.name}</label>
+                        <input className={input} value={quickName} onChange={(e) => setQuickName(e.target.value)} placeholder={rf.namePh} />
                       </div>
                       <div>
-                        <label className={label}>A line about you or your organisation</label>
-                        <input className={input} value={quickAbout} onChange={(e) => setQuickAbout(e.target.value)} placeholder="e.g. a Jharkhand NGO working on SHG livelihoods and nutrition" />
+                        <label className={label}>{rf.aboutLabel}</label>
+                        <input className={input} value={quickAbout} onChange={(e) => setQuickAbout(e.target.value)} placeholder={rf.aboutPh} />
                       </div>
-                      <div className="text-[13.5px] text-muted leading-relaxed">The eligibility check and capacity sections will be lighter without a full profile. You can <Link href="/profiles" className="font-semibold text-ink underline">create a full profile</Link> any time to make future applications stronger.</div>
+                      <div className="text-[13.5px] text-muted leading-relaxed">{rf.noProfileNote1}<Link href="/profiles" className="font-semibold text-ink underline">{rf.createProfile}</Link>{rf.noProfileNote2}</div>
                     </div>
                   )}
 
-                  {profiles.length > 0 && <Link href="/profiles" className="text-[13.5px] font-semibold text-ink underline mt-1">Manage profiles</Link>}
+                  {profiles.length > 0 && <Link href="/profiles" className="text-[13.5px] font-semibold text-ink underline mt-1">{rf.manageProfiles}</Link>}
                 </div>
               )}
             </>
@@ -296,39 +299,39 @@ export default function RfpPage() {
 
           {step === 1 && (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Add the donor's RFP</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-6">Upload the call for proposals as a PDF or Word file, or paste the text below. When you continue, Prastav reads it, checks your eligibility, and then asks you only what the RFP leaves open.</p>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{rf.s1Title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">{rf.s1Body}</p>
               <div className="mb-4 flex items-center gap-3 flex-wrap">
                 <input ref={fileRef} type="file" accept=".pdf,.docx,.txt" onChange={onPickRfpFile} className="hidden" />
                 <button type="button" onClick={() => fileRef.current?.click()} disabled={extracting} className="flex items-center gap-2 px-4 py-[10px] rounded-[4px] text-[14.5px] font-semibold border-[1.5px] bg-card text-ink border-ink disabled:opacity-40">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
-                  {extracting ? "Reading…" : "Upload RFP (PDF or Word)"}
+                  {extracting ? rf.reading : rf.uploadRfp}
                 </button>
-                {uploadName && !extracting && <span className="text-[13.5px] text-muted">Loaded {uploadName}, review the text below.</span>}
+                {uploadName && !extracting && <span className="text-[13.5px] text-muted">{rf.loadedPre}{uploadName}{rf.loadedPost}</span>}
               </div>
               {uploadErr && <div className="mb-3 text-[13.5px] text-[#9A3B1E]">{uploadErr}</div>}
-              <textarea value={answers.rfp_text} onChange={(e) => set("rfp_text", e.target.value)} placeholder="Upload a file above, or paste the full text of the RFP here, including eligibility, scope, required sections, budget limits, and submission instructions." className="w-full h-[300px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[15px] leading-relaxed bg-card resize-none outline-none focus:border-ink font-mono" />
-              <div className="mt-2 text-[13px] text-muted">{rfpChars > 0 ? `${rfpChars.toLocaleString()} characters` : "The more complete the text, the better the fit and the eligibility check."}</div>
+              <textarea value={answers.rfp_text} onChange={(e) => set("rfp_text", e.target.value)} placeholder={rf.rfpPh} className="w-full h-[300px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[15px] leading-relaxed bg-card resize-none outline-none focus:border-ink font-mono" />
+              <div className="mt-2 text-[13px] text-muted">{rfpChars > 0 ? `${rfpChars.toLocaleString()}${rf.charsSuffix}` : rf.charsHint}</div>
               {analyzeErr && <div className="mt-3 text-[13.5px] text-[#9A3B1E]">{analyzeErr}</div>}
             </>
           )}
 
           {step === 2 && (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">What the RFP requires</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-6">This is what Prastav read from the donor's call, and how your selected profile measures against its eligibility. The next questions ask only what the RFP leaves to you.</p>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{rf.s2Title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">{rf.s2Body}</p>
               {analysis && (
                 <div className="flex flex-col gap-5">
                   <div className="bg-card border border-line rounded-lg divide-y divide-[#EFEEE7]">
                     {[
-                      ["Donor", analysis.donor],
-                      ["Themes", (analysis.themes || []).join(", ")],
-                      ["Geography", geoConstraint || (g.left_to_applicant ? "Left to the applicant" : "")],
-                      ["Target group", tgStated || (tgA.left_to_applicant ? "Left to the applicant" : "")],
-                      ["Budget", budgetLine()],
-                      ["Duration", durationLine()],
-                      ["Deadline", analysis.deadline],
-                      ["Prescribed sections", analysis.prescribed_format && analysis.prescribed_format.sections ? analysis.prescribed_format.sections.join(", ") : ""],
+                      [rf.mDonor, analysis.donor],
+                      [rf.mThemes, (analysis.themes || []).join(", ")],
+                      [rf.mGeography, geoConstraint || (g.left_to_applicant ? rf.leftToApplicant : "")],
+                      [rf.mTarget, tgStated || (tgA.left_to_applicant ? rf.leftToApplicant : "")],
+                      [rf.mBudget, budgetLine()],
+                      [rf.mDuration, durationLine()],
+                      [rf.mDeadline, analysis.deadline],
+                      [rf.mSections, analysis.prescribed_format && analysis.prescribed_format.sections ? analysis.prescribed_format.sections.join(", ") : ""],
                     ].filter(([, v]) => v && String(v).trim()).map(([k, v]) => (
                       <div key={k as string} className="px-5 py-3.5">
                         <div className="text-[12px] tracking-wide text-muted font-semibold mb-1">{k}</div>
@@ -339,7 +342,7 @@ export default function RfpPage() {
 
                   {elig.length > 0 && (
                     <div>
-                      <div className="text-[13px] tracking-wide text-muted font-semibold mb-2">ELIGIBILITY CHECK</div>
+                      <div className="text-[13px] tracking-wide text-muted font-semibold mb-2">{rf.eligibility}</div>
                       <div className="bg-card border border-line rounded-lg divide-y divide-[#EFEEE7]">
                         {elig.map((e: any, i: number) => (
                           <div key={i} className="px-5 py-3.5 flex items-start gap-3">
@@ -356,7 +359,7 @@ export default function RfpPage() {
 
                   {notMet > 0 && (
                     <div className="rounded-lg border border-[#E6C9BE] bg-[#F7ECE7] px-5 py-4 text-[14px] text-[#7A3016] leading-relaxed">
-                      Your profile does not clearly meet {notMet === 1 ? "one requirement" : notMet + " requirements"} the RFP states. You can still build a response, but review these before you submit.
+                      {rf.notMet1}{notMet === 1 ? rf.notMetOne : notMet + rf.notMetReq}{rf.notMet2}
                     </div>
                   )}
                 </div>
@@ -366,54 +369,54 @@ export default function RfpPage() {
 
           {step === 3 && (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">How do you want to respond?</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-6">Your project idea for this RFP, in a sentence or two. We will shape it to the donor's themes and requirements. You can type, or speak your answer.</p>
-              <textarea value={answers.idea} onChange={(e) => set("idea", e.target.value)} placeholder="For example: A 24-month intervention improving maternal and child nutrition in tribal SHG households through kitchen gardens, community counselling, and convergence with ICDS and health services." className="w-full h-[150px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[16px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{rf.s3Title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">{rf.s3Body}</p>
+              <textarea value={answers.idea} onChange={(e) => set("idea", e.target.value)} placeholder={rf.ideaPh} className="w-full h-[150px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[16px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
               <div className="mt-3 flex items-center gap-3 flex-wrap">
                 <button type="button" onClick={toggleMic} disabled={!supported} className={`flex items-center gap-2 px-4 py-[10px] rounded-[4px] text-[14.5px] font-semibold border-[1.5px] ${listening ? "bg-ink text-paper border-ink" : "bg-card text-ink border-ink"} disabled:opacity-40`}>
                   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
-                  {listening ? "Listening… tap to stop" : "Speak your answer"}
+                  {listening ? rf.listening : rf.speak}
                 </button>
                 {supported && (
                   <div className="flex items-center gap-1 bg-[#DEDDD6] rounded-[4px] p-1">
-                    <button type="button" onClick={() => setLang("en-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "en-IN" ? "bg-ink text-paper" : "text-muted"}`}>English</button>
-                    <button type="button" onClick={() => setLang("hi-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "hi-IN" ? "bg-ink text-paper" : "text-muted"}`}>हिन्दी</button>
+                    <button type="button" onClick={() => setLang("en-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "en-IN" ? "bg-ink text-paper" : "text-muted"}`}>{rf.langEn}</button>
+                    <button type="button" onClick={() => setLang("hi-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "hi-IN" ? "bg-ink text-paper" : "text-muted"}`}>{rf.langHi}</button>
                   </div>
                 )}
               </div>
-              {!supported && <div className="mt-2 text-[13.5px] text-muted">Voice input is not available in this browser. It works best in Chrome. You can type instead.</div>}
+              {!supported && <div className="mt-2 text-[13.5px] text-muted">{rf.voiceUnsupported}</div>}
             </>
           )}
 
           {step === 4 && (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Where will this work happen, and who will it help?</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-6">Anything the RFP fixed is shown as set. Fill in only what it left open to you.</p>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{rf.s4Title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">{rf.s4Body}</p>
               <div className="mb-5">
-                <label className={label}>Location</label>
+                <label className={label}>{rf.location}</label>
                 {geoLocked ? (
                   <>
                     <input className={inputLocked} value={answers.location} readOnly />
-                    <div className="mt-1.5 text-[13px] text-muted">Set by the RFP.</div>
+                    <div className="mt-1.5 text-[13px] text-muted">{rf.setByRfp}</div>
                   </>
                 ) : (
                   <>
-                    <input className={input} value={answers.location} onChange={(e) => set("location", e.target.value)} placeholder="District, block, or area, e.g. Murhu block, Khunti, Jharkhand" />
-                    {geoConstraint && <div className="mt-1.5 text-[13px] text-muted">The RFP requires: {geoConstraint}. Add the specific blocks or panchayats you will work in.</div>}
+                    <input className={input} value={answers.location} onChange={(e) => set("location", e.target.value)} placeholder={rf.locationPh} />
+                    {geoConstraint && <div className="mt-1.5 text-[13px] text-muted">{rf.rfpRequires1}{geoConstraint}{rf.rfpRequires2}</div>}
                   </>
                 )}
               </div>
               <div>
-                <label className={label}>Who it will help</label>
+                <label className={label}>{rf.whoHelps}</label>
                 {tgLocked ? (
                   <>
                     <input className={inputLocked} value={answers.beneficiaries} readOnly />
-                    <div className="mt-1.5 text-[13px] text-muted">Set by the RFP.</div>
+                    <div className="mt-1.5 text-[13px] text-muted">{rf.setByRfp}</div>
                   </>
                 ) : (
                   <>
-                    <input className={input} value={answers.beneficiaries} onChange={(e) => set("beneficiaries", e.target.value)} placeholder="e.g. 1,200 women in SHG households and their children under 5" />
-                    {tgStated && <div className="mt-1.5 text-[13px] text-muted">From the RFP; adjust the scale or specifics if needed.</div>}
+                    <input className={input} value={answers.beneficiaries} onChange={(e) => set("beneficiaries", e.target.value)} placeholder={rf.whoHelpsPh} />
+                    {tgStated && <div className="mt-1.5 text-[13px] text-muted">{rf.fromRfp}</div>}
                   </>
                 )}
               </div>
@@ -422,27 +425,27 @@ export default function RfpPage() {
 
           {step === 5 && (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Timeline and budget</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-6">Stay within any bound the RFP sets. We have pre-filled what the RFP stated, adjust it if you intend something different.</p>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{rf.s5Title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">{rf.s5Body}</p>
               <div className="mb-5">
-                <label className={label}>How long will it run?</label>
-                <input className={input} value={answers.duration} onChange={(e) => set("duration", e.target.value)} placeholder="e.g. 24 months" />
-                {durationLine() && <div className="mt-1.5 text-[13px] text-muted">RFP: {durationLine()}.</div>}
+                <label className={label}>{rf.howLong}</label>
+                <input className={input} value={answers.duration} onChange={(e) => set("duration", e.target.value)} placeholder={rf.durationPh} />
+                {durationLine() && <div className="mt-1.5 text-[13px] text-muted">{rf.rfpPrefix}{durationLine()}{rf.rfpSuffix}</div>}
               </div>
               <div>
-                <label className={label}>Budget</label>
-                <input className={input} value={answers.budget} onChange={(e) => set("budget", e.target.value)} placeholder="e.g. around Rs 1.4 crore, or within the RFP ceiling" />
-                {budgetLine() && <div className="mt-1.5 text-[13px] text-muted">RFP: {budgetLine()}.</div>}
+                <label className={label}>{rf.budget}</label>
+                <input className={input} value={answers.budget} onChange={(e) => set("budget", e.target.value)} placeholder={rf.budgetPh} />
+                {budgetLine() && <div className="mt-1.5 text-[13px] text-muted">{rf.rfpPrefix}{budgetLine()}{rf.rfpSuffix}</div>}
               </div>
             </>
           )}
 
           {step === 6 && (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Review before we build</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-6">Check your answers. You can go back to change anything. We will build a response that fits the donor's requirements.</p>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{rf.s6Title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">{rf.s6Body}</p>
               <div className="bg-card border border-line rounded-lg divide-y divide-[#EFEEE7]">
-                {[["Organisation", orgReview], ["RFP", rfpChars > 0 ? `${rfpChars.toLocaleString()} characters read` : "—"], ["Your approach", answers.idea], ["Location", answers.location], ["Who it will help", answers.beneficiaries], ["Duration", answers.duration], ["Budget", answers.budget || "Not specified"]].map(([k, v]) => (
+                {[[rf.sumOrg, orgReview], [rf.sumRfp, rfpChars > 0 ? `${rfpChars.toLocaleString()}${rf.charsRead}` : fl.dash], [rf.sumApproach, answers.idea], [rf.sumLocation, answers.location], [rf.sumWho, answers.beneficiaries], [rf.sumDuration, answers.duration], [rf.sumBudget, answers.budget || rf.notSpecified]].map(([k, v]) => (
                   <div key={k} className="px-5 py-4">
                     <div className="text-[12px] tracking-wide text-muted font-semibold mb-1">{k}</div>
                     <div className="text-[15px] leading-relaxed whitespace-pre-wrap">{v}</div>
@@ -453,11 +456,11 @@ export default function RfpPage() {
           )}
 
           <div className="flex items-center justify-between mt-11">
-            <button type="button" onClick={goBack} className="text-muted text-[15.5px] font-semibold">&larr; Back</button>
+            <button type="button" onClick={goBack} className="text-muted text-[15.5px] font-semibold">{fl.back}</button>
             {step < steps.length - 1 ? (
-              <button type="button" onClick={goNext} disabled={!canContinue()} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{step === 1 ? (analyzing ? "Reading the RFP…" : "Read the RFP") : "Continue"}</button>
+              <button type="button" onClick={goNext} disabled={!canContinue()} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{step === 1 ? (analyzing ? rf.readingRfp : rf.readRfp) : fl.continue}</button>
             ) : (
-              <button type="button" onClick={generate} disabled={starting} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{starting ? "Starting…" : "Build RFP response"}</button>
+              <button type="button" onClick={generate} disabled={starting} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{starting ? rf.starting : rf.build}</button>
             )}
           </div>
         </div>
