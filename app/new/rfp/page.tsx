@@ -6,11 +6,13 @@ import Link from "next/link";
 import { createClient } from "../../../lib/supabase/client";
 import { useDict } from "../../_components/LocaleProvider";
 import OutputLanguagePicker, { defaultOutputLanguage, type OutputLanguage } from "../../_components/OutputLanguagePicker";
+import AccessCodeInput from "../../_components/AccessCodeInput";
 
 export default function RfpPage() {
   const router = useRouter();
   const { locale, t } = useDict();
   const [outLang, setOutLang] = useState<OutputLanguage>(defaultOutputLanguage(locale));
+  const [couponCode, setCouponCode] = useState("");
   const rf = t.rfp;
   const fl = t.flows;
   const steps = rf.steps;
@@ -111,7 +113,7 @@ export default function RfpPage() {
 
   const generate = async () => {
     setStarting(true);
-    const payload: any = { ...answers, output_language: outLang, rfp_analysis: analysis, ...profilePayload() };
+    const payload: any = { ...answers, output_language: outLang, coupon_code: couponCode, rfp_analysis: analysis, ...profilePayload() };
     try {
       const res = await fetch("/api/proposals/generate-rfp", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers: payload }) });
       const data = await res.json();
@@ -458,6 +460,7 @@ export default function RfpPage() {
           )}
 
           {step === steps.length - 1 && <OutputLanguagePicker value={outLang} onChange={setOutLang} />}
+          {step === steps.length - 1 && <AccessCodeInput value={couponCode} onChange={setCouponCode} />}
 
           <div className="flex items-center justify-between mt-11">
             <button type="button" onClick={goBack} className="text-muted text-[15.5px] font-semibold">{fl.back}</button>

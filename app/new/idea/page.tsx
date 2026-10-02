@@ -6,11 +6,13 @@ import Link from "next/link";
 import { createClient } from "../../../lib/supabase/client";
 import { useDict } from "../../_components/LocaleProvider";
 import OutputLanguagePicker, { defaultOutputLanguage, type OutputLanguage } from "../../_components/OutputLanguagePicker";
+import AccessCodeInput from "../../_components/AccessCodeInput";
 
 export default function IdeaPage() {
   const router = useRouter();
   const { locale, t } = useDict();
   const [outLang, setOutLang] = useState<OutputLanguage>(defaultOutputLanguage(locale));
+  const [couponCode, setCouponCode] = useState("");
   const d = t.idea;
   const fl = t.flows;
   const steps = d.steps;
@@ -154,6 +156,7 @@ export default function IdeaPage() {
     const extra = qaPairs.length ? "\n\nApplicant clarifications:\n" + qaPairs.map((p: any) => "- " + p.question + " " + p.answer).join("\n") : "";
     const payload: any = {
       output_language: outLang,
+      coupon_code: couponCode,
       idea: ideaText + extra,
       location: answers.location, beneficiaries: answers.beneficiaries, duration: answers.duration, budget: answers.budget, funder: answers.funder,
       brief, chosen_approach: chosen, applicant_evidence: evidenceText,
@@ -424,6 +427,7 @@ export default function IdeaPage() {
           )}
 
           {step === steps.length - 1 && <OutputLanguagePicker value={outLang} onChange={setOutLang} />}
+          {step === steps.length - 1 && <AccessCodeInput value={couponCode} onChange={setCouponCode} />}
 
           <div className="flex items-center justify-between mt-11">
             <button type="button" onClick={goBack} className="text-muted text-[15.5px] font-semibold">{fl.back}</button>

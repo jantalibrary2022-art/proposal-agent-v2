@@ -65,7 +65,10 @@ export default async function AdminPage() {
             <span className="font-extrabold text-[19px] tracking-[-0.02em]">Prastav</span>
             <span className="text-[11px] tracking-[0.1em] text-muted border border-line rounded px-2 py-0.5 ml-1">ADMIN</span>
           </div>
-          <Link href="/dashboard" className="text-[13px] tracking-wide text-muted">← Dashboard</Link>
+          <div className="flex items-center gap-5">
+            <Link href="/admin/coupons" className="text-[13px] tracking-wide text-muted">Access codes</Link>
+            <Link href="/dashboard" className="text-[13px] tracking-wide text-muted">← Dashboard</Link>
+          </div>
         </div>
       </header>
 

@@ -5,11 +5,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useDict } from "../../_components/LocaleProvider";
 import OutputLanguagePicker, { defaultOutputLanguage, type OutputLanguage } from "../../_components/OutputLanguagePicker";
+import AccessCodeInput from "../../_components/AccessCodeInput";
 
 export default function ImprovePage() {
   const router = useRouter();
   const { locale, t } = useDict();
   const [outLang, setOutLang] = useState<OutputLanguage>(defaultOutputLanguage(locale));
+  const [couponCode, setCouponCode] = useState("");
   const im = t.improve;
   const fl = t.flows;
   const steps = im.steps;
@@ -63,7 +65,7 @@ export default function ImprovePage() {
   const generate = async () => {
     setStarting(true);
     const qa = ((diagnosis && diagnosis.questions_for_user) || []).map((q: any) => ({ id: q.id, question: q.question, answer: (qaAnswers[q.id] || "").trim() }));
-    const payload: any = { draft_text: draftText, diagnosis, qa, output_language: outLang };
+    const payload: any = { draft_text: draftText, diagnosis, qa, output_language: outLang, coupon_code: couponCode };
     try {
       const res = await fetch("/api/proposals/generate-improve", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers: payload }) });
       const data = await res.json();
@@ -244,6 +246,7 @@ export default function ImprovePage() {
           )}
 
           {step === steps.length - 1 && <OutputLanguagePicker value={outLang} onChange={setOutLang} />}
+          {step === steps.length - 1 && <AccessCodeInput value={couponCode} onChange={setCouponCode} />}
 
           <div className="flex items-center justify-between mt-11">
             <button type="button" onClick={goBack} className="text-muted text-[15.5px] font-semibold">{fl.back}</button>

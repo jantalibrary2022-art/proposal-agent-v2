@@ -470,6 +470,12 @@ export const en = {
     outLangNote: "This is the language of the finished proposal, separate from the language of this website. Many donors expect English even when you work in Hindi.",
     outLangEnglish: "English",
     outLangHindi: "Hindi",
+    accessCodeLabel: "Access code (optional)",
+    accessCodePlaceholder: "Enter a code if you have one",
+    accessCodeCheck: "Check",
+    accessCodeChecking: "Checking…",
+    accessCodeFree: "Valid — this proposal is free",
+    accessCodeInvalid: "That code isn't valid or has been used.",
   },
   improve: {
     steps: ["Your draft", "Diagnosis", "Clarify", "Review"],

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "../../../../lib/supabase/server";
 import { createAdminClient } from "../../../../lib/supabase/admin";
 import { runOpenDraft } from "../../../../lib/run-open";
+import { normalizeCode, validateCoupon, redeemCoupon, paywallEnabled } from "../../../../lib/coupons";
 
 export const runtime = "nodejs";
 
@@ -87,6 +88,14 @@ export async function POST(req: NextRequest) {
     orgProfileId = profile.id;
   }
 
+  const couponCode = normalizeCode(form.coupon_code);
+  if (couponCode) {
+    const chk = await validateCoupon(couponCode, user.email);
+    if (!chk.ok) return NextResponse.json({ ok: false, error: "invalid_coupon", reason: chk.reason }, { status: 400 });
+  } else if (paywallEnabled()) {
+    return NextResponse.json({ ok: false, error: "payment_required" }, { status: 402 });
+  }
+
   const admin = createAdminClient();
   const engineAnswers = toEngineAnswers(form);
 
@@ -98,6 +107,14 @@ export async function POST(req: NextRequest) {
   if (insErr || !row) return NextResponse.json({ ok: false, error: insErr?.message || "insert_failed" }, { status: 500 });
 
   const proposalId = row.id as string;
+
+  if (couponCode) {
+    const red = await redeemCoupon(couponCode, user.id, user.email ?? null, proposalId);
+    if (!red.ok) {
+      await admin.from("proposals").update({ status: "error", error: "coupon_redeem_failed:" + (red.reason || ""), updated_at: new Date().toISOString() }).eq("id", proposalId);
+      return NextResponse.json({ ok: false, error: "coupon_redeem_failed", reason: red.reason }, { status: 400 });
+    }
+  }
 
   (async () => {
     try {

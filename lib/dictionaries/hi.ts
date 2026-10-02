@@ -473,6 +473,12 @@ export const hi: typeof en = {
     outLangNote: "यह तैयार प्रस्ताव की भाषा है, इस वेबसाइट की भाषा से अलग। कई दानदाता अंग्रेज़ी में प्रस्ताव चाहते हैं, भले ही आप हिंदी में काम करें।",
     outLangEnglish: "English (अंग्रेज़ी)",
     outLangHindi: "हिंदी",
+    accessCodeLabel: "एक्सेस कोड (वैकल्पिक)",
+    accessCodePlaceholder: "यदि आपके पास कोड है तो दर्ज करें",
+    accessCodeCheck: "जाँचें",
+    accessCodeChecking: "जाँच हो रही है…",
+    accessCodeFree: "मान्य — यह प्रस्ताव निःशुल्क है",
+    accessCodeInvalid: "यह कोड मान्य नहीं है या उपयोग हो चुका है।",
   },
   improve: {
     steps: ["आपका मसौदा", "विश्लेषण", "स्पष्ट करें", "समीक्षा"],
