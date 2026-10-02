@@ -205,18 +205,19 @@ export default function Home() {
       {/* Pricing */}
       <section id="pricing" className="px-5 sm:px-8 w-full max-w-[1100px] mx-auto py-20 sm:py-28 scroll-mt-16">
         <div className="text-[12px] tracking-[0.1em] text-muted mb-4">PRICING</div>
-        <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">One fee per proposal. The document is professional either way.</h2>
-        <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-[#3A3A31] max-w-[720px]">Every proposal, at every price, comes out as a properly formatted, submission-grade document. What you pay more for is sharper writing, not basic presentation.</p>
+        <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">One clear fee, with a practitioner on call.</h2>
+        <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-[#3A3A31] max-w-[720px]">The fee delivers a complete, submission-grade proposal, built to the full method and reviewed section by section. When a proposal needs personal attention, Prakash is available to work with you directly.</p>
         <div className="mt-11 grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[820px]">
           <div className="bg-card border border-line rounded-lg p-7">
-            <div className="text-[12px] tracking-[0.1em] text-muted mb-3">BASE</div>
+            <div className="text-[12px] tracking-[0.1em] text-muted mb-3">PER PROPOSAL</div>
             <div className="flex items-baseline gap-1.5 mb-1"><span className="text-[34px] font-extrabold tracking-[-0.03em]">₹6,999</span><span className="text-[14px] text-muted">per proposal</span></div>
-            <div className="text-[14.5px] leading-relaxed text-[#4A4A42] mt-3">The full method, grounded research, a complete proposal in three formats, reviewed section by section. Discounts for grassroots organisations and in bulk.</div>
+            <div className="text-[14.5px] leading-relaxed text-[#4A4A42] mt-3">The full method, grounded research, and a complete proposal in three formats, reviewed section by section. Discounts for grassroots organisations and in bulk.</div>
           </div>
-          <div className="bg-panel text-paper rounded-lg p-7">
-            <div className="text-[12px] tracking-[0.1em] text-white/45 mb-3">FULL POLISH · ADD-ON</div>
-            <div className="flex items-baseline gap-1.5 mb-1"><span className="text-[34px] font-extrabold tracking-[-0.03em]">+₹500</span><span className="text-[14px] text-white/55">per proposal</span></div>
-            <div className="text-[14.5px] leading-relaxed text-white/70 mt-3">The whole proposal re-composed in one pass for a sharper argument and a stronger, more persuasive voice. A difference in the writing, not the formatting.</div>
+          <div className="bg-panel text-paper rounded-lg p-7 flex flex-col">
+            <div className="text-[12px] tracking-[0.1em] text-white/45 mb-3">PERSONAL ATTENTION</div>
+            <div className="text-[22px] font-extrabold tracking-[-0.02em] leading-tight mb-2">Work with Prakash directly</div>
+            <div className="text-[14.5px] leading-relaxed text-white/70">When a proposal calls for a practitioner's hand, Prakash is available for consulting. Reach out, and he will work with you on it.</div>
+            <div className="mt-4 text-[12.5px] text-white/40">Terms and conditions apply.</div>
           </div>
         </div>
       </section>
