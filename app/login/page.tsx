@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { createClient } from "../../lib/supabase/client";
 import { useDict } from "../_components/LocaleProvider";
 
 export default function Login() {
-  const router = useRouter();
   const { t } = useDict();
   const d = t.auth.login;
   const [email, setEmail] = useState("");
@@ -21,9 +19,9 @@ export default function Login() {
     setLoading(true);
     const supabase = createClient();
     const { error } = await supabase.auth.signInWithPassword({ email, password });
-    setLoading(false);
-    if (error) setError(error.message);
-    else router.push("/dashboard");
+    if (error) { setLoading(false); setError(error.message); return; }
+    // Full navigation so the server (middleware + dashboard) sees the new auth cookie.
+    window.location.assign("/dashboard");
   }
 
   return (
