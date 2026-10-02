@@ -374,10 +374,13 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
 
           {!missing && status === "error" && (
             <div className="bg-card border-l-[3px] border-ink rounded-[6px] p-8">
-              <h1 className="font-extrabold text-[24px] tracking-tight mb-2">Something went wrong</h1>
-              <p className="text-[15px] text-muted leading-relaxed mb-4">The proposal could not be completed. You can try again from the question flow.</p>
-              <p className="text-[13px] text-muted mb-6">{row?.error}</p>
-              <Link href="/new/idea" className="inline-block bg-ink text-paper text-[15px] font-semibold px-6 py-3 rounded-[4px]">Start again</Link>
+              <h1 className="font-extrabold text-[24px] tracking-tight mb-2">We hit a snag building your proposal</h1>
+              <p className="text-[15px] text-muted leading-relaxed mb-4">This one is on us, not you, nothing you did caused it. You can start again from the dashboard, and if it happens again, reach us at <a href="mailto:hello@prastav.app?subject=Help%20with%20my%20Prastav%20proposal" className="font-semibold text-ink underline">hello@prastav.app</a> and we will help you get it sorted right away.</p>
+              {row?.error && <p className="text-[12.5px] text-muted mb-6 break-words">Technical detail: {row.error}</p>}
+              <div className="flex items-center gap-3 flex-wrap">
+                <Link href="/dashboard" className="inline-block bg-ink text-paper text-[15px] font-semibold px-6 py-3 rounded-[4px]">Back to dashboard</Link>
+                <a href="mailto:hello@prastav.app?subject=Help%20with%20my%20Prastav%20proposal" className="inline-block border border-ink text-ink text-[15px] font-semibold px-6 py-3 rounded-[4px]">Get help</a>
+              </div>
             </div>
           )}
 

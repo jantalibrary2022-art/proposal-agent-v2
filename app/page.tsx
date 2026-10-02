@@ -217,6 +217,7 @@ export default function Home() {
             <div className="text-[12px] tracking-[0.1em] text-white/45 mb-3">PERSONAL ATTENTION</div>
             <div className="text-[22px] font-extrabold tracking-[-0.02em] leading-tight mb-2">Work with Prakash directly</div>
             <div className="text-[14.5px] leading-relaxed text-white/70">When a proposal calls for a practitioner's hand, Prakash is available for consulting. Reach out, and he will work with you on it.</div>
+            <a href="mailto:hello@prastav.app?subject=Consulting%20enquiry" className="inline-block self-start mt-5 bg-paper text-panel text-[14px] font-semibold px-5 py-2.5 rounded-[4px]">Get in touch</a>
             <div className="mt-4 text-[12.5px] text-white/40">Terms and conditions apply.</div>
           </div>
         </div>

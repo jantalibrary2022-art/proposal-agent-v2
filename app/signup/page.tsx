@@ -17,6 +17,10 @@ export default function SignUp() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+    if (password.length < 8 || scorePassword(password) < 2) {
+      setError("Please choose a stronger password: at least 8 characters, mixing letters, numbers and a symbol.");
+      return;
+    }
     setLoading(true);
     const supabase = createClient();
     const { error } = await supabase.auth.signUp({
@@ -98,8 +102,19 @@ export default function SignUp() {
             </div>
             <div>
               <label className="block text-[14px] font-semibold text-[#3A3A32] mb-1.5">Password</label>
-              <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" required minLength={6} className="w-full h-[50px] border-[1.5px] border-[#C9C7BF] rounded px-4 text-[15.5px] bg-white outline-none focus:border-ink" />
-              <p className="text-[12.5px] text-muted mt-1.5">At least 6 characters.</p>
+              <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" required minLength={8} className="w-full h-[50px] border-[1.5px] border-[#C9C7BF] rounded px-4 text-[15.5px] bg-white outline-none focus:border-ink" />
+              {password.length > 0 ? (
+                <div className="mt-2">
+                  <div className="flex gap-1.5">
+                    {[0, 1, 2, 3].map((i) => (
+                      <div key={i} className={"h-[5px] flex-1 rounded-full " + (scorePassword(password) > i ? "bg-ink" : "bg-[#DEDDD6]")} />
+                    ))}
+                  </div>
+                  <p className="text-[12.5px] text-muted mt-1.5">{["Too weak", "Weak", "Fair", "Good", "Strong"][scorePassword(password)]} · aim for 8+ characters mixing upper and lower case, a number and a symbol.</p>
+                </div>
+              ) : (
+                <p className="text-[12.5px] text-muted mt-1.5">At least 8 characters, mixing letters, numbers and a symbol.</p>
+              )}
             </div>
 
             {error && <p className="text-[14px] text-[#B4442F]">{error}</p>}
@@ -112,6 +127,17 @@ export default function SignUp() {
       </section>
     </main>
   );
+}
+
+function scorePassword(pw: string): number {
+  if (!pw) return 0;
+  let s = 0;
+  if (pw.length >= 8) s++;
+  if (pw.length >= 12) s++;
+  if (/[a-z]/.test(pw) && /[A-Z]/.test(pw)) s++;
+  if (/\d/.test(pw)) s++;
+  if (/[^A-Za-z0-9]/.test(pw)) s++;
+  return Math.min(s, 4);
 }
 
 function Point({ text }: { text: string }) {
