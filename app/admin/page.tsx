@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
+import crypto from "crypto";
 import { createClient } from "../../lib/supabase/server";
 import { createAdminClient } from "../../lib/supabase/admin";
+import PinGate from "./PinGate";
 
 export const runtime = "nodejs";
 
@@ -23,6 +26,15 @@ export default async function AdminPage() {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
   if (!isAdmin(user.email)) redirect("/dashboard");
+
+  // Second gate: an admin PIN, when ADMIN_PIN is configured.
+  const pin = process.env.ADMIN_PIN || "";
+  if (pin) {
+    const store = await cookies();
+    const token = store.get("prastav_admin")?.value || "";
+    const expected = crypto.createHash("sha256").update(pin + "|" + user.id).digest("hex");
+    if (token !== expected) return <PinGate />;
+  }
 
   const admin = createAdminClient();
   const since = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
