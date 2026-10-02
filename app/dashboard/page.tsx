@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ProposalRow from "./ProposalRow";
 import { redirect } from "next/navigation";
 import { createClient } from "../../lib/supabase/server";
 import { getDict, type Locale, type Dict } from "../../lib/i18n";
@@ -123,15 +124,14 @@ export default async function Dashboard() {
             ) : (
               <div className="bg-card border border-line rounded-lg overflow-hidden">
                 {proposals.map((p: any, i: number) => (
-                  <Link key={p.id} href={"/proposals/" + p.id} className={`flex items-center gap-3 px-5 py-4 ${i < proposals.length - 1 ? "border-b border-[#EFEEE7]" : ""}`}>
-                    <div className="flex-grow min-w-0">
-                      <div className="text-[15.5px] font-semibold truncate">{(p.meta && p.meta.title) || p.title || td.untitled}</div>
-                      <div className="text-[13px] text-muted mt-0.5 truncate">{td.updated} {relativeTime(p.updated_at, td, locale)}{p.meta && p.meta.geography ? " · " + p.meta.geography : ""}</div>
-                    </div>
-                    <span className="hidden sm:inline shrink-0 text-[10.5px] tracking-wide font-semibold text-muted border border-[#C4C2BB] px-2.5 py-1 rounded-full">{MODE[p.mode] || td.modeOpen}</span>
-                    <StatusPill status={p.status} td={td} />
-                    <span className="shrink-0 text-[12px] tracking-wide font-semibold">{td.open}</span>
-                  </Link>
+                  <ProposalRow
+                    key={p.id}
+                    p={p}
+                    last={i === proposals.length - 1}
+                    modeLabel={MODE[p.mode] || td.modeOpen}
+                    statusPill={<StatusPill status={p.status} td={td} />}
+                    relUpdated={relativeTime(p.updated_at, td, locale)}
+                  />
                 ))}
               </div>
             )}
