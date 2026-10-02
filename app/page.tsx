@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Track from "./_components/Track";
 
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col">
+      <Track path="/" />
       {/* Nav */}
       <header className="flex items-center justify-between px-5 sm:px-8 h-[60px] border-b border-line">
         <div className="flex items-center gap-2">

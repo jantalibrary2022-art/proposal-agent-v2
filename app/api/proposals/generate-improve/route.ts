@@ -48,6 +48,7 @@ export async function POST(req: NextRequest) {
       await admin.from("proposals").update({ status: "draft", title: draft.meta.title, meta, substance: draft.substance, composed: draft.composed, updated_at: new Date().toISOString() }).eq("id", proposalId);
     } catch (e: any) {
       await admin.from("proposals").update({ status: "error", error: (e && e.message) || "generation_failed", updated_at: new Date().toISOString() }).eq("id", proposalId);
+      try { await admin.from("error_alerts").insert({ user_id: user.id, proposal_id: proposalId, mode: "improve", message: (e && e.message) || "generation_failed" }); } catch {}
     }
   })();
 

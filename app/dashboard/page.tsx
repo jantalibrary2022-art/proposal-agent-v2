@@ -73,6 +73,7 @@ export default async function Dashboard() {
             <span className="text-[12px] tracking-wide font-semibold">PROPOSALS</span>
             <Link href="/profiles" className="text-[12px] tracking-wide text-muted">ORG PROFILE</Link>
             <Link href="/account" className="text-[12px] tracking-wide text-muted">ACCOUNT</Link>
+            <Link href="/feedback" className="text-[12px] tracking-wide text-muted">FEEDBACK</Link>
             <span className="text-[12px] tracking-wide text-muted">HELP</span>
           </nav>
         </div>

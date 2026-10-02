@@ -422,6 +422,13 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
                 <DownloadCard id={id} kind="docx" label="Word" note="Editable" />
                 <DownloadCard id={id} kind="xlsx" label="Excel" note="Live budget" />
               </div>
+              <div className="bg-card border border-line rounded-lg p-5 flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
+                <div className="flex-grow">
+                  <div className="text-[15px] font-semibold">How was this proposal?</div>
+                  <div className="text-[13.5px] text-muted">A minute of feedback helps us improve.</div>
+                </div>
+                <Link href={"/feedback?proposal=" + id} className="shrink-0 bg-ink text-paper text-[14px] font-semibold px-5 py-2.5 rounded-[4px] text-center">Share feedback</Link>
+              </div>
               <Link href="/dashboard" className="text-[15px] font-semibold text-muted">&larr; Back to dashboard</Link>
             </>
           )}
