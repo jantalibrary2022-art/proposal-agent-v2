@@ -9,7 +9,7 @@
   --color-card: #FFFFFF;
   --color-paper: #EDECE8;
   --color-faint: #F1F0EB;
-  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-archivo), var(--font-noto-deva), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
