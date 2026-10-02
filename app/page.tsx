@@ -12,6 +12,7 @@ export default function Home() {
         <nav className="flex items-center gap-4 sm:gap-6">
           <a href="#how" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">METHOD</a>
           <a href="#pricing" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">PRICING</a>
+          <Link href="/samples" className="hidden sm:inline text-[11.5px] tracking-wide text-muted">SAMPLES</Link>
           <span className="text-[11.5px] tracking-wide">EN</span>
           <Link href="/dashboard" className="hidden sm:inline text-[11.5px] tracking-wide">SIGN IN</Link>
           <Link href="/language" className="bg-ink text-paper text-[12.5px] font-semibold px-4 py-2 rounded-[3px]">Start free</Link>
@@ -85,7 +86,7 @@ export default function Home() {
         <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-black/70 border border-white/15 rounded-full py-2 pl-3 sm:pl-4 pr-2 backdrop-blur">
           <span className="w-[22px] h-[22px] rounded-full bg-paper text-panel font-extrabold text-[12px] flex items-center justify-center mr-1">प्र</span>
           <a href="#how" className="text-[13px] sm:text-[13.5px] font-medium text-white/85 px-3 sm:px-3.5 py-2">How it works</a>
-          <a href="#pricing" className="text-[13px] sm:text-[13.5px] font-medium text-white/85 px-3 sm:px-3.5 py-2">Pricing</a>
+          <Link href="/samples" className="text-[13px] sm:text-[13.5px] font-medium text-white/85 px-3 sm:px-3.5 py-2">See a sample</Link>
           <Link href="/language" className="text-[13px] sm:text-[13.5px] font-semibold text-panel bg-paper px-4 sm:px-[18px] py-2 rounded-full">Start free</Link>
         </div>
       </section>
