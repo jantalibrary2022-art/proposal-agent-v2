@@ -4,11 +4,14 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "../../../lib/supabase/client";
-
-const steps = ["Organisation", "Your idea", "Approach", "Details", "Review"];
+import { useDict } from "../../_components/LocaleProvider";
 
 export default function IdeaPage() {
   const router = useRouter();
+  const { locale, t } = useDict();
+  const d = t.idea;
+  const fl = t.flows;
+  const steps = d.steps;
   const [step, setStep] = useState(0);
 
   const [profiles, setProfiles] = useState<any[]>([]);
@@ -77,9 +80,9 @@ export default function IdeaPage() {
         setEvidenceText((t) => t + (t ? "\n\n" : "") + "=== " + f.name + " ===\n" + data.text);
         setEvidenceItems((items) => [...items, f.name]);
       } else {
-        setUploadErr(data.error === "unsupported_type" ? "Please upload a PDF, Word, or text file." : "Could not read that file.");
+        setUploadErr(data.error === "unsupported_type" ? d.errUpload : d.errRead);
       }
-    } catch { setUploadErr("Could not read that file."); }
+    } catch { setUploadErr(d.errRead); }
     setUploadBusy(false);
     if (fileRef.current) fileRef.current.value = "";
   };
@@ -90,8 +93,8 @@ export default function IdeaPage() {
       const res = await fetch("/api/open/intake", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: "ideate", hints, evidence: evidenceText, ...profilePayload() }) });
       const data = await res.json();
       if (data.ok && data.data && Array.isArray(data.data.concepts)) { setConcepts(data.data.concepts); setConceptIdx(null); }
-      else setIntakeErr(data.error === "no_profile" ? "Pick an organisation profile first." : "Could not suggest concepts. Try adding a line about your interests.");
-    } catch { setIntakeErr("Could not suggest concepts. Try again."); }
+      else setIntakeErr(data.error === "no_profile" ? d.errPickProfile : d.errConcepts);
+    } catch { setIntakeErr(d.errConceptsRetry); }
     setIdeating(false);
   };
 
@@ -107,8 +110,8 @@ export default function IdeaPage() {
       const res = await fetch("/api/open/approaches", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ brief: theBrief, evidence: evidenceText, ...profilePayload() }) });
       const data = await res.json();
       if (data.ok && data.data && Array.isArray(data.data.approaches)) setApproaches(data.data.approaches);
-      else setApproachErr("Could not suggest approaches. You can continue and the build will choose a sound default.");
-    } catch { setApproachErr("Could not suggest approaches. You can continue and the build will choose a sound default."); }
+      else setApproachErr(d.errApproaches);
+    } catch { setApproachErr(d.errApproaches); }
     setLoadingApproaches(false);
   };
 
@@ -135,8 +138,8 @@ export default function IdeaPage() {
         loadApproaches(b);
         return;
       }
-      setIntakeErr(data.error === "no_profile" ? "Pick an organisation profile first." : data.error === "missing_idea" ? "Describe your idea first." : "Could not read your idea. Try again.");
-    } catch { setIntakeErr("Could not read your idea. Try again."); }
+      setIntakeErr(data.error === "no_profile" ? d.errPickProfile : data.error === "missing_idea" ? d.errIdea : d.errReadIdea);
+    } catch { setIntakeErr(d.errReadIdea); }
     setIntaking(false);
   };
 
@@ -157,15 +160,15 @@ export default function IdeaPage() {
       const res = await fetch("/api/proposals/generate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers: payload }) });
       const data = await res.json();
       if (data.ok && data.id) { router.push("/proposals/" + data.id); return; }
-      alert("Could not start: " + (data.error || "unknown error"));
-    } catch (e) { alert("Could not start the proposal."); }
+      alert(d.couldNotStart + (data.error || "unknown error"));
+    } catch (e) { alert(d.couldNotStartShort); }
     setStarting(false);
   };
 
   // voice (for the "have an idea" box)
   const [listening, setListening] = useState(false);
   const [supported, setSupported] = useState(true);
-  const [lang, setLang] = useState("en-IN");
+  const [lang, setLang] = useState(locale === "hi" ? "hi-IN" : "en-IN");
   const recognitionRef = useRef<any>(null);
   const keepRef = useRef(false);
   const committedRef = useRef("");
@@ -220,7 +223,7 @@ export default function IdeaPage() {
   const input = "w-full box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] px-4 h-[52px] text-[16px] bg-card outline-none focus:border-ink";
   const label = "block text-[14px] font-semibold text-[#3A3A32] mb-2";
   const selectedProfile = profiles.find((p) => p.id === orgProfileId);
-  const orgReview = noProfile ? (quickName.trim() || "Without a saved profile") : (selectedProfile ? selectedProfile.name : "—");
+  const orgReview = noProfile ? (quickName.trim() || d.withoutProfile) : (selectedProfile ? selectedProfile.name : fl.dash);
   const pickProfile = (id: string) => { setNoProfile(false); setOrgProfileId(id); };
   const pickNone = () => { setNoProfile(true); setOrgProfileId(""); };
 
@@ -231,14 +234,14 @@ export default function IdeaPage() {
           <span className="w-[26px] h-[26px] bg-ink rounded-[3px] flex items-center justify-center text-paper font-extrabold text-[15px]">प्र</span>
           <span className="font-extrabold text-[19px] tracking-tight">Prastav</span>
         </Link>
-        <Link href="/dashboard" className="text-[14.5px] text-muted">Save &amp; exit</Link>
+        <Link href="/dashboard" className="text-[14.5px] text-muted">{fl.saveExit}</Link>
       </header>
 
       <div className="h-[5px] bg-[#DEDDD6]"><div className="h-[5px] bg-ink transition-all" style={{ width: `${((step + 1) / steps.length) * 100}%` }} /></div>
 
       <main className="flex-grow px-6 sm:px-11 py-12 flex justify-center gap-11">
         <aside className="hidden lg:block w-[220px] shrink-0">
-          <div className="text-[12px] tracking-wide text-muted mb-5 font-semibold">NEW PROPOSAL</div>
+          <div className="text-[12px] tracking-wide text-muted mb-5 font-semibold">{d.sidebar}</div>
           <div className="flex flex-col gap-1">
             {steps.map((s, i) => (
               <div key={s} className="flex items-center gap-3 py-2.5">
@@ -250,14 +253,14 @@ export default function IdeaPage() {
         </aside>
 
         <div className="w-full max-w-[640px]">
-          <div className="text-[12px] tracking-wide text-muted mb-3 font-semibold">STEP {step + 1} OF {steps.length}</div>
+          <div className="text-[12px] tracking-wide text-muted mb-3 font-semibold">{fl.step} {step + 1} {fl.of} {steps.length}</div>
 
           {step === 0 && (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Which organisation is this proposal for?</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-6">Pick the profile this proposal should be written as. Its experience and track record ground the whole proposal.</p>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{d.s0Title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">{d.s0Body}</p>
               {!profilesLoaded ? (
-                <div className="text-[15px] text-muted">Loading your profiles…</div>
+                <div className="text-[15px] text-muted">{d.loadingProfiles}</div>
               ) : (
                 <div className="flex flex-col gap-3">
                   {profiles.map((p) => (
@@ -265,7 +268,7 @@ export default function IdeaPage() {
                       <div className="flex items-center gap-3">
                         <span className={`w-[18px] h-[18px] rounded-full border-[2px] flex items-center justify-center shrink-0 ${!noProfile && orgProfileId === p.id ? "border-ink" : "border-[#C9C7BF]"}`}>{!noProfile && orgProfileId === p.id && <span className="w-[9px] h-[9px] rounded-full bg-ink" />}</span>
                         <span className="text-[15.5px] font-semibold">{p.name}</span>
-                        {p.is_default && <span className="text-[10px] tracking-wide font-semibold bg-[#E3E2DC] text-[#45453D] px-1.5 py-0.5 rounded">DEFAULT</span>}
+                        {p.is_default && <span className="text-[10px] tracking-wide font-semibold bg-[#E3E2DC] text-[#45453D] px-1.5 py-0.5 rounded">{d.default}</span>}
                         <span className="text-[13px] text-muted capitalize ml-auto">{p.type}</span>
                       </div>
                     </button>
@@ -273,17 +276,17 @@ export default function IdeaPage() {
                   <button type="button" onClick={pickNone} className={`text-left rounded-lg border p-4 ${noProfile ? "border-ink bg-card" : "border-line bg-card"}`}>
                     <div className="flex items-center gap-3">
                       <span className={`w-[18px] h-[18px] rounded-full border-[2px] flex items-center justify-center shrink-0 ${noProfile ? "border-ink" : "border-[#C9C7BF]"}`}>{noProfile && <span className="w-[9px] h-[9px] rounded-full bg-ink" />}</span>
-                      <span className="text-[15.5px] font-semibold">Continue without a saved profile</span>
+                      <span className="text-[15.5px] font-semibold">{d.noProfile}</span>
                     </div>
                   </button>
                   {noProfile && (
                     <div className="rounded-lg border border-line bg-card p-5 flex flex-col gap-4">
-                      <div><label className={label}>Name</label><input className={input} value={quickName} onChange={(e) => setQuickName(e.target.value)} placeholder="Your name or organisation's name" /></div>
-                      <div><label className={label}>A line about you or your organisation</label><input className={input} value={quickAbout} onChange={(e) => setQuickAbout(e.target.value)} placeholder="e.g. a Jharkhand NGO working on SHG livelihoods and nutrition" /></div>
-                      <div className="text-[13.5px] text-muted leading-relaxed">The proposal will still be built, but the capacity and track-record sections will be lighter without a full profile. You can <Link href="/profiles" className="font-semibold text-ink underline">create a full profile</Link> any time.</div>
+                      <div><label className={label}>{d.name}</label><input className={input} value={quickName} onChange={(e) => setQuickName(e.target.value)} placeholder={d.namePh} /></div>
+                      <div><label className={label}>{d.aboutLabel}</label><input className={input} value={quickAbout} onChange={(e) => setQuickAbout(e.target.value)} placeholder={d.aboutPh} /></div>
+                      <div className="text-[13.5px] text-muted leading-relaxed">{d.noProfileNote1}<Link href="/profiles" className="font-semibold text-ink underline">{d.createProfile}</Link>{d.noProfileNote2}</div>
                     </div>
                   )}
-                  {profiles.length > 0 && <Link href="/profiles" className="text-[13.5px] font-semibold text-ink underline mt-1">Manage profiles</Link>}
+                  {profiles.length > 0 && <Link href="/profiles" className="text-[13.5px] font-semibold text-ink underline mt-1">{d.manageProfiles}</Link>}
                 </div>
               )}
             </>
@@ -291,35 +294,35 @@ export default function IdeaPage() {
 
           {step === 1 && (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">What is your project about?</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-5">Tell us your idea, or let Prastav suggest a few grounded in your organisation's work. You can also attach a baseline study or dataset, and we'll build on it.</p>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{d.s1Title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-5">{d.s1Body}</p>
 
               <div className="flex items-center gap-1 bg-[#DEDDD6] rounded-[5px] p-1 mb-5 w-fit">
-                <button type="button" onClick={() => setIdeaMode("have")} className={`px-4 py-[8px] rounded-[4px] text-[14px] font-semibold ${ideaMode === "have" ? "bg-card text-ink" : "text-muted"}`}>I have an idea</button>
-                <button type="button" onClick={() => setIdeaMode("shape")} className={`px-4 py-[8px] rounded-[4px] text-[14px] font-semibold ${ideaMode === "shape" ? "bg-card text-ink" : "text-muted"}`}>Help me shape one</button>
+                <button type="button" onClick={() => setIdeaMode("have")} className={`px-4 py-[8px] rounded-[4px] text-[14px] font-semibold ${ideaMode === "have" ? "bg-card text-ink" : "text-muted"}`}>{d.haveIdea}</button>
+                <button type="button" onClick={() => setIdeaMode("shape")} className={`px-4 py-[8px] rounded-[4px] text-[14px] font-semibold ${ideaMode === "shape" ? "bg-card text-ink" : "text-muted"}`}>{d.shapeIdea}</button>
               </div>
 
               {ideaMode === "have" ? (
                 <>
-                  <textarea value={idea} onChange={(e) => setIdea(e.target.value)} placeholder="For example: Improve maternal and child nutrition in tribal SHG households through kitchen gardens, community counselling, and convergence with ICDS and health services." className="w-full h-[140px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[16px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
+                  <textarea value={idea} onChange={(e) => setIdea(e.target.value)} placeholder={d.havePh} className="w-full h-[140px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[16px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
                   <div className="mt-3 flex items-center gap-3 flex-wrap">
                     <button type="button" onClick={toggleMic} disabled={!supported} className={`flex items-center gap-2 px-4 py-[10px] rounded-[4px] text-[14.5px] font-semibold border-[1.5px] ${listening ? "bg-ink text-paper border-ink" : "bg-card text-ink border-ink"} disabled:opacity-40`}>
                       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
-                      {listening ? "Listening… tap to stop" : "Speak your answer"}
+                      {listening ? d.listening : d.speak}
                     </button>
                     {supported && (
                       <div className="flex items-center gap-1 bg-[#DEDDD6] rounded-[4px] p-1">
-                        <button type="button" onClick={() => setLang("en-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "en-IN" ? "bg-ink text-paper" : "text-muted"}`}>English</button>
-                        <button type="button" onClick={() => setLang("hi-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "hi-IN" ? "bg-ink text-paper" : "text-muted"}`}>हिन्दी</button>
+                        <button type="button" onClick={() => setLang("en-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "en-IN" ? "bg-ink text-paper" : "text-muted"}`}>{d.langEn}</button>
+                        <button type="button" onClick={() => setLang("hi-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "hi-IN" ? "bg-ink text-paper" : "text-muted"}`}>{d.langHi}</button>
                       </div>
                     )}
                   </div>
                 </>
               ) : (
                 <>
-                  <label className={label}>A line or two on what you care about, and where</label>
-                  <textarea value={hints} onChange={(e) => setHints(e.target.value)} placeholder="For example: we work with tribal women in Khunti and want to do something on nutrition or livelihoods." className="w-full h-[90px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[16px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
-                  <button type="button" onClick={suggestConcepts} disabled={ideating} className="mt-3 bg-card border-[1.5px] border-ink text-ink text-[14.5px] font-semibold px-[18px] py-[11px] rounded-[4px] disabled:opacity-40">{ideating ? "Thinking…" : "Suggest concepts"}</button>
+                  <label className={label}>{d.shapeLabel}</label>
+                  <textarea value={hints} onChange={(e) => setHints(e.target.value)} placeholder={d.shapePh} className="w-full h-[90px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[16px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
+                  <button type="button" onClick={suggestConcepts} disabled={ideating} className="mt-3 bg-card border-[1.5px] border-ink text-ink text-[14.5px] font-semibold px-[18px] py-[11px] rounded-[4px] disabled:opacity-40">{ideating ? d.thinking : d.suggestConcepts}</button>
                   {concepts.length > 0 && (
                     <div className="mt-5 flex flex-col gap-3">
                       {concepts.map((c, i) => (
@@ -339,7 +342,7 @@ export default function IdeaPage() {
                 <div className="flex items-center gap-3 flex-wrap">
                   <button type="button" onClick={() => fileRef.current?.click()} disabled={uploadBusy} className="flex items-center gap-2 px-4 py-[10px] rounded-[4px] text-[14px] font-semibold border-[1.5px] bg-card text-ink border-[#C9C7BF] disabled:opacity-40">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
-                    {uploadBusy ? "Reading…" : "Attach baseline study or data (optional)"}
+                    {uploadBusy ? d.reading : d.attach}
                   </button>
                   {evidenceItems.length > 0 && <span className="text-[13px] text-muted">{evidenceItems.join(", ")}</span>}
                 </div>
@@ -352,52 +355,52 @@ export default function IdeaPage() {
 
           {step === 2 && (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">How should this be approached?</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-6">A few credible approaches for {brief?.theme || "your theme"}, grounded in your organisation's experience{evidenceItems.length ? " and your uploaded material" : ""}. Pick the one closest to your thinking, you can adjust it below.</p>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{d.s2Title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">{d.s2BodyA}{brief?.theme || d.s2Theme}{d.s2BodyB}{evidenceItems.length ? d.s2BodyEvidence : ""}{d.s2BodyC}</p>
               {loadingApproaches ? (
-                <div className="text-[15px] text-muted">Thinking through the approaches…</div>
+                <div className="text-[15px] text-muted">{d.thinkingApproaches}</div>
               ) : approaches.length > 0 ? (
                 <div className="flex flex-col gap-3">
                   {approaches.map((a, i) => (
                     <button key={i} type="button" onClick={() => setApproachIdx(i)} className={`text-left rounded-lg border p-5 ${approachIdx === i ? "border-ink bg-card" : "border-line bg-card"}`}>
                       <div className="text-[16px] font-bold mb-1.5">{a.title}</div>
                       <div className="text-[14.5px] text-[#45453D] leading-snug mb-2">{a.summary}</div>
-                      {a.why_it_fits_org && <div className="text-[13px] text-muted leading-snug">Fit: {a.why_it_fits_org}</div>}
-                      {a.trade_off && <div className="text-[13px] text-muted leading-snug mt-0.5">Trade-off: {a.trade_off}</div>}
+                      {a.why_it_fits_org && <div className="text-[13px] text-muted leading-snug">{d.fit}{a.why_it_fits_org}</div>}
+                      {a.trade_off && <div className="text-[13px] text-muted leading-snug mt-0.5">{d.tradeOff}{a.trade_off}</div>}
                     </button>
                   ))}
                   <div className="mt-2">
-                    <label className={label}>Want to adjust or combine the chosen approach? (optional)</label>
-                    <textarea value={approachAdjust} onChange={(e) => setApproachAdjust(e.target.value)} placeholder="e.g. mostly the first approach, but add the SHG-enterprise element from the second." className="w-full h-[80px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-3 text-[15px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
+                    <label className={label}>{d.adjustLabel}</label>
+                    <textarea value={approachAdjust} onChange={(e) => setApproachAdjust(e.target.value)} placeholder={d.adjustPh} className="w-full h-[80px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-3 text-[15px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
                   </div>
                 </div>
               ) : (
-                <div className="text-[15px] text-muted leading-relaxed">{approachErr || "No approaches to show."} You can continue, and the build will choose a sound default from your idea.</div>
+                <div className="text-[15px] text-muted leading-relaxed">{approachErr || d.noApproaches}{d.noApproachesCont}</div>
               )}
             </>
           )}
 
           {step === 3 && (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">A few details to confirm</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-6">This is what Prastav understood from your idea. Correct anything, and answer only what it still needs.</p>
-              <div className="mb-5"><label className={label}>Location</label><input className={input} value={answers.location} onChange={(e) => setA("location", e.target.value)} placeholder="District, block, or area" /></div>
-              <div className="mb-5"><label className={label}>Who it will help</label><input className={input} value={answers.beneficiaries} onChange={(e) => setA("beneficiaries", e.target.value)} placeholder="e.g. 1,200 women in SHG households and their children under 5" /></div>
-              <div className="mb-5"><label className={label}>Duration</label><input className={input} value={answers.duration} onChange={(e) => setA("duration", e.target.value)} placeholder="e.g. 24 months" /></div>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{d.s3Title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">{d.s3Body}</p>
+              <div className="mb-5"><label className={label}>{d.location}</label><input className={input} value={answers.location} onChange={(e) => setA("location", e.target.value)} placeholder={d.locationPh} /></div>
+              <div className="mb-5"><label className={label}>{d.whoHelps}</label><input className={input} value={answers.beneficiaries} onChange={(e) => setA("beneficiaries", e.target.value)} placeholder={d.whoHelpsPh} /></div>
+              <div className="mb-5"><label className={label}>{d.duration}</label><input className={input} value={answers.duration} onChange={(e) => setA("duration", e.target.value)} placeholder={d.durationPh} /></div>
               <div className="mb-5">
-                <label className={label}>Budget</label>
-                <input className={input} value={answers.budget} onChange={(e) => setA("budget", e.target.value)} placeholder="e.g. around Rs 1.4 crore" />
-                {brief && brief.budget_basis === "estimated-to-confirm" && <div className="mt-1.5 text-[13px] text-muted">Estimated envelope for this scope, confirm or replace it.</div>}
+                <label className={label}>{d.budget}</label>
+                <input className={input} value={answers.budget} onChange={(e) => setA("budget", e.target.value)} placeholder={d.budgetPh} />
+                {brief && brief.budget_basis === "estimated-to-confirm" && <div className="mt-1.5 text-[13px] text-muted">{d.budgetNote}</div>}
               </div>
-              <div className="mb-2"><label className={label}>Funder (optional)</label><input className={input} value={answers.funder} onChange={(e) => setA("funder", e.target.value)} placeholder="A funder in mind, or leave blank to keep it donor-agnostic" /></div>
+              <div className="mb-2"><label className={label}>{d.funder}</label><input className={input} value={answers.funder} onChange={(e) => setA("funder", e.target.value)} placeholder={d.funderPh} /></div>
 
               {brief && (brief.questions_for_user || []).length > 0 && (
                 <div className="mt-6 flex flex-col gap-5">
-                  <div className="text-[13px] tracking-wide text-muted font-semibold">A FEW MORE THINGS (OPTIONAL)</div>
+                  <div className="text-[13px] tracking-wide text-muted font-semibold">{d.moreThings}</div>
                   {(brief.questions_for_user || []).map((q: string, i: number) => (
                     <div key={i}>
                       <label className={label}>{q}</label>
-                      <input className={input} value={qa[String(i)] || ""} onChange={(e) => setQa((a) => ({ ...a, [String(i)]: e.target.value }))} placeholder="Your answer (optional)" />
+                      <input className={input} value={qa[String(i)] || ""} onChange={(e) => setQa((a) => ({ ...a, [String(i)]: e.target.value }))} placeholder={d.answerPh} />
                     </div>
                   ))}
                 </div>
@@ -407,10 +410,10 @@ export default function IdeaPage() {
 
           {step === 4 && (
             <>
-              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">Review before we build</h1>
-              <p className="text-[16px] text-muted leading-relaxed mb-6">Check your answers. You can go back to change anything.</p>
+              <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{d.s4Title}</h1>
+              <p className="text-[16px] text-muted leading-relaxed mb-6">{d.s4Body}</p>
               <div className="bg-card border border-line rounded-lg divide-y divide-[#EFEEE7]">
-                {[["Organisation", orgReview], ["Theme", (brief && brief.theme) || "—"], ["Approach", approachIdx != null ? approaches[approachIdx].title : "A sound default"], ["Location", answers.location], ["Who it will help", answers.beneficiaries], ["Duration", answers.duration], ["Budget", answers.budget || "To be estimated"], ["Your material", evidenceItems.length ? evidenceItems.join(", ") : "None attached"]].map(([k, v]) => (
+                {[[d.sumOrg, orgReview], [d.sumTheme, (brief && brief.theme) || fl.dash], [d.sumApproach, approachIdx != null ? approaches[approachIdx].title : d.defaultApproach], [d.sumLocation, answers.location], [d.sumWho, answers.beneficiaries], [d.sumDuration, answers.duration], [d.sumBudget, answers.budget || d.toBeEstimated], [d.sumMaterial, evidenceItems.length ? evidenceItems.join(", ") : d.noneAttached]].map(([k, v]) => (
                   <div key={k} className="px-5 py-4"><div className="text-[12px] tracking-wide text-muted font-semibold mb-1">{k}</div><div className="text-[15px] leading-relaxed">{v}</div></div>
                 ))}
               </div>
@@ -418,11 +421,11 @@ export default function IdeaPage() {
           )}
 
           <div className="flex items-center justify-between mt-11">
-            <button type="button" onClick={goBack} className="text-muted text-[15.5px] font-semibold">&larr; Back</button>
+            <button type="button" onClick={goBack} className="text-muted text-[15.5px] font-semibold">{fl.back}</button>
             {step < steps.length - 1 ? (
-              <button type="button" onClick={goNext} disabled={!canContinue()} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{step === 1 ? (intaking ? "Reading your idea…" : "Continue") : "Continue"}</button>
+              <button type="button" onClick={goNext} disabled={!canContinue()} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{step === 1 && intaking ? d.readingIdea : fl.continue}</button>
             ) : (
-              <button type="button" onClick={generate} disabled={starting} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{starting ? "Starting…" : "Generate proposal"}</button>
+              <button type="button" onClick={generate} disabled={starting} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{starting ? d.starting : d.generate}</button>
             )}
           </div>
         </div>
