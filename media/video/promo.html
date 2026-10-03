@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: "Archivo"; font-weight: 400; src: url(node_modules/@fontsource/archivo/files/archivo-latin-400-normal.woff2); }
+@font-face { font-family: "Archivo"; font-weight: 500; src: url(node_modules/@fontsource/archivo/files/archivo-latin-500-normal.woff2); }
+@font-face { font-family: "Archivo"; font-weight: 600; src: url(node_modules/@fontsource/archivo/files/archivo-latin-600-normal.woff2); }
+@font-face { font-family: "Archivo"; font-weight: 700; src: url(node_modules/@fontsource/archivo/files/archivo-latin-700-normal.woff2); }
+@font-face { font-family: "Archivo"; font-weight: 800; src: url(node_modules/@fontsource/archivo/files/archivo-latin-800-normal.woff2); }
+@font-face { font-family: "Deva"; font-weight: 400; src: url(node_modules/@fontsource/noto-sans-devanagari/files/noto-sans-devanagari-devanagari-400-normal.woff2); }
+@font-face { font-family: "Deva"; font-weight: 700; src: url(node_modules/@fontsource/noto-sans-devanagari/files/noto-sans-devanagari-devanagari-700-normal.woff2); }
+:root { --canvas:#EAEAE7; --ink:#1A1A18; --muted:#6E6E68; --line:#D4D3CD; --panel:#141412; --paper:#EDECE8; --faint:#F1F0EB; --red:#C2412D; --u: calc(100vw / 100); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100vw; height: 100vh; overflow: hidden; font-family: "Archivo", "Deva", sans-serif; color: var(--ink); background: var(--canvas); -webkit-font-smoothing: antialiased; }
+.scene { position: absolute; inset: 0; opacity: 0; display: flex; flex-direction: column; justify-content: center; padding: 0 calc(var(--u) * 8); }
+.light { background: var(--canvas); color: var(--ink); }
+.dark { background: var(--panel); color: var(--paper); }
+.kick { font-size: calc(var(--u) * 3.1); letter-spacing: .14em; font-weight: 600; opacity: .62; margin-bottom: calc(var(--u) * 3.5); }
+.big { font-size: calc(var(--u) * 8.4); font-weight: 800; letter-spacing: -0.035em; line-height: 1.04; }
+.mid { font-size: calc(var(--u) * 5.6); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; }
+.txt { font-size: calc(var(--u) * 4.3); font-weight: 500; line-height: 1.38; letter-spacing: -0.01em; }
+.dim { opacity: .72; }
+.card { background: #fff; color: var(--ink); border-radius: calc(var(--u) * 2.2); padding: calc(var(--u) * 4.5); box-shadow: 0 calc(var(--u)*3) calc(var(--u)*8) rgba(0,0,0,.14); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: calc(var(--u) * 3); padding: calc(var(--u) * 2.4) 0; border-top: 1px solid #ECEAE1; }
+.row:first-child { border-top: none; }
+.ln { height: calc(var(--u) * 1.6); border-radius: 99px; background: #E2E1DA; }
+.chip { font-size: calc(var(--u) * 2.5); font-weight: 700; letter-spacing: .08em; padding: calc(var(--u)*1) calc(var(--u)*1.8); border-radius: calc(var(--u)*0.8); white-space: nowrap; }
+.chip.src { background: var(--ink); color: var(--paper); }
+.chip.flag { border: 1.5px solid #B9B7AE; color: var(--muted); }
+.logo { display: flex; align-items: center; gap: calc(var(--u) * 3); }
+.mark { width: calc(var(--u)*12); height: calc(var(--u)*12); border-radius: calc(var(--u)*1.8); background: var(--paper); color: var(--panel); font-family: "Deva"; font-weight: 700; font-size: calc(var(--u)*7); display: flex; align-items: center; justify-content: center; }
+.word { font-weight: 800; font-size: calc(var(--u) * 11); letter-spacing: -0.04em; }
+.tick { display: flex; gap: calc(var(--u)*3); align-items: flex-start; margin-top: calc(var(--u)*4); }
+.tick b { flex: none; width: calc(var(--u)*6.5); height: calc(var(--u)*6.5); border-radius: 50%; background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: center; font-size: calc(var(--u)*3.6); }
+.dark .tick b { background: var(--paper); color: var(--panel); }
+.way { border: 1.5px solid var(--line); background: #fff; border-radius: calc(var(--u)*2); padding: calc(var(--u)*3.6) calc(var(--u)*4); margin-top: calc(var(--u)*3); }
+.way.on { background: var(--panel); color: var(--paper); border-color: var(--panel); }
+.way .t { font-size: calc(var(--u)*5); font-weight: 700; letter-spacing: -0.02em; }
+.way .d { font-size: calc(var(--u)*3.4); opacity: .65; margin-top: calc(var(--u)*1); }
+table { width: 100%; border-collapse: collapse; font-size: calc(var(--u)*3); }
+th { text-align: left; font-size: calc(var(--u)*2.4); letter-spacing: .1em; color: var(--muted); font-weight: 600; padding: calc(var(--u)*1.6) calc(var(--u)*1.4); background: var(--faint); }
+td { padding: calc(var(--u)*2) calc(var(--u)*1.4); border-top: 1px solid #ECEAE1; vertical-align: top; }
+td.l { font-weight: 800; white-space: nowrap; }
+.pill { display: inline-flex; align-items: center; gap: calc(var(--u)*2); border: 1.5px solid rgba(237,236,232,.3); border-radius: 99px; padding: calc(var(--u)*2) calc(var(--u)*3.6); font-size: calc(var(--u)*4); font-weight: 600; }
+.rec { width: calc(var(--u)*2.6); height: calc(var(--u)*2.6); border-radius: 50%; background: #E5484D; }
+.fmt { font-size: calc(var(--u)*3.2); letter-spacing: .1em; font-weight: 700; padding: calc(var(--u)*2) calc(var(--u)*3.4); border-radius: calc(var(--u)*1.2); }
+.cta { display: inline-block; background: var(--paper); color: var(--panel); font-weight: 700; font-size: calc(var(--u)*5); padding: calc(var(--u)*3) calc(var(--u)*7); border-radius: calc(var(--u)*1.4); }
+.cal { width: calc(var(--u)*30); border-radius: calc(var(--u)*2.2); overflow: hidden; background: #fff; box-shadow: 0 calc(var(--u)*2) calc(var(--u)*6) rgba(0,0,0,.12); text-align: center; }
+.cal .top { background: var(--red); color: #fff; font-weight: 700; font-size: calc(var(--u)*3.4); letter-spacing: .12em; padding: calc(var(--u)*1.6) 0; }
+.cal .num { font-size: calc(var(--u)*14); font-weight: 800; letter-spacing: -0.04em; padding: calc(var(--u)*1.5) 0 calc(var(--u)*2.5); position: relative; }
+.v .scene { padding: 0 calc(var(--u) * 9); }
+.v .big { font-size: calc(var(--u) * 9.6); }
+.v #f0 { font-size: calc(var(--u) * 8.6) !important; }
+body:not(.v) #f0 { font-size: calc(var(--u) * 6.8) !important; }
+body:not(.v) #p9 .tick .mid { font-size: calc(var(--u) * 4.8); }
+body:not(.v) #p9 .tick { margin-top: calc(var(--u) * 3); }
+.v .txt { font-size: calc(var(--u) * 5); }
+.v .mid { font-size: calc(var(--u) * 6.4); }
+.gap { height: calc(var(--u) * 5); }
+.v .gap { height: calc(var(--u) * 8); }
+</style>
+</head>
+<body>
+
+<!-- 1 Hook -->
+<div class="scene light" id="p1">
+  <div style="display:flex;align-items:center;gap:calc(var(--u)*6)" id="p1cal">
+    <div class="cal"><div class="top">DEADLINE</div><div class="num">FRI
+      <svg viewBox="0 0 100 60" preserveAspectRatio="none" style="position:absolute;left:-6%;top:-2%;width:112%;height:104%"><ellipse id="circ" cx="50" cy="30" rx="44" ry="25" fill="none" stroke="#C2412D" stroke-width="2.4" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/></svg></div></div>
+  </div>
+  <div class="gap"></div>
+  <div class="big" id="p1a">Proposal due Friday?</div>
+  <div class="mid dim" id="p1b" style="margin-top:calc(var(--u)*3)">Evidence not ready?</div>
+  <div class="mid dim" id="p1c" style="margin-top:calc(var(--u)*1.2)">Budget not adding up?</div>
+</div>
+
+<!-- 2 Chatbot -->
+<div class="scene dark" id="p2">
+  <div class="card" id="p2card" style="position:relative">
+    <div style="font-size:calc(var(--u)*2.6);letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:calc(var(--u)*2)">PROBLEM STATEMENT</div>
+    <div style="font-size:calc(var(--u)*4.6);font-weight:600;line-height:1.35;position:relative;display:inline">“68% of farm families in the district have no irrigation.”
+      <span id="strike" style="position:absolute;left:0;top:52%;height:calc(var(--u)*0.7);background:var(--red);width:0%"></span></div>
+    <div id="nosrc" style="margin-top:calc(var(--u)*2.6);display:inline-block;color:var(--red);font-weight:700;font-size:calc(var(--u)*3.2);border:2px solid var(--red);border-radius:calc(var(--u)*1);padding:calc(var(--u)*0.8) calc(var(--u)*1.8)">✕ NO SOURCE</div>
+  </div>
+  <div class="gap"></div>
+  <div class="txt" id="p2a">A general chatbot will invent a figure to fill the gap.</div>
+  <div class="big" id="p2b" style="margin-top:calc(var(--u)*2.5)">A donor will notice.</div>
+</div>
+
+<!-- 3 Logo -->
+<div class="scene dark" id="p3" style="align-items:flex-start">
+  <div class="logo" id="p3logo"><div class="mark">प्र</div><div class="word">Prastav</div></div>
+  <div class="mid" id="p3t" style="margin-top:calc(var(--u)*5);opacity:.88">Proposals built to a practitioner's standard.</div>
+</div>
+
+<!-- 4 Evidence -->
+<div class="scene light" id="p4">
+  <div class="kick">EVIDENCE YOU CAN STAND BEHIND</div>
+  <div class="card" style="padding:calc(var(--u)*3) calc(var(--u)*4.5)">
+    <div class="row" id="e1"><div class="ln" style="flex:1"></div><span class="chip src">CENSUS 2011</span></div>
+    <div class="row" id="e2"><div class="ln" style="flex:1;max-width:80%"></div><span class="chip src">NFHS-5</span></div>
+    <div class="row" id="e3"><div class="ln" style="flex:1;max-width:88%"></div><span class="chip src">NSS</span></div>
+    <div class="row" id="e4"><div class="ln" style="flex:1;max-width:70%"></div><span class="chip flag">GAP · FLAGGED</span></div>
+  </div>
+  <div class="gap"></div>
+  <div class="mid" id="p4a">Every figure cited from Census, NFHS, NSS and government sources.</div>
+  <div class="txt dim" id="p4b" style="margin-top:calc(var(--u)*2.5)">Where no sound source exists, the gap is flagged. Never invented.</div>
+</div>
+
+<!-- 5 Structure -->
+<div class="scene light" id="p5">
+  <div class="kick">WHAT DONORS LOOK FOR</div>
+  <div class="card" style="padding:calc(var(--u)*2.4)">
+    <table>
+      <tr><th>LEVEL</th><th>INDICATOR</th><th>BASELINE</th><th>TARGET</th></tr>
+      <tr id="t1"><td class="l">Outcome</td><td>Families irrigating in the dry season</td><td>Survey, month 1</td><td>Set from baseline</td></tr>
+      <tr id="t2"><td class="l">Output 1</td><td>Women's groups running pumps</td><td>None yet</td><td>Every village</td></tr>
+      <tr id="t3"><td class="l">Output 2</td><td>Farmers trained in crop planning</td><td>Register</td><td>All members</td></tr>
+    </table>
+  </div>
+  <div class="gap"></div>
+  <div class="tick" id="k1"><b>✓</b><div class="txt" style="font-weight:600">A clear theory of change</div></div>
+  <div class="tick" id="k2"><b>✓</b><div class="txt" style="font-weight:600">A real logframe: indicators, baselines, targets</div></div>
+  <div class="tick" id="k3"><b>✓</b><div class="txt" style="font-weight:600">Risks, and a budget tied to activities</div></div>
+</div>
+
+<!-- 6 Three ways -->
+<div class="scene light" id="p6">
+  <div class="kick">THREE WAYS IN</div>
+  <div class="way on" id="w1"><div class="t">Start from your idea</div><div class="d">Describe your project in your own words</div></div>
+  <div class="way" id="w2"><div class="t">Respond to an RFP</div><div class="d">Paste the donor's call; Prastav follows its format</div></div>
+  <div class="way" id="w3"><div class="t">Improve your draft</div><div class="d">Make a proposal you wrote stronger</div></div>
+</div>
+
+<!-- 7 How you work -->
+<div class="scene dark" id="p7">
+  <div class="kick">MADE FOR HOW YOU WORK</div>
+  <div id="h1" style="display:flex;align-items:center;gap:calc(var(--u)*4)"><span class="pill"><span class="rec" id="recdot"></span>Listening…</span><span class="mid">Type or speak</span></div>
+  <div id="h2" style="display:flex;align-items:center;gap:calc(var(--u)*4);margin-top:calc(var(--u)*6)"><span class="pill" style="padding:calc(var(--u)*1.2)"><span style="background:var(--paper);color:var(--panel);border-radius:99px;padding:calc(var(--u)*1) calc(var(--u)*2.6)">English</span><span style="padding:0 calc(var(--u)*2.4)">हिन्दी</span></span><span class="mid">English or Hindi</span></div>
+  <div id="h3" style="display:flex;align-items:center;gap:calc(var(--u)*2.4);margin-top:calc(var(--u)*6);flex-wrap:wrap"><span class="fmt" style="background:#B4442F">PDF</span><span class="fmt" style="background:#2B579A">WORD</span><span class="fmt" style="background:#217346">EXCEL</span><span class="mid" style="margin-left:calc(var(--u)*1.6)">Ready to submit</span></div>
+</div>
+
+<!-- 8 Practitioner -->
+<div class="scene dark" id="p8">
+  <div class="kick">THE EXPERIENCE INSIDE THE ENGINE</div>
+  <div style="display:flex;align-items:baseline;gap:calc(var(--u)*3)"><span id="yrs" style="font-size:calc(var(--u)*30);font-weight:800;letter-spacing:-0.06em;line-height:.9">24</span><span class="mid">years of<br>practice</span></div>
+  <div class="gap"></div>
+  <div class="txt" id="p8a">Prastav's method comes from 24 years of hands-on development work by <b>Prakash Kumar</b>: programme design, research studies, evaluations and social audits.</div>
+  <div class="txt dim" id="p8b" style="margin-top:calc(var(--u)*3)">And when a proposal needs a practitioner's hand, he works with you directly.</div>
+</div>
+
+<!-- 9 Fair -->
+<div class="scene light" id="p9">
+  <div class="kick">PRICED FOR THE SECTOR</div>
+  <div class="big" id="f0" style="font-size:calc(var(--u)*7.6)">Consultant-grade proposals, priced for NGO budgets.</div>
+  <div class="gap"></div>
+  <div class="tick" id="f1"><b>✓</b><div class="mid">See the full draft before you pay</div></div>
+  <div class="tick" id="f2"><b>✓</b><div class="mid">One clear fee per proposal</div></div>
+  <div class="tick" id="f3"><b>✓</b><div class="mid">Discounts for grassroots organisations</div></div>
+</div>
+
+<!-- 10 CTA -->
+<div class="scene dark" id="p10" style="align-items:center;text-align:center">
+  <div class="logo" id="p10logo"><div class="mark">प्र</div><div class="word">Prastav</div></div>
+  <div class="txt" style="margin-top:calc(var(--u)*4);opacity:.8">Your next proposal, on 24 years of practice.</div>
+  <div style="margin-top:calc(var(--u)*7)"><span class="cta" id="p10cta">Sign up free</span></div>
+  <div class="mid" style="margin-top:calc(var(--u)*5)">prastav.app</div>
+</div>
+
+<div id="brand" style="position:absolute;left:calc(var(--u)*8);top:calc(var(--u)*7);display:none;align-items:center;gap:calc(var(--u)*2);font-weight:800;font-size:calc(var(--u)*4.4);letter-spacing:-0.03em"><span id="bmark" style="width:calc(var(--u)*6.4);height:calc(var(--u)*6.4);border-radius:calc(var(--u)*1);font-family:Deva;font-weight:700;font-size:calc(var(--u)*3.8);display:flex;align-items:center;justify-content:center">प्र</span>Prastav</div>
+<div id="url" style="position:absolute;left:0;right:0;bottom:calc(var(--u)*9);text-align:center;display:none;font-weight:600;font-size:calc(var(--u)*3.8);letter-spacing:.02em">prastav.app</div>
+<script>
+if (location.hash === "#v") document.body.classList.add("v");
+const $ = (id) => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const ease = (x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
+const out = (x) => 1 - Math.pow(1 - x, 3);
+const win = (t, a, b, f = 0.4) => Math.min(seg(t, a, a + f), 1 - seg(t, b - f, b));
+const rise = (el, t, a, d = 0.6, dist = 3) => { const p = out(seg(t, a, a + d)); el.style.opacity = p; el.style.transform = `translateY(${(1 - p) * dist}vw)`; };
+const SC = { p1: [0, 4.6], p2: [4.4, 9.8], p3: [9.6, 13.4], p4: [13.2, 20.4], p5: [20.2, 27.4], p6: [27.2, 32.4], p7: [32.2, 37.8], p8: [37.6, 45.2], p9: [45.0, 52.8], p10: [52.6, 58] };
+const DUR = 57;
+var render = function (t) {
+  for (const [id, [a, b]] of Object.entries(SC)) $(id).style.opacity = id === "p1" ? win(t, -1, b) : win(t, a, b);
+  // 1
+  rise($("p1cal"), t, 0.1, 0.6);
+  $("circ").setAttribute("stroke-dashoffset", String(100 - 100 * ease(seg(t, 0.7, 1.6))));
+  rise($("p1a"), t, 0.5); rise($("p1b"), t, 1.8); rise($("p1c"), t, 2.6);
+  // 2
+  rise($("p2card"), t, 4.6); $("strike").style.width = (100 * ease(seg(t, 6.0, 6.6))) + "%";
+  $("nosrc").style.opacity = seg(t, 6.6, 6.9);
+  rise($("p2a"), t, 5.2); rise($("p2b"), t, 7.2, 0.5);
+  // 3
+  const lp = out(seg(t, 9.8, 10.7)); $("p3logo").style.opacity = lp; $("p3logo").style.transform = `scale(${0.92 + 0.08 * lp})`;
+  rise($("p3t"), t, 10.8);
+  // 4
+  ["e1", "e2", "e3", "e4"].forEach((e, i) => rise($(e), t, 13.6 + i * 0.4, 0.5, 2));
+  rise($("p4a"), t, 15.4); rise($("p4b"), t, 16.8);
+  // 5
+  ["t1", "t2", "t3"].forEach((e, i) => { $(e).style.opacity = seg(t, 20.6 + i * 0.45, 21.0 + i * 0.45); });
+  ["k1", "k2", "k3"].forEach((e, i) => rise($(e), t, 22.6 + i * 0.9, 0.5, 2));
+  // 6
+  ["w1", "w2", "w3"].forEach((e, i) => rise($(e), t, 27.6 + i * 0.5, 0.5, 2.5));
+  // 7
+  ["h1", "h2", "h3"].forEach((e, i) => rise($(e), t, 32.6 + i * 1.3, 0.6, 2.5));
+  const pulse = 0.55 + 0.45 * Math.sin(t * 7); $("recdot").style.opacity = pulse;
+  // 8
+  $("yrs").textContent = String(Math.round(24 * out(seg(t, 38.0, 39.4))));
+  rise($("p8a"), t, 39.6); rise($("p8b"), t, 41.8);
+  // 9
+  rise($("f0"), t, 45.3, 0.7); ["f1", "f2", "f3"].forEach((e, i) => rise($(e), t, 47.2 + i * 0.9, 0.55, 2.5));
+  // 10
+  rise($("p10logo"), t, 52.8, 0.7, 2);
+  const cp = seg(t, 54.8, 55.2); $("p10cta").style.transform = `scale(${1 + 0.06 * Math.sin(Math.PI * cp)})`;
+}
+const LIGHT = ["p1", "p4", "p5", "p6", "p9"];
+function chrome(t) {
+  const vert = document.body.classList.contains("v");
+  let cur = "p1";
+  for (const [id, [a, b]] of Object.entries(SC)) if (t >= a + 0.2) cur = id;
+  const light = LIGHT.includes(cur);
+  const show = cur !== "p3" && cur !== "p10";
+  const fg = light ? "#1A1A18" : "#EDECE8", bg = light ? "#1A1A18" : "#EDECE8", mk = light ? "#EDECE8" : "#141412";
+  $("brand").style.display = vert && show ? "flex" : "none"; $("brand").style.color = fg;
+  $("bmark").style.background = bg; $("bmark").style.color = mk;
+  $("url").style.display = vert && show ? "block" : "none"; $("url").style.color = fg; $("url").style.opacity = 0.7;
+  const fadeIn = seg(t, 0.3, 0.9); $("brand").style.opacity = fadeIn; $("url").style.opacity = 0.7 * fadeIn;
+}
+const _r = render; render = (t) => { _r(t); chrome(t); };
+window.render = render; window.DUR = DUR; render(0);
+</script>
+</body>
+</html>

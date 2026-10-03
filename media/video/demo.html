@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: "Archivo"; font-weight: 400; src: url(node_modules/@fontsource/archivo/files/archivo-latin-400-normal.woff2); }
+@font-face { font-family: "Archivo"; font-weight: 500; src: url(node_modules/@fontsource/archivo/files/archivo-latin-500-normal.woff2); }
+@font-face { font-family: "Archivo"; font-weight: 600; src: url(node_modules/@fontsource/archivo/files/archivo-latin-600-normal.woff2); }
+@font-face { font-family: "Archivo"; font-weight: 700; src: url(node_modules/@fontsource/archivo/files/archivo-latin-700-normal.woff2); }
+@font-face { font-family: "Archivo"; font-weight: 800; src: url(node_modules/@fontsource/archivo/files/archivo-latin-800-normal.woff2); }
+@font-face { font-family: "Deva"; font-weight: 400; src: url(node_modules/@fontsource/noto-sans-devanagari/files/noto-sans-devanagari-devanagari-400-normal.woff2); }
+@font-face { font-family: "Deva"; font-weight: 700; src: url(node_modules/@fontsource/noto-sans-devanagari/files/noto-sans-devanagari-devanagari-700-normal.woff2); }
+:root { --canvas:#EAEAE7; --ink:#1A1A18; --muted:#6E6E68; --line:#D4D3CD; --panel:#141412; --card:#fff; --paper:#EDECE8; --faint:#F1F0EB; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1280px; height: 720px; overflow: hidden; background: var(--canvas); font-family: "Archivo", "Deva", sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+.abs { position: absolute; }
+.scene { position: absolute; inset: 0; opacity: 0; }
+/* full-bleed dark scenes */
+.dark { background: var(--panel); color: var(--paper); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.logo { display: flex; align-items: center; gap: 16px; }
+.mark { width: 64px; height: 64px; border-radius: 8px; background: var(--paper); color: var(--panel); font-family: "Deva"; font-weight: 700; font-size: 38px; display: flex; align-items: center; justify-content: center; }
+.word { font-weight: 800; font-size: 56px; letter-spacing: -0.03em; }
+.tag { margin-top: 26px; font-size: 30px; font-weight: 500; color: rgba(237,236,232,.82); letter-spacing: -0.01em; }
+/* browser window */
+.win { position: absolute; left: 140px; top: 46px; width: 1000px; height: 540px; background: var(--card); border-radius: 14px; box-shadow: 0 30px 80px rgba(0,0,0,.16), 0 2px 6px rgba(0,0,0,.06); overflow: hidden; border: 1px solid var(--line); }
+.bar { height: 38px; background: var(--faint); border-bottom: 1px solid var(--line); display: flex; align-items: center; padding: 0 14px; gap: 7px; }
+.dot { width: 11px; height: 11px; border-radius: 50%; background: #D4D3CD; }
+.url { margin-left: 18px; flex: 1; max-width: 420px; height: 24px; border-radius: 6px; background: #fff; border: 1px solid var(--line); font-size: 12.5px; color: var(--muted); display: flex; align-items: center; padding: 0 10px; }
+.nav { height: 50px; border-bottom: 1px solid var(--line); display: flex; align-items: center; padding: 0 26px; gap: 9px; }
+.nav .m { width: 22px; height: 22px; border-radius: 3px; background: var(--ink); color: var(--paper); font-family: "Deva"; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.nav .w { font-weight: 800; font-size: 16px; letter-spacing: -0.02em; }
+.body { position: absolute; top: 88px; left: 0; right: 0; bottom: 0; padding: 30px 44px; }
+.view { position: absolute; inset: 0; opacity: 0; }
+h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 6px; }
+.sub { font-size: 15px; color: var(--muted); margin-bottom: 22px; }
+.label { font-size: 13px; font-weight: 600; color: #3A3A32; margin-bottom: 6px; }
+.field { height: 44px; border: 1.5px solid #C9C7BF; border-radius: 5px; padding: 0 14px; font-size: 15.5px; display: flex; align-items: center; margin-bottom: 14px; background: #fff; }
+.field.focus { border-color: var(--ink); }
+.btn { display: inline-flex; align-items: center; justify-content: center; background: var(--ink); color: var(--paper); font-weight: 600; font-size: 15.5px; border-radius: 4px; padding: 12px 26px; }
+.seg { display: flex; background: #DEDDD6; border-radius: 5px; padding: 4px; margin-bottom: 16px; width: 420px; }
+.seg div { flex: 1; text-align: center; padding: 8px 0; font-weight: 600; font-size: 14px; border-radius: 4px; color: var(--muted); }
+.seg .on { background: var(--ink); color: var(--paper); }
+.cards { display: flex; gap: 18px; }
+.card3 { flex: 1; border: 1px solid var(--line); border-radius: 9px; padding: 22px; background: #fff; height: 150px; }
+.card3.darkc { background: var(--panel); color: var(--paper); border-color: var(--panel); }
+.card3 .t { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.card3 .d { font-size: 14px; color: var(--muted); line-height: 1.45; }
+.card3.darkc .d { color: rgba(237,236,232,.62); }
+.card3 .s { margin-top: 14px; font-size: 11.5px; letter-spacing: .08em; }
+.ta { border: 1.5px solid var(--ink); border-radius: 6px; height: 150px; padding: 16px; font-size: 18px; line-height: 1.55; }
+.caret { display: inline-block; width: 2px; height: 20px; background: var(--ink); vertical-align: -3px; margin-left: 1px; }
+.mic { display: inline-flex; align-items: center; gap: 9px; border: 1.5px solid var(--ink); border-radius: 4px; padding: 10px 16px; font-weight: 600; font-size: 14.5px; background: var(--ink); color: var(--paper); }
+.rec { width: 10px; height: 10px; border-radius: 50%; background: #E5484D; }
+.lang { display: inline-flex; background: #DEDDD6; border-radius: 4px; padding: 4px; margin-left: 12px; font-size: 13px; font-weight: 600; }
+.lang span { padding: 5px 11px; border-radius: 3px; color: var(--muted); }
+.lang .on { background: var(--ink); color: var(--paper); }
+.prog { height: 10px; border-radius: 6px; background: #E4E3DC; overflow: hidden; }
+.prog i { display: block; height: 100%; background: var(--ink); border-radius: 6px; }
+.step { display: flex; align-items: center; gap: 12px; font-size: 16px; margin-top: 12px; }
+.sc { width: 22px; height: 22px; border-radius: 50%; border: 1px solid #C9C7BF; color: var(--muted); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.sc.done { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.sc.cur { border: 2px solid var(--ink); color: var(--ink); }
+.sec { border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; background: #fff; }
+.sec .h { display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 15px; margin-bottom: 9px; }
+.sec .h a { font-size: 13px; text-decoration: underline; font-weight: 600; }
+.ln { height: 7px; border-radius: 4px; background: #E2E1DA; margin-top: 7px; }
+.comment { border: 1.5px solid var(--ink); border-radius: 5px; padding: 10px 12px; font-size: 14px; margin-top: 8px; height: 40px; }
+.file { width: 200px; border: 1px solid var(--line); border-radius: 10px; padding: 20px; background: #fff; display: flex; flex-direction: column; gap: 10px; }
+.ftype { width: 52px; height: 62px; border-radius: 6px; color: #fff; font-weight: 800; font-size: 13px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 9px; }
+.ok { font-size: 13px; color: #1E6B3A; font-weight: 600; }
+/* caption */
+.cap { position: absolute; left: 0; right: 0; top: 606px; text-align: center; font-size: 38px; font-weight: 700; letter-spacing: -0.02em; }
+.cap span { position: absolute; left: 0; right: 0; opacity: 0; }
+.capnum { position: absolute; left: 0; right: 0; top: 660px; text-align: center; font-size: 13px; letter-spacing: .14em; color: var(--muted); }
+/* cursor */
+#cursor { position: absolute; left: 0; top: 0; width: 26px; height: 26px; z-index: 50; opacity: 0; }
+#ripple { position: absolute; width: 44px; height: 44px; border-radius: 50%; border: 2.5px solid var(--ink); opacity: 0; z-index: 49; }
+</style>
+</head>
+<body>
+
+<!-- 1 Opening -->
+<div class="scene dark" id="s1">
+  <div class="logo" id="s1logo"><div class="mark">प्र</div><div class="word">Prastav</div></div>
+  <div class="tag" id="s1tag">From your idea to a donor-ready proposal</div>
+</div>
+
+<!-- App frame shared by scenes 2–7 -->
+<div class="scene" id="app">
+  <div class="win">
+    <div class="bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="url" id="url">prastav.app/signup</div></div>
+    <div class="nav"><div class="m">प्र</div><div class="w">Prastav</div></div>
+    <div class="body">
+
+      <!-- 2 Sign up -->
+      <div class="view" id="v2" style="padding:30px 44px">
+        <h2>Create your account</h2>
+        <div class="sub">Set up in a minute. Your work is saved as you go.</div>
+        <div class="seg"><div id="segInd" class="on">Individual</div><div id="segOrg">Organisation</div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 22px;width:860px">
+          <div><div class="label">Organisation name</div><div class="field" id="f1"></div></div>
+          <div><div class="label">Your name</div><div class="field" id="f2"></div></div>
+          <div><div class="label">Email</div><div class="field" id="f3"></div></div>
+          <div><div class="label">Password</div><div class="field" id="f4"></div></div>
+        </div>
+        <div class="btn" id="b2" style="margin-top:6px">Sign up free</div>
+      </div>
+
+      <!-- 3 Choose a way in -->
+      <div class="view" id="v3" style="padding:30px 44px">
+        <h2>Welcome, Anita</h2>
+        <div class="sub">Start a new proposal. Choose how you want to begin.</div>
+        <div class="cards">
+          <div class="card3 darkc" id="c1"><div class="t">Start from your idea</div><div class="d">Describe your project in your own words.</div><div class="s">START →</div></div>
+          <div class="card3" id="c2"><div class="t">Respond to an RFP</div><div class="d">Paste or upload a call for proposals.</div><div class="s">START →</div></div>
+          <div class="card3" id="c3"><div class="t">Improve a draft</div><div class="d">Make an existing proposal stronger.</div><div class="s">START →</div></div>
+        </div>
+      </div>
+
+      <!-- 4 Describe -->
+      <div class="view" id="v4" style="padding:30px 44px">
+        <h2>What is your project?</h2>
+        <div class="sub">A sentence or two is enough. Prastav asks for anything it needs.</div>
+        <div class="ta" id="ta"></div>
+        <div style="margin-top:14px;display:flex;align-items:center"><div class="mic" id="mic"><span class="rec" id="recdot"></span><span>Listening… tap to stop</span></div><div class="lang"><span class="on">English</span><span>हिन्दी</span></div></div>
+      </div>
+
+      <!-- 5 Working -->
+      <div class="view" id="v5" style="padding:30px 44px">
+        <div style="font-size:12px;letter-spacing:.08em;color:var(--muted);font-weight:600;margin-bottom:4px">BUILDING YOUR PROPOSAL</div>
+        <h2 style="font-size:26px;margin-bottom:22px">Women-led solar irrigation in Gumla</h2>
+        <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:600;margin-bottom:9px"><span id="stageLbl">Researching evidence…</span><span id="pct" style="color:var(--muted);font-weight:500">20%</span></div>
+        <div class="prog"><i id="bar" style="width:20%"></i></div>
+        <div style="margin-top:16px">
+          <div class="step"><div class="sc" id="st0">1</div><span>Reading your idea</span></div>
+          <div class="step"><div class="sc" id="st1">2</div><span>Researching evidence</span></div>
+          <div class="step"><div class="sc" id="st2">3</div><span>Checking costs</span></div>
+          <div class="step"><div class="sc" id="st3">4</div><span>Building the results framework and budget</span></div>
+          <div class="step"><div class="sc" id="st4">5</div><span>Writing the proposal</span></div>
+        </div>
+      </div>
+
+      <!-- 6 Review -->
+      <div class="view" id="v6" style="padding:24px 44px">
+        <div style="font-size:12px;letter-spacing:.08em;color:var(--muted);font-weight:600;margin-bottom:10px">YOUR DRAFT · REVIEW</div>
+        <div class="sec" id="r1"><div class="h">The problem <a>Suggest a change</a></div><div class="ln" style="width:96%"></div><div class="ln" style="width:88%"></div></div>
+        <div class="sec" id="r2"><div class="h">Objective <a id="sug">Suggest a change</a></div><div class="ln" style="width:80%"></div>
+          <div class="comment" id="cmt"></div></div>
+        <div class="sec" id="r3"><div class="h">Results framework <a>Suggest a change</a></div><div class="ln" style="width:92%"></div><div class="ln" style="width:70%"></div></div>
+        <div class="sec" id="r4"><div class="h">Budget <a>Suggest a change</a></div><div class="ln" style="width:85%"></div></div>
+      </div>
+
+      <!-- 7 Finalise -->
+      <div class="view" id="v7" style="padding:34px 44px">
+        <h2>Ready to finalise</h2>
+        <div class="sub">Pay once, and your files are ready straight away.</div>
+        <div class="btn" id="b7">Pay &amp; finalise · ₹6,999</div>
+        <div style="display:flex;gap:22px;margin-top:30px">
+          <div class="file" id="fl1"><div class="ftype" style="background:#B4442F">PDF</div><div style="font-weight:700">Proposal.pdf</div><div class="ok">✓ Ready to download</div></div>
+          <div class="file" id="fl2"><div class="ftype" style="background:#2B579A">DOCX</div><div style="font-weight:700">Proposal.docx</div><div class="ok">✓ Ready to download</div></div>
+          <div class="file" id="fl3"><div class="ftype" style="background:#217346">XLSX</div><div style="font-weight:700">Budget.xlsx</div><div class="ok">✓ Ready to download</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="cap">
+    <span id="cap2">Sign up free in a minute</span>
+    <span id="cap3">Start from an idea, an RFP, or your own draft</span>
+    <span id="cap4">Type or speak, in English or Hindi</span>
+    <span id="cap5">Evidence, results framework and budget, built for you</span>
+    <span id="cap6">Review it section by section</span>
+    <span id="cap7">Finalise and download in three formats</span>
+  </div>
+</div>
+
+<!-- 8 Close -->
+<div class="scene dark" id="s8">
+  <div class="logo"><div class="mark">प्र</div><div class="word">Prastav</div></div>
+  <div class="tag">Sign up free · <b style="color:#fff">prastav.app</b></div>
+</div>
+
+<svg id="cursor" viewBox="0 0 24 24"><path d="M4 2 L4 19 L8.6 14.8 L11.6 21.5 L14.4 20.3 L11.4 13.6 L17.6 13.6 Z" fill="#1A1A18" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>
+<div id="ripple"></div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const ease = (x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
+const lerp = (a, b, p) => a + (b - a) * p;
+// visibility window with fades
+const win = (t, a, b, f = 0.45) => Math.min(seg(t, a, a + f), 1 - seg(t, b - f, b));
+const typeOut = (s, p) => s.slice(0, Math.round(s.length * clamp(p)));
+
+// Scene boundaries (seconds)
+const S = { s1: [0, 3.6], s2: [3.4, 7.8], s3: [7.6, 11.8], s4: [11.6, 16.0], s5: [15.8, 20.4], s6: [20.2, 24.8], s7: [24.6, 28.8], s8: [28.6, 32.0] };
+const DUR = 32;
+
+// window body origin in page coordinates: win left 140, top 46 + 88
+const BX = 140, BY = 46 + 88;
+// cursor keyframes: [t, x, y] (page coords); clicks: times
+const CUR = [
+  [3.8, 640, 520], [4.6, BX + 44 + 315, BY + 30 + 100], [5.6, BX + 44 + 315, BY + 30 + 100],
+  [6.4, BX + 44 + 330, BY + 30 + 100], [7.0, BX + 44 + 95, BY + 344], [7.4, BX + 44 + 95, BY + 344],
+  [8.4, 900, 520], [9.6, BX + 44 + 140, BY + 30 + 170], [10.6, BX + 44 + 140, BY + 30 + 170], [11.4, BX + 44 + 160, BY + 30 + 180],
+  [12.0, 900, 560], [14.6, 900, 560],
+  [21.0, 1000, 520], [21.9, BX + 44 + 860, BY + 24 + 128], [22.6, BX + 44 + 860, BY + 24 + 128], [24.2, 1080, 560],
+  [25.0, 900, 540], [25.8, BX + 44 + 130, BY + 34 + 103], [26.4, BX + 44 + 130, BY + 34 + 103], [28.2, 1100, 560],
+];
+const CLICKS = [4.7, 7.1, 9.8, 22.0, 25.9];
+const CURSOR_ON = [[3.6, 11.5], [20.8, 24.4], [24.9, 28.4]];
+
+function cursorAt(t) {
+  let i = 0;
+  while (i < CUR.length - 1 && CUR[i + 1][0] <= t) i++;
+  const a = CUR[i], b = CUR[Math.min(i + 1, CUR.length - 1)];
+  if (t <= a[0] || a === b) return [a[1], a[2]];
+  const p = ease(seg(t, a[0], b[0]));
+  return [lerp(a[1], b[1], p), lerp(a[2], b[2], p)];
+}
+
+const IDEA = "Solar-powered irrigation, run by women's groups, so tribal farming families in Gumla, Jharkhand can grow a second crop in the dry season.";
+const COMMENT = "Make the objective more specific to the dry season.";
+const STAGES = ["Reading your idea", "Researching evidence", "Checking costs", "Building the results framework and budget", "Writing the proposal"];
+
+function render(t) {
+  // Scenes
+  $("s1").style.opacity = win(t, -1, S.s1[1]);
+  const s1p = ease(seg(t, 0.2, 1.4));
+  $("s1logo").style.transform = `translateY(${(1 - s1p) * 18}px)`;
+  $("s1logo").style.opacity = s1p;
+  $("s1tag").style.opacity = ease(seg(t, 1.0, 2.0));
+  $("s1tag").style.transform = `translateY(${(1 - ease(seg(t, 1.0, 2.0))) * 12}px)`;
+
+  $("app").style.opacity = win(t, S.s2[0], S.s7[1]);
+  $("s8").style.opacity = win(t, S.s8[0], DUR + 1);
+
+  const views = [["v2", "cap2", S.s2], ["v3", "cap3", S.s3], ["v4", "cap4", S.s4], ["v5", "cap5", S.s5], ["v6", "cap6", S.s6], ["v7", "cap7", S.s7]];
+  for (const [v, c, [a, b]] of views) {
+    const o = win(t, a, b, 0.35);
+    $(v).style.opacity = o;
+    $(v).style.transform = `translateY(${(1 - ease(seg(t, a, a + 0.5))) * 10}px)`;
+    $(c).style.opacity = o;
+  }
+  const urls = [[S.s2, "prastav.app/signup"], [S.s3, "prastav.app/dashboard"], [S.s4, "prastav.app/new/idea"], [S.s5, "prastav.app/proposals/…"], [S.s6, "prastav.app/proposals/…"], [S.s7, "prastav.app/proposals/…"]];
+  for (const [[a, b], u] of urls) if (t >= a && t < b) $("url").textContent = u;
+
+  // 2 Sign up
+  const org = t >= 4.75;
+  $("segInd").className = org ? "" : "on"; $("segOrg").className = org ? "on" : "";
+  $("f1").textContent = typeOut("Jan Vikas Samiti", seg(t, 4.9, 5.5));
+  $("f2").textContent = typeOut("Anita Sharma", seg(t, 5.5, 6.0));
+  $("f3").textContent = typeOut("anita@janvikas.org", seg(t, 6.0, 6.6));
+  $("f4").textContent = typeOut("••••••••••", seg(t, 6.6, 6.95));
+  ["f1", "f2", "f3", "f4"].forEach((f, i) => {
+    const a = [4.9, 5.5, 6.0, 6.6][i], b = [5.5, 6.0, 6.6, 7.0][i];
+    $(f).className = "field" + (t >= a && t < b ? " focus" : "");
+  });
+  const bp = seg(t, 7.05, 7.25);
+  $("b2").style.transform = `scale(${1 - 0.05 * Math.sin(Math.PI * bp)})`;
+
+  // 3 Choose
+  const cp = seg(t, 9.75, 10.05);
+  $("c1").style.transform = `scale(${1 - 0.03 * Math.sin(Math.PI * cp)}) translateY(${-4 * ease(seg(t, 9.3, 9.7))}px)`;
+  ["c1", "c2", "c3"].forEach((c, i) => { const p = ease(seg(t, 7.8 + i * 0.18, 8.4 + i * 0.18)); $(c).style.opacity = p; });
+
+  // 4 Describe (typing as if spoken)
+  const tp = seg(t, 12.0, 15.2);
+  $("ta").innerHTML = typeOut(IDEA, tp) + (t < 15.6 && Math.floor(t * 2.4) % 2 === 0 ? '<span class="caret"></span>' : "");
+  const pulse = 0.55 + 0.45 * Math.sin(t * 7);
+  $("recdot").style.opacity = pulse;
+  $("recdot").style.transform = `scale(${0.85 + 0.25 * pulse})`;
+
+  // 5 Working
+  const wp = seg(t, 16.0, 20.0);
+  const pct = Math.round(lerp(6, 96, ease(wp)));
+  $("bar").style.width = pct + "%"; $("pct").textContent = pct + "%";
+  const cur = Math.min(4, Math.floor(wp * 5));
+  for (let i = 0; i < 5; i++) {
+    const el = $("st" + i);
+    el.className = "sc" + (i < cur ? " done" : i === cur ? " cur" : "");
+    el.textContent = i < cur ? "✓" : String(i + 1);
+  }
+  $("stageLbl").textContent = STAGES[cur] + "…";
+
+  // 6 Review
+  ["r1", "r2", "r3", "r4"].forEach((r, i) => { const p = ease(seg(t, 20.3 + i * 0.22, 20.8 + i * 0.22)); $(r).style.opacity = p; $(r).style.transform = `translateY(${(1 - p) * 8}px)`; });
+  const showC = t >= 22.05;
+  $("cmt").style.display = showC ? "block" : "none";
+  $("cmt").textContent = typeOut(COMMENT, seg(t, 22.3, 23.9));
+
+  // 7 Finalise
+  const fp = seg(t, 25.95, 26.15);
+  $("b7").style.transform = `scale(${1 - 0.05 * Math.sin(Math.PI * fp)})`;
+  ["fl1", "fl2", "fl3"].forEach((f, i) => {
+    const p = ease(seg(t, 26.4 + i * 0.3, 26.9 + i * 0.3));
+    $(f).style.opacity = p; $(f).style.transform = `translateY(${(1 - p) * -26}px)`;
+  });
+
+  // Cursor
+  const on = CURSOR_ON.some(([a, b]) => t >= a && t <= b);
+  const fadeIn = CURSOR_ON.map(([a, b]) => Math.min(seg(t, a, a + 0.3), 1 - seg(t, b - 0.3, b))).reduce((m, x) => Math.max(m, x), 0);
+  const [x, y] = cursorAt(t);
+  $("cursor").style.opacity = on ? fadeIn : 0;
+  $("cursor").style.transform = `translate(${x}px, ${y}px)`;
+  let rip = 0, rx = x, ry = y;
+  for (const c of CLICKS) { const p = seg(t, c, c + 0.45); if (p > 0 && p < 1) { rip = p; } }
+  $("ripple").style.opacity = rip ? (1 - rip) * 0.6 : 0;
+  $("ripple").style.transform = `translate(${rx - 22 + 4}px, ${ry - 22 + 4}px) scale(${0.4 + rip * 0.9})`;
+}
+window.render = render;
+window.DUR = DUR;
+render(0);
+</script>
+</body>
+</html>
