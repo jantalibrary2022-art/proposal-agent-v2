@@ -3,6 +3,8 @@ import ProposalRow from "./ProposalRow";
 import LanguageSwitcher from "../_components/LanguageSwitcher";
 import { redirect } from "next/navigation";
 import { createClient } from "../../lib/supabase/server";
+import { createAdminClient } from "../../lib/supabase/admin";
+import { sweepStuckProposals } from "../../lib/sweep";
 import { getDict, type Locale, type Dict } from "../../lib/i18n";
 import LogoutButton from "../_components/LogoutButton";
 
@@ -53,6 +55,8 @@ export default async function Dashboard() {
   const fullName = (user.user_metadata?.full_name as string | undefined) ?? "";
   const firstName = fullName.split(" ")[0] || (user.email ? user.email.split("@")[0] : "");
   const initials = (fullName || user.email || "U").slice(0, 2).toUpperCase();
+
+  try { await sweepStuckProposals(createAdminClient(), user.id); } catch {}
 
   const { data: proposalsData } = await supabase
     .from("proposals")

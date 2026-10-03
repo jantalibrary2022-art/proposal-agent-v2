@@ -58,7 +58,7 @@ const SECTIONS_EN: { h: string; body: string[] }[] = [
   {
     h: "How long we keep it",
     body: [
-      "We keep your account and content for as long as your account is active or as needed to provide the service and meet legal and accounting obligations. You can delete individual proposals, and you can ask us to delete your account and associated data.",
+      "We keep your account and content for as long as your account is active or as needed to provide the service and meet legal and accounting obligations. You can delete individual proposals, and you can delete your whole account yourself from Account settings, which permanently removes your proposals, files and organisation profiles. Invoices for payments you made are kept as financial records, as the law requires.",
     ],
   },
   {
@@ -150,7 +150,7 @@ const SECTIONS_HI: { h: string; body: string[] }[] = [
   {
     h: "हम इसे कितने समय तक रखते हैं",
     body: [
-      "जब तक आपका खाता सक्रिय है, या सेवा प्रदान करने और कानूनी व लेखा दायित्वों को पूरा करने के लिए जितना आवश्यक हो, हम आपका खाता और सामग्री रखते हैं। आप अलग-अलग प्रस्ताव हटा सकते हैं, और हमसे अपना खाता और उससे जुड़ा डेटा हटाने का अनुरोध कर सकते हैं।",
+      "जब तक आपका खाता सक्रिय है, या सेवा प्रदान करने और कानूनी व लेखा दायित्वों को पूरा करने के लिए जितना आवश्यक हो, हम आपका खाता और सामग्री रखते हैं। आप अलग-अलग प्रस्ताव हटा सकते हैं, और खाता सेटिंग्स से स्वयं अपना पूरा खाता हटा सकते हैं, जिससे आपके प्रस्ताव, फ़ाइलें और संस्था प्रोफ़ाइलें स्थायी रूप से हट जाती हैं। आपके भुगतानों के चालान, कानून की आवश्यकता के अनुसार, वित्तीय रिकॉर्ड के रूप में रखे जाते हैं।",
     ],
   },
   {

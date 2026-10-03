@@ -24,6 +24,23 @@ export default function AccountPage() {
   const [pwErr, setPwErr] = useState("");
   const [pwMsg, setPwMsg] = useState("");
 
+  const [delOpen, setDelOpen] = useState(false);
+  const [delConfirm, setDelConfirm] = useState("");
+  const [delBusy, setDelBusy] = useState(false);
+  const [delErr, setDelErr] = useState("");
+  const deleteAccount = async () => {
+    setDelErr("");
+    if (delConfirm.trim().toLowerCase() !== email.toLowerCase()) { setDelErr(a.delMismatch); return; }
+    setDelBusy(true);
+    try {
+      const r = await fetch("/api/account/delete", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ confirm: delConfirm }) });
+      const j = await r.json();
+      if (!j.ok) { setDelBusy(false); setDelErr(j.error === "confirm_mismatch" ? a.delMismatch : a.delFailed); return; }
+      try { await createClient().auth.signOut(); } catch {}
+      window.location.href = "/?deleted=1";
+    } catch { setDelBusy(false); setDelErr(a.delFailed); }
+  };
+
   useEffect(() => {
     const supabase = createClient();
     supabase.auth.getUser().then(({ data }) => {
@@ -124,6 +141,24 @@ export default function AccountPage() {
                   <div className="text-[13.5px] text-muted">{a.billingDesc}</div>
                 </div>
                 <Link href="/purchases" className="shrink-0 bg-ink text-paper text-[14px] font-semibold px-5 py-2.5 rounded-[4px]">{a.viewPurchases}</Link>
+              </section>
+
+              <section className="bg-card border border-[#E4B9B0] rounded-lg p-6">
+                <h2 className="text-[17px] font-bold mb-1">{a.delTitle}</h2>
+                <p className="text-[13.5px] text-muted leading-relaxed mb-4">{a.delDesc}</p>
+                {!delOpen ? (
+                  <button type="button" onClick={() => setDelOpen(true)} className="border-[1.5px] border-[#B42318] text-[#B42318] text-[14px] font-semibold px-5 py-2.5 rounded-[4px]">{a.delButton}</button>
+                ) : (
+                  <div>
+                    <label className="block text-[14px] font-semibold text-[#3A3A32] mb-2">{a.delConfirmLabel} <span className="font-normal text-muted">({email})</span></label>
+                    <input value={delConfirm} onChange={(e) => setDelConfirm(e.target.value)} type="email" autoComplete="off" className="w-full h-[48px] border-[1.5px] border-[#C9C7BF] rounded-[5px] px-4 text-[15px] bg-white outline-none focus:border-ink mb-3" />
+                    {delErr && <div className="mb-3 text-[14px] text-[#B42318]">{delErr}</div>}
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <button type="button" onClick={deleteAccount} disabled={delBusy} className="bg-[#B42318] text-white text-[14px] font-semibold px-5 py-2.5 rounded-[4px] disabled:opacity-50">{delBusy ? a.delWorking : a.delFinal}</button>
+                      <button type="button" onClick={() => { setDelOpen(false); setDelConfirm(""); setDelErr(""); }} disabled={delBusy} className="text-[14px] text-muted underline">{a.delCancel}</button>
+                    </div>
+                  </div>
+                )}
               </section>
 
               <div className="text-[14px] text-muted">{a.forgotPre}<Link href="/forgot" className="font-semibold text-ink underline">{a.forgotLink}</Link>{a.forgotPost}</div>

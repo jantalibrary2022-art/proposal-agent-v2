@@ -6,6 +6,7 @@ import { createClient } from "../../lib/supabase/server";
 import { createAdminClient } from "../../lib/supabase/admin";
 import PinGate from "./PinGate";
 import TestEmailButton from "./TestEmailButton";
+import { sweepStuckProposals } from "../../lib/sweep";
 
 export const runtime = "nodejs";
 
@@ -38,6 +39,7 @@ export default async function AdminPage() {
   }
 
   const admin = createAdminClient();
+  try { await sweepStuckProposals(admin); } catch {}
   const since = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
   const [viewsTotal, views7, fb, errs] = await Promise.all([
     admin.from("page_views").select("id", { count: "exact", head: true }),

@@ -239,10 +239,19 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
 
   useEffect(() => { params.then((pr) => setId(pr.id)); }, [params]);
 
-  const fetchRow = async (reschedule: boolean) => {
+  const sweptRef = useRef(false);
+  const fetchRow = async (reschedule: boolean): Promise<void> => {
     const supabase = createClient();
     const { data } = await supabase.from("proposals").select("id,status,title,meta,composed,substance,error,created_at,updated_at").eq("id", id).single();
     if (!data) { setMissing(true); return; }
+    // Past the timeout, ask the server to mark the run failed, then re-read it.
+    const base = data.status === "rendering" ? data.updated_at : data.created_at;
+    const limit = data.status === "rendering" ? 20 : 45;
+    if ((data.status === "generating" || data.status === "rendering") && base && (Date.now() - new Date(base).getTime()) / 60000 >= limit && !sweptRef.current) {
+      sweptRef.current = true;
+      try { await fetch("/api/proposals/sweep", { method: "POST" }); } catch {}
+      return fetchRow(reschedule);
+    }
     setRow(data);
     if (reschedule && (data.status === "generating" || data.status === "rendering")) {
       timer.current = setTimeout(() => fetchRow(true), 5000);
