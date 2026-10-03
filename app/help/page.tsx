@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getDict } from "../../lib/i18n";
+import SiteHeader from "../_components/SiteHeader";
 
 export const metadata = { title: "Help · Prastav" };
 
@@ -9,16 +10,7 @@ export default async function HelpPage() {
 
   return (
     <div className="min-h-screen bg-canvas text-ink flex flex-col">
-      <header className="sticky top-0 z-40 h-16 shrink-0 px-6 sm:px-11 flex items-center justify-between border-b border-line bg-canvas">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="w-[26px] h-[26px] bg-ink rounded-[3px] flex items-center justify-center text-paper font-extrabold text-[15px]">प्र</span>
-          <span className="font-extrabold text-[19px] tracking-tight">Prastav</span>
-        </Link>
-        <div className="flex items-center gap-6">
-          <Link href="/contact" className="text-[13px] tracking-wide text-muted">{h.contact}</Link>
-          <Link href="/dashboard" className="text-[14.5px] text-muted">{t.common.dashboard}</Link>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main className="flex-grow px-6 sm:px-11 py-14 flex justify-center">
         <div className="w-full max-w-[720px]">

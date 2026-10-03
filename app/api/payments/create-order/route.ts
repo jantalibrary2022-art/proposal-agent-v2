@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "../../../../lib/supabase/server";
 import { createAdminClient } from "../../../../lib/supabase/admin";
 import { isEntitled } from "../../../../lib/entitlement";
-import { createOrder, pricePaise, razorpayConfigured, razorpayKeyId } from "../../../../lib/razorpay";
+import { createOrder, razorpayConfigured, razorpayKeyId } from "../../../../lib/razorpay";
+import { priceFor } from "../../../../lib/pricing";
 
 export const runtime = "nodejs";
 
@@ -25,7 +26,9 @@ export async function POST(req: NextRequest) {
   const admin = createAdminClient();
   if (await isEntitled(admin, proposalId)) return NextResponse.json({ ok: true, already: true });
 
-  const amount = pricePaise();
+  const price = await priceFor(admin, proposalId);
+  if (price.free) return NextResponse.json({ ok: true, already: true });
+  const amount = price.amountPaise;
   try {
     const order = await createOrder(amount, proposalId, { proposalId, userId: user.id });
     return NextResponse.json({ ok: true, orderId: order.id, amount: order.amount, currency: order.currency, keyId: razorpayKeyId() });

@@ -4,6 +4,7 @@ import { Archivo, Noto_Sans_Devanagari } from "next/font/google";
 import "./globals.css";
 import { LOCALES, DEFAULT_LOCALE, type Locale } from "../lib/i18n";
 import { LocaleProvider } from "./_components/LocaleProvider";
+import SiteFooter from "./_components/SiteFooter";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -37,7 +38,7 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={`${archivo.variable} ${notoDeva.variable}`}>
       <body>
-        <LocaleProvider locale={lang}>{children}</LocaleProvider>
+        <LocaleProvider locale={lang}>{children}<SiteFooter /></LocaleProvider>
       </body>
     </html>
   );

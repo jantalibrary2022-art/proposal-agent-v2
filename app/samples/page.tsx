@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SAMPLES } from "./_data";
 import { getDict } from "../../lib/i18n";
+import SiteHeader from "../_components/SiteHeader";
 
 export const metadata = {
   title: "Sample proposals — Prastav",
@@ -12,13 +13,7 @@ export default async function SamplesPage() {
   const sm = t.samples;
   return (
     <main className="min-h-screen flex flex-col">
-      <header className="flex items-center justify-between px-5 sm:px-8 h-[60px] border-b border-line">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="w-6 h-6 rounded-[3px] bg-ink text-paper font-extrabold text-[14px] flex items-center justify-center">प्र</span>
-          <span className="font-extrabold text-[18px] tracking-[-0.02em]">Prastav</span>
-        </Link>
-        <Link href="/" className="text-[12.5px] tracking-wide text-muted">{sm.back}</Link>
-      </header>
+      <SiteHeader />
 
       <div className="px-5 sm:px-8 w-full max-w-[1000px] mx-auto py-16 sm:py-20">
         <div className="text-[12px] tracking-[0.1em] text-muted mb-4">{sm.kicker}</div>

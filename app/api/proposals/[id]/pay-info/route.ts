@@ -3,7 +3,8 @@ import { createClient } from "../../../../../lib/supabase/server";
 import { createAdminClient } from "../../../../../lib/supabase/admin";
 import { paywallEnabled } from "../../../../../lib/coupons";
 import { isEntitled } from "../../../../../lib/entitlement";
-import { pricePaise, razorpayConfigured } from "../../../../../lib/razorpay";
+import { razorpayConfigured } from "../../../../../lib/razorpay";
+import { priceFor } from "../../../../../lib/pricing";
 
 export const runtime = "nodejs";
 
@@ -19,12 +20,17 @@ export async function GET(_req: NextRequest, ctx: { params: Promise<{ id: string
 
   const admin = createAdminClient();
   const entitled = await isEntitled(admin, id);
+  const price = await priceFor(admin, id);
   return NextResponse.json({
     ok: true,
     paywall: paywallEnabled(),
     entitled,
     locked: paywallEnabled() && !entitled,
-    amountPaise: pricePaise(),
+    amountPaise: price.amountPaise,
+    fullPaise: price.fullPaise,
+    discountKind: price.discountKind || null,
+    discountValue: price.discountValue ?? null,
+    discountCode: price.code || null,
     currency: "INR",
     razorpayReady: razorpayConfigured(),
   });

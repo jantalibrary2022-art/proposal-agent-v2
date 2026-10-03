@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Track from "./_components/Track";
-import LanguageSwitcher from "./_components/LanguageSwitcher";
+import SiteHeader from "./_components/SiteHeader";
 import { getChosenLocale, dictFor, DEFAULT_LOCALE } from "../lib/i18n";
 
 export default async function Home() {
@@ -9,30 +9,11 @@ export default async function Home() {
   if (!chosen) redirect("/language");
   const locale = chosen || DEFAULT_LOCALE;
   const t = dictFor(locale);
-  const navCls = locale === "hi" ? "text-[13.5px]" : "text-[11.5px] tracking-wide";
 
   return (
     <main className="min-h-screen flex flex-col">
       <Track path="/" />
-      {/* Nav */}
-      <header className="sticky top-0 z-40 border-b border-line bg-canvas">
-        <div className="flex items-center justify-between px-5 sm:px-8 h-[60px]">
-          <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded-[3px] bg-ink text-paper font-extrabold text-[14px] flex items-center justify-center">प्र</span>
-            <span className="font-extrabold text-[18px] tracking-[-0.02em]">Prastav</span>
-          </div>
-          <nav className="flex items-center gap-4 sm:gap-6">
-            <a href="#how" className={`hidden sm:inline ${navCls} text-muted`}>{t.nav.method}</a>
-            <a href="#pricing" className={`hidden sm:inline ${navCls} text-muted`}>{t.nav.pricing}</a>
-            <Link href="/samples" className={`hidden sm:inline ${navCls} text-muted`}>{t.nav.samples}</Link>
-            <Link href="/help" className={`hidden sm:inline ${navCls} text-muted`}>{t.nav.help}</Link>
-            <Link href="/contact" className={`hidden sm:inline ${navCls} text-muted`}>{t.nav.contact}</Link>
-            <LanguageSwitcher current={locale} />
-            <Link href="/dashboard" className={`hidden sm:inline ${navCls}`}>{t.nav.signIn}</Link>
-            <Link href="/signup" className="bg-ink text-paper text-[12.5px] font-semibold px-4 py-2 rounded-[3px]">{t.nav.startFree}</Link>
-          </nav>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Meta line */}
       <div className="mt-7 sm:mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-5 text-center">
@@ -100,7 +81,7 @@ export default async function Home() {
         {/* Pill */}
         <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-black/70 border border-white/15 rounded-full py-2 pl-3 sm:pl-4 pr-2 backdrop-blur">
           <span className="w-[22px] h-[22px] rounded-full bg-paper text-panel font-extrabold text-[12px] flex items-center justify-center mr-1">प्र</span>
-          <a href="#how" className="text-[13px] sm:text-[13.5px] font-medium text-white/85 px-3 sm:px-3.5 py-2">{t.pill.how}</a>
+          <Link href="/method" className="text-[13px] sm:text-[13.5px] font-medium text-white/85 px-3 sm:px-3.5 py-2">{t.pill.how}</Link>
           <Link href="/samples" className="text-[13px] sm:text-[13.5px] font-medium text-white/85 px-3 sm:px-3.5 py-2">{t.pill.sample}</Link>
           <Link href="/signup" className="text-[13px] sm:text-[13.5px] font-semibold text-panel bg-paper px-4 sm:px-[18px] py-2 rounded-full">{t.pill.startFree}</Link>
         </div>
@@ -229,34 +210,11 @@ export default async function Home() {
           <h2 className="font-extrabold text-[clamp(30px,5vw,48px)] tracking-[-0.03em] leading-[1.03] max-w-[720px] mx-auto">{t.cta.heading}</h2>
           <div className="mt-9 flex items-center justify-center gap-3 flex-wrap">
             <Link href="/signup" className="bg-paper text-panel text-[15px] font-semibold px-7 py-3.5 rounded-[4px]">{t.cta.startFree}</Link>
-            <a href="#how" className="border border-white/25 text-paper text-[15px] font-semibold px-7 py-3.5 rounded-[4px]">{t.cta.seeHow}</a>
+            <Link href="/method" className="border border-white/25 text-paper text-[15px] font-semibold px-7 py-3.5 rounded-[4px]">{t.cta.seeHow}</Link>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-line">
-        <div className="px-5 sm:px-8 w-full max-w-[1200px] mx-auto py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded-[3px] bg-ink text-paper font-extrabold text-[14px] flex items-center justify-center">प्र</span>
-            <span className="font-extrabold text-[16px] tracking-[-0.02em]">Prastav</span>
-          </div>
-          <div className="flex items-center gap-6 text-[13px] text-muted">
-            <a href="#how">{t.footer.method}</a>
-            <a href="#pricing">{t.footer.pricing}</a>
-            <Link href="/help">{t.footer.help}</Link>
-            <Link href="/contact">{t.footer.contact}</Link>
-            <Link href="/privacy">{t.footer.privacy}</Link>
-            <Link href="/terms">{t.footer.terms}</Link>
-            <Link href="/refunds">{t.footer.refunds}</Link>
-            <Link href="/dashboard">{t.footer.signIn}</Link>
-          </div>
-          <div className="text-[12.5px] text-muted">{t.footer.tagline}</div>
-        </div>
-        <div className="border-t border-line">
-          <div className="px-5 sm:px-8 w-full max-w-[1200px] mx-auto py-5 text-[12.5px] text-muted">{t.footer.copyright}</div>
-        </div>
-      </footer>
     </main>
   );
 }

@@ -78,6 +78,7 @@ export default async function Dashboard() {
             <Link href="/feedback" className="text-[12px] tracking-wide text-muted">{td.navFeedback}</Link>
             <Link href="/help" className="text-[12px] tracking-wide text-muted">{td.navHelp}</Link>
             <Link href="/contact" className="text-[12px] tracking-wide text-muted">{td.navContact}</Link>
+            <Link href="/policies" className="text-[12px] tracking-wide text-muted">{td.navPolicies}</Link>
             {isAdmin && <Link href="/admin" className="text-[12px] tracking-wide text-muted">{td.navAdmin}</Link>}
           </nav>
         </div>
