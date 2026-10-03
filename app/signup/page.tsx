@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "../../lib/supabase/client";
 import { useDict } from "../_components/LocaleProvider";
@@ -16,6 +16,10 @@ export default function SignUp() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
+  const [linkInvalid, setLinkInvalid] = useState(false);
+  useEffect(() => {
+    try { if (new URLSearchParams(window.location.search).get("error") === "link_invalid") setLinkInvalid(true); } catch {}
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -78,6 +82,11 @@ export default function SignUp() {
       <section className="flex-1 flex flex-col justify-center px-6 sm:px-16 py-12">
         <div className="w-full max-w-[520px] mx-auto">
           <Link href="/" className="inline-flex items-center gap-1.5 text-[13.5px] text-muted hover:text-ink mb-6">{t.auth.backHome}</Link>
+          {linkInvalid && (
+            <div className="mb-6 border border-[#E3C9A8] bg-[#FBF3E8] rounded-[5px] px-4 py-3 text-[14px] leading-relaxed text-[#5A3A12]" role="status">
+              {d.linkInvalid} <Link href="/login" className="font-semibold underline">{d.linkInvalidSignIn}</Link>
+            </div>
+          )}
           <div className="flex items-center justify-between mb-7">
             <h1 className="font-extrabold text-[30px] tracking-[-0.03em]">{d.title}</h1>
             <span className="text-[14.5px] text-muted">{d.haveOne} <Link href="/login" className="font-semibold text-ink">{d.logIn}</Link></span>

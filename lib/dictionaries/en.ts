@@ -221,6 +221,8 @@ export const en = {
       submitting: "Logging in…",
     },
     signup: {
+      linkInvalid: "Confirmation links work once and expire after a while. If you already clicked it, your account may be confirmed: try signing in. Otherwise sign up again to get a fresh link.",
+      linkInvalidSignIn: "Sign in",
       asideHeading: "Proposals that hold up to scrutiny.",
       asideSub: "Set up in a minute. Your work is saved as you go, so you can leave and return anytime.",
       point1: "Sourced evidence, never invented figures",
