@@ -63,12 +63,14 @@ export default function VoiceInput({
     const SR = getSR();
     if (!SR) { setSupported(false); return; }
     const rec = new SR();
-    // Android Chrome repeats words in continuous mode, so there we take one
-    // phrase at a time and restart automatically until the user taps stop.
-    const android = /Android/i.test(navigator.userAgent);
+    // Android Chrome and iPhone Safari can repeat words in continuous mode, so
+    // on phones we take one phrase at a time and restart automatically until
+    // the user taps stop.
+    const ua = navigator.userAgent;
+    const phone = /Android|iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
     rec.lang = lang;
     rec.interimResults = true;
-    rec.continuous = !android;
+    rec.continuous = !phone;
     sessionRef.current = "";
     rec.onresult = (e: any) => {
       let finals = "";
