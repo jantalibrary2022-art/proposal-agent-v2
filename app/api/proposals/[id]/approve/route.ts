@@ -3,6 +3,7 @@ import { createClient } from "../../../../../lib/supabase/server";
 import { createAdminClient } from "../../../../../lib/supabase/admin";
 import { renderProposalFiles } from "../../../../../lib/run-open";
 import { applyEdits } from "../../../../../lib/apply-edits";
+import { isEntitled } from "../../../../../lib/entitlement";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -16,10 +17,15 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   const { data: row } = await supabase.from("proposals").select("id,status,substance,composed,meta").eq("id", id).single();
   if (!row || !row.substance) return NextResponse.json({ ok: false, error: "not_ready" }, { status: 404 });
 
+  const admin = createAdminClient();
+
+  // Payment gate: finalising (which produces the downloadable files) requires
+  // the proposal to be paid for or covered by a redeemed code, when the paywall
+  // is on. No-op when the paywall is off.
+  if (!(await isEntitled(admin, id))) return NextResponse.json({ ok: false, error: "payment_required" }, { status: 402 });
+
   let edits: any = {};
   try { edits = await req.json(); } catch { edits = {}; }
-
-  const admin = createAdminClient();
   await admin.from("proposals").update({ status: "rendering", updated_at: new Date().toISOString() }).eq("id", id);
 
   try {

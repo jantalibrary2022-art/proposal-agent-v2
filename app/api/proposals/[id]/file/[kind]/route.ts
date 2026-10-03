@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "../../../../../../lib/supabase/server";
 import { createAdminClient } from "../../../../../../lib/supabase/admin";
+import { isEntitled } from "../../../../../../lib/entitlement";
 
 export const runtime = "nodejs";
 
@@ -23,6 +24,8 @@ export async function GET(_req: NextRequest, ctx: { params: Promise<{ id: string
   if (!path) return NextResponse.json({ error: "not_found" }, { status: 404 });
 
   const admin = createAdminClient();
+  // Payment gate (defense in depth; approve already gated producing the files).
+  if (!(await isEntitled(admin, id))) return NextResponse.json({ error: "payment_required" }, { status: 402 });
   const { data: signed, error } = await admin.storage.from("proposals").createSignedUrl(path, 120, { download: DOWNLOAD[kind] });
   if (error || !signed) return NextResponse.json({ error: "sign_failed" }, { status: 500 });
   return NextResponse.redirect(signed.signedUrl);

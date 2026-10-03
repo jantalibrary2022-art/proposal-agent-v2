@@ -24,9 +24,9 @@ export function normalizeCode(s: unknown): string {
 // tokens be issued and consumed now without locking anyone out during testing.
 // It flips on when PRASTAV_PAYWALL=on, or once a Razorpay key is present.
 export function paywallEnabled(): boolean {
-  if ((process.env.PRASTAV_PAYWALL || "").toLowerCase() === "on") return true;
-  if (process.env.RAZORPAY_KEY_ID) return true;
-  return false;
+  // Explicit switch only. Having Razorpay keys configured does NOT by itself turn
+  // the paywall on, so test keys can be set without gating the live site.
+  return (process.env.PRASTAV_PAYWALL || "").toLowerCase() === "on";
 }
 
 // Read-only check, used to give the user a hint before they generate.

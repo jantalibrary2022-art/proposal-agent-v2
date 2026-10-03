@@ -66,7 +66,7 @@ function Dictation({ value, onChange }: { value: string; onChange: (v: string) =
   );
 }
 
-function Section({ id, label, single, text, proposalId, onCommit }: { id: string; label: string; single: boolean; text: string; proposalId: string; onCommit: (section: string, newText: string) => Promise<boolean>; }) {
+function Section({ id, label, single, text, proposalId, onCommit, locked, truncate }: { id: string; label: string; single: boolean; text: string; proposalId: string; onCommit: (section: string, newText: string) => Promise<boolean>; locked?: boolean; truncate?: boolean; }) {
   const { t } = useDict();
   const p = t.proposal;
   const [open, setOpen] = useState(false);
@@ -76,6 +76,9 @@ function Section({ id, label, single, text, proposalId, onCommit }: { id: string
   const [proposed, setProposed] = useState<string | null>(null);
 
   const shown = proposed != null ? proposed : text;
+  const LOCK_CHARS = 700;
+  const truncated = !!locked && !!truncate && !single && (shown || "").length > LOCK_CHARS;
+  const display = truncated ? (shown || "").slice(0, LOCK_CHARS).replace(/\s+\S*$/, "") + "…" : shown;
 
   const ask = async () => {
     if (!comment.trim() || busy) return;
@@ -107,12 +110,16 @@ function Section({ id, label, single, text, proposalId, onCommit }: { id: string
     <div className="bg-card border border-line rounded-lg p-6">
       <div className="flex items-start justify-between gap-4 mb-3">
         <div className="text-[12px] tracking-wide font-semibold text-muted">{label.toUpperCase()}</div>
-        <button type="button" onClick={() => setOpen(!open)} className="shrink-0 text-[13px] font-semibold text-ink underline">{open ? p.close : p.suggestChange}</button>
+        {!locked && <button type="button" onClick={() => setOpen(!open)} className="shrink-0 text-[13px] font-semibold text-ink underline">{open ? p.close : p.suggestChange}</button>}
       </div>
 
-      <div style={{ userSelect: "none" }} className={single ? "font-bold text-[18px]" : "text-[15px] text-ink"}>
-        {single ? (shown || p.empty) : paras(shown)}
+      <div className="relative">
+        <div style={{ userSelect: "none" }} className={single ? "font-bold text-[18px]" : "text-[15px] text-ink"}>
+          {single ? (shown || p.empty) : paras(display)}
+        </div>
+        {truncated && <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-20" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0), #ffffff)" }} />}
       </div>
+      {truncated && <div className="mt-3 inline-block text-[11.5px] tracking-wide font-semibold text-muted border border-line rounded-full px-3 py-1">{p.unlockChip}</div>}
 
       {proposed != null && (
         <div className="mt-3 text-[12px] tracking-wide font-semibold text-ink">{p.proposedBanner}</div>
@@ -253,7 +260,26 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
   const [texts, setTexts] = useState<any>(null);
   const [rates, setRates] = useState<Record<string, string>>({});
   const [approving, setApproving] = useState(false);
+  const [payInfo, setPayInfo] = useState<any>(null);
+  const [paying, setPaying] = useState(false);
   const timer = useRef<any>(null);
+
+  const refreshPayInfo = async () => {
+    try {
+      const res = await fetch("/api/proposals/" + id + "/pay-info");
+      const data = await res.json();
+      if (data.ok) setPayInfo(data);
+    } catch {}
+  };
+
+  const loadRazorpay = () => new Promise<boolean>((resolve) => {
+    if ((window as any).Razorpay) return resolve(true);
+    const s = document.createElement("script");
+    s.src = "https://checkout.razorpay.com/v1/checkout.js";
+    s.onload = () => resolve(true);
+    s.onerror = () => resolve(false);
+    document.body.appendChild(s);
+  });
 
   useEffect(() => { params.then((pr) => setId(pr.id)); }, [params]);
 
@@ -272,6 +298,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
     const supabase = createClient();
     supabase.auth.getUser().then(({ data }) => { if (data.user?.email) setEmail(data.user.email); });
     fetchRow(true);
+    refreshPayInfo();
     return () => { if (timer.current) clearTimeout(timer.current); };
   }, [id]);
 
@@ -331,12 +358,47 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
     setApproving(false);
   };
 
+  const startPayment = async () => {
+    setPaying(true);
+    try {
+      const res = await fetch("/api/payments/create-order", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ proposalId: id }) });
+      const data = await res.json();
+      if (data.already) { await refreshPayInfo(); setPaying(false); await approve(); return; }
+      if (!data.ok) { alert(p.payFailed + (data.error || "")); setPaying(false); return; }
+      const ready = await loadRazorpay();
+      if (!ready || !(window as any).Razorpay) { alert(p.payFailed); setPaying(false); return; }
+      const rz = new (window as any).Razorpay({
+        key: data.keyId,
+        order_id: data.orderId,
+        amount: data.amount,
+        currency: data.currency,
+        name: "Prastav",
+        description: p.payDescription,
+        prefill: email ? { email } : undefined,
+        theme: { color: "#1a1a17" },
+        handler: async (resp: any) => {
+          try {
+            const v = await fetch("/api/payments/verify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ proposalId: id, razorpay_order_id: resp.razorpay_order_id, razorpay_payment_id: resp.razorpay_payment_id, razorpay_signature: resp.razorpay_signature }) });
+            const vd = await v.json();
+            if (!vd.ok) { alert(p.payVerifyFailed); setPaying(false); return; }
+            await refreshPayInfo();
+            setPaying(false);
+            await approve();
+          } catch { alert(p.payVerifyFailed); setPaying(false); }
+        },
+        modal: { ondismiss: () => setPaying(false) },
+      });
+      rz.open();
+    } catch { alert(p.payFailed); setPaying(false); }
+  };
+
   const status = row?.status;
   const STALL_MIN = 15;
   const stallBase = status === "rendering" ? (row?.updated_at || row?.created_at) : row?.created_at;
   const stalled = (status === "generating" || status === "rendering") && !!stallBase && (Date.now() - new Date(stallBase).getTime()) / 60000 >= STALL_MIN;
   const isBusy = status === "error" && typeof row?.error === "string" && row.error.startsWith("busy:");
   const protect = status === "draft";
+  const locked = status === "draft" && !!payInfo && !!payInfo.locked;
   const wmSvg = encodeURIComponent(
     `<svg xmlns='http://www.w3.org/2000/svg' width='360' height='210'><text x='10' y='120' transform='rotate(-28 180 105)' fill='rgba(20,20,18,0.07)' font-size='17' font-family='sans-serif' font-weight='bold'>DRAFT &#183; ${email || "preview"} &#183; PRASTAV</text></svg>`
   );
@@ -430,7 +492,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
 
               <div className="flex flex-col gap-4">
                 {SECTIONS.map(([label, key, single]) => (
-                  <Section key={key} id={key} label={label} single={single as boolean} text={texts[key] || ""} proposalId={id} onCommit={commitSection} />
+                  <Section key={key} id={key} label={label} single={single as boolean} text={texts[key] || ""} proposalId={id} onCommit={commitSection} locked={locked} truncate={["problem", "results_narrative", "activities"].includes(key)} />
                 ))}
 
                 {row.substance && row.substance.budget_table && (
@@ -438,8 +500,13 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
                 )}
               </div>
 
-              <div className="flex items-center gap-4 mt-8">
-                <button type="button" onClick={approve} disabled={approving} className="bg-ink text-paper text-[16px] font-semibold px-8 py-[15px] rounded-[4px] disabled:opacity-40">{approving ? p.finalising : p.finalise}</button>
+              {locked && <p className="text-[13.5px] text-muted leading-relaxed mt-8 mb-2 max-w-[560px]">{p.payNote}</p>}
+              <div className="flex items-center gap-4 mt-2">
+                {locked ? (
+                  <button type="button" onClick={startPayment} disabled={paying} className="bg-ink text-paper text-[16px] font-semibold px-8 py-[15px] rounded-[4px] disabled:opacity-40">{paying ? p.payOpening : `${p.payAndFinalise} · ₹${fmtIN((payInfo?.amountPaise || 0) / 100)}`}</button>
+                ) : (
+                  <button type="button" onClick={approve} disabled={approving} className="bg-ink text-paper text-[16px] font-semibold px-8 py-[15px] rounded-[4px] disabled:opacity-40">{approving ? p.finalising : p.finalise}</button>
+                )}
                 <Link href="/dashboard" className="text-muted text-[15px] font-semibold">{p.saveExit}</Link>
               </div>
             </>
