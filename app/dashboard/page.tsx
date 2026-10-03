@@ -42,7 +42,8 @@ function StatusPill({ status, td }: { status: string; td: Dict["dashboard"] }) {
   return <span className={`shrink-0 text-[10.5px] tracking-wide font-semibold px-2.5 py-1 rounded-full ${cls}`}>{m.label}</span>;
 }
 
-export default async function Dashboard() {
+export default async function Dashboard({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const sp = await searchParams;
   const supabase = await createClient();
   const {
     data: { user },
@@ -96,7 +97,8 @@ export default async function Dashboard() {
     } catch {}
   }
   const tdr = t.drafts;
-  const showRules = paywall && Number((user.user_metadata as any)?.draft_rules_ack || 0) < DRAFT_RULES_VERSION;
+  // Admins can preview the pop-up any time with /dashboard?preview=rules.
+  const showRules = (paywall && Number((user.user_metadata as any)?.draft_rules_ack || 0) < DRAFT_RULES_VERSION) || (isAdmin && sp.preview === "rules");
 
   return (
     <main className="min-h-screen bg-canvas flex flex-col">
