@@ -22,6 +22,7 @@ export default function SiteHeader() {
   useEffect(() => { setOpen(false); }, [pathname]);
 
   const items: [string, string][] = [
+    ...(signedIn ? [] : [["/", t.nav.home] as [string, string]]),
     ["/method", t.nav.method],
     ["/pricing", t.nav.pricing],
     ["/samples", t.nav.samples],
@@ -29,13 +30,13 @@ export default function SiteHeader() {
     ["/contact", t.nav.contact],
     ["/policies", t.nav.policies],
   ];
-  const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
+  const isActive = (href: string) => href === "/" ? pathname === "/" : (pathname === href || pathname.startsWith(href + "/"));
   const navCls = locale === "hi" ? "text-[13.5px]" : "text-[11.5px] tracking-wide";
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-canvas">
       <div className="flex items-center justify-between px-5 sm:px-8 h-[60px]">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href={signedIn ? "/dashboard" : "/"} className="flex items-center gap-2">
           <span className="w-6 h-6 rounded-[3px] bg-ink text-paper font-extrabold text-[14px] flex items-center justify-center">प्र</span>
           <span className="font-extrabold text-[18px] tracking-[-0.02em]">Prastav</span>
         </Link>
