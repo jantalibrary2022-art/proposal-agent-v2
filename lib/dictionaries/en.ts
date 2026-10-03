@@ -106,6 +106,7 @@ export const en = {
     contact: "Contact",
     privacy: "Privacy",
     terms: "Terms",
+    refunds: "Refunds",
     signIn: "Sign in",
     tagline: "An AI workbench for the development sector.",
     copyright: "© 2026 Prastav. All rights reserved.",

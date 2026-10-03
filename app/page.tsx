@@ -248,6 +248,7 @@ export default async function Home() {
             <Link href="/contact">{t.footer.contact}</Link>
             <Link href="/privacy">{t.footer.privacy}</Link>
             <Link href="/terms">{t.footer.terms}</Link>
+            <Link href="/refunds">{t.footer.refunds}</Link>
             <Link href="/dashboard">{t.footer.signIn}</Link>
           </div>
           <div className="text-[12.5px] text-muted">{t.footer.tagline}</div>

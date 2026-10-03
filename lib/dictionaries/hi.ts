@@ -109,6 +109,7 @@ export const hi: typeof en = {
     contact: "संपर्क",
     privacy: "गोपनीयता",
     terms: "शर्तें",
+    refunds: "रिफ़ंड",
     signIn: "साइन इन",
     tagline: "विकास क्षेत्र के लिए एक AI वर्कबेंच।",
     copyright: "© 2026 Prastav. सर्वाधिकार सुरक्षित।",

@@ -500,7 +500,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
                 )}
               </div>
 
-              {locked && <p className="text-[13.5px] text-muted leading-relaxed mt-8 mb-2 max-w-[560px]">{p.payNote}</p>}
+              {locked && <p className="text-[13.5px] text-muted leading-relaxed mt-8 mb-2 max-w-[560px]">{p.payNote} <Link href="/refunds" target="_blank" className="underline font-semibold text-ink">{t.footer.refunds}</Link></p>}
               <div className="flex items-center gap-4 mt-2">
                 {locked ? (
                   <button type="button" onClick={startPayment} disabled={paying} className="bg-ink text-paper text-[16px] font-semibold px-8 py-[15px] rounded-[4px] disabled:opacity-40">{paying ? p.payOpening : `${p.payAndFinalise} · ₹${fmtIN((payInfo?.amountPaise || 0) / 100)}`}</button>

@@ -42,7 +42,7 @@ const SECTIONS: { h: string; body: string[] }[] = [
   {
     h: "Fees and payment",
     body: [
-      "Where the service is paid, the fee is shown before you buy, and a completed proposal is made available to download once payment succeeds. Discounts and access codes, where offered, apply as stated at the time. Any taxes, where applicable, are as shown. If you believe you were charged in error, contact hello@prastav.app and we will look into it.",
+      "Where the service is paid, the fee is shown before you buy, and a completed proposal is made available to download once payment succeeds. Discounts and access codes, where offered, apply as stated at the time. Any taxes, where applicable, are as shown. Refunds, cancellation and delivery are covered by our Refund, Cancellation & Delivery Policy at prastav.app/refunds. If you believe you were charged in error, contact hello@prastav.app and we will look into it.",
     ],
   },
   {
