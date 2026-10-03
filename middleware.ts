@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "./lib/supabase/middleware";
+import { publicOrigin } from "./lib/public-origin";
 
 export async function middleware(request: NextRequest) {
   // Supabase falls back to the Site URL (the homepage) after confirming an
@@ -7,8 +8,8 @@ export async function middleware(request: NextRequest) {
   // confirm route so the user is signed in and taken to the dashboard.
   const url = request.nextUrl;
   if (url.pathname === "/" && (url.searchParams.has("code") || url.searchParams.has("token_hash"))) {
-    const to = url.clone();
-    to.pathname = "/auth/confirm";
+    const to = new URL("/auth/confirm", publicOrigin(request));
+    url.searchParams.forEach((v, k) => to.searchParams.set(k, v));
     if (!to.searchParams.has("next")) to.searchParams.set("next", "/dashboard");
     return NextResponse.redirect(to);
   }
