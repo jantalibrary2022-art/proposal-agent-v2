@@ -4,8 +4,8 @@ import SiteHeader from "../_components/SiteHeader";
 
 export const metadata = { title: "Privacy Policy · Prastav" };
 
-const EFFECTIVE_HI = "2 अक्टूबर 2026";
-const EFFECTIVE = "2 October 2026";
+const EFFECTIVE_HI = "3 अक्टूबर 2026";
+const EFFECTIVE = "3 October 2026";
 
 const SECTIONS_EN: { h: string; body: string[] }[] = [
   {
@@ -44,7 +44,8 @@ const SECTIONS_EN: { h: string; body: string[] }[] = [
     h: "How we share information",
     body: [
       "We do not sell your personal data, and we do not share your proposals with other users.",
-      "We use trusted providers who process data on our behalf: Supabase (hosting, database and file storage), Anthropic (AI processing) and our payment provider (payments). They may process data only to provide these services to us.",
+      "We use trusted providers who process data on our behalf: Supabase (database, sign-in and file storage), Render (website hosting), Anthropic (AI processing), Razorpay (payments) and Zoho ZeptoMail (sending account and service emails, such as sign-up confirmation and proposal notifications). They may process data only to provide these services to us.",
+      "Voice input is optional. When you use the Speak button, your speech is converted to text by your browser's own speech service (for example Google in Chrome, Apple in Safari, Microsoft in Edge), under that provider's terms. Prastav receives only the resulting text, never the audio.",
       "We may disclose information if required by law, regulation or valid legal process, or to protect our rights and the safety of users.",
     ],
   },
@@ -135,7 +136,8 @@ const SECTIONS_HI: { h: string; body: string[] }[] = [
     h: "हम जानकारी कैसे साझा करते हैं",
     body: [
       "हम आपका व्यक्तिगत डेटा नहीं बेचते, और आपके प्रस्ताव अन्य उपयोगकर्ताओं के साथ साझा नहीं करते।",
-      "हम विश्वसनीय प्रदाताओं का उपयोग करते हैं जो हमारी ओर से डेटा संसाधित करते हैं: Supabase (होस्टिंग, डेटाबेस और फ़ाइल संग्रहण), Anthropic (AI प्रसंस्करण) और हमारा भुगतान प्रदाता (भुगतान)। वे डेटा को केवल हमें ये सेवाएँ देने के लिए संसाधित कर सकते हैं।",
+      "हम विश्वसनीय प्रदाताओं का उपयोग करते हैं जो हमारी ओर से डेटा संसाधित करते हैं: Supabase (डेटाबेस, साइन-इन और फ़ाइल संग्रहण), Render (वेबसाइट होस्टिंग), Anthropic (AI प्रसंस्करण), Razorpay (भुगतान) और Zoho ZeptoMail (खाते और सेवा से जुड़े ईमेल भेजना, जैसे साइन-अप पुष्टि और प्रस्ताव सूचनाएँ)। वे डेटा को केवल हमें ये सेवाएँ देने के लिए संसाधित कर सकते हैं।",
+      "आवाज़ से लिखना वैकल्पिक है। जब आप 'बोलें' बटन का उपयोग करते हैं, तो आपकी आवाज़ को आपके ब्राउज़र की अपनी स्पीच सेवा (जैसे Chrome में Google, Safari में Apple, Edge में Microsoft) उस प्रदाता की शर्तों के तहत टेक्स्ट में बदलती है। Prastav को केवल बना हुआ टेक्स्ट मिलता है, ऑडियो कभी नहीं।",
       "यदि कानून, विनियमन या वैध कानूनी प्रक्रिया के तहत आवश्यक हो, या हमारे अधिकारों और उपयोगकर्ताओं की सुरक्षा के लिए, तो हम जानकारी प्रकट कर सकते हैं।",
     ],
   },
