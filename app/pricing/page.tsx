@@ -59,6 +59,17 @@ export default async function PricingPage() {
           ))}
         </ol>
 
+        {/* Draft rules */}
+        <h2 className={h2}>{p.draftRulesTitle}</h2>
+        <div className="flex flex-col border-y border-line divide-y divide-line">
+          {p.draftRules.map(([title, d]) => (
+            <div key={title} className="py-4 grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-1 sm:gap-6">
+              <div className="text-[15px] font-bold">{title}</div>
+              <div className="text-[14.5px] leading-relaxed text-[#4A4A42]">{d}</div>
+            </div>
+          ))}
+        </div>
+
         {/* Discounts */}
         <h2 className={h2}>{p.discountTitle}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

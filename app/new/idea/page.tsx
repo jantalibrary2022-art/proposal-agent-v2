@@ -8,9 +8,11 @@ import { useDict } from "../../_components/LocaleProvider";
 import VoiceInput from "../../_components/VoiceInput";
 import OutputLanguagePicker, { defaultOutputLanguage, type OutputLanguage } from "../../_components/OutputLanguagePicker";
 import AccessCodeInput from "../../_components/AccessCodeInput";
+import { useDraftGate, DraftGateNotice } from "../../_components/DraftGate";
 
 export default function IdeaPage() {
   const router = useRouter();
+  const draftGate = useDraftGate();
   const { locale, t } = useDict();
   const [outLang, setOutLang] = useState<OutputLanguage>(defaultOutputLanguage(locale));
   const [couponCode, setCouponCode] = useState("");
@@ -150,6 +152,7 @@ export default function IdeaPage() {
 
   const generate = async () => {
     setStarting(true);
+    if (!(await draftGate.prepare(couponCode))) { setStarting(false); return; }
     const chosen = approachIdx != null ? { ...approaches[approachIdx], adjust: approachAdjust.trim() } : null;
     const questions = (brief && brief.questions_for_user) || [];
     const qaPairs = questions.map((q: string, i: number) => ({ question: q, answer: (qa[String(i)] || "").trim() })).filter((p: any) => p.answer);
@@ -167,6 +170,7 @@ export default function IdeaPage() {
       const res = await fetch("/api/proposals/generate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers: payload }) });
       const data = await res.json();
       if (data.ok && data.id) { router.push("/proposals/" + data.id); return; }
+      if (draftGate.handleRefusal(data.error)) { setStarting(false); return; }
       alert(d.couldNotStart + (data.error || "unknown error"));
     } catch (e) { alert(d.couldNotStartShort); }
     setStarting(false);
@@ -224,6 +228,7 @@ export default function IdeaPage() {
         <div className="w-full max-w-[640px]">
           <div className="text-[12px] tracking-wide text-muted mb-3 font-semibold">{fl.step} {step + 1} {fl.of} {steps.length}</div>
 
+          {step === 0 && <DraftGateNotice gate={draftGate.gate} compact />}
           {step === 0 && (
             <>
               <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{d.s0Title}</h1>
@@ -382,13 +387,14 @@ export default function IdeaPage() {
 
           {step === steps.length - 1 && <OutputLanguagePicker value={outLang} onChange={setOutLang} />}
           {step === steps.length - 1 && <AccessCodeInput value={couponCode} onChange={setCouponCode} />}
+          {step === steps.length - 1 && <DraftGateNotice gate={draftGate.gate} code={couponCode} />}
 
           <div className="flex items-center justify-between mt-11">
             <button type="button" onClick={goBack} className="text-muted text-[15.5px] font-semibold">{fl.back}</button>
             {step < steps.length - 1 ? (
               <button type="button" onClick={goNext} disabled={!canContinue()} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{step === 1 && intaking ? d.readingIdea : fl.continue}</button>
             ) : (
-              <button type="button" onClick={generate} disabled={starting} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{starting ? d.starting : d.generate}</button>
+              <button type="button" onClick={generate} disabled={starting} className="bg-ink text-paper text-[16px] font-semibold px-[34px] py-[15px] rounded-[4px] disabled:opacity-40">{starting ? d.starting : draftGate.buttonLabel(couponCode, d.generate)}</button>
             )}
           </div>
         </div>

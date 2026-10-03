@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "../../../../../lib/supabase/server";
 import { createAdminClient } from "../../../../../lib/supabase/admin";
+import { isPastExpiry } from "../../../../../lib/drafts";
 
 export const runtime = "nodejs";
 
@@ -15,10 +16,19 @@ export async function POST(_req: NextRequest, ctx: { params: Promise<{ id: strin
   if (!user) return NextResponse.json({ ok: false, error: "not_authenticated" }, { status: 401 });
 
   // Ownership check via the user-scoped client (RLS limits this to their rows).
-  const { data: row } = await supabase.from("proposals").select("id").eq("id", id).single();
+  const { data: row } = await supabase.from("proposals").select("id,status,created_at").eq("id", id).single();
   if (!row) return NextResponse.json({ ok: false, error: "not_found" }, { status: 404 });
 
   const admin = createAdminClient();
+  // A failed generation never counts toward the unpaid-draft limit, even once deleted.
+  if (row.status === "error") {
+    try { await admin.from("draft_ledger").update({ failed: true }).eq("proposal_id", id); } catch {}
+  }
+  // Deleted before expiry: still counts toward the limit for its 7 days, but will
+  // not trigger pay-first. Deleting an already-expired draft changes nothing.
+  if (row.created_at && !isPastExpiry(row.created_at)) {
+    try { await admin.from("draft_ledger").update({ deleted: true }).eq("proposal_id", id).eq("user_id", user.id); } catch {}
+  }
 
   // Remove any generated files under this proposal's folder.
   const base = user.id + "/" + id;

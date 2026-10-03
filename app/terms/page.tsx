@@ -43,6 +43,7 @@ const SECTIONS_EN: { h: string; body: string[] }[] = [
     h: "Fees and payment",
     body: [
       "Where the service is paid, the fee is shown before you buy, and a completed proposal is made available to download once payment succeeds. Discounts and access codes, where offered, apply as stated at the time. Any taxes, where applicable, are as shown. Refunds, cancellation and delivery are covered by our Refund, Cancellation & Delivery Policy at prastav.app/refunds. If you believe you were charged in error, contact hello@prastav.app and we will look into it.",
+      "Unpaid drafts: you may hold up to 2 unpaid drafts at a time, each counted for 7 days from creation, including drafts you delete. An unpaid draft stays open for 7 days; it is then locked as expired, can be restored by paying within the following 30 days, and is then permanently deleted. If a draft expires unpaid, new proposals must be paid for before generation until you next pay for a proposal. Drafts that fail to generate because of a fault on our side do not count, and an upfront payment for a proposal that fails is kept as credit for your next proposal or refunded on request. Full details are on prastav.app/pricing.",
     ],
   },
   {
@@ -125,6 +126,7 @@ const SECTIONS_HI: { h: string; body: string[] }[] = [
     h: "शुल्क और भुगतान",
     body: [
       "जहाँ सेवा सशुल्क है, वहाँ ख़रीदने से पहले शुल्क दिखाया जाता है, और भुगतान सफल होने पर पूरा प्रस्ताव डाउनलोड के लिए उपलब्ध कराया जाता है। छूट और एक्सेस कोड, जहाँ दिए जाएँ, उस समय बताई गई शर्तों के अनुसार लागू होते हैं। कोई भी कर, जहाँ लागू हो, दिखाए गए अनुसार होता है। रिफ़ंड, रद्दीकरण और डिलीवरी हमारी रिफ़ंड, रद्दीकरण और डिलीवरी नीति (prastav.app/refunds) के अंतर्गत आते हैं। यदि आपको लगे कि आपसे गलती से शुल्क लिया गया है, तो hello@prastav.app पर संपर्क करें, हम इसकी जाँच करेंगे।",
+      "बिना भुगतान वाले ड्राफ़्ट: एक समय में अधिकतम 2 बिना भुगतान वाले ड्राफ़्ट रखे जा सकते हैं, हर एक बनाए जाने के 7 दिन तक गिना जाता है, हटाए गए ड्राफ़्ट भी। बिना भुगतान वाला ड्राफ़्ट 7 दिन तक खुला रहता है; फिर वह समाप्त मानकर लॉक हो जाता है, अगले 30 दिनों में भुगतान करके बहाल किया जा सकता है, और उसके बाद स्थायी रूप से हटा दिया जाता है। यदि कोई ड्राफ़्ट बिना भुगतान के समाप्त होता है, तो अगली बार किसी प्रस्ताव का भुगतान करने तक नए प्रस्तावों का भुगतान बनना शुरू होने से पहले करना होगा। हमारी ओर की खराबी से न बन पाने वाले ड्राफ़्ट नहीं गिने जाते, और असफल प्रस्ताव के लिए किया गया अग्रिम भुगतान आपके अगले प्रस्ताव के लिए क्रेडिट के रूप में रखा जाता है या अनुरोध पर लौटाया जाता है। पूरा विवरण prastav.app/pricing पर है।",
     ],
   },
   {

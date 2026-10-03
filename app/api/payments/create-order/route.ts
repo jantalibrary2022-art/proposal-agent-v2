@@ -4,6 +4,7 @@ import { createAdminClient } from "../../../../lib/supabase/admin";
 import { isEntitled } from "../../../../lib/entitlement";
 import { createOrder, razorpayConfigured, razorpayKeyId } from "../../../../lib/razorpay";
 import { priceFor } from "../../../../lib/pricing";
+import { draftGate, draftDates, isTracked } from "../../../../lib/drafts";
 
 export const runtime = "nodejs";
 
@@ -16,15 +17,33 @@ export async function POST(req: NextRequest) {
 
   let body: any = {};
   try { body = await req.json(); } catch {}
+  // Pay upfront for the next proposal (unpaid-draft rules). Full price; a user
+  // with a discount code enters it on the form instead and skips this.
+  if (body.prepay) {
+    const admin = createAdminClient();
+    const g = await draftGate(admin, user.id);
+    if (!g.enforced || g.creditId) return NextResponse.json({ ok: true, already: true });
+    try {
+      const order = await createOrder(g.pricePaise, "pre-" + user.id.slice(0, 30), { prepay: "1", userId: user.id });
+      return NextResponse.json({ ok: true, orderId: order.id, amount: order.amount, currency: order.currency, keyId: razorpayKeyId() });
+    } catch (e: any) {
+      return NextResponse.json({ ok: false, error: (e && e.message) || "order_failed" }, { status: 500 });
+    }
+  }
+
   const proposalId = String(body.proposalId || "");
   if (!proposalId) return NextResponse.json({ ok: false, error: "missing_proposal" }, { status: 400 });
 
   // Ownership (user-scoped select, RLS limits to their rows).
-  const { data: row } = await supabase.from("proposals").select("id,status").eq("id", proposalId).single();
+  const { data: row } = await supabase.from("proposals").select("id,status,created_at").eq("id", proposalId).single();
   if (!row) return NextResponse.json({ ok: false, error: "not_found" }, { status: 404 });
 
   const admin = createAdminClient();
   if (await isEntitled(admin, proposalId)) return NextResponse.json({ ok: true, already: true });
+  // An expired draft past its restore window is about to be deleted: don't take payment.
+  if (row.status === "draft" && row.created_at && Date.now() >= Date.parse(draftDates(row.created_at).deleteAt) && (await isTracked(admin, proposalId))) {
+    return NextResponse.json({ ok: false, error: "restore_window_closed" }, { status: 410 });
+  }
 
   const price = await priceFor(admin, proposalId);
   if (price.free) return NextResponse.json({ ok: true, already: true });

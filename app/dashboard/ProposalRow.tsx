@@ -13,12 +13,16 @@ export default function ProposalRow({
   modeLabel,
   statusPill,
   relUpdated,
+  note = "",
+  unpaid = false,
 }: {
   p: Row;
   last: boolean;
   modeLabel: string;
   statusPill: React.ReactNode;
   relUpdated: string;
+  note?: string;
+  unpaid?: boolean;
 }) {
   const { t } = useDict();
   const td = t.dashboard;
@@ -30,7 +34,7 @@ export default function ProposalRow({
   const del = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!window.confirm(td.deleteConfirm.replace("{title}", title))) return;
+    if (!window.confirm(td.deleteConfirm.replace("{title}", title) + (unpaid ? "\n\n" + t.drafts.deleteWarn : ""))) return;
     setBusy(true);
     try {
       const res = await fetch("/api/proposals/" + p.id + "/delete", { method: "POST" });
@@ -46,7 +50,7 @@ export default function ProposalRow({
       <Link href={"/proposals/" + p.id} className="flex items-center gap-3 flex-grow min-w-0">
         <div className="flex-grow min-w-0">
           <div className="text-[15.5px] font-semibold truncate">{title}</div>
-          <div className="text-[13px] text-muted mt-0.5 truncate">{td.updated} {relUpdated}{p.meta && p.meta.geography ? " · " + p.meta.geography : ""}</div>
+          <div className="text-[13px] text-muted mt-0.5 truncate">{td.updated} {relUpdated}{p.meta && p.meta.geography ? " · " + p.meta.geography : ""}{note ? <span className="text-[#8A3B12] font-semibold"> · {note}</span> : null}</div>
         </div>
         <span className="hidden sm:inline shrink-0 text-[10.5px] tracking-wide font-semibold text-muted border border-[#C4C2BB] px-2.5 py-1 rounded-full">{modeLabel}</span>
         {statusPill}

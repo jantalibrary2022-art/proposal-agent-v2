@@ -38,6 +38,13 @@ function authHeader(): string {
 
 type RazorpayPayment = { id: string; amount: number; currency: string; status: string; order_id?: string; notes?: any };
 
+export async function fetchOrderNotes(orderId: string): Promise<Record<string, string>> {
+  const res = await fetch(`https://api.razorpay.com/v1/orders/${encodeURIComponent(orderId)}`, { headers: { Authorization: authHeader() } });
+  if (!res.ok) throw new Error(`razorpay_order_fetch_failed:${res.status}`);
+  const o = await res.json();
+  return (o && o.notes && typeof o.notes === "object" && !Array.isArray(o.notes)) ? o.notes : {};
+}
+
 export async function fetchPayment(paymentId: string): Promise<RazorpayPayment> {
   const res = await fetch(`https://api.razorpay.com/v1/payments/${encodeURIComponent(paymentId)}`, { headers: { Authorization: authHeader() } });
   if (!res.ok) throw new Error(`razorpay_fetch_failed:${res.status}`);

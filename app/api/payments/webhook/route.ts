@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "../../../../lib/supabase/admin";
-import { verifyWebhookSignature, ensureCaptured } from "../../../../lib/razorpay";
-import { recordPaidPurchase } from "../../../../lib/payments";
+import { verifyWebhookSignature, ensureCaptured, fetchOrderNotes } from "../../../../lib/razorpay";
+import { recordPaidPurchase, recordPrepaidCredit } from "../../../../lib/payments";
 
 export const runtime = "nodejs";
 
@@ -26,11 +26,18 @@ export async function POST(req: NextRequest) {
 
   const payment = event?.payload?.payment?.entity || null;
   const order = event?.payload?.order?.entity || null;
-  const notes = (payment && payment.notes) || (order && order.notes) || {};
+  // Trust only the notes WE set on the order (fetched from Razorpay), never the
+  // payment's notes, which the browser can set in Checkout.
+  const orderId = String((payment && payment.order_id) || (order && order.id) || "");
+  if (!orderId) return NextResponse.json({ ok: true });
+  let notes: any = {};
+  try { notes = await fetchOrderNotes(orderId); }
+  catch { return NextResponse.json({ ok: false, error: "order_fetch_failed" }, { status: 500 }); } // Razorpay will retry
   const proposalId = String(notes.proposalId || "");
   const userId = String(notes.userId || "");
   const paymentId = String((payment && payment.id) || "");
-  if (!proposalId || !userId || !paymentId) return NextResponse.json({ ok: true });
+  const prepay = String(notes.prepay || "") === "1";
+  if ((!proposalId && !prepay) || !userId || !paymentId) return NextResponse.json({ ok: true });
 
   let captured;
   try { captured = await ensureCaptured(paymentId); }
@@ -38,6 +45,8 @@ export async function POST(req: NextRequest) {
   if (!captured) return NextResponse.json({ ok: true });
 
   const admin = createAdminClient();
-  await recordPaidPurchase(admin, { userId, proposalId, paymentId, amountPaise: captured.amount });
+  if (captured.order_id && captured.order_id !== orderId) return NextResponse.json({ ok: true });
+  if (prepay) await recordPrepaidCredit(admin, { userId, paymentId, amountPaise: captured.amount });
+  else await recordPaidPurchase(admin, { userId, proposalId, paymentId, amountPaise: captured.amount });
   return NextResponse.json({ ok: true });
 }

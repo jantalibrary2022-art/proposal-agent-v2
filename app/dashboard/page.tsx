@@ -5,6 +5,9 @@ import { redirect } from "next/navigation";
 import { createClient } from "../../lib/supabase/server";
 import { createAdminClient } from "../../lib/supabase/admin";
 import { sweepStuckProposals } from "../../lib/sweep";
+import { draftGate, draftDates, isPastExpiry } from "../../lib/drafts";
+import { paywallEnabled } from "../../lib/coupons";
+import { DraftGateNotice } from "../_components/DraftGate";
 import { getDict, type Locale, type Dict } from "../../lib/i18n";
 import LogoutButton from "../_components/LogoutButton";
 
@@ -60,11 +63,38 @@ export default async function Dashboard() {
 
   const { data: proposalsData } = await supabase
     .from("proposals")
-    .select("id,title,status,mode,updated_at,meta")
+    .select("id,title,status,mode,updated_at,created_at,meta")
     .eq("user_id", user.id)
     .order("updated_at", { ascending: false })
     .limit(25);
   const proposals = proposalsData || [];
+
+  // Unpaid-draft rules: which drafts are unpaid, open until when, or expired.
+  const adminDb = createAdminClient();
+  const paywall = paywallEnabled();
+  const unpaidInfo: Record<string, { expired: boolean; date: string }> = {};
+  let gateInfo: any = null;
+  if (paywall) {
+    try {
+      const [pur, red, g, led] = await Promise.all([
+        adminDb.from("purchases").select("proposal_id").eq("user_id", user.id).eq("status", "paid"),
+        adminDb.from("coupon_redemptions").select("proposal_id,kind").eq("user_id", user.id),
+        draftGate(adminDb, user.id),
+        adminDb.from("draft_ledger").select("proposal_id").eq("user_id", user.id).eq("failed", false).eq("free", false),
+      ]);
+      const tracked = new Set((led.data || []).map((r: any) => r.proposal_id));
+      const paid = new Set((pur.data || []).map((r: any) => r.proposal_id).filter(Boolean));
+      const free = new Set((red.data || []).filter((r: any) => r.kind === "free").map((r: any) => r.proposal_id));
+      for (const p of proposals as any[]) {
+        if (p.status !== "draft" || paid.has(p.id) || free.has(p.id) || !p.created_at || !tracked.has(p.id)) continue;
+        const dd = draftDates(p.created_at);
+        const expired = isPastExpiry(p.created_at);
+        unpaidInfo[p.id] = { expired, date: new Date(expired ? dd.deleteAt : dd.expiresAt).toLocaleDateString(locale === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short" }) };
+      }
+      gateInfo = { enforced: g.enforced, mode: g.mode, unpaidOpen: g.unpaidOpen, max: g.max, hasCredit: !!g.creditId, pricePaise: g.pricePaise, razorpayReady: true };
+    } catch {}
+  }
+  const tdr = t.drafts;
 
   return (
     <main className="min-h-screen bg-canvas flex flex-col">
@@ -105,6 +135,7 @@ export default async function Dashboard() {
             <h2 className="font-extrabold text-[28px] tracking-[-0.03em] mb-1.5">{td.proposals}</h2>
             <p className="text-[15px] text-muted mb-6">{td.proposalsSub}</p>
 
+            {gateInfo && !gateInfo.hasCredit && gateInfo.mode !== "free" && <DraftGateNotice gate={gateInfo} compact />}
             <div className="flex flex-col sm:flex-row gap-5 mb-12">
               <Link href="/new/idea" className="flex-1 bg-panel text-paper rounded-lg p-6">
                 <div className="text-[18px] font-bold mb-1.5">{td.ideaTitle}</div>
@@ -136,7 +167,11 @@ export default async function Dashboard() {
                     p={p}
                     last={i === proposals.length - 1}
                     modeLabel={MODE[p.mode] || td.modeOpen}
-                    statusPill={<StatusPill status={p.status} td={td} />}
+                    statusPill={unpaidInfo[p.id]?.expired
+                      ? <span className="shrink-0 text-[10.5px] tracking-wide font-semibold px-2.5 py-1 rounded-full text-[#B4442F] border border-[#E4B9B0]">{tdr.expiredPill}</span>
+                      : <StatusPill status={p.status} td={td} />}
+                    note={unpaidInfo[p.id] ? (unpaidInfo[p.id].expired ? tdr.restoreBy : tdr.openUntil).replace("{date}", unpaidInfo[p.id].date) : ""}
+                    unpaid={!!unpaidInfo[p.id]}
                     relUpdated={relativeTime(p.updated_at, td, locale)}
                   />
                 ))}

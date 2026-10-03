@@ -12,6 +12,7 @@ const SECTIONS_EN: { h: string; body: string[] }[] = [
     h: "What you pay for",
     body: [
       "Prastav charges a one-time fee per proposal, shown before you pay. You can generate and review a draft at no charge. Payment is taken only when you choose \"Pay & finalise\" to unlock the full proposal and its files. There are no subscriptions or recurring charges.",
+      "In some cases payment is taken before a proposal is generated: when you are at the limit of 2 unpaid drafts, or after one of your drafts expired unpaid (see prastav.app/pricing). An upfront payment attaches to the next proposal you generate.",
     ],
   },
   {
@@ -25,6 +26,7 @@ const SECTIONS_EN: { h: string; body: string[] }[] = [
     h: "Cancellation",
     body: [
       "Since nothing is charged until you choose to pay, you can stop at any point before payment without any cost. Once a payment has succeeded and the proposal is finalised, the order cannot be cancelled, as the digital deliverable has already been provided.",
+      "An upfront payment that has not yet been used for a generated proposal can be cancelled for a full refund on request. If a proposal paid for upfront fails to generate because of a fault on our side, the payment is kept as credit for your next proposal, or refunded in full if you ask.",
     ],
   },
   {
@@ -54,6 +56,7 @@ const SECTIONS_HI: { h: string; body: string[] }[] = [
     h: "आप किसके लिए भुगतान करते हैं",
     body: [
       "Prastav प्रति प्रस्ताव एक बार का शुल्क लेता है, जो भुगतान से पहले दिखाया जाता है। आप बिना किसी शुल्क के ड्राफ़्ट तैयार कर सकते हैं और उसकी समीक्षा कर सकते हैं। भुगतान केवल तब लिया जाता है जब आप पूरा प्रस्ताव और उसकी फ़ाइलें खोलने के लिए \"भुगतान करें और अंतिम रूप दें\" चुनते हैं। कोई सदस्यता या आवर्ती शुल्क नहीं है।",
+      "कुछ स्थितियों में भुगतान प्रस्ताव बनने से पहले लिया जाता है: जब आप 2 बिना भुगतान वाले ड्राफ़्ट की सीमा पर हों, या जब आपका कोई ड्राफ़्ट बिना भुगतान के समाप्त हो गया हो (देखें prastav.app/pricing)। अग्रिम भुगतान आपके द्वारा बनाए जाने वाले अगले प्रस्ताव से जुड़ जाता है।",
     ],
   },
   {
@@ -67,6 +70,7 @@ const SECTIONS_HI: { h: string; body: string[] }[] = [
     h: "रद्दीकरण",
     body: [
       "चूँकि भुगतान चुनने तक कोई शुल्क नहीं लिया जाता, आप भुगतान से पहले किसी भी चरण पर बिना किसी लागत के रुक सकते हैं। भुगतान सफल होने और प्रस्ताव के अंतिम रूप लेने के बाद ऑर्डर रद्द नहीं किया जा सकता, क्योंकि डिजिटल डिलीवरी पहले ही की जा चुकी होती है।",
+      "जो अग्रिम भुगतान अभी तक किसी बने प्रस्ताव में उपयोग नहीं हुआ है, उसे अनुरोध पर रद्द करके पूरी राशि लौटाई जा सकती है। यदि अग्रिम भुगतान वाला प्रस्ताव हमारी ओर की खराबी से नहीं बन पाता, तो भुगतान आपके अगले प्रस्ताव के लिए क्रेडिट के रूप में रखा जाता है, या आपके कहने पर पूरी राशि लौटाई जाती है।",
     ],
   },
   {

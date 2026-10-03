@@ -196,7 +196,7 @@ function DownloadCard({ id, kind, label, note, primary }: { id: string; kind: st
 }
 
 export default function ProposalPage({ params }: { params: Promise<{ id: string }> }) {
-  const { t } = useDict();
+  const { t, locale } = useDict();
   const p = t.proposal;
   const SECTIONS: [string, string, boolean][] = [
     [p.secTitle, "title", true],
@@ -358,6 +358,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
   };
 
   const status = row?.status;
+  const fmtDay = (iso?: string | null) => (iso ? new Date(iso).toLocaleDateString(locale === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "long", year: "numeric" }) : "");
   const STALL_MIN = 15;
   const stallBase = status === "rendering" ? (row?.updated_at || row?.created_at) : row?.created_at;
   const stalled = (status === "generating" || status === "rendering") && !!stallBase && (Date.now() - new Date(stallBase).getTime()) / 60000 >= STALL_MIN;
@@ -454,6 +455,15 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
                 <h1 className="font-extrabold text-[clamp(24px,4vw,30px)] tracking-tight mt-1 mb-1">{p.reviewTitle}</h1>
                 <p className="text-[15px] text-muted leading-relaxed">{p.reviewBody}</p>
               </div>
+              {locked && payInfo?.expired && (
+                <div className="mb-6 border border-[#E4B9B0] bg-[#FBEDEA] rounded-[5px] px-4 py-3 text-[14.5px] leading-relaxed text-[#6B2418]" role="status">
+                  <div className="font-bold mb-1">{t.drafts.expiredTitle}</div>
+                  <div>{t.drafts.expiredBody.replace("{date}", fmtDay(payInfo.deleteAt))}</div>
+                </div>
+              )}
+              {locked && !payInfo?.expired && payInfo?.expiresAt && (
+                <div className="mb-6 border border-[#E3C9A8] bg-[#FBF3E8] rounded-[5px] px-4 py-3 text-[14px] leading-relaxed text-[#5A3A12]">{t.drafts.openNote.replace("{date}", fmtDay(payInfo.expiresAt))}</div>
+              )}
 
               <div className="flex flex-col gap-4">
                 {SECTIONS.map(([label, key, single]) => (
