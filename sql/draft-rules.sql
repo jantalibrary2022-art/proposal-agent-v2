@@ -41,3 +41,6 @@ begin
 exception when unique_violation then
   raise notice 'Duplicate payment_ref values exist in purchases; unique index not created. Ask Claude to help clean them up.';
 end $$;
+
+-- Reminder email sent (2 days before a draft locks).
+alter table public.draft_ledger add column if not exists reminded boolean not null default false;

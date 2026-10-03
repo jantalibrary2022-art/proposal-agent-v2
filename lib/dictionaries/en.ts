@@ -155,7 +155,7 @@ export const en = {
     draftRulesTitle: "Drafts and payment rules",
     draftRules: [
       ["Up to 2 unpaid drafts", "You can have up to 2 unpaid drafts at a time. Paying for one frees a place. Deleting an unpaid draft does not: each counts for 7 days from when it was created."],
-      ["Drafts stay open 7 days", "An unpaid draft stays open for 7 days. Pay and finalise within that time to get your files."],
+      ["Drafts stay open 7 days", "An unpaid draft stays open for 7 days. Pay and finalise within that time to get your files. We email you 2 days before it locks."],
       ["Expired drafts", "After 7 days an unpaid draft is locked as expired. You can still restore it by paying within the next 30 days. After that it is permanently deleted."],
       ["Paying upfront", "If one of your drafts expires without payment, new proposals are paid for before generation starts. This lifts as soon as you pay for any proposal."],
       ["Failed drafts never count", "If a proposal could not be generated because of a fault, it does not count toward your limit, and any upfront payment is kept for your next proposal."],
@@ -935,5 +935,17 @@ export const en = {
     expiredBody: "Unpaid drafts stay open for 7 days. Pay now to restore and finalise it. If it is not restored by {date}, it will be deleted permanently.",
     openNote: "This draft stays open until {date}. Pay and finalise before then, or it will expire.",
     deleteWarn: "Deleting an unpaid draft does not free up a draft slot: up to 2 unpaid drafts count for 7 days from when they were created.",
+  },
+  draftRulesModal: {
+    kicker: "HOW DRAFTS WORK",
+    title: "Create drafts first, pay when you finalise",
+    points: [
+      ["Up to 2 unpaid drafts at a time.", "Paying for one frees a place. Deleting an unpaid draft does not."],
+      ["Each draft stays open for 7 days.", "Pay and finalise within that time to get your files. We email you 2 days before a draft locks."],
+      ["After 7 days an unpaid draft is locked.", "You can still restore it by paying within the next 30 days. After that it is deleted permanently."],
+      ["If a draft expires unpaid,", "new proposals are paid for before they are generated, until you next pay for a proposal."],
+    ] as [string, string][],
+    more: "Read the full rules",
+    ok: "Got it",
   },
 };

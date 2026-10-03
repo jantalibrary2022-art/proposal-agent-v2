@@ -8,6 +8,7 @@ import { sweepStuckProposals } from "../../lib/sweep";
 import { draftGate, draftDates, isPastExpiry } from "../../lib/drafts";
 import { paywallEnabled } from "../../lib/coupons";
 import { DraftGateNotice } from "../_components/DraftGate";
+import DraftRulesModal, { DRAFT_RULES_VERSION } from "./DraftRulesModal";
 import { getDict, type Locale, type Dict } from "../../lib/i18n";
 import LogoutButton from "../_components/LogoutButton";
 
@@ -95,9 +96,11 @@ export default async function Dashboard() {
     } catch {}
   }
   const tdr = t.drafts;
+  const showRules = paywall && Number((user.user_metadata as any)?.draft_rules_ack || 0) < DRAFT_RULES_VERSION;
 
   return (
     <main className="min-h-screen bg-canvas flex flex-col">
+      <DraftRulesModal show={showRules} />
       <header className="sticky top-0 z-40 h-16 border-b border-line bg-canvas">
         <div className="h-full max-w-[1600px] mx-auto px-6 sm:px-11 flex items-center justify-between">
         <div className="flex items-center gap-9">

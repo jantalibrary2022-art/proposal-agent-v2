@@ -96,3 +96,17 @@ export async function sendProposalFailed(to: string, p: { id: string; busy?: boo
   const cta = `<p style="margin:20px 0"><a href="${dash}" style="background:#1a1a17;color:#fff;text-decoration:none;font-weight:600;padding:12px 22px;border-radius:4px;display:inline-block">Go to your dashboard</a></p>`;
   return sendEmail(to, "About your Prastav proposal", shell("We could not finish your proposal", body + cta));
 }
+
+export async function sendDraftReminder(to: string, p: { id: string; title?: string; locksAt: string }): Promise<boolean> {
+  const link = `${siteUrl()}/proposals/${p.id}`;
+  const d = new Date(p.locksAt);
+  const dateEn = d.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Kolkata" });
+  const dateHi = d.toLocaleDateString("hi-IN", { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Kolkata" });
+  const title = p.title ? `"${p.title}"` : "Your draft proposal";
+  const body = `
+    <p style="font-size:15px;line-height:1.6">${title} is unpaid and will be locked on <b>${dateEn}</b>. To keep it, pay and finalise before then, and your PDF, Word and Excel files will be ready at once.</p>
+    <p style="font-size:14px;line-height:1.6;color:#55554c">आपका ड्राफ़्ट प्रस्ताव ${dateHi} को लॉक हो जाएगा। उसे रखने के लिए उससे पहले भुगतान करके अंतिम रूप दें।</p>
+    <p style="margin:20px 0"><a href="${link}" style="background:#1a1a17;color:#fff;text-decoration:none;font-weight:600;padding:12px 22px;border-radius:4px;display:inline-block">Review and finalise</a></p>
+    <p style="font-size:13px;color:#8a8a80">If it locks, you can still restore it by paying within the following 30 days. After that it is deleted permanently. Or open: ${link}</p>`;
+  return sendEmail(to, "Your Prastav draft locks in 2 days", shell("Your draft locks in 2 days", body));
+}
