@@ -25,8 +25,8 @@ export default function SiteFooter() {
           <div className={col}>{f.colProduct}</div>
           <div className="flex flex-col gap-2">
             <Link href="/method" className={link}>{f.method}</Link>
-            <Link href="/pricing" className={link}>{f.pricing}</Link>
             <Link href="/samples" className={link}>{f.samples}</Link>
+            <Link href="/pricing" className={link}>{f.pricing}</Link>
           </div>
         </div>
         <div>

@@ -3,6 +3,7 @@ import type { en } from "./en";
 // Hindi interface strings. DRAFT — to be vetted by a fluent reviewer before launch.
 export const hi: typeof en = {
   nav: {
+    signUpShort: "साइन अप",
     home: "होम",
     policies: "नीतियाँ",
     dashboard: "डैशबोर्ड",

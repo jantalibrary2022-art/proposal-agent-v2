@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type Opt = { code: string; native: string };
+type Opt = { code: string; native: string; short: string };
 
 const OPTIONS: Opt[] = [
-  { code: "en", native: "English" },
-  { code: "hi", native: "हिन्दी" },
+  { code: "en", native: "English", short: "EN" },
+  { code: "hi", native: "हिन्दी", short: "हि" },
 ];
 
 function setLocale(code: string) {
@@ -25,7 +25,7 @@ export default function LanguageSwitcher({
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const label = OPTIONS.find((o) => o.code === current)?.native || "English";
+  const cur = OPTIONS.find((o) => o.code === current) || OPTIONS[0];
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
@@ -35,19 +35,24 @@ export default function LanguageSwitcher({
     return () => document.removeEventListener("mousedown", onDoc);
   }, []);
 
-  const trigger = tone === "dark" ? "text-white/85" : "text-ink";
+  // A setting, not a page: outlined pill with a globe, language in its own script.
+  const trigger = tone === "dark" ? "text-white/90 border-white/30" : "text-ink border-[#C9C7BF] bg-card";
 
   return (
     <div ref={ref} className="relative">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className={`flex items-center gap-1 text-[13px] ${trigger}`}
+        className={`flex items-center gap-1.5 h-8 pl-2.5 pr-2 rounded-full border text-[13px] font-medium ${trigger}`}
         aria-haspopup="listbox"
         aria-expanded={open}
+        aria-label="Language / भाषा"
+        title="Language / भाषा"
       >
-        <span>{label}</span>
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><circle cx="12" cy="12" r="9.5" /><path d="M2.5 12h19" /><path d="M12 2.5c2.6 2.6 4 6 4 9.5s-1.4 6.9-4 9.5c-2.6-2.6-4-6-4-9.5s1.4-6.9 4-9.5Z" /></svg>
+        <span className="hidden sm:inline">{cur.native}</span>
+        <span className="sm:hidden">{cur.short}</span>
+        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><polyline points="6 9 12 15 18 9" /></svg>
       </button>
       {open && (
         <div className="absolute right-0 top-[calc(100%+8px)] z-50 min-w-[140px] bg-card border border-line rounded-md shadow-[0_12px_30px_rgba(0,0,0,0.14)] overflow-hidden" role="listbox">

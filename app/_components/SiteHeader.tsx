@@ -24,11 +24,11 @@ export default function SiteHeader() {
   const items: [string, string][] = [
     ...(signedIn ? [] : [["/", t.nav.home] as [string, string]]),
     ["/method", t.nav.method],
-    ["/pricing", t.nav.pricing],
     ["/samples", t.nav.samples],
+    ["/pricing", t.nav.pricing],
     ["/help", t.nav.help],
-    ["/contact", t.nav.contact],
     ["/policies", t.nav.policies],
+    ["/contact", t.nav.contact],
   ];
   const isActive = (href: string) => href === "/" ? pathname === "/" : (pathname === href || pathname.startsWith(href + "/"));
   const navCls = locale === "hi" ? "text-[13.5px]" : "text-[11.5px] tracking-wide";
@@ -40,17 +40,18 @@ export default function SiteHeader() {
           <span className="w-6 h-6 rounded-[3px] bg-ink text-paper font-extrabold text-[14px] flex items-center justify-center">प्र</span>
           <span className="font-extrabold text-[18px] tracking-[-0.02em]">Prastav</span>
         </Link>
-        <nav className="flex items-center gap-4 lg:gap-6">
+        <nav className="flex items-center gap-3 sm:gap-4 lg:gap-6">
           {items.map(([href, label]) => (
             <Link key={href} href={href} className={`hidden lg:inline ${navCls} ${isActive(href) ? "text-ink font-semibold" : "text-muted"}`}>{label}</Link>
           ))}
+          <span aria-hidden className="hidden lg:block w-px h-6 bg-line mx-1" />
           <LanguageSwitcher current={locale} />
           {signedIn ? (
-            <Link href="/dashboard" className="bg-ink text-paper text-[12.5px] font-semibold px-4 py-2 rounded-[3px]">{t.nav.dashboard}</Link>
+            <Link href="/dashboard" className="bg-ink text-paper text-[12.5px] font-semibold px-4 py-2 rounded-[3px] whitespace-nowrap">{t.nav.dashboard}</Link>
           ) : (
             <>
               <Link href="/dashboard" className={`hidden sm:inline ${navCls}`}>{t.nav.signIn}</Link>
-              <Link href="/signup" className="bg-ink text-paper text-[12.5px] font-semibold px-4 py-2 rounded-[3px]">{t.nav.startFree}</Link>
+              <Link href="/signup" className="bg-ink text-paper text-[12.5px] font-semibold px-4 py-2 rounded-[3px] whitespace-nowrap"><span className="hidden sm:inline">{t.nav.startFree}</span><span className="sm:hidden">{t.nav.signUpShort}</span></Link>
             </>
           )}
           <button

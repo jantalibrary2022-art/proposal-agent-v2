@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ProposalRow from "./ProposalRow";
+import LanguageSwitcher from "../_components/LanguageSwitcher";
 import { redirect } from "next/navigation";
 import { createClient } from "../../lib/supabase/server";
 import { getDict, type Locale, type Dict } from "../../lib/i18n";
@@ -83,6 +84,7 @@ export default async function Dashboard() {
           </nav>
         </div>
         <div className="flex items-center gap-4">
+          <LanguageSwitcher current={locale} />
           <span className="hidden sm:inline text-[14px] text-muted">{user.email}</span>
           <Link href="/account" className="w-9 h-9 rounded-full bg-ink text-paper flex items-center justify-center font-bold text-[13px]">{initials}</Link>
           <LogoutButton className="text-[12px] tracking-wide text-muted" />
