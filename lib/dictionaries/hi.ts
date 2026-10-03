@@ -13,7 +13,7 @@ export const hi: typeof en = {
     help: "सहायता",
     contact: "संपर्क",
     signIn: "साइन इन",
-    startFree: "निःशुल्क शुरू करें",
+    startFree: "निःशुल्क साइन अप करें",
     language: "भाषा",
   },
   meta: {
@@ -40,7 +40,7 @@ export const hi: typeof en = {
   pill: {
     how: "यह कैसे काम करता है",
     sample: "नमूना देखें",
-    startFree: "निःशुल्क शुरू करें",
+    startFree: "निःशुल्क साइन अप करें",
   },
   chatbot: {
     kicker: "सिर्फ़ एक चैटबॉट क्यों नहीं",
@@ -103,7 +103,7 @@ export const hi: typeof en = {
   },
   cta: {
     heading: "अपना अगला प्रस्ताव 24 वर्षों के अनुभव पर लिखें।",
-    startFree: "निःशुल्क शुरू करें",
+    startFree: "निःशुल्क साइन अप करें",
     seeHow: "देखें यह कैसे काम करता है",
   },
   methodPage: {
@@ -168,7 +168,7 @@ export const hi: typeof en = {
       ["रिफ़ंड", "यदि भुगतान हो जाए पर हमारी गलती से प्रस्ताव न मिले, या आपसे दो बार शुल्क लिया जाए, तो पूरा रिफ़ंड।"],
     ] as [string, string][],
     refundLink: "रिफ़ंड, रद्दीकरण और डिलीवरी नीति पढ़ें",
-    cta: "निःशुल्क शुरू करें",
+    cta: "निःशुल्क साइन अप करें",
   },
   policiesPage: {
     kicker: "नीतियाँ",

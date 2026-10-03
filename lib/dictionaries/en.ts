@@ -10,7 +10,7 @@ export const en = {
     help: "HELP",
     contact: "CONTACT",
     signIn: "SIGN IN",
-    startFree: "Start free",
+    startFree: "Sign up free",
     language: "Language",
   },
   meta: {
@@ -37,7 +37,7 @@ export const en = {
   pill: {
     how: "How it works",
     sample: "See a sample",
-    startFree: "Start free",
+    startFree: "Sign up free",
   },
   chatbot: {
     kicker: "WHY NOT JUST A CHATBOT",
@@ -100,7 +100,7 @@ export const en = {
   },
   cta: {
     heading: "Write your next proposal on 24 years of practice.",
-    startFree: "Start free",
+    startFree: "Sign up free",
     seeHow: "See how it works",
   },
   methodPage: {
@@ -165,7 +165,7 @@ export const en = {
       ["Refunds", "Full refund if a payment goes through but the proposal is not delivered due to a fault on our side, or if you are charged twice."],
     ] as [string, string][],
     refundLink: "Read the Refund, Cancellation & Delivery policy",
-    cta: "Start free",
+    cta: "Sign up free",
   },
   policiesPage: {
     kicker: "POLICIES",
