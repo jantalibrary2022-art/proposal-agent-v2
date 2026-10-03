@@ -46,7 +46,9 @@ export default function VoiceInput({
   onChangeRef.current = onChange;
 
   useEffect(() => {
-    if (!getSR()) setSupported(false);
+    // Brave exposes the speech API but blocks the service behind it, so it
+    // always fails. Treat it as unsupported and point to a working browser.
+    if (!getSR() || (navigator as any).brave) setSupported(false);
     return () => { keepRef.current = false; try { recRef.current?.abort(); } catch {} };
   }, []);
 
@@ -91,7 +93,9 @@ export default function VoiceInput({
     rec.onerror = (e: any) => {
       const err = e && e.error;
       if (err === "not-allowed" || err === "service-not-allowed") { keepRef.current = false; setMsg(v.denied); }
-      else if (err === "network") { keepRef.current = false; setMsg(v.network); }
+      // A "network" error before anything was heard usually means the browser
+      // has no speech service (Brave, Opera, Vivaldi and similar), not bad internet.
+      else if (err === "network") { keepRef.current = false; setMsg(heardRef.current ? v.network : v.browser); }
       else if (err === "audio-capture") { keepRef.current = false; setMsg(v.noMic); }
       // "no-speech" and "aborted" are normal pauses; the session restarts below.
     };
