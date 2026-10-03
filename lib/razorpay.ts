@@ -32,6 +32,40 @@ export async function createOrder(amountPaise: number, receipt: string, notes: R
   return res.json();
 }
 
+function authHeader(): string {
+  return "Basic " + Buffer.from(`${process.env.RAZORPAY_KEY_ID}:${process.env.RAZORPAY_KEY_SECRET}`).toString("base64");
+}
+
+type RazorpayPayment = { id: string; amount: number; currency: string; status: string; order_id?: string; notes?: any };
+
+export async function fetchPayment(paymentId: string): Promise<RazorpayPayment> {
+  const res = await fetch(`https://api.razorpay.com/v1/payments/${encodeURIComponent(paymentId)}`, { headers: { Authorization: authHeader() } });
+  if (!res.ok) throw new Error(`razorpay_fetch_failed:${res.status}`);
+  return res.json();
+}
+
+async function capturePayment(paymentId: string, amount: number, currency: string): Promise<RazorpayPayment> {
+  const res = await fetch(`https://api.razorpay.com/v1/payments/${encodeURIComponent(paymentId)}/capture`, {
+    method: "POST",
+    headers: { Authorization: authHeader(), "Content-Type": "application/json" },
+    body: JSON.stringify({ amount, currency }),
+  });
+  if (!res.ok) throw new Error(`razorpay_capture_failed:${res.status}`);
+  return res.json();
+}
+
+// Make sure the money is actually collected. If the payment is only
+// "authorized" (account set to manual capture), capture it now. Returns the
+// captured payment, or null if it cannot be captured (failed/refunded etc.).
+export async function ensureCaptured(paymentId: string): Promise<RazorpayPayment | null> {
+  let p = await fetchPayment(paymentId);
+  if (p.status === "authorized") {
+    try { p = await capturePayment(paymentId, p.amount, p.currency || "INR"); }
+    catch { p = await fetchPayment(paymentId); } // another path may have captured it meanwhile
+  }
+  return p.status === "captured" ? p : null;
+}
+
 function safeEqualHex(a: string, b: string): boolean {
   try {
     const ba = Buffer.from(a, "utf8");

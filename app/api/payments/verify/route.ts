@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "../../../../lib/supabase/server";
 import { createAdminClient } from "../../../../lib/supabase/admin";
-import { verifyPaymentSignature, pricePaise, newInvoiceNo } from "../../../../lib/razorpay";
+import { verifyPaymentSignature, ensureCaptured } from "../../../../lib/razorpay";
+import { recordPaidPurchase } from "../../../../lib/payments";
 
 export const runtime = "nodejs";
 
-// Called by the checkout success handler. Verifies the signature and records a
-// paid purchase (idempotent) which unlocks finalise + download for the proposal.
+// Called by the checkout success handler. Verifies the signature, makes sure
+// the payment is CAPTURED (captures it if only authorized), then records a paid
+// purchase (idempotent) which unlocks finalise + download for the proposal.
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -30,28 +32,13 @@ export async function POST(req: NextRequest) {
   const { data: row } = await supabase.from("proposals").select("id").eq("id", proposalId).single();
   if (!row) return NextResponse.json({ ok: false, error: "not_found" }, { status: 404 });
 
-  const admin = createAdminClient();
+  let captured;
+  try { captured = await ensureCaptured(paymentId); }
+  catch (e: any) { return NextResponse.json({ ok: false, error: (e && e.message) || "capture_check_failed" }, { status: 502 }); }
+  if (!captured) return NextResponse.json({ ok: false, error: "payment_not_captured" }, { status: 402 });
 
-  // Idempotent: don't double-record the same payment or re-charge a paid proposal.
-  const { data: existing } = await admin
-    .from("purchases")
-    .select("id")
-    .or(`payment_ref.eq.${paymentId},and(proposal_id.eq.${proposalId},status.eq.paid)`)
-    .limit(1)
-    .maybeSingle();
-  if (!existing) {
-    await admin.from("purchases").insert({
-      user_id: user.id,
-      proposal_id: proposalId,
-      description: "Prastav — Project proposal",
-      amount: pricePaise() / 100,
-      currency: "INR",
-      status: "paid",
-      invoice_no: newInvoiceNo(),
-      payment_ref: paymentId,
-      gateway: "razorpay",
-    });
-  }
+  const admin = createAdminClient();
+  await recordPaidPurchase(admin, { userId: user.id, proposalId, paymentId, amountPaise: captured.amount });
 
   return NextResponse.json({ ok: true });
 }
