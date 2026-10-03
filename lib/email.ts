@@ -27,6 +27,36 @@ function getTransport(): any {
   return transporter;
 }
 
+// Same as sendEmail but reports the failure reason. Used by the admin test button.
+export async function sendEmailDetailed(to: string, subject: string, html: string): Promise<{ ok: boolean; error?: string }> {
+  const t = getTransport();
+  if (!t) return { ok: false, error: "SMTP is not configured (SMTP_HOST, SMTP_USER and SMTP_PASS must all be set)." };
+  if (!to) return { ok: false, error: "No recipient address." };
+  const from = process.env.SMTP_FROM || `Prastav <${process.env.SMTP_USER}>`;
+  const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  try {
+    await t.sendMail({ from, to, subject, html, text });
+    return { ok: true };
+  } catch (e: any) {
+    return { ok: false, error: String((e && (e.response || e.message)) || e).slice(0, 500) };
+  }
+}
+
+export function emailSettingsSummary() {
+  return {
+    configured: emailConfigured(),
+    host: process.env.SMTP_HOST || "",
+    port: Number(process.env.SMTP_PORT || 465),
+    user: process.env.SMTP_USER || "",
+    from: process.env.SMTP_FROM || "",
+  };
+}
+
+export async function sendTestEmail(to: string) {
+  const body = `<p style="font-size:15px;line-height:1.6">This is a test email from the Prastav admin page. If you are reading it, transactional email is working.</p>`;
+  return sendEmailDetailed(to, "Prastav test email", shell("Email is working", body));
+}
+
 export async function sendEmail(to: string, subject: string, html: string): Promise<boolean> {
   const t = getTransport();
   if (!t || !to) return false;

@@ -5,6 +5,7 @@ import crypto from "crypto";
 import { createClient } from "../../lib/supabase/server";
 import { createAdminClient } from "../../lib/supabase/admin";
 import PinGate from "./PinGate";
+import TestEmailButton from "./TestEmailButton";
 
 export const runtime = "nodejs";
 
@@ -81,6 +82,8 @@ export default async function AdminPage() {
           <div className={tile}><div className="text-[12px] tracking-[0.08em] text-muted mb-2">FEEDBACK</div><div className="text-[32px] font-extrabold tracking-[-0.02em] tabular-nums">{feedback.length}</div></div>
           <div className={tile}><div className="text-[12px] tracking-[0.08em] text-muted mb-2">OPEN ALERTS</div><div className="text-[32px] font-extrabold tracking-[-0.02em] tabular-nums">{openErrors}</div></div>
         </div>
+
+        <TestEmailButton />
 
         <div className="text-[18px] font-bold tracking-[-0.02em] mb-4">Feedback</div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
