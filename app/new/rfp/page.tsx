@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "../../../lib/supabase/client";
 import { useDict } from "../../_components/LocaleProvider";
+import VoiceInput from "../../_components/VoiceInput";
 import OutputLanguagePicker, { defaultOutputLanguage, type OutputLanguage } from "../../_components/OutputLanguagePicker";
 import AccessCodeInput from "../../_components/AccessCodeInput";
 
@@ -123,49 +124,6 @@ export default function RfpPage() {
     setStarting(false);
   };
 
-  const [listening, setListening] = useState(false);
-  const [supported, setSupported] = useState(true);
-  const [lang, setLang] = useState(locale === "hi" ? "hi-IN" : "en-IN");
-  const recognitionRef = useRef<any>(null);
-  const keepRef = useRef(false);
-  const committedRef = useRef("");
-
-  useEffect(() => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SR) setSupported(false);
-  }, []);
-
-  const run = () => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SR) { setSupported(false); return; }
-    const recognition = new SR();
-    recognition.lang = lang;
-    recognition.interimResults = true;
-    recognition.continuous = true;
-    recognition.onresult = (event: any) => {
-      let interim = "";
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        const t = event.results[i][0].transcript;
-        if (event.results[i].isFinal) committedRef.current += t + " ";
-        else interim += t;
-      }
-      set("idea", (committedRef.current + interim).replace(/\s+/g, " ").trimStart());
-    };
-    recognition.onend = () => { if (keepRef.current) { try { recognition.start(); } catch {} } else setListening(false); };
-    recognition.onerror = (event: any) => {
-      if (event.error === "not-allowed" || event.error === "service-not-allowed") { keepRef.current = false; setListening(false); }
-    };
-    recognitionRef.current = recognition;
-    try { recognition.start(); } catch {}
-  };
-  const startListening = () => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SR) { setSupported(false); return; }
-    committedRef.current = answers.idea ? answers.idea.trim() + " " : "";
-    keepRef.current = true; setListening(true); run();
-  };
-  const stopListening = () => { keepRef.current = false; recognitionRef.current?.stop(); setListening(false); };
-  const toggleMic = () => { listening ? stopListening() : startListening(); };
 
   const canContinue = () => {
     if (step === 0) return noProfile ? quickName.trim().length > 0 : !!orgProfileId;
@@ -177,14 +135,13 @@ export default function RfpPage() {
     return true;
   };
   const goNext = async () => {
-    if (listening) stopListening();
     if (step === 1) {
       if (analysis && analyzedTextRef.current === answers.rfp_text) { setStep(2); return; }
       await runAnalyze(); return;
     }
     if (step < steps.length - 1) setStep(step + 1);
   };
-  const goBack = () => { if (listening) stopListening(); if (step === 0) router.push("/dashboard"); else setStep(step - 1); };
+  const goBack = () => { if (step === 0) router.push("/dashboard"); else setStep(step - 1); };
 
   const input = "w-full box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] px-4 h-[52px] text-[16px] bg-card outline-none focus:border-ink";
   const inputLocked = "w-full box-border border-[1.5px] border-[#DEDDD6] rounded-[5px] px-4 h-[52px] text-[16px] bg-[#F2F1EC] text-[#55554D] outline-none";
@@ -376,19 +333,7 @@ export default function RfpPage() {
               <h1 className="font-extrabold text-[clamp(26px,5vw,34px)] tracking-tight leading-[1.1] mb-3">{rf.s3Title}</h1>
               <p className="text-[16px] text-muted leading-relaxed mb-6">{rf.s3Body}</p>
               <textarea value={answers.idea} onChange={(e) => set("idea", e.target.value)} placeholder={rf.ideaPh} className="w-full h-[150px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[16px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
-              <div className="mt-3 flex items-center gap-3 flex-wrap">
-                <button type="button" onClick={toggleMic} disabled={!supported} className={`flex items-center gap-2 px-4 py-[10px] rounded-[4px] text-[14.5px] font-semibold border-[1.5px] ${listening ? "bg-ink text-paper border-ink" : "bg-card text-ink border-ink"} disabled:opacity-40`}>
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
-                  {listening ? rf.listening : rf.speak}
-                </button>
-                {supported && (
-                  <div className="flex items-center gap-1 bg-[#DEDDD6] rounded-[4px] p-1">
-                    <button type="button" onClick={() => setLang("en-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "en-IN" ? "bg-ink text-paper" : "text-muted"}`}>{rf.langEn}</button>
-                    <button type="button" onClick={() => setLang("hi-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "hi-IN" ? "bg-ink text-paper" : "text-muted"}`}>{rf.langHi}</button>
-                  </div>
-                )}
-              </div>
-              {!supported && <div className="mt-2 text-[13.5px] text-muted">{rf.voiceUnsupported}</div>}
+              <VoiceInput value={answers.idea} onChange={(t) => set("idea", t)} />
             </>
           )}
 

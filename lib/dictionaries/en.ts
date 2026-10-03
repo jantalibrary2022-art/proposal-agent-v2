@@ -884,4 +884,14 @@ export const en = {
     allSamples: "← All samples",
     viewOnly: "VIEW ONLY",
   },
+  voice: {
+    speak: "Speak",
+    listening: "Listening… tap to stop",
+    langLabel: "Speaking language",
+    unsupported: "Voice input is not available in this browser. It works in Chrome and Edge, including Chrome on Android. You can type instead.",
+    denied: "Microphone access is blocked. Allow the microphone for prastav.app in your browser settings (tap the lock icon next to the address), then try again.",
+    noMic: "No microphone was found. Check that one is connected, or type instead.",
+    network: "Voice input needs an internet connection. Check your connection and try again, or type instead.",
+    nothingHeard: "We didn't catch anything. Speak close to the phone or microphone, or check the language selected.",
+  },
 };

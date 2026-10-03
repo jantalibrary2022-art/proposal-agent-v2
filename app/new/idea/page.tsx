@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "../../../lib/supabase/client";
 import { useDict } from "../../_components/LocaleProvider";
+import VoiceInput from "../../_components/VoiceInput";
 import OutputLanguagePicker, { defaultOutputLanguage, type OutputLanguage } from "../../_components/OutputLanguagePicker";
 import AccessCodeInput from "../../_components/AccessCodeInput";
 
@@ -171,43 +172,6 @@ export default function IdeaPage() {
     setStarting(false);
   };
 
-  // voice (for the "have an idea" box)
-  const [listening, setListening] = useState(false);
-  const [supported, setSupported] = useState(true);
-  const [lang, setLang] = useState(locale === "hi" ? "hi-IN" : "en-IN");
-  const recognitionRef = useRef<any>(null);
-  const keepRef = useRef(false);
-  const committedRef = useRef("");
-  useEffect(() => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SR) setSupported(false);
-  }, []);
-  const run = () => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SR) { setSupported(false); return; }
-    const recognition = new SR();
-    recognition.lang = lang; recognition.interimResults = true; recognition.continuous = true;
-    recognition.onresult = (event: any) => {
-      let interim = "";
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        const t = event.results[i][0].transcript;
-        if (event.results[i].isFinal) committedRef.current += t + " "; else interim += t;
-      }
-      setIdea((committedRef.current + interim).replace(/\s+/g, " ").trimStart());
-    };
-    recognition.onend = () => { if (keepRef.current) { try { recognition.start(); } catch {} } else setListening(false); };
-    recognition.onerror = (event: any) => { if (event.error === "not-allowed" || event.error === "service-not-allowed") { keepRef.current = false; setListening(false); } };
-    recognitionRef.current = recognition;
-    try { recognition.start(); } catch {}
-  };
-  const startListening = () => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SR) { setSupported(false); return; }
-    committedRef.current = idea ? idea.trim() + " " : "";
-    keepRef.current = true; setListening(true); run();
-  };
-  const stopListening = () => { keepRef.current = false; recognitionRef.current?.stop(); setListening(false); };
-  const toggleMic = () => { listening ? stopListening() : startListening(); };
 
   const canContinue = () => {
     if (step === 0) return noProfile ? quickName.trim().length > 0 : !!orgProfileId;
@@ -217,14 +181,13 @@ export default function IdeaPage() {
     return true;
   };
   const goNext = async () => {
-    if (listening) stopListening();
     if (step === 1) {
       if (brief) { setStep(2); if (!approaches.length && !loadingApproaches) loadApproaches(brief); return; }
       await runIntake(); return;
     }
     if (step < steps.length - 1) setStep(step + 1);
   };
-  const goBack = () => { if (listening) stopListening(); if (step === 0) router.push("/dashboard"); else setStep(step - 1); };
+  const goBack = () => { if (step === 0) router.push("/dashboard"); else setStep(step - 1); };
 
   const input = "w-full box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] px-4 h-[52px] text-[16px] bg-card outline-none focus:border-ink";
   const label = "block text-[14px] font-semibold text-[#3A3A32] mb-2";
@@ -311,23 +274,13 @@ export default function IdeaPage() {
               {ideaMode === "have" ? (
                 <>
                   <textarea value={idea} onChange={(e) => setIdea(e.target.value)} placeholder={d.havePh} className="w-full h-[140px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[16px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
-                  <div className="mt-3 flex items-center gap-3 flex-wrap">
-                    <button type="button" onClick={toggleMic} disabled={!supported} className={`flex items-center gap-2 px-4 py-[10px] rounded-[4px] text-[14.5px] font-semibold border-[1.5px] ${listening ? "bg-ink text-paper border-ink" : "bg-card text-ink border-ink"} disabled:opacity-40`}>
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
-                      {listening ? d.listening : d.speak}
-                    </button>
-                    {supported && (
-                      <div className="flex items-center gap-1 bg-[#DEDDD6] rounded-[4px] p-1">
-                        <button type="button" onClick={() => setLang("en-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "en-IN" ? "bg-ink text-paper" : "text-muted"}`}>{d.langEn}</button>
-                        <button type="button" onClick={() => setLang("hi-IN")} disabled={listening} className={`px-3 py-[6px] rounded-[3px] text-[13px] font-semibold disabled:opacity-50 ${lang === "hi-IN" ? "bg-ink text-paper" : "text-muted"}`}>{d.langHi}</button>
-                      </div>
-                    )}
-                  </div>
+                  <VoiceInput value={idea} onChange={setIdea} />
                 </>
               ) : (
                 <>
                   <label className={label}>{d.shapeLabel}</label>
                   <textarea value={hints} onChange={(e) => setHints(e.target.value)} placeholder={d.shapePh} className="w-full h-[90px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[16px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
+                  <VoiceInput value={hints} onChange={setHints} size="sm" />
                   <button type="button" onClick={suggestConcepts} disabled={ideating} className="mt-3 bg-card border-[1.5px] border-ink text-ink text-[14.5px] font-semibold px-[18px] py-[11px] rounded-[4px] disabled:opacity-40">{ideating ? d.thinking : d.suggestConcepts}</button>
                   {concepts.length > 0 && (
                     <div className="mt-5 flex flex-col gap-3">
@@ -378,6 +331,7 @@ export default function IdeaPage() {
                   <div className="mt-2">
                     <label className={label}>{d.adjustLabel}</label>
                     <textarea value={approachAdjust} onChange={(e) => setApproachAdjust(e.target.value)} placeholder={d.adjustPh} className="w-full h-[80px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-3 text-[15px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
+                    <VoiceInput value={approachAdjust} onChange={setApproachAdjust} size="sm" />
                   </div>
                 </div>
               ) : (

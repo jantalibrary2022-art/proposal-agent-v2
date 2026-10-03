@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useDict } from "../../_components/LocaleProvider";
+import VoiceInput from "../../_components/VoiceInput";
 import OutputLanguagePicker, { defaultOutputLanguage, type OutputLanguage } from "../../_components/OutputLanguagePicker";
 import AccessCodeInput from "../../_components/AccessCodeInput";
 
@@ -223,6 +224,7 @@ export default function ImprovePage() {
                         <label className={label}>{q.question}</label>
                         {q.why && <div className="text-[13px] text-muted mb-2 -mt-1">{q.why}</div>}
                         <textarea value={qaAnswers[q.id] || ""} onChange={(e) => setQaAnswers((a) => ({ ...a, [q.id]: e.target.value }))} placeholder={im.answerPh} className="w-full h-[90px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-3 text-[15px] leading-relaxed bg-card resize-none outline-none focus:border-ink" />
+                        <VoiceInput value={qaAnswers[q.id] || ""} onChange={(t) => setQaAnswers((a) => ({ ...a, [q.id]: t }))} size="sm" />
                       </div>
                     ))}
                   </div>

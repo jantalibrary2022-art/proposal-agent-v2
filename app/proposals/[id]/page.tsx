@@ -4,6 +4,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { createClient } from "../../../lib/supabase/client";
 import { useDict } from "../../_components/LocaleProvider";
+import VoiceInput from "../../_components/VoiceInput";
 
 function parseAmt(s: string) { const n = Number(String(s == null ? "" : s).replace(/[^0-9.]/g, "")); return isNaN(n) ? 0 : n; }
 function fmtIN(n: number) {
@@ -19,51 +20,6 @@ function paras(text: string) {
   return (text || "").split(/\n\s*\n/).map((p, i) => (
     <p key={i} className="mb-3 last:mb-0 whitespace-pre-wrap leading-relaxed">{p}</p>
   ));
-}
-
-function Dictation({ value, onChange }: { value: string; onChange: (v: string) => void }) {
-  const { locale, t } = useDict();
-  const p = t.proposal;
-  const [listening, setListening] = useState(false);
-  const [supported, setSupported] = useState(true);
-  const recRef = useRef<any>(null);
-  const keepRef = useRef(false);
-  const baseRef = useRef("");
-  useEffect(() => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SR) setSupported(false);
-  }, []);
-  const run = () => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SR) { setSupported(false); return; }
-    const rec = new SR();
-    rec.lang = locale === "hi" ? "hi-IN" : "en-IN"; rec.interimResults = true; rec.continuous = true;
-    let committed = baseRef.current;
-    rec.onresult = (e: any) => {
-      let interim = "";
-      for (let i = e.resultIndex; i < e.results.length; i++) {
-        const tr = e.results[i][0].transcript;
-        if (e.results[i].isFinal) committed += (committed ? " " : "") + tr.trim();
-        else interim += tr;
-      }
-      onChange((committed + (interim ? " " + interim : "")).trim());
-    };
-    rec.onend = () => { if (keepRef.current) { try { rec.start(); } catch {} } else setListening(false); };
-    rec.onerror = (e: any) => { if (e.error === "not-allowed" || e.error === "service-not-allowed") { keepRef.current = false; setListening(false); } };
-    recRef.current = rec;
-    try { rec.start(); } catch {}
-  };
-  const toggle = () => {
-    if (listening) { keepRef.current = false; recRef.current?.stop(); setListening(false); }
-    else { baseRef.current = value ? value.trim() : ""; keepRef.current = true; setListening(true); run(); }
-  };
-  if (!supported) return null;
-  return (
-    <button type="button" onClick={toggle} className={`shrink-0 flex items-center gap-2 px-3 h-[40px] rounded-[4px] text-[13.5px] font-semibold border-[1.5px] ${listening ? "bg-ink text-paper border-ink" : "bg-card text-ink border-ink"}`}>
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
-      {listening ? p.stop : p.speak}
-    </button>
-  );
 }
 
 function Section({ id, label, single, text, proposalId, onCommit, locked, truncate }: { id: string; label: string; single: boolean; text: string; proposalId: string; onCommit: (section: string, newText: string) => Promise<boolean>; locked?: boolean; truncate?: boolean; }) {
@@ -132,9 +88,9 @@ function Section({ id, label, single, text, proposalId, onCommit, locked, trunca
             <>
               <label className="block text-[13px] font-semibold text-muted mb-2">{p.whatChange}</label>
               <textarea value={comment} onChange={(e) => setComment(e.target.value)} rows={3} placeholder={p.changePh} className="w-full box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-3 text-[15px] bg-card outline-none focus:border-ink resize-y" />
+              <VoiceInput value={comment} onChange={setComment} size="sm" />
               <div className="mt-3 flex items-center gap-3">
                 <button type="button" onClick={ask} disabled={busy || !comment.trim()} className="bg-ink text-paper text-[14.5px] font-semibold px-5 py-[10px] rounded-[4px] disabled:opacity-40">{busy ? p.working : p.askAgent}</button>
-                <Dictation value={comment} onChange={setComment} />
               </div>
             </>
           ) : (
