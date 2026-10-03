@@ -38,7 +38,7 @@ export default function VoiceInput({
   const recRef = useRef<any>(null);
   const keepRef = useRef(false);
   const baseRef = useRef("");        // text before the current recognition session
-  const sessionRef = useRef("");     // final text recognised in the current session
+  const sessionRef = useRef("");     // text shown for the current session (final + still-provisional words)
   const heardRef = useRef(false);
   const valueRef = useRef(value);
   const onChangeRef = useRef(onChange);
@@ -79,8 +79,13 @@ export default function VoiceInput({
         const tx = e.results[i][0].transcript;
         if (e.results[i].isFinal) finals += " " + tx; else interim += " " + tx;
       }
-      sessionRef.current = finals;
-      if ((finals + interim).trim()) { heardRef.current = true; setMsg(""); }
+      // Keep what the user can see. Safari often leaves Hindi words provisional
+      // and never marks them final, so committing only finals would erase them.
+      // Safari can also send an empty result as it stops; ignore it.
+      if (!(finals + interim).trim()) return;
+      sessionRef.current = finals + " " + interim;
+      heardRef.current = true;
+      setMsg("");
       onChangeRef.current(join(baseRef.current, finals, interim));
     };
     rec.onerror = (e: any) => {
