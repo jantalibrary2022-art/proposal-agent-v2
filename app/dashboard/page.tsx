@@ -8,6 +8,7 @@ import { sweepStuckProposals } from "../../lib/sweep";
 import { draftGate, draftDates, isPastExpiry } from "../../lib/drafts";
 import { paywallEnabled } from "../../lib/coupons";
 import { DraftGateNotice } from "../_components/DraftGate";
+import { DemoButton } from "../_components/DemoVideo";
 import DraftRulesModal, { DRAFT_RULES_VERSION } from "./DraftRulesModal";
 import { getDict, type Locale, type Dict } from "../../lib/i18n";
 import LogoutButton from "../_components/LogoutButton";
@@ -163,6 +164,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
             {proposals.length === 0 ? (
               <div className="bg-card border border-line rounded-lg p-10 text-center">
                 <p className="text-[15px] text-muted">{td.empty}</p>
+                <div className="mt-4 flex justify-center"><DemoButton /></div>
               </div>
             ) : (
               <div className="bg-card border border-line rounded-lg overflow-hidden">

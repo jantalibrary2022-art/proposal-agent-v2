@@ -981,4 +981,10 @@ export const en = {
       "Ask a colleague who does not know the project to read the summary. If they get it, the donor will.",
     ] as string[],
   },
+  demo: {
+    watch: "Watch the 30-second demo",
+    title: "Prastav demo video",
+    close: "Close",
+    caption: "A 30-second walk-through: sign up, describe your project, review the draft, finalise and download.",
+  },
 };

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Track from "./_components/Track";
 import SiteHeader from "./_components/SiteHeader";
+import { DemoButton } from "./_components/DemoVideo";
 import { getChosenLocale, dictFor, DEFAULT_LOCALE } from "../lib/i18n";
 
 export default async function Home() {
@@ -32,6 +33,7 @@ export default async function Home() {
         </span>
         <span className="text-[14px] sm:text-[15px] font-semibold text-[#2A2A24]">{t.byline}</span>
       </div>
+      <div className="mt-5 flex justify-center px-5"><DemoButton /></div>
 
       {/* Framed panel */}
       <section className="relative mx-4 sm:mx-8 my-7 min-h-[540px] lg:min-h-[600px] rounded-[18px] bg-panel overflow-hidden">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getDict } from "../../lib/i18n";
 import SiteHeader from "../_components/SiteHeader";
+import { DemoInline } from "../_components/DemoVideo";
 
 export const metadata = { title: "Help · Prastav" };
 
@@ -19,6 +20,7 @@ export default async function HelpPage() {
             {h.intro1}<Link href="/contact" className="font-semibold text-ink underline">{h.introLink}</Link>{h.intro2}
           </p>
 
+          <DemoInline className="mb-10" />
           <div className="flex flex-col divide-y divide-line border-y border-line">
             {h.faq.map(([q, a]) => (
               <div key={q} className="py-6">

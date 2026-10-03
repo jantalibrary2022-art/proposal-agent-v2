@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getDict } from "../../lib/i18n";
 import SiteHeader from "../_components/SiteHeader";
+import { DemoInline } from "../_components/DemoVideo";
 
 export const metadata = { title: "Method · Prastav" };
 
@@ -14,6 +15,7 @@ export default async function MethodPage() {
         <div className="text-[12px] tracking-[0.1em] text-muted mb-4">{m.kicker}</div>
         <h1 className="font-extrabold text-[clamp(28px,5vw,44px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">{m.title}</h1>
         <p className="mt-5 text-[17px] leading-relaxed text-[#3A3A31] max-w-[720px]">{m.intro}</p>
+        <DemoInline className="mt-10 max-w-[860px]" />
 
         <h2 className="mt-16 text-[20px] font-bold tracking-[-0.01em] mb-5">{m.waysTitle}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
