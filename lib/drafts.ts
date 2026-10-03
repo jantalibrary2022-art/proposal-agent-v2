@@ -139,3 +139,16 @@ export async function isTracked(admin: any, proposalId: string): Promise<boolean
   const { data, error } = await admin.from("draft_ledger").select("proposal_id").eq("proposal_id", proposalId).eq("failed", false).eq("free", false).limit(1).maybeSingle();
   return !error && !!data;
 }
+
+// Records the current generation stage on the proposal (meta.progress) so the
+// waiting page can show real progress. Best-effort; never throws.
+export function progressReporter(admin: any, proposalId: string) {
+  return (stage: string) => {
+    try {
+      admin.from("proposals")
+        .update({ meta: { progress: { stage, at: new Date().toISOString() } } })
+        .eq("id", proposalId).eq("status", "generating")
+        .then(() => {}, () => {});
+    } catch {}
+  };
+}

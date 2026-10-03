@@ -5,6 +5,7 @@ import Link from "next/link";
 import { createClient } from "../../../lib/supabase/client";
 import { useDict } from "../../_components/LocaleProvider";
 import VoiceInput from "../../_components/VoiceInput";
+import GenerationProgress from "./GenerationProgress";
 
 function parseAmt(s: string) { const n = Number(String(s == null ? "" : s).replace(/[^0-9.]/g, "")); return isNaN(n) ? 0 : n; }
 function fmtIN(n: number) {
@@ -242,7 +243,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
   const sweptRef = useRef(false);
   const fetchRow = async (reschedule: boolean): Promise<void> => {
     const supabase = createClient();
-    const { data } = await supabase.from("proposals").select("id,status,title,meta,composed,substance,error,created_at,updated_at").eq("id", id).single();
+    const { data } = await supabase.from("proposals").select("id,status,mode,title,meta,composed,substance,error,created_at,updated_at").eq("id", id).single();
     if (!data) { setMissing(true); return; }
     // Past the timeout, ask the server to mark the run failed, then re-read it.
     const base = data.status === "rendering" ? data.updated_at : data.created_at;
@@ -392,15 +393,23 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
             </div>
           )}
 
-          {!missing && (!row || status === "generating") && (
+          {!missing && !row && (
             <div className="bg-card border border-line rounded-lg p-8">
-              <div className="flex items-center gap-3 mb-2">
+              <div className="flex items-center gap-3">
                 <span className="w-[22px] h-[22px] rounded-full border-[3px] border-[#E4E3DC] border-t-ink animate-spin" />
                 <span className="text-[12px] tracking-wide font-semibold text-muted">{p.buildingKicker}</span>
               </div>
-              <h1 className="font-extrabold text-[clamp(24px,4vw,30px)] tracking-tight mb-2">{row?.title || p.buildingTitleFallback}</h1>
-              <p className="text-[15px] text-muted leading-relaxed">{p.buildingBody}</p>
             </div>
+          )}
+          {!missing && row && status === "generating" && (
+            <GenerationProgress
+              title={row.title}
+              mode={row.mode}
+              stage={row.meta?.progress?.stage || null}
+              stageAt={row.meta?.progress?.at || null}
+              createdAt={row.created_at}
+              email={email}
+            />
           )}
 
           {!missing && status === "rendering" && (

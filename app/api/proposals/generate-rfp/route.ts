@@ -4,7 +4,7 @@ import { createAdminClient } from "../../../../lib/supabase/admin";
 import { runRfpDraft } from "../../../../lib/run-rfp";
 import { normalizeCode, validateCoupon, redeemCoupon } from "../../../../lib/coupons";
 import { genErrorMessage } from "../../../../lib/gen-errors";
-import { gateForGeneration, claimCredit, recordDraft, releaseOnFailure } from "../../../../lib/drafts";
+import { gateForGeneration, claimCredit, recordDraft, releaseOnFailure, progressReporter } from "../../../../lib/drafts";
 import { priceFor } from "../../../../lib/pricing";
 import { sendProposalReady, sendProposalFailed } from "../../../../lib/email";
 
@@ -138,7 +138,7 @@ export async function POST(req: NextRequest) {
 
   (async () => {
     try {
-      const draft = await runRfpDraft(rfpText, engineAnswers, engineOrg, { analysis: form.rfp_analysis && typeof form.rfp_analysis === "object" ? form.rfp_analysis : null, language: outputLanguage(form.output_language) });
+      const draft = await runRfpDraft(rfpText, engineAnswers, engineOrg, { analysis: form.rfp_analysis && typeof form.rfp_analysis === "object" ? form.rfp_analysis : null, language: outputLanguage(form.output_language), onProgress: progressReporter(admin, proposalId) });
       const a = draft.analysis || {};
       const meta = {
         ...draft.meta,

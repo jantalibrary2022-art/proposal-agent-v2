@@ -4,7 +4,7 @@ import { createAdminClient } from "../../../../lib/supabase/admin";
 import { runOpenDraft } from "../../../../lib/run-open";
 import { normalizeCode, validateCoupon, redeemCoupon } from "../../../../lib/coupons";
 import { genErrorMessage } from "../../../../lib/gen-errors";
-import { gateForGeneration, claimCredit, recordDraft, releaseOnFailure } from "../../../../lib/drafts";
+import { gateForGeneration, claimCredit, recordDraft, releaseOnFailure, progressReporter } from "../../../../lib/drafts";
 import { priceFor } from "../../../../lib/pricing";
 import { sendProposalReady, sendProposalFailed } from "../../../../lib/email";
 
@@ -138,6 +138,7 @@ export async function POST(req: NextRequest) {
   (async () => {
     try {
       const draft = await runOpenDraft(engineAnswers, engineOrg, {
+        onProgress: progressReporter(admin, proposalId),
         brief: form.brief && typeof form.brief === "object" ? form.brief : null,
         applicantEvidence: form.applicant_evidence ? String(form.applicant_evidence) : null,
         chosenApproach: form.chosen_approach && typeof form.chosen_approach === "object" ? form.chosen_approach : null,

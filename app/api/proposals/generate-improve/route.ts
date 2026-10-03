@@ -4,7 +4,7 @@ import { createAdminClient } from "../../../../lib/supabase/admin";
 import { runImproveDraft } from "../../../../lib/run-improve";
 import { normalizeCode, validateCoupon, redeemCoupon } from "../../../../lib/coupons";
 import { genErrorMessage } from "../../../../lib/gen-errors";
-import { gateForGeneration, claimCredit, recordDraft, releaseOnFailure } from "../../../../lib/drafts";
+import { gateForGeneration, claimCredit, recordDraft, releaseOnFailure, progressReporter } from "../../../../lib/drafts";
 import { priceFor } from "../../../../lib/pricing";
 import { sendProposalReady, sendProposalFailed } from "../../../../lib/email";
 
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
 
   (async () => {
     try {
-      const draft = await runImproveDraft(draftText, qa, { diagnosis, language: outputLanguage(form.output_language) });
+      const draft = await runImproveDraft(draftText, qa, { diagnosis, language: outputLanguage(form.output_language), onProgress: progressReporter(admin, proposalId) });
       const meta = {
         ...draft.meta,
         improve: {
