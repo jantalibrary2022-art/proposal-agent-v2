@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
     if (cap.order_id && cap.order_id !== orderId) {
       return NextResponse.json({ ok: false, error: "order_mismatch" }, { status: 400 });
     }
-    await recordPrepaidCredit(createAdminClient(), { userId: user.id, paymentId, amountPaise: cap.amount });
+    await recordPrepaidCredit(createAdminClient(), { userId: user.id, paymentId, amountPaise: cap.amount, offerCode: notes.offerCode || undefined });
     return NextResponse.json({ ok: true });
   }
 
@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
   if (captured.order_id && captured.order_id !== orderId) return NextResponse.json({ ok: false, error: "order_mismatch" }, { status: 400 });
 
   const admin = createAdminClient();
-  await recordPaidPurchase(admin, { userId: user.id, proposalId, paymentId, amountPaise: captured.amount });
+  await recordPaidPurchase(admin, { userId: user.id, proposalId, paymentId, amountPaise: captured.amount, offerCode: notes.offerCode || undefined });
 
   return NextResponse.json({ ok: true });
 }

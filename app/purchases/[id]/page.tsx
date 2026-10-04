@@ -60,6 +60,11 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
 
   const invoiceNo = p.invoice_no || ("PRS/" + new Date(p.created_at).getFullYear() + "/" + String(p.id).slice(0, 6).toUpperCase());
   const amount = Number(p.amount || 0);
+  // Discounted payments carry the list price; show it with a discount line.
+  const listAmount = Number(p.list_amount || 0);
+  const discounted = listAmount > amount + 0.001;
+  const lineAmount = discounted ? listAmount : amount;
+  const discountLabel = p.offer_code === "founding" ? t.offer.invoiceDiscount : t.offer.discount;
   const currency = p.currency || "INR";
   const statusText = p.status === "paid" || !p.status ? inv.paid : p.status;
 
@@ -128,7 +133,7 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
                 <div className="font-semibold text-[13.5px]">{p.description || inv.lineDesc}</div>
                 <div className="text-[12px] text-muted mt-0.5">{inv.lineSub}</div>
               </td>
-              <td className={cell + " text-right tabular-nums"}>{money(amount, currency)}</td>
+              <td className={cell + " text-right tabular-nums"}>{money(lineAmount, currency)}</td>
             </tr>
           </tbody>
         </table>
@@ -145,7 +150,8 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
             {sellerPan && <div className="mt-3 text-[11.5px] text-muted">{inv.pan}{sellerPan}</div>}
           </div>
           <div className="w-full sm:w-[260px] shrink-0">
-            <div className="flex justify-between py-2 border-t border-[#D8D7D1] text-[13px]"><span className="text-muted">{inv.subtotal}</span><span className="tabular-nums">{money(amount, currency)}</span></div>
+            <div className="flex justify-between py-2 border-t border-[#D8D7D1] text-[13px]"><span className="text-muted">{inv.subtotal}</span><span className="tabular-nums">{money(lineAmount, currency)}</span></div>
+            {discounted && <div className="flex justify-between py-2 border-t border-[#D8D7D1] text-[13px]"><span className="text-muted">{discountLabel}</span><span className="tabular-nums">− {money(listAmount - amount, currency)}</span></div>}
             <div className="flex justify-between py-2 border-t border-[#D8D7D1] text-[15px] font-bold"><span>{inv.total}</span><span className="tabular-nums">{money(amount, currency)}</span></div>
           </div>
         </div>

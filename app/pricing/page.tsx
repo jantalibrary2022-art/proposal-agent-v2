@@ -1,12 +1,19 @@
 import Link from "next/link";
 import { getDict } from "../../lib/i18n";
 import SiteHeader from "../_components/SiteHeader";
+import { createAdminClient } from "../../lib/supabase/admin";
+import { publicOffer } from "../../lib/offers";
+import { pricePaise } from "../../lib/razorpay";
 
 export const metadata = { title: "Pricing · Prastav" };
 
 export default async function PricingPage() {
   const { t } = await getDict();
   const p = t.pricingPage;
+  const o = t.offer;
+  let offer = null as Awaited<ReturnType<typeof publicOffer>>;
+  try { offer = await publicOffer(createAdminClient(), pricePaise()); } catch {}
+  const inr = (paise: number) => "₹" + Math.round(paise / 100).toLocaleString("en-IN");
   const h2 = "mt-16 text-[20px] font-bold tracking-[-0.01em] mb-5";
   return (
     <div className="min-h-screen bg-canvas text-ink flex flex-col">
@@ -21,10 +28,27 @@ export default async function PricingPage() {
         <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-4">
           <div className="bg-card border border-line rounded-lg p-7">
             <div className="text-[16px] font-bold">{p.proposalName}</div>
+            {offer ? (
+              <div className="mt-2">
+                <div className="flex items-baseline gap-3 flex-wrap">
+                  <span className="text-[36px] font-extrabold tracking-[-0.03em]">{inr(offer.offerPaise)}</span>
+                  <span className="text-[18px] text-muted line-through">{inr(offer.fullPaise)}</span>
+                  <span className="text-[14px] text-muted">{p.proposalUnit}</span>
+                </div>
+                <div className="text-[14px] text-[#3A3A31] mt-1">{o.priceLine}</div>
+                {offer.remaining !== null && offer.total ? (
+                  <div className="mt-4 pt-3 border-t border-[#ECEAE1]">
+                    <div className="flex justify-between items-center text-[13.5px]"><span><b>{o.placesOf.replace("{n}", String(offer.remaining)).replace("{total}", String(offer.total))}</b></span><span className="text-muted text-[12.5px]">{o.applied}</span></div>
+                    <div className="h-1 bg-[#ECEAE1] rounded mt-2 overflow-hidden"><div className="h-full bg-ink" style={{ width: `${Math.round(((offer.total - offer.remaining) / offer.total) * 100)}%` }} /></div>
+                  </div>
+                ) : null}
+              </div>
+            ) : (
             <div className="flex items-baseline gap-1.5 mt-2">
               <span className="text-[36px] font-extrabold tracking-[-0.03em]">{p.proposalPrice}</span>
               <span className="text-[14px] text-muted">{p.proposalUnit}</span>
             </div>
+            )}
             <div className="mt-5 text-[12px] tracking-[0.08em] text-muted mb-2">{p.includedTitle.toUpperCase()}</div>
             <ul className="flex flex-col gap-2">
               {p.included.map((item) => (
@@ -72,7 +96,7 @@ export default async function PricingPage() {
 
         {/* Discounts */}
         <h2 className={h2}>{p.discountTitle}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {p.discountItems.map(([title, d]) => (
             <div key={title} className="bg-card border border-line rounded-lg p-6">
               <div className="text-[15.5px] font-bold mb-2">{title}</div>

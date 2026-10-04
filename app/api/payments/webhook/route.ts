@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
 
   const admin = createAdminClient();
   if (captured.order_id && captured.order_id !== orderId) return NextResponse.json({ ok: true });
-  if (prepay) await recordPrepaidCredit(admin, { userId, paymentId, amountPaise: captured.amount });
-  else await recordPaidPurchase(admin, { userId, proposalId, paymentId, amountPaise: captured.amount });
+  if (prepay) await recordPrepaidCredit(admin, { userId, paymentId, amountPaise: captured.amount, offerCode: notes.offerCode || undefined });
+  else await recordPaidPurchase(admin, { userId, proposalId, paymentId, amountPaise: captured.amount, offerCode: notes.offerCode || undefined });
   return NextResponse.json({ ok: true });
 }

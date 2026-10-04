@@ -9,6 +9,7 @@ import { draftGate, draftDates, isPastExpiry } from "../../lib/drafts";
 import { paywallEnabled } from "../../lib/coupons";
 import { DraftGateNotice } from "../_components/DraftGate";
 import { DemoButton } from "../_components/DemoVideo";
+import { offerForUser } from "../../lib/offers";
 import DraftRulesModal, { DRAFT_RULES_VERSION } from "./DraftRulesModal";
 import { getDict, type Locale, type Dict } from "../../lib/i18n";
 import LogoutButton from "../_components/LogoutButton";
@@ -98,6 +99,9 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
     } catch {}
   }
   const tdr = t.drafts;
+  const to = t.offer;
+  let myOffer: Awaited<ReturnType<typeof offerForUser>> = null;
+  try { myOffer = await offerForUser(adminDb, user.id); } catch {}
   // Admins can preview the pop-up any time with /dashboard?preview=rules.
   const showRules = (paywall && Number((user.user_metadata as any)?.draft_rules_ack || 0) < DRAFT_RULES_VERSION) || (isAdmin && sp.preview === "rules");
 
@@ -142,6 +146,16 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
             <p className="text-[15px] text-muted mb-6">{td.proposalsSub}</p>
 
             {gateInfo && !gateInfo.hasCredit && gateInfo.mode !== "free" && <DraftGateNotice gate={gateInfo} compact />}
+            {myOffer && (
+              <div className="mb-6 bg-panel text-paper rounded-lg px-5 sm:px-6 py-5 flex items-center gap-4 sm:gap-5">
+                <div className="w-11 h-11 rounded-full border border-white/40 flex items-center justify-center shrink-0 text-[18px] font-bold" aria-hidden>प्र</div>
+                <div className="min-w-0">
+                  <div className="text-[11px] tracking-[0.12em] font-semibold text-white/55">{to.dashKicker}</div>
+                  <div className="text-[16.5px] font-bold leading-snug mt-0.5">{myOffer.offer.value === 50 && myOffer.offer.kind === "percent" ? to.dashTitleHalf : to.dashTitlePercent.replace("{p}", String(myOffer.offer.value))}</div>
+                  <div className="text-[13.5px] text-white/65 mt-0.5">{to.dashBody}{myOffer.remaining !== null ? " · " + to.placesLeft.replace("{n}", String(myOffer.remaining)) : ""}</div>
+                </div>
+              </div>
+            )}
             <div className="flex flex-col sm:flex-row gap-5 mb-12">
               <Link href="/new/idea" className="flex-1 bg-panel text-paper rounded-lg p-6">
                 <div className="text-[18px] font-bold mb-1.5">{td.ideaTitle}</div>

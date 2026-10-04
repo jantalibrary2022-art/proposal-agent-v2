@@ -6,17 +6,38 @@
 // Never charges below Razorpay's ₹1 minimum; a discount that brings the price
 // to zero or below is treated as free.
 import { pricePaise } from "./razorpay";
+import { offerForUser, applyOffer } from "./offers";
 
 export type ProposalPrice = {
   fullPaise: number;
   amountPaise: number;
   free: boolean;
-  discountKind?: "free" | "percent" | "fixed";
+  discountKind?: "free" | "percent" | "fixed" | "offer";
+  offerCode?: string;
+  offerName?: string;
   discountValue?: number;
   code?: string;
 };
 
+// Final price for a proposal: the better of any discount code redeemed for it and
+// any automatic offer the owner qualifies for. Discounts never stack.
 export async function priceFor(admin: any, proposalId: string): Promise<ProposalPrice> {
+  const byCode = await codePrice(admin, proposalId);
+  if (byCode.free || !proposalId) return byCode;
+  try {
+    const { data: row } = await admin.from("proposals").select("user_id").eq("id", proposalId).maybeSingle();
+    if (!row?.user_id) return byCode;
+    const st = await offerForUser(admin, row.user_id);
+    if (!st) return byCode;
+    const amt = applyOffer(byCode.fullPaise, st.offer);
+    if (amt < byCode.amountPaise) {
+      return { fullPaise: byCode.fullPaise, amountPaise: amt, free: false, discountKind: "offer", discountValue: st.offer.value, offerCode: st.offer.code, offerName: st.offer.name };
+    }
+  } catch {}
+  return byCode;
+}
+
+async function codePrice(admin: any, proposalId: string): Promise<ProposalPrice> {
   const full = pricePaise();
   if (!proposalId) return { fullPaise: full, amountPaise: full, free: false };
 

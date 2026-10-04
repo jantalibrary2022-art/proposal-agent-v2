@@ -39,6 +39,8 @@ export async function GET(_req: NextRequest, ctx: { params: Promise<{ id: string
     discountKind: price.discountKind || null,
     discountValue: price.discountValue ?? null,
     discountCode: price.code || null,
+    offerCode: price.offerCode || null,
+    offerName: price.offerName || null,
     currency: "INR",
     razorpayReady: razorpayConfigured(),
   });

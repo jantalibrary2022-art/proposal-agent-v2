@@ -70,6 +70,7 @@ export default async function AdminPage() {
           </div>
           <div className="flex items-center gap-5">
             <Link href="/admin/users" className="text-[13px] tracking-wide text-muted">Users</Link>
+            <Link href="/admin/offers" className="text-[13px] tracking-wide text-muted">Offers</Link>
             <Link href="/admin/coupons" className="text-[13px] tracking-wide text-muted">Access codes</Link>
             <Link href="/dashboard" className="text-[13px] tracking-wide text-muted">← Dashboard</Link>
           </div>

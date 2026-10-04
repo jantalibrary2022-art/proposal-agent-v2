@@ -5,6 +5,7 @@ import { isEntitled } from "../../../../lib/entitlement";
 import { createOrder, razorpayConfigured, razorpayKeyId } from "../../../../lib/razorpay";
 import { priceFor } from "../../../../lib/pricing";
 import { draftGate, draftDates, isTracked } from "../../../../lib/drafts";
+import { offerForUser, applyOffer } from "../../../../lib/offers";
 
 export const runtime = "nodejs";
 
@@ -24,7 +25,11 @@ export async function POST(req: NextRequest) {
     const g = await draftGate(admin, user.id);
     if (!g.enforced || g.creditId) return NextResponse.json({ ok: true, already: true });
     try {
-      const order = await createOrder(g.pricePaise, "pre-" + user.id.slice(0, 30), { prepay: "1", userId: user.id });
+      const st = await offerForUser(admin, user.id);
+      const amount = st ? applyOffer(g.pricePaise, st.offer) : g.pricePaise;
+      const notes: Record<string, string> = { prepay: "1", userId: user.id };
+      if (st) notes.offerCode = st.offer.code;
+      const order = await createOrder(amount, "pre-" + user.id.slice(0, 30), notes);
       return NextResponse.json({ ok: true, orderId: order.id, amount: order.amount, currency: order.currency, keyId: razorpayKeyId() });
     } catch (e: any) {
       return NextResponse.json({ ok: false, error: (e && e.message) || "order_failed" }, { status: 500 });
@@ -49,7 +54,9 @@ export async function POST(req: NextRequest) {
   if (price.free) return NextResponse.json({ ok: true, already: true });
   const amount = price.amountPaise;
   try {
-    const order = await createOrder(amount, proposalId, { proposalId, userId: user.id });
+    const notes: Record<string, string> = { proposalId, userId: user.id };
+    if (price.offerCode) notes.offerCode = price.offerCode;
+    const order = await createOrder(amount, proposalId, notes);
     return NextResponse.json({ ok: true, orderId: order.id, amount: order.amount, currency: order.currency, keyId: razorpayKeyId() });
   } catch (e: any) {
     return NextResponse.json({ ok: false, error: (e && e.message) || "order_failed" }, { status: 500 });

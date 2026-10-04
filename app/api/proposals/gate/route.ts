@@ -3,6 +3,7 @@ import { createClient } from "../../../../lib/supabase/server";
 import { createAdminClient } from "../../../../lib/supabase/admin";
 import { draftGate } from "../../../../lib/drafts";
 import { razorpayConfigured } from "../../../../lib/razorpay";
+import { offerForUser, applyOffer } from "../../../../lib/offers";
 
 export const runtime = "nodejs";
 
@@ -12,7 +13,9 @@ export async function GET() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ ok: false, error: "not_authenticated" }, { status: 401 });
-  const g = await draftGate(createAdminClient(), user.id);
+  const admin = createAdminClient();
+  const g = await draftGate(admin, user.id);
+  const st = g.enforced && g.mode !== "free" ? await offerForUser(admin, user.id) : null;
   return NextResponse.json({
     ok: true,
     enforced: g.enforced,
@@ -20,7 +23,7 @@ export async function GET() {
     unpaidOpen: g.unpaidOpen,
     max: g.max,
     hasCredit: !!g.creditId,
-    pricePaise: g.pricePaise,
+    pricePaise: st ? applyOffer(g.pricePaise, st.offer) : g.pricePaise,
     nextSlotAt: g.nextSlotAt,
     razorpayReady: razorpayConfigured(),
   });

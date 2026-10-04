@@ -3,6 +3,10 @@ import { redirect } from "next/navigation";
 import Track from "./_components/Track";
 import SiteHeader from "./_components/SiteHeader";
 import { DemoButton } from "./_components/DemoVideo";
+import OfferStrip from "./_components/OfferStrip";
+import { createAdminClient } from "../lib/supabase/admin";
+import { publicOffer } from "../lib/offers";
+import { pricePaise } from "../lib/razorpay";
 import { getChosenLocale, dictFor, DEFAULT_LOCALE } from "../lib/i18n";
 
 export default async function Home() {
@@ -10,10 +14,13 @@ export default async function Home() {
   if (!chosen) redirect("/language");
   const locale = chosen || DEFAULT_LOCALE;
   const t = dictFor(locale);
+  let offer = null as Awaited<ReturnType<typeof publicOffer>>;
+  try { offer = await publicOffer(createAdminClient(), pricePaise()); } catch {}
 
   return (
     <main className="min-h-screen flex flex-col">
       <Track path="/" />
+      {offer && <OfferStrip code={offer.code} kind={offer.kind} value={offer.value} remaining={offer.remaining} total={offer.total} />}
       <SiteHeader />
 
       {/* Meta line */}

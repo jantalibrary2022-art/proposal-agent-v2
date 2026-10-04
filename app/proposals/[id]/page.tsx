@@ -485,7 +485,10 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
               </div>
 
               {locked && <p className="text-[13.5px] text-muted leading-relaxed mt-8 mb-2 max-w-[560px]">{p.payNote} <Link href="/refunds" target="_blank" className="underline font-semibold text-ink">{t.footer.refunds}</Link></p>}
-              {locked && payInfo?.discountCode && payInfo.amountPaise < payInfo.fullPaise && (
+              {locked && payInfo?.offerCode && payInfo.amountPaise < payInfo.fullPaise && (
+                <p className="text-[13.5px] text-ink mb-2">{t.offer.payLine} · <span className="line-through text-muted">₹{fmtIN((payInfo.fullPaise || 0) / 100)}</span> <b>₹{fmtIN((payInfo.amountPaise || 0) / 100)}</b></p>
+              )}
+              {locked && !payInfo?.offerCode && payInfo?.discountCode && payInfo.amountPaise < payInfo.fullPaise && (
                 <p className="text-[13.5px] text-ink font-semibold mb-2">{p.discountApplied} {payInfo.discountCode} · <span className="line-through text-muted font-normal">₹{fmtIN((payInfo.fullPaise || 0) / 100)}</span> ₹{fmtIN((payInfo.amountPaise || 0) / 100)}</p>
               )}
               <div className="flex items-center gap-4 mt-2">
