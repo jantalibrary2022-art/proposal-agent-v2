@@ -4,6 +4,9 @@ import { createClient } from "../../../lib/supabase/server";
 
 export const runtime = "nodejs";
 
+// Shown to the visitor instead of the raw database error.
+const FAIL = "Your message could not be sent just now. Please try again in a few minutes, or write to hello@prastav.app.";
+
 export async function POST(req: NextRequest) {
   let body: any = {};
   try { body = await req.json(); } catch {}
@@ -32,9 +35,13 @@ export async function POST(req: NextRequest) {
       message,
       user_id: userId,
     });
-    if (error) return NextResponse.json({ ok: false, error: error.message }, { status: 500 });
+    if (error) {
+      console.error("contact insert failed:", error.message);
+      return NextResponse.json({ ok: false, error: FAIL }, { status: 500 });
+    }
   } catch (e: any) {
-    return NextResponse.json({ ok: false, error: (e && e.message) || "Could not send." }, { status: 500 });
+    console.error("contact insert failed:", e && e.message);
+    return NextResponse.json({ ok: false, error: FAIL }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });
