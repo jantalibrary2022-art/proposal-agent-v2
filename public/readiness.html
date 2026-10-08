@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Accreditation Readiness · Prastav</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap">
+<style>
+/* Prastav palette — warm paper, near-black ink as the primary, RAG kept semantic. */
+:root{
+  color-scheme:light;
+  --bg:#EAEAE7; --surface:#FFFFFF; --surface-2:#F1F0EB;
+  --fg:#1A1A18; --muted:#6E6E68; --line:#D4D3CD;
+  --accent:#1A1A18; --accent-soft:#ECEAE1;
+  --green:#2E7D4F; --green-bg:#E4EEE7;
+  --amber:#9A6B14; --amber-bg:#F0E8D4;
+  --red:#B23B2A; --red-bg:#F3E2DD;
+  --ink-on-color:#ffffff;
+  --sans:'Archivo','Noto Sans Devanagari',system-ui,sans-serif;
+  --serif:'Archivo','Noto Sans Devanagari',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.5;margin:0;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding-block:22px 64px;padding-left:18px;padding-right:18px}
+.langbar{display:flex;gap:8px;justify-content:flex-end;margin-bottom:14px}
+.langbtn{border:1.5px solid var(--line);background:var(--surface);color:var(--muted);font-family:var(--sans);
+  font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px;cursor:pointer}
+.langbtn[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:transparent}
+.langbtn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+header .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+h1{font-family:var(--serif);font-weight:800;font-size:30px;line-height:1.12;letter-spacing:-0.02em;margin:0 0 6px;text-wrap:balance}
+.sub{color:var(--muted);font-size:15px;margin:0 0 22px}
+.section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 18px;margin-bottom:18px}
+.section > h2{font-family:var(--serif);font-size:21px;font-weight:800;letter-spacing:-0.01em;margin:0 0 2px}
+.section > .hint{color:var(--muted);font-size:13.5px;margin:0 0 4px}
+.rows{margin-top:10px}
+.row{padding:14px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:none}
+.q{font-size:15.5px;font-weight:500;margin:0 0 10px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opt{flex:1 1 auto;min-width:92px;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);
+  font-family:var(--sans);font-size:14.5px;font-weight:600;padding:11px 10px;border-radius:10px;cursor:pointer;
+  text-align:center;transition:transform .05s ease}
+.opt:active{transform:scale(.98)}
+.opt:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.opt[aria-pressed="true"]{color:var(--ink-on-color);border-color:transparent}
+.opt.yes[aria-pressed="true"],.opt.g[aria-pressed="true"]{background:var(--green)}
+.opt.no[aria-pressed="true"],.opt.r[aria-pressed="true"]{background:var(--red)}
+.opt.a[aria-pressed="true"]{background:var(--amber)}
+.opt.na[aria-pressed="true"]{background:var(--muted)}
+.subblock{margin:2px 0 0;padding-left:14px;border-left:3px solid var(--accent-soft)}
+.subblock[hidden]{display:none}
+.subblock .row:first-of-type{border-top:none}
+.cta{display:block;width:100%;border:none;background:var(--accent);color:#fff;font-family:var(--sans);
+  font-size:17px;font-weight:700;padding:16px;border-radius:14px;cursor:pointer;margin:6px 0 18px}
+.cta:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
+.note{font-size:13px;color:var(--muted);text-align:center;margin:-10px 0 22px}
+#result[hidden]{display:none}
+.scorecard{background:var(--surface);border:2px solid var(--accent);border-radius:16px;padding:22px 18px;margin-bottom:18px}
+.scorecard h2{font-family:var(--serif);font-size:22px;font-weight:800;letter-spacing:-0.01em;margin:0 0 4px}
+.band{font-size:16px;font-weight:700;margin:12px 0 4px;line-height:1.4}
+.explain{font-size:14px;color:var(--fg);line-height:1.5;margin:8px 0 2px}
+.tiles{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.tile{flex:1 1 100px;background:var(--surface-2);border-radius:12px;padding:14px}
+.tile .big{font-family:var(--serif);font-size:30px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.tile .lab{font-size:12.5px;color:var(--muted);margin-top:6px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.chip{font-size:13px;font-weight:600;padding:5px 10px;border-radius:999px}
+.chip.g{background:var(--green-bg);color:var(--green)}
+.chip.a{background:var(--amber-bg);color:var(--amber)}
+.chip.r{background:var(--red-bg);color:var(--red)}
+.focus-head{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:18px 0 0}
+.focus-list{margin:8px 0 0;padding:0;list-style:none}
+.focus-list li{padding:9px 0;border-top:1px solid var(--line);font-size:14.5px;display:flex;gap:10px;align-items:flex-start}
+.focus-list li:first-child{border-top:none}
+.dot{flex:none;width:12px;height:12px;border-radius:50%;margin-top:5px}
+.dot.r{background:var(--red)} .dot.a{background:var(--amber)}
+.commit{background:var(--accent-soft);border-radius:14px;padding:18px;margin-bottom:18px}
+.commit label{display:block;font-family:var(--serif);font-size:17px;font-weight:700;margin-bottom:6px}
+.commit .sub2{font-size:13px;color:var(--muted);margin:0 0 12px}
+textarea{width:100%;min-height:84px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);
+  color:var(--fg);font-family:var(--sans);font-size:15px;padding:12px;resize:vertical}
+textarea:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
+.share{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:18px}
+.share h3{font-family:var(--serif);font-size:17px;font-weight:700;margin:0 0 4px}
+.share p{font-size:13px;color:var(--muted);margin:0 0 12px;line-height:1.5}
+.share .shareBtn{display:block;width:100%;border:1.5px solid var(--accent);background:var(--accent);color:#fff;
+  font-family:var(--sans);font-size:15.5px;font-weight:700;padding:14px;border-radius:12px;cursor:pointer}
+.share .shareBtn:disabled{opacity:.55;cursor:default}
+.share .shareMsg{font-size:14px;font-weight:600;margin:10px 0 0;text-align:center}
+.share .shareMsg.ok{color:var(--green)} .share .shareMsg.err{color:var(--red)}
+.snapshot-note{display:flex;gap:10px;align-items:center;background:var(--surface-2);border-radius:12px;padding:14px;font-size:14px;margin-bottom:10px}
+.ghost{display:block;width:100%;border:1.5px solid var(--line);background:transparent;color:var(--muted);
+  font-family:var(--sans);font-size:14px;font-weight:600;padding:12px;border-radius:12px;cursor:pointer}
+.foot{color:var(--muted);font-size:12.5px;text-align:center;margin-top:22px;line-height:1.6}
+
+/* ---- Facilitator dashboard (#display) ---- */
+#display{display:none}
+body.display #tool{display:none}
+body.display #display{display:block}
+.disp-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.disp-count{display:flex;align-items:baseline;gap:10px}
+.disp-count .n{font-family:var(--serif);font-size:54px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.disp-count .l{font-size:15px;color:var(--muted);font-weight:600}
+.disp-sub{color:var(--muted);font-size:14px;margin:0 0 18px}
+.refresh{border:1.5px solid var(--line);background:var(--surface);color:var(--fg);font-family:var(--sans);
+  font-size:13.5px;font-weight:600;padding:9px 16px;border-radius:999px;cursor:pointer}
+.disp-section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 18px;margin-bottom:18px}
+.disp-section h2{font-family:var(--serif);font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0 0 14px}
+.bar-row{margin-bottom:14px}
+.bar-row:last-child{margin-bottom:0}
+.bar-label{display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-bottom:5px}
+.bar-label .cnt{color:var(--muted);font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.track{height:16px;background:var(--surface-2);border-radius:8px;overflow:hidden;display:flex}
+.track > span{height:100%;display:block}
+.seg.g{background:var(--green)} .seg.a{background:var(--amber)} .seg.r{background:var(--red)}
+.fill{height:100%;background:var(--accent);border-radius:8px}
+.leg{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 14px;font-size:12.5px;color:var(--muted)}
+.leg span{display:inline-flex;align-items:center;gap:6px}
+.leg i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.leg i.g{background:var(--green)} .leg i.a{background:var(--amber)} .leg i.r{background:var(--red)}
+.disp-wait{color:var(--muted);font-size:15px;padding:26px 0;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <!-- ============ PARTICIPANT TOOL ============ -->
+  <div id="tool">
+    <div class="langbar" role="group" aria-label="Language / भाषा">
+      <button type="button" class="langbtn" id="langHi">हिंदी</button>
+      <button type="button" class="langbtn" id="langEn">English</button>
+    </div>
+    <header>
+      <p class="eyebrow" id="eyebrow"></p>
+      <h1 id="h1"></h1>
+      <p class="sub" id="subText"></p>
+    </header>
+
+    <section class="section">
+      <h2 id="aTitle"></h2><p class="hint" id="aHint"></p><div class="rows" id="aRows"></div>
+    </section>
+    <section class="section">
+      <h2 id="bTitle"></h2><p class="hint" id="bHint" style="font-weight:700;color:var(--fg)"></p><div class="rows" id="bRows"></div>
+    </section>
+    <section class="section">
+      <h2 id="cTitle"></h2><p class="hint" id="cHint"></p><div class="rows" id="cRows"></div>
+    </section>
+
+    <button class="cta" id="showResult"></button>
+    <p class="note" id="progress"></p>
+
+    <div id="result" hidden>
+      <div class="scorecard">
+        <h2 id="resultTitle"></h2>
+        <p class="band" id="bandText"></p>
+        <p class="explain" id="explainText"></p>
+        <div class="tiles">
+          <div class="tile"><div class="big" id="docScore">–</div><div class="lab" id="docLab"></div></div>
+          <div class="tile"><div class="big" id="sysScore">–</div><div class="lab" id="sysLab"></div></div>
+          <div class="tile"><div class="big" id="discScore">–</div><div class="lab" id="discLab"></div></div>
+        </div>
+        <div class="chips" id="sysChips"></div>
+        <p class="focus-head" id="focusHead" hidden></p>
+        <ul class="focus-list" id="focusList"></ul>
+      </div>
+      <div class="commit">
+        <label for="commitText" id="commitLabel"></label>
+        <p class="sub2" id="commitSub"></p>
+        <textarea id="commitText"></textarea>
+      </div>
+      <div class="share" id="shareBox">
+        <h3 id="shareHead"></h3>
+        <p id="shareHint"></p>
+        <button type="button" class="shareBtn" id="shareBtn"></button>
+        <p class="shareMsg" id="shareMsg" hidden></p>
+      </div>
+      <div class="snapshot-note" id="snapshotNote"></div>
+      <button class="ghost" id="editAgain"></button>
+    </div>
+
+    <p class="foot" id="foot"></p>
+  </div>
+
+  <!-- ============ FACILITATOR DASHBOARD (#display) ============ -->
+  <div id="display">
+    <div class="langbar" role="group" aria-label="Language / भाषा">
+      <button type="button" class="langbtn" id="dLangHi">हिंदी</button>
+      <button type="button" class="langbtn" id="dLangEn">English</button>
+    </div>
+    <p class="eyebrow" id="dEyebrow"></p>
+    <h1 id="dTitle"></h1>
+    <div class="disp-head">
+      <div class="disp-count"><span class="n" id="dCount">0</span><span class="l" id="dCountLab"></span></div>
+      <button type="button" class="refresh" id="dRefresh"></button>
+    </div>
+    <p class="disp-sub" id="dSub"></p>
+    <div id="dWait" class="disp-wait"></div>
+    <div id="dBody" hidden>
+      <div class="disp-section">
+        <h2 id="dBTitle"></h2>
+        <div class="leg" id="dBLeg"></div>
+        <div id="dBBars"></div>
+      </div>
+      <div class="disp-section">
+        <h2 id="dATitle"></h2>
+        <div id="dABars"></div>
+      </div>
+      <div class="disp-section">
+        <h2 id="dCTitle"></h2>
+        <div id="dCBars"></div>
+      </div>
+    </div>
+    <p class="foot" id="dFoot"></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var UI={
+    eyebrow:{hi:"Dhwani Foundation · CB Cohort",en:"Dhwani Foundation · CB Cohort"},
+    title:{hi:"Accreditation के लिए मेरी तैयारी",en:"My Accreditation Readiness"},
+    sub:{hi:"अपनी संस्था को ईमानदारी से परखिए। यह किसी को दिखाने के लिए नहीं, आपके अपने लिए है।",en:"An honest look at your organisation. This is for you, not a report to anyone."},
+    aTitle:{hi:"भाग A · दस्तावेज़ जाँच",en:"Part A · Documents"},
+    aHint:{hi:"क्या यह आपके पास अभी मौजूद है?",en:"Do you have this in place right now?"},
+    bTitle:{hi:"भाग B · प्रणाली की गुणवत्ता",en:"Part B · Systems quality"},
+    bHint:{hi:"सिर्फ़ कागज़ नहीं, व्यवहार में कितना? · हरा = पूरी तरह, पीला = आंशिक, लाल = नहीं।",en:"Not just on paper — how much in practice? · Green = fully, Amber = partly, Red = no."},
+    cTitle:{hi:"भाग C · सार्वजनिक पारदर्शिता व दृश्यता",en:"Part C · Public transparency & visibility"},
+    cHint:{hi:"कोई donor आपको ढूँढ़े तो क्या पाता है?",en:"What does a donor find when they look you up?"},
+    showResult:{hi:"मेरा परिणाम देखें",en:"See my result"},
+    resultTitle:{hi:"आपकी तैयारी",en:"Your readiness"},
+    explain:{hi:"यह दिखाता है कि आपकी संस्था किसी बाहरी accreditation समीक्षा के लिए अभी कितनी तैयार है, तीन पहलुओं पर: दस्तावेज़, प्रणाली की गुणवत्ता, और सार्वजनिक दृश्यता। नीचे दी ‘ध्यान देने योग्य’ सूची ही आपके अगले कदम हैं।",en:"This shows how ready your organisation is for an external accreditation review, across three dimensions: documents, systems quality, and public visibility. The ‘work on these’ list below is your next steps."},
+    docLab:{hi:"दस्तावेज़ मौजूद",en:"documents in place"},
+    sysLab:{hi:"हरी प्रणालियाँ",en:"systems rated green"},
+    discLab:{hi:"दृश्यता बिंदु",en:"visibility items"},
+    focusHead:{hi:"ध्यान देने योग्य",en:"Work on these"},
+    commitLabel:{hi:"अगले 90 दिनों में मैं यह एक बिंदु ठीक करूँगा",en:"In the next 90 days, I will fix this one thing"},
+    commitSub:{hi:"अपनी लाल या पीली सूची से एक बिंदु चुनिए।",en:"Pick one weak point from your red or amber list."},
+    commitPh:{hi:"जैसे: website पर audited accounts और registration status डालना",en:"e.g. put audited accounts and registration status on the website"},
+    shareHead:{hi:"समूह के साथ साझा करें",en:"Share with the room"},
+    shareHint:{hi:"सिर्फ़ आपकी रेटिंग, गुमनाम रूप से, आज के समूह दृश्य में जुड़ेंगी। आपका नाम, संस्था या 90-दिन का नोट कभी नहीं भेजा जाता।",en:"Only your ratings join today's group view, anonymously. Your name, organisation and 90-day note are never sent."},
+    shareBtn:{hi:"गुमनाम रूप से साझा करें",en:"Share anonymously"},
+    shareBtnBusy:{hi:"भेजा जा रहा है…",en:"Sending…"},
+    shareDone:{hi:"समूह के साथ साझा किया गया। धन्यवाद।",en:"Shared with the room. Thank you."},
+    shareAlready:{hi:"इस डिवाइस से पहले ही साझा किया जा चुका है।",en:"Already shared from this device."},
+    shareFail:{hi:"अभी साझा नहीं हो सका। आप अपना screenshot रख सकते हैं।",en:"Could not share just now. You can still keep your screenshot."},
+    snapshot:{hi:"इस स्क्रीन का screenshot लेकर रखें।",en:"Screenshot this screen to keep it."},
+    editAgain:{hi:"वापस जाकर बदलें",en:"Go back and edit"},
+    foot:{hi:"Accreditation तैयारी स्व-जाँच · Prastav, for the development sector",en:"Accreditation readiness self-check · Prastav, for the development sector"},
+    noFocus:{hi:"कोई बड़ा कमज़ोर बिंदु नहीं — बढ़िया।",en:"No major weak points — well done."},
+    docPrefix:{hi:"दस्तावेज़: ",en:"Document: "},
+    discPrefix:{hi:"दृश्यता: ",en:"Visibility: "},
+    progDone:{hi:"सभी उत्तर भरे गए।",en:"All answered."},
+    bandStrong:{hi:"मज़बूत तैयारी — आप किसी एक स्तर (CA Minimum Norms या GuideStar foundation) के लिए आवेदन पर विचार कर सकते हैं।",en:"Strong readiness — you could consider applying for one level (CA Minimum Norms or GuideStar foundation)."},
+    bandOkay:{hi:"अच्छी नींव — नीचे दिए 2–3 बिंदु पहले पूरे करें, फिर आवेदन की ओर बढ़ें।",en:"Good foundation — close the 2–3 items below first, then move toward applying."},
+    bandEarly:{hi:"शुरुआती चरण — पहले बुनियादी compliance व दस्तावेज़ पूरे करें; accreditation अगला कदम है। यह सामान्य है।",en:"Early stage — build basic compliance and documents first; accreditation is the next step. This is normal."},
+    optYes:{hi:"है",en:"Yes"}, optNo:{hi:"नहीं",en:"No"}, optNA:{hi:"लागू नहीं",en:"N/A"},
+    optG:{hi:"हरा",en:"Green"}, optA:{hi:"पीला",en:"Amber"}, optR:{hi:"लाल",en:"Red"},
+    // Facilitator dashboard
+    dTitle:{hi:"समूह की तैयारी — लाइव",en:"Cohort readiness — live"},
+    dCountLab:{hi:"प्रतिक्रियाएँ",en:"responses"},
+    dSub:{hi:"गुमनाम, समेकित। हर 20 सेकंड में अपने-आप ताज़ा।",en:"Anonymous and aggregated. Refreshes every 20 seconds."},
+    dRefresh:{hi:"अभी ताज़ा करें",en:"Refresh now"},
+    dWait:{hi:"पहली प्रतिक्रिया की प्रतीक्षा…",en:"Waiting for the first response…"},
+    dBTitle:{hi:"भाग B · प्रणाली की गुणवत्ता",en:"Part B · Systems quality"},
+    dATitle:{hi:"भाग A · कितनों के पास दस्तावेज़ है",en:"Part A · How many have the document"},
+    dCTitle:{hi:"भाग C · सार्वजनिक दृश्यता",en:"Part C · Public visibility"},
+    dFoot:{hi:"इस लिंक वाला कोई भी यह गुमनाम सार देख सकता है। Prastav, for the development sector",en:"Anyone with this link sees this anonymous summary. Prastav, for the development sector"}
+  };
+
+  var items={
+    a:[
+      {id:"reg_12a",hi:"12A registration अद्यतन",en:"12A registration current"},
+      {id:"reg_80g",hi:"80G registration अद्यतन",en:"80G registration current"},
+      {id:"reg_fcra",hi:"FCRA registration (यदि लागू)",en:"FCRA registration (if applicable)"},
+      {id:"reg_csr1",hi:"CSR-1 दाख़िल (CSR फंडिंग हेतु)",en:"CSR-1 filed (for CSR funding)"},
+      {id:"reg_darpan",hi:"NGO Darpan registration",en:"NGO Darpan registration"},
+      {id:"itr",hi:"पिछले 3 वर्षों के ITR दाख़िल",en:"ITR filed, last 3 years"},
+      {id:"audit",hi:"पिछले 3 वर्षों के audited financial statements",en:"Audited financial statements, last 3 years"},
+      {id:"reports",hi:"पिछले 3 वर्षों की annual / progress reports मौजूद",en:"Annual/progress reports exist, last 3 years"},
+      {id:"hrpol",hi:"लिखित HR policy",en:"Written HR policy"},
+      {id:"finpol",hi:"लिखित financial management policy",en:"Written financial management policy"},
+      {id:"posh",hi:"POSH policy व समिति गठित",en:"POSH policy & committee constituted"},
+      {id:"epf",hi:"EPF registration (यदि लागू)",en:"EPF registration (if applicable)"}
+    ],
+    b:[
+      {id:"board",hi:"Board नियमित मिलता है, minutes व भूमिकाएँ स्पष्ट",en:"Board meets regularly; minutes & roles clear"},
+      {id:"fincon",hi:"आंतरिक वित्तीय नियंत्रण भरोसेमंद हैं",en:"Internal financial controls are reliable"},
+      {id:"hrsys",hi:"HR प्रणाली व्यवहार में लागू है",en:"HR systems followed in practice"},
+      {id:"disc",hi:"पारदर्शिता — जानकारी सार्वजनिक व अद्यतन",en:"Transparency — info public & current"},
+      {id:"me",hi:"Programme documentation व M&E नियमित व उपयोगी",en:"Programme docs & M&E regular, useful"},
+      {id:"overall",hi:"समग्र — बाहरी समीक्षा के लिए तैयार महसूस",en:"Overall ready for an external review"}
+    ],
+    c:[
+      {id:"web",hi:"संस्था की अपनी website है",en:"The organisation has a website",parent:true},
+      {id:"web_fin",hi:"Website पर audited accounts / financials उपलब्ध",en:"Audited accounts on the website",sub:"web"},
+      {id:"web_reg",hi:"Website पर registration व compliance status (12A/80G/FCRA/CSR-1/Darpan)",en:"Registration & compliance status shown",sub:"web"},
+      {id:"web_rep",hi:"Website पर annual / progress report प्रकाशित",en:"Annual report published online",sub:"web"},
+      {id:"web_board",hi:"Website पर board व key team की जानकारी",en:"Board & key team listed online",sub:"web"},
+      {id:"annrep",hi:"हर वर्ष annual / progress report तैयार होती है और stakeholders से साझा की जाती है",en:"Annual report prepared & shared yearly"},
+      {id:"sm",hi:"संस्था का social media account है",en:"Has a social media account",parent:true},
+      {id:"smpost",hi:"गतिविधियाँ नियमित रूप से पोस्ट होती हैं",en:"Activities posted regularly",sub:"sm"}
+    ]
+  };
+
+  // Session (cohort id) from ?s= or ?session=, else a default for this workshop.
+  var params=new URLSearchParams(location.search);
+  var SESSION=(params.get("s")||params.get("session")||"dhwani-2026-10-08").trim().slice(0,120);
+
+  var KEY="accred_readiness_v3";
+  var state={a:{},b:{},c:{},commit:"",lang:"hi"};
+  try{var s=localStorage.getItem(KEY); if(s){state=Object.assign(state,JSON.parse(s));}}catch(e){}
+  if(!state.a)state.a={}; if(!state.b)state.b={}; if(!state.c)state.c={}; if(!state.lang)state.lang="hi";
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+  function L(k){return UI[k][state.lang];}
+
+  // ---------------- Facilitator dashboard mode ----------------
+  if(location.hash==="#display"){ initDisplay(); return; }
+
+  var resultShown=false;
+  var subContainers={};
+
+  function segment(group,itemId,opts,onChange){
+    var box=document.createElement("div"); box.className="opts"; box.setAttribute("role","group");
+    opts.forEach(function(o){
+      var b=document.createElement("button");
+      b.type="button"; b.className="opt "+o.cls; b.textContent=o.label;
+      b.setAttribute("aria-pressed",(state[group][itemId]===o.val)?"true":"false");
+      b.addEventListener("click",function(){
+        state[group][itemId]=o.val; save();
+        Array.prototype.forEach.call(box.children,function(c){c.setAttribute("aria-pressed","false");});
+        b.setAttribute("aria-pressed","true");
+        if(onChange)onChange(o.val);
+        updateProgress();
+      });
+      box.appendChild(b);
+    });
+    return box;
+  }
+  function makeRow(group,it,opts,onChange){
+    var row=document.createElement("div"); row.className="row";
+    var q=document.createElement("p"); q.className="q"; q.textContent=it[state.lang];
+    row.appendChild(q);
+    row.appendChild(segment(group,it.id,opts,onChange));
+    return row;
+  }
+  function optsFor(group){
+    if(group==="b") return [{val:"g",cls:"g",label:L("optG")},{val:"a",cls:"a",label:L("optA")},{val:"r",cls:"r",label:L("optR")}];
+    return [{val:"yes",cls:"yes",label:L("optYes")},{val:"no",cls:"no",label:L("optNo")},{val:"na",cls:"na",label:L("optNA")}];
+  }
+  function renderRows(){
+    subContainers={};
+    var aR=document.getElementById("aRows"), bR=document.getElementById("bRows"), cR=document.getElementById("cRows");
+    aR.innerHTML=""; bR.innerHTML=""; cR.innerHTML="";
+    items.a.forEach(function(it){aR.appendChild(makeRow("a",it,optsFor("a")));});
+    items.b.forEach(function(it){bR.appendChild(makeRow("b",it,optsFor("b")));});
+    items.c.forEach(function(it){
+      if(it.sub){ subContainers[it.sub].appendChild(makeRow("c",it,optsFor("c"))); return; }
+      if(it.parent){
+        var row=makeRow("c",it,optsFor("c"),function(val){ sub.hidden=(val!=="yes"); });
+        cR.appendChild(row);
+        var sub=document.createElement("div"); sub.className="subblock"; sub.hidden=(state.c[it.id]!=="yes");
+        cR.appendChild(sub); subContainers[it.id]=sub;
+      } else { cR.appendChild(makeRow("c",it,optsFor("c"))); }
+    });
+  }
+
+  function activeC(){ return items.c.filter(function(it){ return it.sub ? (state.c[it.sub]==="yes") : true; }); }
+  function counts(){
+    var yesA=0,missA=[],ansA=0,naA=0;
+    items.a.forEach(function(it){var v=state.a[it.id]; if(v)ansA++; if(v==="na")naA++; if(v==="yes")yesA++; if(v==="no")missA.push(it);});
+    var g=0,a=0,r=0,ansB=0,focusB=[];
+    items.b.forEach(function(it){var v=state.b[it.id]; if(v)ansB++; if(v==="g")g++; if(v==="a"){a++;focusB.push({it:it,lvl:"a"});} if(v==="r"){r++;focusB.push({it:it,lvl:"r"});}});
+    var ac=activeC(), yesC=0,naC=0,ansC=0,missC=[];
+    ac.forEach(function(it){var v=state.c[it.id]; if(v)ansC++; if(v==="na")naC++; if(v==="yes")yesC++; if(v==="no")missC.push(it);});
+    return {yesA:yesA,missA:missA,ansA:ansA,applicA:items.a.length-naA,
+      g:g,a:a,r:r,ansB:ansB,focusB:focusB,
+      yesC:yesC,missC:missC,ansC:ansC,applicC:ac.length-naC,activeCLen:ac.length};
+  }
+  function updateProgress(){
+    var c=counts(); var done=c.ansA+c.ansB+c.ansC; var total=items.a.length+items.b.length+c.activeCLen;
+    var p=document.getElementById("progress");
+    if(done>=total){ p.textContent=L("progDone"); }
+    else if(state.lang==="hi"){ p.textContent=done+" / "+total+" उत्तर भरे — बाक़ी भी भरें तो परिणाम ज़्यादा सही होगा।"; }
+    else { p.textContent=done+" / "+total+" answered — fill the rest for a truer result."; }
+  }
+
+  function renderResult(){
+    var c=counts();
+    document.getElementById("docScore").textContent=c.yesA+" / "+c.applicA;
+    document.getElementById("sysScore").textContent=c.g+" / "+items.b.length;
+    document.getElementById("discScore").textContent=c.yesC+" / "+c.applicC;
+    var chips=document.getElementById("sysChips"); chips.innerHTML="";
+    [["g",c.g,L("optG")],["a",c.a,L("optA")],["r",c.r,L("optR")]].forEach(function(x){
+      if(x[1]>0){var sp=document.createElement("span"); sp.className="chip "+x[0]; sp.textContent=x[2]+": "+x[1]; chips.appendChild(sp);}
+    });
+    var band=document.getElementById("bandText");
+    var strong=(c.ansB>=4 && c.g>=4 && c.missA.length<=1 && c.missC.length<=2);
+    var okay=(c.g>=2 || c.yesA>=Math.ceil(c.applicA/2));
+    if(strong){ band.textContent=L("bandStrong"); band.style.color="var(--green)"; }
+    else if(okay){ band.textContent=L("bandOkay"); band.style.color="var(--amber)"; }
+    else { band.textContent=L("bandEarly"); band.style.color="var(--accent)"; }
+    var list=document.getElementById("focusList"); list.innerHTML="";
+    c.focusB.sort(function(x,y){return (x.lvl==="r"?0:1)-(y.lvl==="r"?0:1);});
+    c.focusB.forEach(function(f){
+      var li=document.createElement("li");
+      var d=document.createElement("span"); d.className="dot "+f.lvl; li.appendChild(d);
+      li.appendChild(document.createTextNode(f.it[state.lang])); list.appendChild(li);
+    });
+    c.missA.forEach(function(it){
+      var li=document.createElement("li");
+      var d=document.createElement("span"); d.className="dot r"; li.appendChild(d);
+      li.appendChild(document.createTextNode(L("docPrefix")+it[state.lang])); list.appendChild(li);
+    });
+    c.missC.forEach(function(it){
+      var li=document.createElement("li");
+      var d=document.createElement("span"); d.className="dot r"; li.appendChild(d);
+      li.appendChild(document.createTextNode(L("discPrefix")+it[state.lang])); list.appendChild(li);
+    });
+    document.getElementById("focusHead").hidden=(c.focusB.length+c.missA.length+c.missC.length===0);
+    if(!list.children.length){ var li=document.createElement("li"); li.textContent=L("noFocus"); list.appendChild(li); }
+  }
+
+  // ---- Share anonymously to the cohort ----
+  var SUBMIT_KEY="accred_submitted_"+SESSION;
+  function alreadyShared(){ try{return localStorage.getItem(SUBMIT_KEY)==="1";}catch(e){return false;} }
+  function setShareState(){
+    var btn=document.getElementById("shareBtn");
+    if(alreadyShared()){ btn.disabled=true; showShareMsg(L("shareAlready"),"ok"); }
+    else { btn.disabled=false; }
+  }
+  function showShareMsg(text,kind){
+    var m=document.getElementById("shareMsg");
+    m.textContent=text; m.className="shareMsg "+(kind||""); m.hidden=false;
+  }
+  function doShare(){
+    var btn=document.getElementById("shareBtn");
+    if(alreadyShared()||btn.disabled) return;
+    btn.disabled=true; btn.textContent=L("shareBtnBusy");
+    var payload={session:SESSION,lang:state.lang,answers:{a:state.a,b:state.b,c:state.c}};
+    fetch("/api/readiness/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)})
+      .then(function(r){return r.ok?r.json():Promise.reject();})
+      .then(function(){ try{localStorage.setItem(SUBMIT_KEY,"1");}catch(e){} btn.textContent=L("shareBtn"); showShareMsg(L("shareDone"),"ok"); })
+      .catch(function(){ btn.textContent=L("shareBtn"); btn.disabled=false; showShareMsg(L("shareFail"),"err"); });
+  }
+
+  function applyStatic(){
+    document.getElementById("eyebrow").textContent=L("eyebrow");
+    document.getElementById("h1").textContent=L("title");
+    document.getElementById("subText").textContent=L("sub");
+    document.getElementById("aTitle").textContent=L("aTitle");
+    document.getElementById("aHint").textContent=L("aHint");
+    document.getElementById("bTitle").textContent=L("bTitle");
+    document.getElementById("bHint").textContent=L("bHint");
+    document.getElementById("cTitle").textContent=L("cTitle");
+    document.getElementById("cHint").textContent=L("cHint");
+    document.getElementById("showResult").textContent=L("showResult");
+    document.getElementById("resultTitle").textContent=L("resultTitle");
+    document.getElementById("explainText").textContent=L("explain");
+    document.getElementById("docLab").textContent=L("docLab");
+    document.getElementById("sysLab").textContent=L("sysLab");
+    document.getElementById("discLab").textContent=L("discLab");
+    document.getElementById("focusHead").textContent=L("focusHead");
+    document.getElementById("commitLabel").textContent=L("commitLabel");
+    document.getElementById("commitSub").textContent=L("commitSub");
+    document.getElementById("commitText").setAttribute("placeholder",L("commitPh"));
+    document.getElementById("shareHead").textContent=L("shareHead");
+    document.getElementById("shareHint").textContent=L("shareHint");
+    var sb=document.getElementById("shareBtn"); if(sb.textContent!==L("shareBtnBusy")) sb.textContent=L("shareBtn");
+    document.getElementById("snapshotNote").textContent=L("snapshot");
+    document.getElementById("editAgain").textContent=L("editAgain");
+    document.getElementById("foot").textContent=L("foot");
+    document.getElementById("langHi").setAttribute("aria-pressed", state.lang==="hi"?"true":"false");
+    document.getElementById("langEn").setAttribute("aria-pressed", state.lang==="en"?"true":"false");
+    document.documentElement.lang=state.lang;
+  }
+
+  function applyLang(){
+    applyStatic();
+    renderRows();
+    updateProgress();
+    if(resultShown){ renderResult(); setShareState(); }
+  }
+
+  function setLang(l){ state.lang=l; save(); applyLang(); }
+  document.getElementById("langHi").addEventListener("click",function(){setLang("hi");});
+  document.getElementById("langEn").addEventListener("click",function(){setLang("en");});
+
+  var commitEl=document.getElementById("commitText");
+  commitEl.value=state.commit||"";
+  commitEl.addEventListener("input",function(){state.commit=commitEl.value; save();});
+
+  document.getElementById("shareBtn").addEventListener("click",doShare);
+
+  document.getElementById("showResult").addEventListener("click",function(){
+    resultShown=true; renderResult(); setShareState();
+    document.getElementById("result").hidden=false;
+    document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+  document.getElementById("editAgain").addEventListener("click",function(){
+    document.getElementById("result").hidden=true;
+    document.getElementById("aRows").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+
+  applyLang();
+
+  // ================= Facilitator dashboard =================
+  function initDisplay(){
+    document.body.className="display";
+    document.documentElement.lang=state.lang;
+    function dL(k){return UI[k][state.lang];}
+    function paintStatic(){
+      document.getElementById("dEyebrow").textContent=dL("eyebrow");
+      document.getElementById("dTitle").textContent=dL("dTitle");
+      document.getElementById("dCountLab").textContent=dL("dCountLab");
+      document.getElementById("dRefresh").textContent=dL("dRefresh");
+      document.getElementById("dSub").textContent=dL("dSub");
+      document.getElementById("dWait").textContent=dL("dWait");
+      document.getElementById("dBTitle").textContent=dL("dBTitle");
+      document.getElementById("dATitle").textContent=dL("dATitle");
+      document.getElementById("dCTitle").textContent=dL("dCTitle");
+      document.getElementById("dFoot").textContent=dL("dFoot");
+      document.getElementById("dLangHi").setAttribute("aria-pressed", state.lang==="hi"?"true":"false");
+      document.getElementById("dLangEn").setAttribute("aria-pressed", state.lang==="en"?"true":"false");
+      var leg=document.getElementById("dBLeg"); leg.innerHTML="";
+      [["g",dL("optG")],["a",dL("optA")],["r",dL("optR")]].forEach(function(x){
+        var s=document.createElement("span"); var i=document.createElement("i"); i.className=x[0];
+        s.appendChild(i); s.appendChild(document.createTextNode(x[1])); leg.appendChild(s);
+      });
+    }
+    var last=null;
+    function num(counts,k){ return (counts && counts[k]) ? counts[k] : 0; }
+    function labelOf(part,id){
+      var arr=items[part]||[]; for(var i=0;i<arr.length;i++){ if(arr[i].id===id) return arr[i][state.lang]; } return id;
+    }
+    function render(data){
+      last=data;
+      var n=(data && data.respondents) || 0;
+      var tally=(data && data.tally) || {};
+      document.getElementById("dCount").textContent=n;
+      var body=document.getElementById("dBody"), wait=document.getElementById("dWait");
+      if(!n){ body.hidden=true; wait.style.display="block"; return; }
+      wait.style.display="none"; body.hidden=false;
+
+      // Part B — RAG stacked bars
+      var bb=document.getElementById("dBBars"); bb.innerHTML="";
+      items.b.forEach(function(it){
+        var c=(tally["b."+it.id]||{}).counts||{};
+        var g=num(c,"g"),a=num(c,"a"),r=num(c,"r"),tot=g+a+r||1;
+        var row=document.createElement("div"); row.className="bar-row";
+        var lab=document.createElement("div"); lab.className="bar-label";
+        var nm=document.createElement("span"); nm.textContent=it[state.lang];
+        var cnt=document.createElement("span"); cnt.className="cnt"; cnt.textContent=dL("optG")+" "+g+" · "+dL("optA")+" "+a+" · "+dL("optR")+" "+r;
+        lab.appendChild(nm); lab.appendChild(cnt);
+        var track=document.createElement("div"); track.className="track";
+        [["g",g],["a",a],["r",r]].forEach(function(x){ if(x[1]>0){ var sp=document.createElement("span"); sp.className="seg "+x[0]; sp.style.width=(x[1]/tot*100)+"%"; track.appendChild(sp);} });
+        row.appendChild(lab); row.appendChild(track); bb.appendChild(row);
+      });
+
+      // Part A — how many have it (yes / respondents)
+      var ab=document.getElementById("dABars"); ab.innerHTML="";
+      items.a.forEach(function(it){ ab.appendChild(haveBar("a",it,n)); });
+
+      // Part C — visibility (yes / respondents), top-level + sub items
+      var cb=document.getElementById("dCBars"); cb.innerHTML="";
+      items.c.forEach(function(it){ cb.appendChild(haveBar("c",it,n)); });
+    }
+    function haveBar(part,it,n){
+      var c=(last && last.tally && last.tally[part+"."+it.id] || {}).counts||{};
+      var yes=num(c,"yes"); var answered=yes+num(c,"no")+num(c,"na");
+      var denom=n||1;
+      var row=document.createElement("div"); row.className="bar-row";
+      var lab=document.createElement("div"); lab.className="bar-label";
+      var nm=document.createElement("span"); nm.textContent=(it.sub?"— ":"")+it[state.lang];
+      var cnt=document.createElement("span"); cnt.className="cnt"; cnt.textContent=yes+" / "+denom;
+      lab.appendChild(nm); lab.appendChild(cnt);
+      var track=document.createElement("div"); track.className="track";
+      var fill=document.createElement("span"); fill.className="fill"; fill.style.width=(yes/denom*100)+"%"; track.appendChild(fill);
+      row.appendChild(lab); row.appendChild(track);
+      return row;
+    }
+    function load(){
+      fetch("/api/readiness/aggregate?s="+encodeURIComponent(SESSION),{cache:"no-store"})
+        .then(function(r){return r.json();})
+        .then(function(d){ render(d); })
+        .catch(function(){});
+    }
+    function setLangD(l){ state.lang=l; save(); paintStatic(); if(last) render(last); }
+    document.getElementById("dLangHi").addEventListener("click",function(){setLangD("hi");});
+    document.getElementById("dLangEn").addEventListener("click",function(){setLangD("en");});
+    document.getElementById("dRefresh").addEventListener("click",load);
+    paintStatic(); load();
+    setInterval(load,20000);
+  }
+})();
+</script>
+</body>
+</html>
