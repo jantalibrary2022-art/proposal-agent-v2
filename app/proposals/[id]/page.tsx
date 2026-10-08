@@ -23,7 +23,7 @@ function paras(text: string) {
   ));
 }
 
-function Section({ id, label, single, text, proposalId, onCommit, locked, truncate }: { id: string; label: string; single: boolean; text: string; proposalId: string; onCommit: (section: string, newText: string) => Promise<boolean>; locked?: boolean; truncate?: boolean; }) {
+function Section({ id, label, single, text, proposalId, onCommit, locked, truncate, revisesLeft, onRemaining }: { id: string; label: string; single: boolean; text: string; proposalId: string; onCommit: (section: string, newText: string) => Promise<boolean>; locked?: boolean; truncate?: boolean; revisesLeft?: number | null; onRemaining?: (n: number) => void; }) {
   const { t } = useDict();
   const p = t.proposal;
   const [open, setOpen] = useState(false);
@@ -33,6 +33,7 @@ function Section({ id, label, single, text, proposalId, onCommit, locked, trunca
   const [proposed, setProposed] = useState<string | null>(null);
 
   const shown = proposed != null ? proposed : text;
+  const noRevises = revisesLeft != null && revisesLeft <= 0;
   const LOCK_CHARS = 700;
   const truncated = !!locked && !!truncate && !single && (shown || "").length > LOCK_CHARS;
   const display = truncated ? (shown || "").slice(0, LOCK_CHARS).replace(/\s+\S*$/, "") + "…" : shown;
@@ -46,6 +47,8 @@ function Section({ id, label, single, text, proposalId, onCommit, locked, trunca
         body: JSON.stringify({ section: id, comment, currentText: shown }),
       });
       const data = await res.json();
+      if (typeof data.remaining === "number" && onRemaining) onRemaining(data.remaining);
+      if (data.error === "limit_reached") { setNote(p.reviseLimit); setBusy(false); return; }
       if (!data.ok) { setNote(p.couldNotRevise + (data.error || "error")); setBusy(false); return; }
       setNote(data.note || "");
       if (data.changed) setProposed(data.revised);
@@ -71,7 +74,7 @@ function Section({ id, label, single, text, proposalId, onCommit, locked, trunca
       </div>
 
       <div className="relative">
-        <div style={{ userSelect: "none" }} className={single ? "font-bold text-[18px]" : "text-[15px] text-ink"}>
+        <div style={{ userSelect: locked ? "none" : "auto" }} className={single ? "font-bold text-[18px]" : "text-[15px] text-ink"}>
           {single ? (shown || p.empty) : paras(display)}
         </div>
         {truncated && <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-20" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0), #ffffff)" }} />}
@@ -84,8 +87,10 @@ function Section({ id, label, single, text, proposalId, onCommit, locked, trunca
 
       {open && (
         <div className="mt-5 border-t border-line pt-4">
-          {note && <div className="mb-3 bg-paper border border-line rounded-[5px] px-4 py-3 text-[14px] leading-relaxed" style={{ userSelect: "none" }}>{note}</div>}
-          {proposed == null ? (
+          {note && <div className="mb-3 bg-paper border border-line rounded-[5px] px-4 py-3 text-[14px] leading-relaxed" style={{ userSelect: locked ? "none" : "auto" }}>{note}</div>}
+          {noRevises && proposed == null ? (
+            <div className="text-[14px] leading-relaxed text-muted">{p.reviseLimit}</div>
+          ) : proposed == null ? (
             <>
               <label className="block text-[13px] font-semibold text-muted mb-2">{p.whatChange}</label>
               <textarea value={comment} onChange={(e) => setComment(e.target.value)} rows={3} placeholder={p.changePh} className="w-full box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-3 text-[15px] bg-card outline-none focus:border-ink resize-y" />
@@ -217,6 +222,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
   const [texts, setTexts] = useState<any>(null);
   const [rates, setRates] = useState<Record<string, string>>({});
   const [approving, setApproving] = useState(false);
+  const [revisesLeft, setRevisesLeft] = useState<number | null>(null);
   const [payInfo, setPayInfo] = useState<any>(null);
   const [paying, setPaying] = useState(false);
   const timer = useRef<any>(null);
@@ -277,11 +283,14 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
         results_narrative: c.results_narrative || "", activities: c.activities || "", sustainability: c.sustainability || "",
       });
       setRates({});
+      setRevisesLeft(Math.max(0, 25 - Number((row.meta && row.meta.revise_count) || 0)));
     }
   }, [row, texts]);
 
   useEffect(() => {
-    if (!(row && row.status === "draft")) return;
+    // Protect only an unpaid (locked) draft, or one whose status we don't know yet.
+    // A paid, unlocked draft is the customer's to copy and print.
+    if (!(row && row.status === "draft" && (!payInfo || payInfo.locked))) return;
     const block = (e: Event) => { e.preventDefault(); };
     const keyBlock = (e: KeyboardEvent) => {
       const k = (e.key || "").toLowerCase();
@@ -295,7 +304,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
       document.removeEventListener("cut", block);
       document.removeEventListener("keydown", keyBlock);
     };
-  }, [row]);
+  }, [row, payInfo]);
 
   const commitSection = async (section: string, newText: string) => {
     try {
@@ -329,7 +338,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
     try {
       const res = await fetch("/api/payments/create-order", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ proposalId: id }) });
       const data = await res.json();
-      if (data.already) { await refreshPayInfo(); setPaying(false); await approve(); return; }
+      if (data.already) { await refreshPayInfo(); await fetchRow(false); setPaying(false); return; }
       if (!data.ok) { alert(p.payFailed + (data.error || "")); setPaying(false); return; }
       const ready = await loadRazorpay();
       if (!ready || !(window as any).Razorpay) { alert(p.payFailed); setPaying(false); return; }
@@ -347,9 +356,12 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
             const v = await fetch("/api/payments/verify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ proposalId: id, razorpay_order_id: resp.razorpay_order_id, razorpay_payment_id: resp.razorpay_payment_id, razorpay_signature: resp.razorpay_signature }) });
             const vd = await v.json();
             if (!vd.ok) { alert(p.payVerifyFailed); setPaying(false); return; }
+            // Payment unlocks the editable review. We do NOT auto-finalise, so the
+            // user can revise sections with the agent, then generate the files.
             await refreshPayInfo();
+            await fetchRow(false);
             setPaying(false);
-            await approve();
+            window.scrollTo({ top: 0, behavior: "smooth" });
           } catch { alert(p.payVerifyFailed); setPaying(false); }
         },
         modal: { ondismiss: () => setPaying(false) },
@@ -364,8 +376,10 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
   const stallBase = status === "rendering" ? (row?.updated_at || row?.created_at) : row?.created_at;
   const stalled = (status === "generating" || status === "rendering") && !!stallBase && (Date.now() - new Date(stallBase).getTime()) / 60000 >= STALL_MIN;
   const isBusy = status === "error" && typeof row?.error === "string" && row.error.startsWith("busy:");
-  const protect = status === "draft";
   const locked = status === "draft" && !!payInfo && !!payInfo.locked;
+  // Watermark, print-block and copy-block apply only while unpaid (locked), or
+  // before pay-info has loaded. Once paid, the proposal is the customer's.
+  const protect = status === "draft" && (!payInfo || locked);
   const wmSvg = encodeURIComponent(
     `<svg xmlns='http://www.w3.org/2000/svg' width='360' height='210'><text x='10' y='120' transform='rotate(-28 180 105)' fill='rgba(20,20,18,0.07)' font-size='17' font-family='sans-serif' font-weight='bold'>DRAFT &#183; ${email || "preview"} &#183; PRASTAV</text></svg>`
   );
@@ -473,10 +487,16 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
               {locked && !payInfo?.expired && payInfo?.expiresAt && (
                 <div className="mb-6 border border-[#E3C9A8] bg-[#FBF3E8] rounded-[5px] px-4 py-3 text-[14px] leading-relaxed text-[#5A3A12]">{t.drafts.openNote.replace("{date}", fmtDay(payInfo.expiresAt))}</div>
               )}
+              {!locked && payInfo?.paywall && payInfo?.entitled && (
+                <div className="mb-5 border border-line bg-faint rounded-[6px] px-4 py-3 text-[14.5px] leading-relaxed">{p.paidReviseNote}</div>
+              )}
+              {!locked && revisesLeft != null && (
+                <p className="text-[13px] text-muted mb-4">{p.revisesLeft.replace("{n}", String(revisesLeft))}</p>
+              )}
 
               <div className="flex flex-col gap-4">
                 {SECTIONS.map(([label, key, single]) => (
-                  <Section key={key} id={key} label={label} single={single as boolean} text={texts[key] || ""} proposalId={id} onCommit={commitSection} locked={locked} truncate={["problem", "results_narrative", "activities"].includes(key)} />
+                  <Section key={key} id={key} label={label} single={single as boolean} text={texts[key] || ""} proposalId={id} onCommit={commitSection} locked={locked} revisesLeft={revisesLeft} onRemaining={setRevisesLeft} truncate={["problem", "results_narrative", "activities"].includes(key)} />
                 ))}
 
                 {row.substance && row.substance.budget_table && (
