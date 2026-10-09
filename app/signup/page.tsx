@@ -5,6 +5,10 @@ import Link from "next/link";
 import { createClient } from "../../lib/supabase/client";
 import { useDict } from "../_components/LocaleProvider";
 
+// Bump when the Terms/Privacy/Refunds wording changes materially, so we can tell
+// which version a user accepted. Stored in user_metadata at sign-up.
+const TERMS_VERSION = "2026-10-09";
+
 export default function SignUp() {
   const { t } = useDict();
   const d = t.auth.signup;
@@ -13,6 +17,7 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
@@ -28,6 +33,10 @@ export default function SignUp() {
       setError(d.weakError);
       return;
     }
+    if (!agreed) {
+      setError(d.agreeError);
+      return;
+    }
     setLoading(true);
     const supabase = createClient();
     const { error } = await supabase.auth.signUp({
@@ -39,6 +48,8 @@ export default function SignUp() {
           account_type: accountType,
           full_name: name,
           org_name: accountType === "organisation" ? orgName : null,
+          terms_accepted_at: new Date().toISOString(),
+          terms_version: TERMS_VERSION,
         },
       },
     });
@@ -130,9 +141,24 @@ export default function SignUp() {
               )}
             </div>
 
+            <label className="flex items-start gap-2.5 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={agreed}
+                onChange={(e) => { setAgreed(e.target.checked); if (e.target.checked) setError(null); }}
+                className="mt-[3px] w-[18px] h-[18px] shrink-0 accent-[#1A1A18]"
+              />
+              <span className="text-[13.5px] text-[#3A3A32] leading-relaxed">
+                {d.agreeIntro}{" "}
+                <Link href="/terms" target="_blank" className="font-semibold text-ink underline">{d.agreeTerms}</Link>,{" "}
+                <Link href="/privacy" target="_blank" className="font-semibold text-ink underline">{d.agreePrivacy}</Link> {d.agreeAnd}{" "}
+                <Link href="/refunds" target="_blank" className="font-semibold text-ink underline">{d.agreeRefunds}</Link>{d.agreeSuffix}
+              </span>
+            </label>
+
             {error && <p className="text-[14px] text-[#B4442F]">{error}</p>}
 
-            <button type="submit" disabled={loading} className="w-full h-[54px] bg-ink text-paper rounded font-semibold text-[16px] disabled:opacity-60">
+            <button type="submit" disabled={loading || !agreed} className="w-full h-[54px] bg-ink text-paper rounded font-semibold text-[16px] disabled:opacity-60">
               {loading ? d.submitting : d.submit}
             </button>
           </form>

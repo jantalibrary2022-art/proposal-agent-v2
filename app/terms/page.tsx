@@ -17,7 +17,14 @@ const SECTIONS_EN: { h: string; body: string[] }[] = [
   {
     h: "What Prastav does",
     body: [
-      "Prastav helps you draft, improve and format project proposals using AI, drawing on the information you provide and on cited public sources. It is a tool that assists your work. You remain the author of your proposal, and you are responsible for reviewing, editing and verifying everything before you submit it to any donor or third party.",
+      "Prastav helps you draft, improve and format project proposals, drawing on the information you provide and on cited public sources. It is a tool that assists your work. You remain the author of your proposal, and you are responsible for reviewing, editing and verifying everything before you submit it to any donor or third party.",
+    ],
+  },
+  {
+    h: "Disclaimer",
+    body: [
+      "Prastav proposals are produced by a thought engine that combines deep development-sector expertise with AI; they are an augmentation of professional knowledge, not output of a machine alone. The quality of a proposal depends on the information you provide and on how you refine it.",
+      "You must review and validate every part of the proposal, including all facts, figures, budget rates and claims, before you submit or use it. Prastav does not guarantee that any proposal will secure funding, and nothing it produces is legal, financial or professional advice. Once you submit or use the document, it is yours alone, and its ownership rests entirely with you.",
     ],
   },
   {
@@ -101,7 +108,14 @@ const SECTIONS_HI: { h: string; body: string[] }[] = [
   {
     h: "Prastav क्या करता है",
     body: [
-      "Prastav आपकी दी गई जानकारी और उद्धृत सार्वजनिक स्रोतों के आधार पर, AI की मदद से परियोजना प्रस्ताव का ड्राफ़्ट बनाने, उसे सुधारने और फ़ॉर्मेट करने में आपकी सहायता करता है। यह आपके काम में मदद करने वाला एक साधन है। प्रस्ताव के लेखक आप ही रहते हैं, और किसी दानदाता या तीसरे पक्ष को जमा करने से पहले हर चीज़ की समीक्षा, संपादन और पुष्टि करने की ज़िम्मेदारी आपकी है।",
+      "Prastav आपकी दी गई जानकारी और उद्धृत सार्वजनिक स्रोतों के आधार पर परियोजना प्रस्ताव का ड्राफ़्ट बनाने, उसे सुधारने और फ़ॉर्मेट करने में आपकी सहायता करता है। यह आपके काम में मदद करने वाला एक साधन है। प्रस्ताव के लेखक आप ही रहते हैं, और किसी दानदाता या तीसरे पक्ष को जमा करने से पहले हर चीज़ की समीक्षा, संपादन और पुष्टि करने की ज़िम्मेदारी आपकी है।",
+    ],
+  },
+  {
+    h: "अस्वीकरण (Disclaimer)",
+    body: [
+      "Prastav के प्रस्ताव एक thought engine से तैयार होते हैं, जो विकास-क्षेत्र की गहरी विशेषज्ञता और AI को जोड़ता है; ये केवल किसी मशीन का उत्पाद नहीं, बल्कि पेशेवर ज्ञान का संवर्धन (augmentation) हैं। प्रस्ताव की गुणवत्ता आपकी दी गई जानकारी और आपके द्वारा उसे निखारने पर निर्भर करती है।",
+      "प्रस्तुत करने या उपयोग से पहले आपको प्रस्ताव के हर हिस्से की, जिसमें सभी तथ्य, आँकड़े, बजट दरें और दावे शामिल हैं, समीक्षा और सत्यापन अवश्य करना होगा। Prastav यह गारंटी नहीं देता कि किसी प्रस्ताव को फंडिंग मिलेगी, और इसके द्वारा तैयार कोई भी सामग्री कानूनी, वित्तीय या पेशेवर सलाह नहीं है। एक बार प्रस्तुत या उपयोग करने के बाद, दस्तावेज़ केवल आपका है और उसका स्वामित्व पूर्णतः आपके पास है।",
     ],
   },
   {
