@@ -5,6 +5,7 @@ import Link from "next/link";
 import { createClient } from "../../../lib/supabase/client";
 import { useDict } from "../../_components/LocaleProvider";
 import VoiceInput from "../../_components/VoiceInput";
+import CheckoutCode from "../../_components/CheckoutCode";
 import GenerationProgress from "./GenerationProgress";
 
 function parseAmt(s: string) { const n = Number(String(s == null ? "" : s).replace(/[^0-9.]/g, "")); return isNaN(n) ? 0 : n; }
@@ -504,7 +505,12 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
                 )}
               </div>
 
-              {locked && <p className="text-[13.5px] text-muted leading-relaxed mt-8 mb-2 max-w-[560px]">{p.payNote} <Link href="/refunds" target="_blank" className="underline font-semibold text-ink">{t.footer.refunds}</Link></p>}
+              {locked && (
+                <div className="mt-8">
+                  <CheckoutCode proposalId={id} onApplied={async () => { await refreshPayInfo(); await fetchRow(false); }} />
+                </div>
+              )}
+              {locked && <p className="text-[13.5px] text-muted leading-relaxed mb-2 max-w-[560px]">{p.payNote} <Link href="/refunds" target="_blank" className="underline font-semibold text-ink">{t.footer.refunds}</Link></p>}
               {locked && payInfo?.offerCode && payInfo.amountPaise < payInfo.fullPaise && (
                 <p className="text-[13.5px] text-ink mb-2">{t.offer.payLine} · <span className="line-through text-muted">₹{fmtIN((payInfo.fullPaise || 0) / 100)}</span> <b>₹{fmtIN((payInfo.amountPaise || 0) / 100)}</b></p>
               )}
