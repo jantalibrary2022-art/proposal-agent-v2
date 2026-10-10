@@ -10,6 +10,10 @@ import GenerationProgress from "./GenerationProgress";
 import { toSectionList } from "../../../lib/sections";
 
 function parseAmt(s: string) { const n = Number(String(s == null ? "" : s).replace(/[^0-9.]/g, "")); return isNaN(n) ? 0 : n; }
+// The quantity may be descriptive, e.g. "480 (60 teachers x 4 days x 2 years)".
+// Take only the leading number so a line total is rate x quantity, not rate x
+// every digit in the string concatenated together. 0 when there is no leading number.
+function qtyNum(s: string) { const m = String(s == null ? "" : s).match(/^\s*₹?\s*([0-9][0-9,]*(?:\.[0-9]+)?)/); if (!m) return 0; const n = Number(m[1].replace(/,/g, "")); return isNaN(n) ? 0 : n; }
 function fmtIN(n: number) {
   let s = Math.round(n).toString(); const neg = s.startsWith("-"); if (neg) s = s.slice(1);
   const lastThree = s.length > 3 ? s.slice(-3) : s;
@@ -120,7 +124,7 @@ function BudgetTable({ budget, rates, setRates }: { budget: any; rates: Record<s
   if (!cats.length) return null;
   const effUnit = (line: any) => { const o = rates[line.item]; return o != null && o !== "" ? o : line.unit_cost; };
   const lineTotal = (line: any) => {
-    const uc = parseAmt(effUnit(line)); const qty = parseAmt(line.quantity);
+    const uc = parseAmt(effUnit(line)); const qty = qtyNum(line.quantity);
     if (uc > 0 && qty > 0) return uc * qty;
     return parseAmt(line.total);
   };
