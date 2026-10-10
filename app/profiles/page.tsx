@@ -329,6 +329,12 @@ export default function ProfilesPage() {
                     </div>
                     <textarea rows={6} className={taCls} value={f.website_summary} onChange={(e) => set("website_summary", e.target.value)} />
                     <p className="text-[12px] text-muted mt-1.5 leading-snug">{pr.websiteSummaryHelp}</p>
+                    <div className="mt-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+                      <button type="button" onClick={save} disabled={saving} className="shrink-0 bg-ink text-paper text-[14px] font-semibold px-5 h-[42px] rounded-[4px] disabled:opacity-40">
+                        {saving ? pr.saving : selectedId ? pr.saveChanges : pr.createProfile}
+                      </button>
+                      <span className="text-[12.5px] text-muted leading-snug">{pr.websiteSaveHint}</span>
+                    </div>
                   </div>
                 )}
               </div>

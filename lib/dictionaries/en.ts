@@ -899,6 +899,7 @@ export const en = {
     websiteErrGeneric: "Could not read the website just now. You can save without it and try Refresh later.",
     websiteSummaryLabel: "WEBSITE SUMMARY",
     websiteSummaryHelp: "Read from your website. Edit it freely; it is used alongside your profile when drafting proposals.",
+    websiteSaveHint: "Saves the whole profile, including this summary.",
     websiteClear: "Clear",
     board: "Board members",
     staff: "Permanent staff",
