@@ -43,6 +43,8 @@ function toOrgProfile(p: any) {
     values: d.values,
     experience_summary: d.experience_summary,
     contact: d.contact || {},
+    website: d.website || "",
+    website_summary: d.website_summary || "",
   };
 }
 

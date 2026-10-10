@@ -24,6 +24,8 @@ const emptyForm = () => ({
   experience_summary: "",
   address: "",
   email: "",
+  website: "",
+  website_summary: "",
   thematic: [] as Thematic[],
   projects: [] as Project[],
 });
@@ -44,6 +46,8 @@ export default function ProfilesPage() {
   const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [uploadMsg, setUploadMsg] = useState("");
+  const [fetchingSite, setFetchingSite] = useState(false);
+  const [siteMsg, setSiteMsg] = useState("");
 
   const load = async () => {
     const supabase = createClient();
@@ -51,6 +55,9 @@ export default function ProfilesPage() {
     if (!user) { router.push("/login"); return; }
     const { data } = await supabase.from("org_profiles").select("*").eq("user_id", user.id).order("is_default", { ascending: false }).order("created_at", { ascending: true });
     setProfiles(data || []);
+    // Prefill website on a brand-new profile from what was entered at sign-up.
+    const hint = (user.user_metadata && user.user_metadata.org_website) || "";
+    if (hint && !selectedId) setF((p: any) => (p.website ? p : { ...p, website: hint }));
     setLoading(false);
   };
 
@@ -58,7 +65,35 @@ export default function ProfilesPage() {
 
   const set = (k: string, v: any) => setF((p: any) => ({ ...p, [k]: v }));
 
-  const startNew = () => { setSelectedId(null); setF(emptyForm()); setError(""); setUploadMsg(""); };
+  const startNew = () => { setSelectedId(null); setF(emptyForm()); setError(""); setUploadMsg(""); setSiteMsg(""); };
+
+  const fetchSite = async () => {
+    const url = (f.website || "").trim();
+    if (!url) { setSiteMsg(pr.websiteNoUrl); return; }
+    setFetchingSite(true); setSiteMsg("");
+    try {
+      const res = await fetch("/api/profiles/website", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url }),
+      });
+      const data = await res.json();
+      if (!data.ok) {
+        const map: any = {
+          invalid_url: pr.websiteErrUrl,
+          fetch_failed: pr.websiteErrReach,
+          too_thin: pr.websiteErrThin,
+          insufficient: pr.websiteErrThin,
+        };
+        setSiteMsg(map[data.error] || pr.websiteErrGeneric);
+        setFetchingSite(false);
+        return;
+      }
+      set("website_summary", data.summary);
+      setSiteMsg(pr.websiteDone);
+    } catch { setSiteMsg(pr.websiteErrGeneric); }
+    setFetchingSite(false);
+  };
 
   const edit = (p: any) => {
     setSelectedId(p.id);
@@ -79,6 +114,8 @@ export default function ProfilesPage() {
       experience_summary: d.experience_summary || "",
       address: (d.contact && d.contact.address) || "",
       email: (d.contact && d.contact.email) || "",
+      website: d.website || "",
+      website_summary: d.website_summary || "",
       thematic: Array.isArray(d.thematic_experience) ? d.thematic_experience.map((t: any) => ({ theme: t.theme || "", years: t.years != null ? String(t.years) : "" })) : [],
       projects: Array.isArray(d.past_projects) ? d.past_projects.map((x: any) => ({ title: x.title || "", funder: x.funder || "", funder_type: x.funder_type || "", location: x.location || "", scale: x.scale || "", outcomes: x.outcomes || "" })) : [],
     });
@@ -109,6 +146,8 @@ export default function ProfilesPage() {
         experience_summary: p.experience_summary || "",
         address: (p.contact && p.contact.address) || "",
         email: (p.contact && p.contact.email) || "",
+        website: f.website || "",
+        website_summary: f.website_summary || "",
         thematic: Array.isArray(p.thematic_experience) ? p.thematic_experience.map((t: any) => ({ theme: t.theme || "", years: t.years != null ? String(t.years) : "" })) : [],
         projects: Array.isArray(p.past_projects) ? p.past_projects.map((x: any) => ({ title: x.title || "", funder: x.funder || "", funder_type: x.funder_type || "", location: x.location || "", scale: x.scale || "", outcomes: x.outcomes || "" })) : [],
       });
@@ -129,6 +168,8 @@ export default function ProfilesPage() {
     values: f.values,
     experience_summary: f.experience_summary,
     contact: { address: f.address, email: f.email },
+    website: f.website.trim(),
+    website_summary: f.website_summary || "",
     thematic_experience: f.thematic.filter((t: Thematic) => t.theme.trim()).map((t: Thematic) => ({ theme: t.theme, years: t.years ? Number(t.years) : null })),
     past_projects: f.projects.filter((x: Project) => x.title.trim()),
   });
@@ -257,6 +298,39 @@ export default function ProfilesPage() {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div><label className={lab}>{pr.states}</label><input className={inputCls} value={f.states_present} onChange={(e) => set("states_present", e.target.value)} placeholder={pr.statesPh} /></div>
                 <div><label className={lab}>{pr.address}</label><input className={inputCls} value={f.address} onChange={(e) => set("address", e.target.value)} placeholder={pr.addressPh} /></div>
+              </div>
+
+              <div>
+                <label className={lab}>{pr.website}</label>
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <input
+                    className={inputCls}
+                    value={f.website}
+                    onChange={(e) => { set("website", e.target.value); if (siteMsg) setSiteMsg(""); }}
+                    placeholder={pr.websitePh}
+                    inputMode="url"
+                  />
+                  <button
+                    type="button"
+                    onClick={fetchSite}
+                    disabled={fetchingSite || !f.website.trim()}
+                    className="shrink-0 inline-flex items-center justify-center bg-ink text-paper text-[14px] font-semibold px-5 h-[46px] rounded-[5px] disabled:opacity-40 whitespace-nowrap"
+                  >
+                    {fetchingSite ? pr.websiteFetching : f.website_summary ? pr.websiteRefresh : pr.websiteFetch}
+                  </button>
+                </div>
+                <p className="text-[12.5px] text-muted mt-1.5 leading-snug">{pr.websiteHelp}</p>
+                {siteMsg && <p className="text-[13px] text-muted mt-1.5">{siteMsg}</p>}
+                {f.website_summary && (
+                  <div className="mt-3 rounded-lg border border-line bg-card p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="text-[12px] tracking-wide font-semibold text-muted">{pr.websiteSummaryLabel}</div>
+                      <button type="button" onClick={() => { set("website_summary", ""); setSiteMsg(""); }} className="text-[12.5px] font-semibold text-[#B4442F]">{pr.websiteClear}</button>
+                    </div>
+                    <textarea rows={6} className={taCls} value={f.website_summary} onChange={(e) => set("website_summary", e.target.value)} />
+                    <p className="text-[12px] text-muted mt-1.5 leading-snug">{pr.websiteSummaryHelp}</p>
+                  </div>
+                )}
               </div>
 
               {f.type === "organisation" && (

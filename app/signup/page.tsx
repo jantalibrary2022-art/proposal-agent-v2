@@ -17,6 +17,7 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [website, setWebsite] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -48,6 +49,7 @@ export default function SignUp() {
           account_type: accountType,
           full_name: name,
           org_name: accountType === "organisation" ? orgName : null,
+          org_website: accountType === "organisation" ? website.trim() : "",
           terms_accepted_at: new Date().toISOString(),
           terms_version: TERMS_VERSION,
         },
@@ -111,9 +113,15 @@ export default function SignUp() {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             {accountType === "organisation" && (
-              <div>
-                <label className="block text-[14px] font-semibold text-[#3A3A32] mb-1.5">{d.orgName}</label>
-                <input value={orgName} onChange={(e) => setOrgName(e.target.value)} type="text" required className="w-full h-[50px] border-[1.5px] border-[#C9C7BF] rounded px-4 text-[15.5px] bg-white outline-none focus:border-ink" />
+              <div className="space-y-5">
+                <div>
+                  <label className="block text-[14px] font-semibold text-[#3A3A32] mb-1.5">{d.orgName}</label>
+                  <input value={orgName} onChange={(e) => setOrgName(e.target.value)} type="text" required className="w-full h-[50px] border-[1.5px] border-[#C9C7BF] rounded px-4 text-[15.5px] bg-white outline-none focus:border-ink" />
+                </div>
+                <div>
+                  <label className="block text-[14px] font-semibold text-[#3A3A32] mb-1.5">{d.website}</label>
+                  <input value={website} onChange={(e) => setWebsite(e.target.value)} type="url" inputMode="url" placeholder={d.websitePh} className="w-full h-[50px] border-[1.5px] border-[#C9C7BF] rounded px-4 text-[15.5px] bg-white outline-none focus:border-ink" />
+                </div>
               </div>
             )}
             <div>
