@@ -211,6 +211,7 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
   const [row, setRow] = useState<any>(null);
   const [missing, setMissing] = useState(false);
   const [email, setEmail] = useState("");
+  const [content, setContent] = useState<any>(null);
   const [texts, setTexts] = useState<any>(null);
   const [rates, setRates] = useState<Record<string, string>>({});
   const [approving, setApproving] = useState(false);
@@ -224,6 +225,17 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
       const res = await fetch("/api/proposals/" + id + "/pay-info");
       const data = await res.json();
       if (data.ok) setPayInfo(data);
+    } catch {}
+  };
+
+  // Load the proposal content from the server-gated endpoint. For an unpaid draft
+  // the server returns a truncated preview; once paid (or finalised) it returns
+  // the full text, so this is re-run when entitlement changes.
+  const loadContent = async () => {
+    try {
+      const res = await fetch("/api/proposals/" + id + "/content");
+      const data = await res.json();
+      if (data.ok) setContent({ composed: data.composed, substance: data.substance, full: !!data.full });
     } catch {}
   };
 
@@ -241,7 +253,11 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
   const sweptRef = useRef(false);
   const fetchRow = async (reschedule: boolean): Promise<void> => {
     const supabase = createClient();
-    const { data } = await supabase.from("proposals").select("id,status,mode,title,meta,composed,substance,error,created_at,updated_at").eq("id", id).single();
+    // The draft narrative (composed) and substance are NOT read here. For an
+    // unpaid draft the client must never receive the full clean text, so content
+    // is loaded separately through the server-gated /content endpoint, which
+    // truncates it until the proposal is paid for.
+    const { data } = await supabase.from("proposals").select("id,status,mode,title,meta,error,created_at,updated_at").eq("id", id).single();
     if (!data) { setMissing(true); return; }
     // Past the timeout, ask the server to mark the run failed, then re-read it.
     const base = data.status === "rendering" ? data.updated_at : data.created_at;
@@ -266,16 +282,23 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
     return () => { if (timer.current) clearTimeout(timer.current); };
   }, [id]);
 
+  // Load content whenever the proposal is a draft, and again when entitlement
+  // flips (payment / code redemption) so the full text replaces the preview.
   useEffect(() => {
-    if (row && row.status === "draft" && texts === null) {
-      const c = row.composed || {};
-      const seed: any = { title: c.title || "", subtitle: c.subtitle || "" };
-      toSectionList(c, p).forEach((s: any) => { seed[s.key] = s.body || ""; });
-      setTexts(seed);
-      setRates({});
-      setRevisesLeft(Math.max(0, 25 - Number((row.meta && row.meta.revise_count) || 0)));
-    }
-  }, [row, texts]);
+    if (!id) return;
+    if (row && row.status === "draft") loadContent();
+  }, [id, row?.status, payInfo?.entitled]);
+
+  // Seed the editable texts from the loaded content. Re-seeds when content changes
+  // (e.g. truncated → full after payment); the one-time counters are set once.
+  useEffect(() => {
+    if (!row || row.status !== "draft" || !content) return;
+    const c = content.composed || {};
+    const seed: any = { title: c.title || "", subtitle: c.subtitle || "" };
+    toSectionList(c, p).forEach((s: any) => { seed[s.key] = s.body || ""; });
+    setTexts(seed);
+    setRevisesLeft((prev) => (prev == null ? Math.max(0, 25 - Number((row.meta && row.meta.revise_count) || 0)) : prev));
+  }, [content, row?.status]);
 
   useEffect(() => {
     // Protect only an unpaid (locked) draft, or one whose status we don't know yet.
@@ -367,6 +390,11 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
   const stalled = (status === "generating" || status === "rendering") && !!stallBase && (Date.now() - new Date(stallBase).getTime()) / 60000 >= STALL_MIN;
   const isBusy = status === "error" && typeof row?.error === "string" && row.error.startsWith("busy:");
   const locked = status === "draft" && !!payInfo && !!payInfo.locked;
+  // Donor-prescribed format, if any: the section headings this proposal follows.
+  // Sourced from the loaded content when present, else from the stored RFP intake.
+  const fmtSections: string[] = (Array.isArray(content?.composed?.sections) && content.composed.sections.length)
+    ? content.composed.sections.map((s: any) => s && s.heading).filter(Boolean)
+    : ((row?.meta?.rfp?.prescribed_format?.sections) || []);
   // Watermark, print-block and copy-block apply only while unpaid (locked), or
   // before pay-info has loaded. Once paid, the proposal is the customer's.
   const protect = status === "draft" && (!payInfo || locked);
@@ -461,6 +489,14 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
             </div>
           )}
 
+          {!missing && status === "draft" && !texts && (
+            <div className="bg-card border border-line rounded-lg p-8">
+              <div className="flex items-center gap-3">
+                <span className="w-[22px] h-[22px] rounded-full border-[3px] border-[#E4E3DC] border-t-ink animate-spin" />
+                <span className="text-[12px] tracking-wide font-semibold text-muted">{p.reviewKicker}</span>
+              </div>
+            </div>
+          )}
           {!missing && status === "draft" && texts && (
             <>
               <div className="mb-6">
@@ -468,6 +504,11 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
                 <h1 className="font-extrabold text-[clamp(24px,4vw,30px)] tracking-tight mt-1 mb-1">{p.reviewTitle}</h1>
                 <p className="text-[15px] text-muted leading-relaxed">{p.reviewBody}</p>
               </div>
+              {fmtSections.length > 0 && (
+                <div className="mb-6 border border-line bg-faint rounded-[6px] px-4 py-3 text-[13.5px] leading-relaxed text-muted">
+                  {p.followsFormat.replace("{list}", fmtSections.join(", "))}
+                </div>
+              )}
               {locked && payInfo?.expired && (
                 <div className="mb-6 border border-[#E4B9B0] bg-[#FBEDEA] rounded-[5px] px-4 py-3 text-[14.5px] leading-relaxed text-[#6B2418]" role="status">
                   <div className="font-bold mb-1">{t.drafts.expiredTitle}</div>
@@ -485,12 +526,12 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
               )}
 
               <div className="flex flex-col gap-4">
-                {toSectionList(row.composed, p).map((s: any) => (
-                  <Section key={s.key} id={s.key} label={s.heading} single={s.single} text={texts[s.key] || ""} proposalId={id} onCommit={commitSection} locked={locked} revisesLeft={revisesLeft} onRemaining={setRevisesLeft} truncate={["problem", "results_narrative", "activities"].includes(s.key)} />
+                {toSectionList(content?.composed || {}, p).map((s: any) => (
+                  <Section key={s.key} id={s.key} label={s.heading} single={s.single} text={texts[s.key] || ""} proposalId={id} onCommit={commitSection} locked={locked} revisesLeft={revisesLeft} onRemaining={setRevisesLeft} truncate={true} />
                 ))}
 
-                {row.substance && row.substance.budget_table && (
-                  <BudgetTable budget={row.substance.budget_table} rates={rates} setRates={setRates} />
+                {content?.substance && content.substance.budget_table && (
+                  <BudgetTable budget={content.substance.budget_table} rates={rates} setRates={setRates} />
                 )}
               </div>
 

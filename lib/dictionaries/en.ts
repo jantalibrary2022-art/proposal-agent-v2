@@ -524,6 +524,7 @@ export const en = {
     reviewKicker: "REVIEW YOUR DRAFT",
     reviewTitle: "Review and refine",
     reviewBody: "Read each section. To change anything, click Suggest a change and tell the agent in your own words, by typing or speaking. It will advise and make the change for you, so the writing stays strong. Nothing is final until you finalise.",
+    followsFormat: "This proposal follows your donor's prescribed format: {list}.",
     finalise: "Finalise & generate files",
     paidReviseNote: "Payment received. Revise any section with the agent if you wish, then generate your files below.",
     revisesLeft: "Revisions left on this proposal: {n} of 25.",
