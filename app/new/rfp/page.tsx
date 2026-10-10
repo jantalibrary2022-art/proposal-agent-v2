@@ -450,7 +450,7 @@ export default function RfpPage() {
           )}
 
           {step === steps.length - 1 && <OutputLanguagePicker value={outLang} onChange={setOutLang} />}
-          {step === steps.length - 1 && <AccessCodeInput value={couponCode} onChange={setCouponCode} />}
+          {step === steps.length - 1 && draftGate.needsPay("") && <AccessCodeInput value={couponCode} onChange={setCouponCode} />}
           {step === steps.length - 1 && <DraftGateNotice gate={draftGate.gate} code={couponCode} />}
 
           <div className="flex items-center justify-between mt-11">
