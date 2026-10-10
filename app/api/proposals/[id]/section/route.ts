@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "../../../../../lib/supabase/server";
 import { createAdminClient } from "../../../../../lib/supabase/admin";
+import { sectionKeys, writeSection } from "../../../../../lib/sections";
 
 export const runtime = "nodejs";
-
-const ALLOWED = ["title","subtitle","problem","objective","strategy","results_narrative","activities","sustainability"];
 
 export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string }> }) {
   const { id } = await ctx.params;
@@ -16,14 +15,16 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   try { body = await req.json(); } catch { body = {}; }
   const section = String(body.section || "");
   const text = String(body.text == null ? "" : body.text);
-  if (!ALLOWED.includes(section)) return NextResponse.json({ ok: false, error: "bad_section" }, { status: 400 });
 
   const { data: row } = await supabase.from("proposals").select("id,status,composed,meta").eq("id", id).single();
   if (!row) return NextResponse.json({ ok: false, error: "not_found" }, { status: 404 });
   if (row.status !== "draft") return NextResponse.json({ ok: false, error: "not_draft" }, { status: 409 });
 
-  const composed: any = Object.assign({}, row.composed || {});
-  composed[section] = text;
+  // The valid section keys depend on the proposal's own structure (house default,
+  // or a donor-prescribed list). Gate against that, not a fixed array.
+  if (!sectionKeys(row.composed).includes(section)) return NextResponse.json({ ok: false, error: "bad_section" }, { status: 400 });
+
+  const composed: any = writeSection(row.composed, section, text);
   const meta: any = Object.assign({}, row.meta || {});
   if (section === "title") meta.title = text;
   if (section === "subtitle") meta.subtitle = text;

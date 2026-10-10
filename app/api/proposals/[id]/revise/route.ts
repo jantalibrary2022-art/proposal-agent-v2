@@ -4,11 +4,10 @@ import { createAdminClient } from "../../../../../lib/supabase/admin";
 import { reviseSection } from "../../../../../lib/revise-section";
 import { paywallEnabled } from "../../../../../lib/coupons";
 import { isEntitled } from "../../../../../lib/entitlement";
+import { sectionKeys, readSection } from "../../../../../lib/sections";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
-
-const ALLOWED = ["title","subtitle","problem","objective","strategy","results_narrative","activities","sustainability"];
 
 // Cap on agent revisions per proposal. Counted server-side so it cannot be
 // bypassed from the browser, and so the Claude API cost per proposal is bounded.
@@ -25,12 +24,15 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   const section = String(body.section || "");
   const comment = String(body.comment || "");
   const currentText = String(body.currentText || "");
-  if (!ALLOWED.includes(section)) return NextResponse.json({ ok: false, error: "bad_section" }, { status: 400 });
   if (!comment.trim()) return NextResponse.json({ ok: false, error: "empty_comment" }, { status: 400 });
 
   const { data: row } = await supabase.from("proposals").select("id,status,substance,composed,meta").eq("id", id).single();
   if (!row || !row.substance) return NextResponse.json({ ok: false, error: "not_found" }, { status: 404 });
   if (row.status !== "draft") return NextResponse.json({ ok: false, error: "not_draft" }, { status: 409 });
+
+  // Valid section keys depend on the proposal's own structure (house default, or a
+  // donor-prescribed list), so gate against that rather than a fixed array.
+  if (!sectionKeys(row.composed).includes(section)) return NextResponse.json({ ok: false, error: "bad_section" }, { status: 400 });
 
   // Revision is a paid feature: only entitled proposals may call the engine, so
   // an unpaid draft cannot consume Claude API by hitting this endpoint directly.
@@ -50,7 +52,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
     objective: s.objective, problem_facts: s.problem_facts, results: s.results,
     strategy_facts: s.strategy_facts, activities_facts: s.activities_facts, sources: s.sources,
   };
-  const base = currentText.trim() ? currentText : (c[section] || "");
+  const base = currentText.trim() ? currentText : readSection(row.composed, section);
 
   try {
     const r = await reviseSection({ section, currentText: base, comment, grounding });

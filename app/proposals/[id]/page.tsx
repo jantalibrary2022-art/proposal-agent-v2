@@ -7,6 +7,7 @@ import { useDict } from "../../_components/LocaleProvider";
 import VoiceInput from "../../_components/VoiceInput";
 import CheckoutCode from "../../_components/CheckoutCode";
 import GenerationProgress from "./GenerationProgress";
+import { toSectionList } from "../../../lib/sections";
 
 function parseAmt(s: string) { const n = Number(String(s == null ? "" : s).replace(/[^0-9.]/g, "")); return isNaN(n) ? 0 : n; }
 function fmtIN(n: number) {
@@ -205,16 +206,6 @@ function DownloadCard({ id, kind, label, note, primary }: { id: string; kind: st
 export default function ProposalPage({ params }: { params: Promise<{ id: string }> }) {
   const { t, locale } = useDict();
   const p = t.proposal;
-  const SECTIONS: [string, string, boolean][] = [
-    [p.secTitle, "title", true],
-    [p.secSubtitle, "subtitle", true],
-    [p.secProblem, "problem", false],
-    [p.secObjective, "objective", false],
-    [p.secStrategy, "strategy", false],
-    [p.secResults, "results_narrative", false],
-    [p.secActivities, "activities", false],
-    [p.secSustainability, "sustainability", false],
-  ];
 
   const [id, setId] = useState("");
   const [row, setRow] = useState<any>(null);
@@ -278,11 +269,9 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
   useEffect(() => {
     if (row && row.status === "draft" && texts === null) {
       const c = row.composed || {};
-      setTexts({
-        title: c.title || "", subtitle: c.subtitle || "",
-        problem: c.problem || "", objective: c.objective || "", strategy: c.strategy || "",
-        results_narrative: c.results_narrative || "", activities: c.activities || "", sustainability: c.sustainability || "",
-      });
+      const seed: any = { title: c.title || "", subtitle: c.subtitle || "" };
+      toSectionList(c, p).forEach((s: any) => { seed[s.key] = s.body || ""; });
+      setTexts(seed);
       setRates({});
       setRevisesLeft(Math.max(0, 25 - Number((row.meta && row.meta.revise_count) || 0)));
     }
@@ -496,8 +485,8 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
               )}
 
               <div className="flex flex-col gap-4">
-                {SECTIONS.map(([label, key, single]) => (
-                  <Section key={key} id={key} label={label} single={single as boolean} text={texts[key] || ""} proposalId={id} onCommit={commitSection} locked={locked} revisesLeft={revisesLeft} onRemaining={setRevisesLeft} truncate={["problem", "results_narrative", "activities"].includes(key)} />
+                {toSectionList(row.composed, p).map((s: any) => (
+                  <Section key={s.key} id={s.key} label={s.heading} single={s.single} text={texts[s.key] || ""} proposalId={id} onCommit={commitSection} locked={locked} revisesLeft={revisesLeft} onRemaining={setRevisesLeft} truncate={["problem", "results_narrative", "activities"].includes(s.key)} />
                 ))}
 
                 {row.substance && row.substance.budget_table && (
