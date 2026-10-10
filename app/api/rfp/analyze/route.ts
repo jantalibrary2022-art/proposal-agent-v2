@@ -47,6 +47,7 @@ export async function POST(req: NextRequest) {
   let body: any = null;
   try { body = await req.json(); } catch { body = null; }
   const rfpText = body && body.rfp_text ? String(body.rfp_text) : "";
+  const formatText = body && body.format_text ? String(body.format_text) : "";
   if (!rfpText.trim() || rfpText.trim().length < 40) {
     return NextResponse.json({ ok: false, error: "missing_rfp" }, { status: 400 });
   }
@@ -69,7 +70,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const r = await analyzeRFP(rfpText, engineOrg);
+    const r = await analyzeRFP(rfpText, engineOrg, { formatDocText: formatText });
     if (!r._parsed) return NextResponse.json({ ok: false, error: "could_not_read_rfp" }, { status: 502 });
     return NextResponse.json({ ok: true, analysis: r.analysis });
   } catch (e: any) {

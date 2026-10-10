@@ -106,6 +106,7 @@ export async function POST(req: NextRequest) {
   if (gate.error) return NextResponse.json({ ok: false, error: gate.error }, { status: 402 });
   const engineAnswers = toEngineAnswers(form);
   const rfpText = String(form.rfp_text);
+  const formatText = form.format_text ? String(form.format_text) : "";
 
   const { data: row, error: insErr } = await admin
     .from("proposals")
@@ -140,7 +141,7 @@ export async function POST(req: NextRequest) {
 
   (async () => {
     try {
-      const draft = await runRfpDraft(rfpText, engineAnswers, engineOrg, { analysis: form.rfp_analysis && typeof form.rfp_analysis === "object" ? form.rfp_analysis : null, language: outputLanguage(form.output_language), onProgress: progressReporter(admin, proposalId) });
+      const draft = await runRfpDraft(rfpText, engineAnswers, engineOrg, { analysis: form.rfp_analysis && typeof form.rfp_analysis === "object" ? form.rfp_analysis : null, formatDocText: formatText, language: outputLanguage(form.output_language), onProgress: progressReporter(admin, proposalId) });
       const a = draft.analysis || {};
       const meta = {
         ...draft.meta,

@@ -39,10 +39,19 @@ export default function RfpPage() {
   const [uploadErr, setUploadErr] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
 
+  // Optional separate "proposal format / guidelines" document. When present, it is
+  // the authoritative source for the prescribed structure the proposal must follow.
+  const [formatText, setFormatText] = useState("");
+  const [formatExtracting, setFormatExtracting] = useState(false);
+  const [formatName, setFormatName] = useState("");
+  const [formatErr, setFormatErr] = useState("");
+  const formatRef = useRef<HTMLInputElement>(null);
+
   const [analysis, setAnalysis] = useState<any>(null);
   const [analyzing, setAnalyzing] = useState(false);
   const [analyzeErr, setAnalyzeErr] = useState("");
   const analyzedTextRef = useRef("");
+  const analyzedFormatRef = useRef("");
 
   useEffect(() => {
     const supabase = createClient();
@@ -74,6 +83,22 @@ export default function RfpPage() {
     if (fileRef.current) fileRef.current.value = "";
   };
 
+  const onPickFormatFile = async (e: any) => {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    setFormatErr(""); setFormatName(f.name); setFormatExtracting(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", f);
+      const res = await fetch("/api/rfp/extract-text", { method: "POST", body: fd });
+      const data = await res.json();
+      if (data.ok && data.text) { setFormatText(data.text); }
+      else { setFormatName(""); setFormatErr(data.error === "unsupported_type" ? rf.errUpload : rf.errReadPaste); }
+    } catch { setFormatName(""); setFormatErr(rf.errReadPaste); }
+    setFormatExtracting(false);
+    if (formatRef.current) formatRef.current.value = "";
+  };
+
   const profilePayload = () => noProfile
     ? { quick_profile: { name: quickName.trim(), about: quickAbout.trim() } }
     : { org_profile_id: orgProfileId };
@@ -99,11 +124,12 @@ export default function RfpPage() {
   const runAnalyze = async () => {
     setAnalyzing(true); setAnalyzeErr("");
     try {
-      const res = await fetch("/api/rfp/analyze", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ rfp_text: answers.rfp_text, ...profilePayload() }) });
+      const res = await fetch("/api/rfp/analyze", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ rfp_text: answers.rfp_text, format_text: formatText, ...profilePayload() }) });
       const data = await res.json();
       if (data.ok && data.analysis) {
         setAnalysis(data.analysis);
         analyzedTextRef.current = answers.rfp_text;
+        analyzedFormatRef.current = formatText;
         prefillFromAnalysis(data.analysis);
         setAnalyzing(false);
         setStep(2);
@@ -117,7 +143,7 @@ export default function RfpPage() {
   const generate = async () => {
     setStarting(true);
     if (!(await draftGate.prepare(couponCode))) { setStarting(false); return; }
-    const payload: any = { ...answers, output_language: outLang, coupon_code: couponCode, rfp_analysis: analysis, ...profilePayload() };
+    const payload: any = { ...answers, format_text: formatText, output_language: outLang, coupon_code: couponCode, rfp_analysis: analysis, ...profilePayload() };
     try {
       const res = await fetch("/api/proposals/generate-rfp", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ answers: payload }) });
       const data = await res.json();
@@ -140,7 +166,7 @@ export default function RfpPage() {
   };
   const goNext = async () => {
     if (step === 1) {
-      if (analysis && analyzedTextRef.current === answers.rfp_text) { setStep(2); return; }
+      if (analysis && analyzedTextRef.current === answers.rfp_text && analyzedFormatRef.current === formatText) { setStep(2); return; }
       await runAnalyze(); return;
     }
     if (step < steps.length - 1) setStep(step + 1);
@@ -278,6 +304,20 @@ export default function RfpPage() {
               {uploadErr && <div className="mb-3 text-[13.5px] text-[#9A3B1E]">{uploadErr}</div>}
               <textarea value={answers.rfp_text} onChange={(e) => set("rfp_text", e.target.value)} placeholder={rf.rfpPh} className="w-full h-[300px] box-border border-[1.5px] border-[#C9C7BF] rounded-[5px] p-4 text-[15px] leading-relaxed bg-card resize-none outline-none focus:border-ink font-mono" />
               <div className="mt-2 text-[13px] text-muted">{rfpChars > 0 ? `${rfpChars.toLocaleString()}${rf.charsSuffix}` : rf.charsHint}</div>
+
+              <div className="mt-6 pt-5 border-t border-line">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <input ref={formatRef} type="file" accept=".pdf,.docx,.txt" onChange={onPickFormatFile} className="hidden" />
+                  <button type="button" onClick={() => formatRef.current?.click()} disabled={formatExtracting} className="flex items-center gap-2 px-4 py-[10px] rounded-[4px] text-[14.5px] font-semibold border-[1.5px] bg-card text-ink border-[#C9C7BF] disabled:opacity-40">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                    {formatExtracting ? rf.reading : rf.uploadFormat}
+                  </button>
+                  {formatName && !formatExtracting && <span className="text-[13.5px] text-muted">{rf.loadedPre}{formatName}{rf.formatLoadedPost}</span>}
+                </div>
+                {formatErr && <div className="mt-2 text-[13.5px] text-[#9A3B1E]">{formatErr}</div>}
+                <div className="mt-2 text-[13px] text-muted leading-relaxed">{rf.formatHint}</div>
+              </div>
+
               {analyzeErr && <div className="mt-3 text-[13.5px] text-[#9A3B1E]">{analyzeErr}</div>}
             </>
           )}
