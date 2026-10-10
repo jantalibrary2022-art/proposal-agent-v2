@@ -4,7 +4,7 @@ import { createAdminClient } from "../../../../../lib/supabase/admin";
 import { reviseSection } from "../../../../../lib/revise-section";
 import { paywallEnabled } from "../../../../../lib/coupons";
 import { isEntitled } from "../../../../../lib/entitlement";
-import { sectionKeys, readSection } from "../../../../../lib/sections";
+import { sectionKeys, readSection, sectionHeading } from "../../../../../lib/sections";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   const base = currentText.trim() ? currentText : readSection(row.composed, section);
 
   try {
-    const r = await reviseSection({ section, currentText: base, comment, grounding });
+    const r = await reviseSection({ section, currentText: base, comment, grounding, label: sectionHeading(row.composed, section) });
     // The engine was called, so this counts toward the cap whether or not the
     // output parsed. Persist the new count with the service role.
     const nextCount = used + 1;
