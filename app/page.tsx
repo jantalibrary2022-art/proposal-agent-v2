@@ -118,33 +118,7 @@ export default async function Home() {
           <div className="text-[12px] tracking-[0.1em] text-white/45 mb-8">{t.practitioner.kicker}</div>
           <div className="flex flex-col md:flex-row gap-10 md:gap-14 md:items-start">
             <div className="shrink-0 md:w-[260px]">
-              <div className="rounded-xl bg-white/[0.035] border border-white/10 p-7 sm:p-8">
-                <svg viewBox="0 0 300 340" role="img" aria-label="A networked human mind connected to an AI engine" className="w-full h-auto">
-                  {/* person: head + shoulders */}
-                  <path d="M 50 158 C 30 206, 26 262, 32 318 L 204 318 C 210 262, 206 206, 186 158" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.82)" strokeWidth="1.6" strokeLinejoin="round" />
-                  <circle cx="118" cy="120" r="86" fill="none" stroke="rgba(255,255,255,0.82)" strokeWidth="1.6" />
-                  {/* mind network links */}
-                  <g stroke="rgba(255,255,255,0.28)" strokeWidth="1">
-                    <line x1="88" y1="72" x2="138" y2="64" /><line x1="88" y1="72" x2="116" y2="104" /><line x1="138" y1="64" x2="116" y2="104" /><line x1="138" y1="64" x2="158" y2="104" /><line x1="66" y1="116" x2="116" y2="104" /><line x1="116" y1="104" x2="158" y2="104" /><line x1="116" y1="104" x2="92" y2="150" /><line x1="116" y1="104" x2="140" y2="150" /><line x1="158" y1="104" x2="140" y2="150" /><line x1="92" y1="150" x2="116" y2="168" /><line x1="140" y1="150" x2="116" y2="168" /><line x1="66" y1="116" x2="92" y2="150" />
-                  </g>
-                  {/* signal: mind to engine */}
-                  <g stroke="rgba(255,255,255,0.5)" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="1 5">
-                    <line x1="158" y1="104" x2="248" y2="86" /><line x1="158" y1="104" x2="248" y2="130" /><line x1="140" y1="150" x2="248" y2="174" />
-                  </g>
-                  {/* engine (AI) links */}
-                  <g stroke="rgba(255,255,255,0.3)" strokeWidth="1">
-                    <line x1="248" y1="86" x2="282" y2="108" /><line x1="282" y1="108" x2="248" y2="130" /><line x1="248" y1="86" x2="248" y2="130" /><line x1="248" y1="130" x2="282" y2="152" /><line x1="282" y1="152" x2="248" y2="174" /><line x1="248" y1="130" x2="248" y2="174" />
-                  </g>
-                  {/* mind nodes */}
-                  <g fill="rgba(255,255,255,0.92)">
-                    <circle cx="88" cy="72" r="4" /><circle cx="138" cy="64" r="4" /><circle cx="66" cy="116" r="4" /><circle cx="116" cy="104" r="4.5" /><circle cx="158" cy="104" r="4" /><circle cx="92" cy="150" r="4" /><circle cx="140" cy="150" r="4" /><circle cx="116" cy="168" r="4" />
-                  </g>
-                  {/* engine nodes */}
-                  <g fill="none" stroke="rgba(255,255,255,0.88)" strokeWidth="1.4">
-                    <rect x="243.5" y="81.5" width="9" height="9" rx="1" /><rect x="277.5" y="103.5" width="9" height="9" rx="1" /><rect x="243.5" y="125.5" width="9" height="9" rx="1" /><rect x="277.5" y="147.5" width="9" height="9" rx="1" /><rect x="243.5" y="169.5" width="9" height="9" rx="1" />
-                  </g>
-                </svg>
-              </div>
+              <img src="/practice-ai.jpg" alt="A thinking human mind fused with an AI neural network" className="w-full aspect-square object-cover rounded-xl border border-white/10" />
               <div className="mt-4 text-[13.5px] text-white/55 leading-snug">{t.practitioner.motifCaption}</div>
             </div>
             <div className="min-w-0 flex-grow">
