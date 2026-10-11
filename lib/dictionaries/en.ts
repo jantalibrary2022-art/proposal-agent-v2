@@ -60,7 +60,7 @@ export const en = {
     colGovernment: "GOVERNMENT & PUBLIC INSTITUTIONS",
     colCsr: "CSR, AUDIT & ADVISORY",
     orgsNote: "This work includes, as lead evaluator with Protiviti, assessing CSR programmes for Welspun and Marico, and with Medica Synergie, leading systems audits of the National Health Mission across Manipur, Mizoram and Nagaland.",
-    motifCaption: "Practice-driven knowledge, driven by AI.",
+    motifCaption: "Practice-driven knowledge, powered by AI.",
   },
   how: {
     kicker: "HOW IT WORKS",
