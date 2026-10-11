@@ -23,7 +23,7 @@ const notoDeva = Noto_Sans_Devanagari({
 export const metadata: Metadata = {
   title: "Prastav",
   description:
-    "An AI workbench for the development sector. Evidence-grade proposals, built on 24 years of practice, multiplied by AI.",
+    "An AI workbench for the development sector. Evidence-grade products, built on 24 years of practice, multiplied by AI.",
 };
 
 export default async function RootLayout({

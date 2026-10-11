@@ -17,7 +17,7 @@ export const en = {
   meta: {
     workbench: "AN AI WORKBENCH FOR THE DEVELOPMENT SECTOR",
     proposals: "PROPOSALS",
-    moreSoon: "MORE SERVICES SOON",
+    moreSoon: "MORE PRODUCTS SOON",
   },
   byline: "Built on 24 years of practice, multiplied by AI",
   specimen: {
@@ -43,7 +43,7 @@ export const en = {
   chatbot: {
     kicker: "WHY NOT JUST A CHATBOT",
     heading: "A general chatbot will invent a figure to fill a gap. A donor will notice.",
-    body: "Prastav is built the other way round. It cites only authoritative sources, fetches the current figure and attributes it, and where no sound source has the number, it flags the gap for you to fill rather than guessing. Every statistic in your proposal is one you can stand behind.",
+    body: "Prastav is built the other way round. It cites only authoritative sources, fetches the current figure and attributes it, and where no sound source has the number, it flags the gap for you to fill rather than guessing. Every figure in what you send is one you can stand behind.",
     cards: [
       ["Grounded evidence", "Figures come from Census, NFHS, NSS, government portals and recognised institutions, with the source attached so you can verify every number."],
       ["Honest gaps", "Where no authoritative source has a figure, Prastav names the gap and the source that would hold it, instead of filling it with something a reviewer can puncture."],
@@ -51,17 +51,16 @@ export const en = {
     ] as [string, string][],
   },
   practitioner: {
-    kicker: "THE PRACTITIONER BEHIND IT",
-    name: "Prakash Kumar",
-    role: "Founder, Prastav · Development-sector consultant",
-    heading: "Built on 24 years of practice.",
-    body1: "Prastav applies the judgment of a practitioner who has spent 24 years in the development sector, across health, gender, child protection and livelihoods. His work centres on research studies, programme design, and building the capacity of the teams that run them, the same discipline the tool brings to your proposal.",
-    body2: "A registered social auditor (ISAI, SA-654), he is often the person organisations bring in to get the evidence and the method right. That is the standard every draft is held to here.",
-    orgsKicker: "A SELECTION OF ORGANISATIONS HE HAS WORKED WITH",
+    kicker: "THE PRACTICE BEHIND PRASTAV",
+    heading: "Decades of development-sector practice, now an engine.",
+    body1: "The people behind this initiative have spent decades in the development sector, across health, gender, child protection and livelihoods, on research studies, programme design and building the teams that run them. That practice, its judgment about what counts as evidence and what a fundable design actually looks like, is what Prastav runs on.",
+    body2: "Prastav is that practice built into a thought engine, driven by AI. The method sets the standard, the AI does the research and the drafting in minutes, and your judgment stays the final check on every section.",
+    orgsKicker: "AGENCIES THE PEOPLE BEHIND THIS INITIATIVE HAVE WORKED WITH",
     colMultilateral: "MULTILATERAL & INTERNATIONAL",
     colGovernment: "GOVERNMENT & PUBLIC INSTITUTIONS",
     colCsr: "CSR, AUDIT & ADVISORY",
-    orgsNote: "As lead evaluator with Protiviti, assessed CSR programmes for Welspun and Marico; with Medica Synergie, led systems audits of the NRHM across Manipur, Mizoram and Nagaland.",
+    orgsNote: "This work includes, as lead evaluator with Protiviti, assessing CSR programmes for Welspun and Marico, and with Medica Synergie, leading systems audits of the National Health Mission across Manipur, Mizoram and Nagaland.",
+    motifCaption: "Practice-driven knowledge, driven by AI.",
   },
   how: {
     kicker: "HOW IT WORKS",
@@ -250,7 +249,7 @@ export const en = {
     heading: "Choose your language",
     subheading: "अपनी भाषा चुनें",
     step: "STEP 1 · CHANGE ANYTIME",
-    note: "The whole app, and every proposal, is produced in the language you choose.",
+    note: "The whole app, and everything you create, is produced in the language you choose.",
     continue: "Continue",
   },
   auth: {
