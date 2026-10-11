@@ -16,6 +16,7 @@ export default async function Home() {
   const t = dictFor(locale);
   let offer = null as Awaited<ReturnType<typeof publicOffer>>;
   try { offer = await publicOffer(createAdminClient(), pricePaise()); } catch {}
+  const inr = (paise: number) => "₹" + Math.round(paise / 100).toLocaleString("en-IN");
 
   return (
     <main className="min-h-screen flex flex-col">
@@ -197,20 +198,46 @@ export default async function Home() {
         <div className="text-[12px] tracking-[0.1em] text-muted mb-4">{t.pricing.kicker}</div>
         <h2 className="font-extrabold text-[clamp(27px,4.5vw,42px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">{t.pricing.heading}</h2>
         <p className="mt-6 text-[17px] sm:text-[18px] leading-relaxed text-[#3A3A31] max-w-[720px]">{t.pricing.body}</p>
-        <div className="mt-11 grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[820px]">
-          <div className="bg-card border border-line rounded-lg p-7">
-            <div className="text-[12px] tracking-[0.1em] text-muted mb-3">{t.pricing.perProposalKicker}</div>
-            <div className="flex items-baseline gap-1.5 mb-1"><span className="text-[34px] font-extrabold tracking-[-0.03em]">{t.pricing.price}</span><span className="text-[14px] text-muted">{t.pricing.priceUnit}</span></div>
-            <div className="text-[14.5px] leading-relaxed text-[#4A4A42] mt-3">{t.pricing.perProposalBody}</div>
+        <div className="mt-11 grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[920px]">
+          {/* Free tier */}
+          <div className="bg-card border border-line rounded-lg p-7 flex flex-col">
+            <div className="flex items-center gap-2.5">
+              <h3 className="text-[19px] font-extrabold tracking-[-0.01em]">{t.pricing.freeTitle}</h3>
+              <span className="text-[10.5px] font-bold tracking-[0.04em] uppercase bg-ink text-paper px-2 py-0.5 rounded-full">{t.pricing.freeTag}</span>
+            </div>
+            <div className="text-[14px] text-muted mt-1">{t.pricing.freeSub}</div>
+            <div className="flex items-baseline gap-2 mt-4"><span className="text-[38px] font-extrabold tracking-[-0.03em] leading-none">{t.pricing.freePrice}</span><span className="text-[14px] text-muted">{t.pricing.freePriceUnit}</span></div>
+            <ul className="flex flex-col gap-3 mt-5">
+              {t.pricing.freeItems.map(([q, u]) => (
+                <li key={q} className="flex gap-2.5 text-[14.5px] leading-snug"><span className="text-ink mt-[1px]">✓</span><span><b className="font-semibold">{q}</b> {u}</span></li>
+              ))}
+            </ul>
+            <div className="mt-auto pt-6"><Link href="/signup" className="inline-block bg-ink text-paper text-[14.5px] font-semibold px-6 py-3 rounded-[4px]">{t.pricing.freeCta}</Link></div>
           </div>
+          {/* Paid tier */}
           <div className="bg-panel text-paper rounded-lg p-7 flex flex-col">
-            <div className="text-[12px] tracking-[0.1em] text-white/45 mb-3">{t.pricing.personalKicker}</div>
-            <div className="text-[22px] font-extrabold tracking-[-0.02em] leading-tight mb-2">{t.pricing.personalHeading}</div>
-            <div className="text-[14.5px] leading-relaxed text-white/70">{t.pricing.personalBody}</div>
-            <Link href="/contact" className="inline-block self-start mt-5 bg-paper text-panel text-[14px] font-semibold px-5 py-2.5 rounded-[4px]">{t.pricing.getInTouch}</Link>
-            <div className="mt-4 text-[12.5px] text-white/40">{t.pricing.terms}</div>
+            <h3 className="text-[19px] font-extrabold tracking-[-0.01em]">{t.pricing.paidTitle}</h3>
+            <div className="text-[14px] text-white/55 mt-1">{t.pricing.paidSub}</div>
+            <ul className="flex flex-col mt-4">
+              <li className="flex items-baseline justify-between gap-4 py-3">
+                <div className="min-w-0"><div className="text-[15px] font-semibold flex items-center gap-2 flex-wrap">{t.pricing.proposalName}<span className="text-[10px] font-bold tracking-[0.04em] uppercase bg-[#E2EDE3] text-[#2F5E3A] px-1.5 py-0.5 rounded-full">{t.pricing.liveTag}</span></div><div className="text-[12.5px] text-white/50 mt-0.5">{t.pricing.proposalDesc}</div></div>
+                <div className="text-right shrink-0 tabular-nums">{offer ? (<><span className="text-[17px] font-extrabold">{inr(offer.offerPaise)}</span><span className="block text-[12px] text-white/45 line-through">{inr(offer.fullPaise)}</span></>) : (<span className="text-[17px] font-extrabold">{t.pricing.proposalPrice}</span>)}</div>
+              </li>
+              {([[t.pricing.conceptName, t.pricing.conceptDesc, t.pricing.conceptPrice], [t.pricing.caseName, t.pricing.caseDesc, t.pricing.casePrice]] as [string, string, string][]).map(([n, d, pr]) => (
+                <li key={n} className="flex items-baseline justify-between gap-4 py-3 border-t border-white/10">
+                  <div className="min-w-0"><div className="text-[15px] font-semibold flex items-center gap-2 flex-wrap">{n}<span className="text-[10px] font-bold tracking-[0.04em] uppercase border border-white/25 text-white/60 px-1.5 py-0.5 rounded-full">{t.pricing.soonTag}</span></div><div className="text-[12.5px] text-white/50 mt-0.5">{d}</div></div>
+                  <div className="text-right shrink-0 tabular-nums text-[17px] font-extrabold">{pr}</div>
+                </li>
+              ))}
+              <li className="flex items-baseline justify-between gap-4 py-3 border-t border-white/10">
+                <div className="min-w-0"><div className="text-[15px] font-semibold flex items-center gap-2 flex-wrap">{t.pricing.consultName}<span className="text-[10px] font-bold tracking-[0.04em] uppercase border border-white/25 text-white/60 px-1.5 py-0.5 rounded-full">{t.pricing.soonTag}</span></div><div className="text-[12.5px] text-white/50 mt-0.5">{t.pricing.consultDesc}</div></div>
+                <div className="text-right shrink-0 text-[17px] font-extrabold">{t.pricing.priceCustom}</div>
+              </li>
+            </ul>
+            <div className="mt-auto pt-6"><Link href="/pricing" className="inline-block bg-paper text-panel text-[14.5px] font-semibold px-6 py-3 rounded-[4px]">{t.pricing.paidCta}</Link></div>
           </div>
         </div>
+        <p className="mt-5 text-[13.5px] text-muted leading-relaxed max-w-[720px]">{t.pricing.afterNote}</p>
       </section>
 
       {/* Final CTA */}

@@ -10,7 +10,6 @@ export const metadata = { title: "Pricing · Prastav" };
 export default async function PricingPage() {
   const { t } = await getDict();
   const p = t.pricingPage;
-  const o = t.offer;
   let offer = null as Awaited<ReturnType<typeof publicOffer>>;
   try { offer = await publicOffer(createAdminClient(), pricePaise()); } catch {}
   const inr = (paise: number) => "₹" + Math.round(paise / 100).toLocaleString("en-IN");
@@ -23,51 +22,56 @@ export default async function PricingPage() {
         <h1 className="font-extrabold text-[clamp(28px,5vw,44px)] tracking-[-0.03em] leading-[1.06] max-w-[760px]">{p.title}</h1>
         <p className="mt-5 text-[17px] leading-relaxed text-[#3A3A31] max-w-[720px]">{p.intro}</p>
 
-        {/* Live services */}
-        <h2 className={h2}>{p.liveTitle}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-4">
-          <div className="bg-card border border-line rounded-lg p-7">
-            <div className="text-[16px] font-bold">{p.proposalName}</div>
-            {offer ? (
-              <div className="mt-2">
-                <div className="flex items-baseline gap-3 flex-wrap">
-                  <span className="text-[36px] font-extrabold tracking-[-0.03em]">{inr(offer.offerPaise)}</span>
-                  <span className="text-[18px] text-muted line-through">{inr(offer.fullPaise)}</span>
-                  <span className="text-[14px] text-muted">{p.proposalUnit}</span>
-                </div>
-                <div className="text-[14px] text-[#3A3A31] mt-1">{o.priceLine}</div>
-                {offer.remaining !== null && offer.total ? (
-                  <div className="mt-4 pt-3 border-t border-[#ECEAE1]">
-                    <div className="flex justify-between items-center text-[13.5px]"><span><b>{o.placesOf.replace("{n}", String(offer.remaining)).replace("{total}", String(offer.total))}</b></span><span className="text-muted text-[12.5px]">{o.applied}</span></div>
-                    <div className="h-1 bg-[#ECEAE1] rounded mt-2 overflow-hidden"><div className="h-full bg-ink" style={{ width: `${Math.round(((offer.total - offer.remaining) / offer.total) * 100)}%` }} /></div>
-                  </div>
-                ) : null}
-              </div>
-            ) : (
-            <div className="flex items-baseline gap-1.5 mt-2">
-              <span className="text-[36px] font-extrabold tracking-[-0.03em]">{p.proposalPrice}</span>
-              <span className="text-[14px] text-muted">{p.proposalUnit}</span>
-            </div>
-            )}
-            <div className="mt-5 text-[12px] tracking-[0.08em] text-muted mb-2">{p.includedTitle.toUpperCase()}</div>
-            <ul className="flex flex-col gap-2">
-              {p.included.map((item) => (
-                <li key={item} className="flex gap-2.5 text-[14.5px] leading-relaxed text-[#3A3A31]">
-                  <span className="mt-[2px] text-ink">✓</span><span>{item}</span>
-                </li>
-              ))}
-            </ul>
+        {/* Free tier */}
+        <h2 className={h2}>{p.freeSectionTitle}</h2>
+        <div className="bg-card border border-line rounded-lg p-7 sm:p-9">
+          <div className="flex items-center gap-3 flex-wrap">
+            <h3 className="text-[21px] font-extrabold tracking-[-0.02em]">{p.freePanelTitle}</h3>
+            <span className="text-[10.5px] font-bold tracking-[0.04em] uppercase bg-ink text-paper px-2.5 py-1 rounded-full">{p.freeBadge}</span>
           </div>
-          <div className="bg-panel text-paper rounded-lg p-7 flex flex-col">
-            <div className="text-[16px] font-bold">{p.consultName}</div>
-            <div className="text-[24px] font-extrabold tracking-[-0.02em] mt-2">{p.consultPrice}</div>
-            <div className="text-[14.5px] leading-relaxed text-white/70 mt-3">{p.consultBody}</div>
-            <Link href="/contact" className="inline-block self-start mt-auto pt-5">
-              <span className="inline-block bg-paper text-panel text-[14px] font-semibold px-5 py-2.5 rounded-[4px]">{p.consultCta}</span>
-            </Link>
+          <p className="mt-3 text-[15px] leading-relaxed text-[#3A3A31] max-w-[64ch]">{p.freePanelSub}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-7 mt-7 pt-7 border-t border-[#ECEAE1]">
+            {p.freeItems.map(([q, u, n, d], i) => (
+              <div key={n} className="flex flex-col gap-1.5 min-w-0">
+                <div className="text-[28px] font-extrabold tracking-[-0.03em] leading-none tabular-nums">{q}<span className="text-[13px] font-semibold text-muted"> {u}</span></div>
+                <div className="text-[14.5px] font-bold">{n}</div>
+                <div className="text-[12.5px] text-muted leading-relaxed">{d}{i === 2 ? <span className="text-[#2F5E3A] font-semibold"> {p.liveNow}</span> : null}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 pt-5 border-t border-[#ECEAE1] flex items-center justify-between gap-5 flex-wrap">
+            <p className="text-[13.5px] text-[#4A4A42] leading-relaxed max-w-[58ch]">{p.freeFoot}</p>
+            <Link href="/signup" className="inline-block bg-ink text-paper text-[14.5px] font-semibold px-6 py-3 rounded-[4px]">{p.freeCta}</Link>
           </div>
         </div>
-        <p className="mt-4 text-[13.5px] text-muted leading-relaxed max-w-[720px]">{p.comingNote}</p>
+
+        {/* Pay per product */}
+        <h2 className={h2}>{p.paidSectionTitle}</h2>
+        <p className="text-[15px] leading-relaxed text-[#3A3A31] max-w-[66ch] -mt-2 mb-5">{p.paidIntro}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="bg-card border border-line rounded-lg p-6 flex flex-col">
+            <div className="flex items-center justify-between gap-2.5"><h4 className="text-[16px] font-extrabold tracking-[-0.01em]">{p.proposalName}</h4><span className="text-[10.5px] font-bold tracking-[0.04em] uppercase bg-[#E2EDE3] text-[#2F5E3A] px-2 py-0.5 rounded-full">{p.liveTag}</span></div>
+            <div className="flex items-baseline gap-2 mt-3.5">{offer ? (<><span className="text-[30px] font-extrabold tracking-[-0.03em] leading-none">{inr(offer.offerPaise)}</span><span className="text-[15px] text-muted line-through">{inr(offer.fullPaise)}</span></>) : (<span className="text-[30px] font-extrabold tracking-[-0.03em] leading-none">{p.proposalPrice}</span>)}<span className="text-[13px] text-muted">{p.proposalUnit}</span></div>
+            {offer ? <div className="mt-2.5 text-[12.5px] text-[#3A3A31]"><b>{p.foundingLine}</b></div> : null}
+            <div className="mt-3.5 text-[13.5px] text-[#4A4A42] leading-relaxed">{p.proposalDesc}</div>
+          </div>
+          <div className="bg-card border border-line rounded-lg p-6 flex flex-col">
+            <div className="flex items-center justify-between gap-2.5"><h4 className="text-[16px] font-extrabold tracking-[-0.01em]">{p.conceptName}</h4><span className="text-[10.5px] font-bold tracking-[0.04em] uppercase border border-line text-muted px-2 py-0.5 rounded-full">{p.soonTag}</span></div>
+            <div className="flex items-baseline gap-2 mt-3.5"><span className="text-[30px] font-extrabold tracking-[-0.03em] leading-none">{p.conceptPrice}</span><span className="text-[13px] text-muted">{p.conceptUnit}</span></div>
+            <div className="mt-3.5 text-[13.5px] text-[#4A4A42] leading-relaxed">{p.conceptDesc}</div>
+          </div>
+          <div className="bg-card border border-line rounded-lg p-6 flex flex-col">
+            <div className="flex items-center justify-between gap-2.5"><h4 className="text-[16px] font-extrabold tracking-[-0.01em]">{p.caseName}</h4><span className="text-[10.5px] font-bold tracking-[0.04em] uppercase border border-line text-muted px-2 py-0.5 rounded-full">{p.soonTag}</span></div>
+            <div className="flex items-baseline gap-2 mt-3.5"><span className="text-[30px] font-extrabold tracking-[-0.03em] leading-none">{p.casePrice}</span><span className="text-[13px] text-muted">{p.caseUnit}</span></div>
+            <div className="mt-3.5 text-[13.5px] text-[#4A4A42] leading-relaxed">{p.caseDesc}</div>
+          </div>
+        </div>
+        <div className="mt-4 bg-panel text-paper rounded-lg p-7 flex flex-col">
+          <div className="flex items-center justify-between gap-2.5"><h4 className="text-[16px] font-extrabold tracking-[-0.01em]">{p.consultName}</h4><span className="text-[10.5px] font-bold tracking-[0.04em] uppercase border border-white/25 text-white/60 px-2 py-0.5 rounded-full">{p.soonTag}</span></div>
+          <div className="flex items-baseline gap-2 mt-3.5"><span className="text-[22px] font-extrabold tracking-[-0.02em]">{p.consultPrice}</span><span className="text-[13px] text-white/55">{p.consultUnit}</span></div>
+          <div className="mt-3 text-[14px] text-white/70 leading-relaxed max-w-[70ch]">{p.consultDesc}</div>
+          <Link href="/contact" className="inline-block self-start mt-5 bg-paper text-panel text-[14px] font-semibold px-5 py-2.5 rounded-[4px]">{p.consultCta}</Link>
+        </div>
 
         {/* Payment process */}
         <h2 className={h2}>{p.processTitle}</h2>
