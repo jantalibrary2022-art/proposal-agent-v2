@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "../../../../../lib/supabase/server";
 import { createAdminClient } from "../../../../../lib/supabase/admin";
 import { renderProposalFiles } from "../../../../../lib/run-open";
+import { renderConceptFiles } from "../../../../../lib/run-concept";
 import { applyEdits } from "../../../../../lib/apply-edits";
 import { isEntitled } from "../../../../../lib/entitlement";
 
@@ -14,8 +15,9 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ ok: false, error: "not_authenticated" }, { status: 401 });
 
-  const { data: row } = await supabase.from("proposals").select("id,status,substance,composed,meta").eq("id", id).single();
+  const { data: row } = await supabase.from("proposals").select("id,status,substance,composed,meta,mode").eq("id", id).single();
   if (!row || !row.substance) return NextResponse.json({ ok: false, error: "not_ready" }, { status: 404 });
+  const isConcept = row.mode === "concept";
 
   const admin = createAdminClient();
 
@@ -30,7 +32,6 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
 
   try {
     const applied = applyEdits({ substance: row.substance, composed: row.composed, meta: row.meta }, edits);
-    const files = await renderProposalFiles(applied.substance, applied.composed);
     const base = user.id + "/" + id;
     // buf is an opaque binary blob (PDF/DOCX/XLSX) from the CommonJS renderer,
     // passed straight to Supabase storage; typed any to avoid cross-library
@@ -41,9 +42,16 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ id: string
       if (error) throw new Error("upload " + name + ": " + error.message);
       return path;
     };
+    // A concept note renders to PDF + Word only (indicative budget in prose, no
+    // line-item Excel); a full proposal also produces the budget workbook.
+    const files: any = isConcept
+      ? await renderConceptFiles(applied.substance, applied.composed)
+      : await renderProposalFiles(applied.substance, applied.composed);
     const pdf_path = await up("proposal.pdf", files.pdf, "application/pdf");
     const docx_path = await up("proposal.docx", files.docx, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
-    const xlsx_path = await up("budget.xlsx", files.xlsx, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+    const xlsx_path = isConcept
+      ? null
+      : await up("budget.xlsx", files.xlsx, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     await admin.from("proposals").update({ status: "ready", title: applied.meta.title, meta: applied.meta, substance: applied.substance, composed: applied.composed, pdf_path, docx_path, xlsx_path, updated_at: new Date().toISOString() }).eq("id", id);
     return NextResponse.json({ ok: true });
   } catch (e: any) {
