@@ -118,7 +118,7 @@ export default async function Home() {
           <div className="text-[12px] tracking-[0.1em] text-white/45 mb-8">{t.practitioner.kicker}</div>
           <div className="flex flex-col md:flex-row gap-10 md:gap-14 md:items-stretch">
             <div className="shrink-0 md:w-[260px] flex flex-col">
-              <img src="/practice-ai.jpg" alt="A thinking human mind fused with an AI neural network" className="w-full aspect-square md:aspect-auto md:flex-grow md:min-h-0 object-cover rounded-xl border border-white/10 grayscale" />
+              <img src="/practice-ai.jpg" alt="A thinking human mind fused with an AI neural network" className="w-full aspect-square md:aspect-auto md:flex-grow md:min-h-0 object-cover grayscale" style={{ WebkitMaskImage: "linear-gradient(to right, transparent, #000 15%, #000 85%, transparent), linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent)", WebkitMaskComposite: "source-in", maskImage: "linear-gradient(to right, transparent, #000 15%, #000 85%, transparent), linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent)", maskComposite: "intersect" }} />
               <div className="mt-4 text-[13.5px] text-white/55 leading-snug">{t.practitioner.motifCaption}</div>
             </div>
             <div className="min-w-0 flex-grow">
