@@ -573,7 +573,9 @@ export default function ProposalPage({ params }: { params: Promise<{ id: string 
               <div className="grid sm:grid-cols-3 gap-4 mb-7">
                 <DownloadCard id={id} kind="pdf" label={p.dlPdf} note={p.dlPdfNote} primary />
                 <DownloadCard id={id} kind="docx" label={p.dlWord} note={p.dlWordNote} />
-                <DownloadCard id={id} kind="xlsx" label={p.dlExcel} note={p.dlExcelNote} />
+                {row?.mode !== "concept" && (
+                  <DownloadCard id={id} kind="xlsx" label={p.dlExcel} note={p.dlExcelNote} />
+                )}
               </div>
               <p className="text-[12.5px] text-muted leading-relaxed mb-7 max-w-[680px]">{p.resultDisclaimer}</p>
               <div className="bg-card border border-line rounded-lg p-5 flex flex-col sm:flex-row sm:items-center gap-3 mb-6">

@@ -54,7 +54,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
 
   const { locale, t } = await getDict();
   const td = t.dashboard;
-  const MODE: Record<string, string> = { open: td.modeOpen, rfp: td.modeRfp, improve: td.modeImprove };
+  const MODE: Record<string, string> = { open: td.modeOpen, rfp: td.modeRfp, improve: td.modeImprove, concept: td.modeConcept };
 
   const adminList = (process.env.ADMIN_EMAILS || "").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean);
   const isAdmin = !!user.email && adminList.includes(user.email.toLowerCase());
@@ -170,6 +170,11 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
               <Link href="/new/improve" className="flex-1 bg-card border border-line rounded-lg p-6">
                 <div className="text-[18px] font-bold mb-1.5">{td.improveTitle}</div>
                 <div className="text-[14.5px] text-muted">{td.improveSub}</div>
+                <div className="mt-4 text-[12px] tracking-wide">{td.start}</div>
+              </Link>
+              <Link href="/new/concept" className="flex-1 bg-card border border-line rounded-lg p-6">
+                <div className="text-[18px] font-bold mb-1.5">{td.conceptTitle}</div>
+                <div className="text-[14.5px] text-muted">{td.conceptSub}</div>
                 <div className="mt-4 text-[12px] tracking-wide">{td.start}</div>
               </Link>
             </div>

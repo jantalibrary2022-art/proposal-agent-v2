@@ -9,15 +9,20 @@ import { useDict } from "../../_components/LocaleProvider";
 
 const OPEN_STEPS = ["intake", "research", "cost", "build", "compose", "draft"];
 const IMPROVE_STEPS = ["diagnose", "research", "cost", "rebuild", "compose", "draft"];
+// A concept note is a shorter pipeline: no cost-research or heavy substance build.
+const CONCEPT_STEPS = ["intake", "research", "compose", "draft"];
 const WEIGHTS = [0.08, 0.3, 0.14, 0.26, 0.2, 0.02];
-const EXPECTED_TOTAL_MIN = 8;
+const CONCEPT_WEIGHTS = [0.1, 0.5, 0.38, 0.02];
+// A concept note is quicker to produce than a full proposal.
+const EXPECTED_TOTAL_MIN_DEFAULT = 8;
+const EXPECTED_TOTAL_MIN_CONCEPT = 4;
 
-function computePct(steps: string[], stage: string | null, stageAt: number, now: number): { pct: number; idx: number } {
+function computePct(steps: string[], weights: number[], expectedTotalMin: number, stage: string | null, stageAt: number, now: number): { pct: number; idx: number } {
   let idx = stage ? steps.indexOf(stage) : 0;
   if (idx < 0) idx = 0;
-  const start = WEIGHTS.slice(0, idx).reduce((a, b) => a + b, 0);
-  const w = WEIGHTS[idx] || 0.02;
-  const expectedMs = Math.max(20000, w * EXPECTED_TOTAL_MIN * 60000);
+  const start = weights.slice(0, idx).reduce((a, b) => a + b, 0);
+  const w = weights[idx] || 0.02;
+  const expectedMs = Math.max(20000, w * expectedTotalMin * 60000);
   const within = 1 - Math.exp(-Math.max(0, now - stageAt) / expectedMs);
   return { pct: Math.min(0.97, start + w * 0.9 * within), idx };
 }
@@ -59,11 +64,14 @@ export default function GenerationProgress({
     return () => clearInterval(i);
   }, [g.tips.length]);
 
-  const steps = mode === "improve" ? IMPROVE_STEPS : OPEN_STEPS;
+  const isConcept = mode === "concept";
+  const steps = isConcept ? CONCEPT_STEPS : mode === "improve" ? IMPROVE_STEPS : OPEN_STEPS;
+  const weights = isConcept ? CONCEPT_WEIGHTS : WEIGHTS;
+  const expectedTotalMin = isConcept ? EXPECTED_TOTAL_MIN_CONCEPT : EXPECTED_TOTAL_MIN_DEFAULT;
   const created = createdAt ? Date.parse(createdAt) : 0;
   const now = nowState ?? created;
   const at = stageAt ? Date.parse(stageAt) : created;
-  const { pct, idx } = computePct(steps, stage || null, at, now);
+  const { pct, idx } = computePct(steps, weights, expectedTotalMin, stage || null, at, now);
   const mins = Math.max(0, Math.floor((now - created) / 60000));
   const stageLabel = (key: string) => (g.stages as Record<string, string>)[key === "intake" && mode === "rfp" ? "intakeRfp" : key] || key;
 
