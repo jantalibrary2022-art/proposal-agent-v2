@@ -116,9 +116,9 @@ export default async function Home() {
       <section className="bg-panel text-paper">
         <div className="px-5 sm:px-8 w-full max-w-[1200px] mx-auto py-20 sm:py-28">
           <div className="text-[12px] tracking-[0.1em] text-white/45 mb-8">{t.practitioner.kicker}</div>
-          <div className="flex flex-col md:flex-row gap-10 md:gap-14 md:items-start">
-            <div className="shrink-0 md:w-[260px]">
-              <img src="/practice-ai.jpg" alt="A thinking human mind fused with an AI neural network" className="w-full aspect-square object-cover rounded-xl border border-white/10" />
+          <div className="flex flex-col md:flex-row gap-10 md:gap-14 md:items-stretch">
+            <div className="shrink-0 md:w-[260px] flex flex-col">
+              <img src="/practice-ai.jpg" alt="A thinking human mind fused with an AI neural network" className="w-full aspect-square md:aspect-auto md:flex-grow md:min-h-0 object-cover rounded-xl border border-white/10 grayscale" />
               <div className="mt-4 text-[13.5px] text-white/55 leading-snug">{t.practitioner.motifCaption}</div>
             </div>
             <div className="min-w-0 flex-grow">
